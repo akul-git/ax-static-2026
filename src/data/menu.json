@@ -42,30 +42,6 @@
     ]
   },
   {
-    "label": "Consulting",
-    "href": "/consulting",
-    "children": [
-      {
-        "label": "Consulting Services",
-        "href": "/consulting/consulting-services"
-      },
-      {
-        "label": "Remote Workshops",
-        "href": "/consulting/remote-workshops"
-      }
-    ]
-  },
-  {
-    "label": "Resources",
-    "href": "/resources",
-    "children": [
-      {
-        "label": "Webinar Recording",
-        "href": "/resources/webinar-recording"
-      }
-    ]
-  },
-  {
     "label": "About Us",
     "href": "/about-us",
     "children": [
@@ -88,6 +64,30 @@
       {
         "label": "TRC 2026",
         "href": "/about-us/trc-2026"
+      }
+    ]
+  },
+  {
+    "label": "Consulting",
+    "href": "/consulting",
+    "children": [
+      {
+        "label": "Consulting Services",
+        "href": "/consulting/consulting-services"
+      },
+      {
+        "label": "Remote Workshops",
+        "href": "/consulting/remote-workshops"
+      }
+    ]
+  },
+  {
+    "label": "Resources",
+    "href": "/resources",
+    "children": [
+      {
+        "label": "Webinar Recording",
+        "href": "/resources/webinar-recording"
       }
     ]
   },
