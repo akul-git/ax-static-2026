@@ -1,5 +1,31 @@
 ---
 import Header from '../components/layout/Header.astro';
+import menu from '../data/menu.json';
+
+type MenuLink = { label: string; href: string };
+type MenuItem = MenuLink & { children?: MenuLink[] };
+
+interface Props {
+  title?: string;
+}
+
+const { title: pageTitle }: Props = Astro.props;
+
+const normalizePath = (path?: string) => (path || '/').replace(/\/$/, '') || '/';
+const currentPath = normalizePath(Astro.url.pathname);
+const safeMenu: MenuItem[] = Array.isArray(menu) ? (menu as MenuItem[]) : [];
+
+const allMenuLinks: MenuLink[] = safeMenu.flatMap((item) => {
+  const links: MenuLink[] = [{ label: item.label, href: item.href }];
+  if (Array.isArray(item.children) && item.children.length > 0) {
+    links.push(...item.children);
+  }
+  return links;
+});
+
+const matchedLink = allMenuLinks.find((link) => normalizePath(link.href) === currentPath);
+const resolvedTitle = pageTitle || matchedLink?.label || 'Asset Analytix';
+const documentTitle = resolvedTitle === 'Asset Analytix' ? resolvedTitle : `${resolvedTitle} | Asset Analytix`;
 ---
 <!doctype html>
 <html lang="en">
@@ -9,7 +35,7 @@ import Header from '../components/layout/Header.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Asset Analytix</title>
+    <title>{documentTitle}</title>
   </head>
   <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
     <Header />
