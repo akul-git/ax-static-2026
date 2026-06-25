@@ -1,0 +1,157 @@
+---
+const {
+  class: className = "",
+  slides = [],
+  autoPlay = true,
+  interval = 5000,
+  showDots = true,
+  showArrows = true,
+  altFallback = "Slide image",
+} = Astro.props;
+
+const safeSlides = Array.isArray(slides) ? slides : [];
+---
+
+<section
+  data-ax-slider
+  data-autoplay={String(Boolean(autoPlay))}
+  data-interval={String(interval)}
+  class={`relative overflow-hidden rounded-sm bg-slate-200 ${className}`.trim()}
+  aria-label="Image slider"
+>
+  <div class="ax-slider-track flex transition-transform duration-500 ease-out">
+    {safeSlides.map((slide, index) => (
+      <figure class="relative min-w-full">
+        <img
+          src={slide.src}
+          alt={slide.alt || `${altFallback} ${index + 1}`}
+          class="h-72 w-full object-cover sm:h-104"
+          loading={index === 0 ? "eager" : "lazy"}
+        />
+        {slide.caption ? (
+          <figcaption class="absolute bottom-0 left-0 right-0 bg-black/35 px-4 py-3 text-sm font-medium text-white">
+            {slide.caption}
+          </figcaption>
+        ) : null}
+      </figure>
+    ))}
+  </div>
+
+  {showArrows && safeSlides.length > 1 ? (
+    <>
+      <button
+        type="button"
+        class="ax-slider-prev absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-sky-500/90 p-4 text-white shadow-sm transition hover:bg-sky-600"
+        aria-label="Previous slide"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="ax-slider-next absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-sky-500/90 p-4 text-white shadow-sm transition hover:bg-sky-600"
+        aria-label="Next slide"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </>
+  ) : null}
+
+  {showDots && safeSlides.length > 1 ? (
+    <div class="ax-slider-dots absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2" role="tablist" aria-label="Slider pagination">
+      {safeSlides.map((_, index) => (
+        <button
+          type="button"
+          class={`ax-slider-dot h-3 w-3 rounded-full transition ${index === 0 ? "bg-sky-500" : "bg-white/65 hover:bg-white"}`}
+          data-index={String(index)}
+          role="tab"
+          aria-label={`Go to slide ${index + 1}`}
+          aria-selected={index === 0 ? "true" : "false"}
+        ></button>
+      ))}
+    </div>
+  ) : null}
+</section>
+
+<script>
+  const initSliders = () => {
+    const sliders = document.querySelectorAll("[data-ax-slider]");
+
+    sliders.forEach((root) => {
+      if (!(root instanceof HTMLElement) || root.dataset.sliderBound === "true") return;
+      root.dataset.sliderBound = "true";
+
+      const track = root.querySelector(".ax-slider-track");
+      const slides = Array.from(root.querySelectorAll("figure"));
+      const prev = root.querySelector(".ax-slider-prev");
+      const next = root.querySelector(".ax-slider-next");
+      const dots = Array.from(root.querySelectorAll(".ax-slider-dot"));
+
+      if (!(track instanceof HTMLElement) || slides.length < 2) return;
+
+      let activeIndex = 0;
+      const canAutoplay = root.dataset.autoplay === "true";
+      const intervalMs = Number(root.dataset.interval) || 5000;
+      let timer = -1;
+
+      const sync = () => {
+        track.style.transform = `translateX(-${activeIndex * 100}%)`;
+        dots.forEach((dot, index) => {
+          if (!(dot instanceof HTMLButtonElement)) return;
+          dot.classList.toggle("bg-sky-500", index === activeIndex);
+          dot.classList.toggle("bg-white/65", index !== activeIndex);
+          dot.setAttribute("aria-selected", index === activeIndex ? "true" : "false");
+        });
+      };
+
+      const startAutoplay = () => {
+        if (!canAutoplay) return;
+        stopAutoplay();
+        timer = window.setInterval(() => {
+          activeIndex = (activeIndex + 1 + slides.length) % slides.length;
+          sync();
+        }, intervalMs);
+      };
+
+      const stopAutoplay = () => {
+        if (timer !== -1) {
+          window.clearInterval(timer);
+          timer = -1;
+        }
+      };
+
+      prev?.addEventListener("click", () => {
+        activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+        sync();
+      });
+
+      next?.addEventListener("click", () => {
+        activeIndex = (activeIndex + 1 + slides.length) % slides.length;
+        sync();
+      });
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.getAttribute("data-index"));
+          if (!Number.isNaN(index)) {
+            activeIndex = (index + slides.length) % slides.length;
+            sync();
+          }
+        });
+      });
+
+      root.addEventListener("mouseenter", stopAutoplay);
+      root.addEventListener("mouseleave", startAutoplay);
+
+      sync();
+      startAutoplay();
+    });
+  };
+
+  initSliders();
+  document.addEventListener("DOMContentLoaded", initSliders);
+  document.addEventListener("astro:page-load", initSliders);
+</script>

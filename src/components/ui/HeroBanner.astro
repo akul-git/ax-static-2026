@@ -1,0 +1,42 @@
+---
+const {
+  class: className = "",
+  title = "",
+  subtitle = "",
+  backgroundImage = "",
+  backgroundAlt = "Banner image",
+  variant = "banner",
+  overlay = "rgba(15, 23, 42, 0.45)",
+  align = "center",
+} = Astro.props;
+
+const isHero = variant === "hero";
+const minHeightClass = isHero ? "min-h-[28rem] sm:min-h-[34rem]" : "min-h-[16rem] sm:min-h-[18rem]";
+const alignClass = align === "left" ? "items-center text-left" : "items-center text-center";
+---
+
+<section class={`relative overflow-hidden rounded-sm ${minHeightClass} ${className}`.trim()} aria-label="Hero banner">
+  {backgroundImage ? (
+    <img src={backgroundImage} alt={backgroundAlt} class="absolute inset-0 h-full w-full object-cover" loading="eager" />
+  ) : null}
+
+  <div class="absolute inset-0" style={`background:${overlay};`}></div>
+
+  <div class={`relative z-10 mx-auto flex h-full max-w-5xl px-6 py-10 sm:px-10 ${alignClass}`}>
+    <div class={align === "left" ? "max-w-3xl" : "max-w-4xl"}>
+      {title ? (
+        <h1 class={`${isHero ? "text-5xl sm:text-7xl" : "text-5xl sm:text-6xl"} leading-tight font-medium text-white drop-shadow-sm`}>
+          {title}
+        </h1>
+      ) : null}
+      {subtitle ? (
+        <p class={`${isHero ? "mt-6 text-2xl sm:text-4xl" : "mt-4 text-2xl sm:text-3xl"} font-medium leading-relaxed text-white`}>
+          {subtitle}
+        </p>
+      ) : null}
+      <div class="mt-6">
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

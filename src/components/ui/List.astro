@@ -1,0 +1,39 @@
+---
+const {
+  class: className = "",
+  variant = "bullet",
+  items = [],
+  icon = "",
+  iconAlt = "List icon",
+} = Astro.props;
+
+const safeItems = Array.isArray(items) ? items : [];
+const isNumbered = variant === "number";
+const isIcon = variant === "icon";
+---
+
+{isNumbered ? (
+  <ol class={`list-decimal space-y-2 pl-6 text-base leading-7 text-slate-700 marker:font-semibold marker:text-sky-700 ${className}`.trim()}>
+    {safeItems.map((item) => (
+      <li>{item}</li>
+    ))}
+    <slot />
+  </ol>
+) : isIcon ? (
+  <ul class={`space-y-3 ${className}`.trim()}>
+    {safeItems.map((item) => (
+      <li class="flex items-start gap-3 text-base leading-7 text-slate-700">
+        {icon ? <img src={icon} alt={iconAlt} class="mt-1 h-5 w-5 shrink-0 object-contain" /> : <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-sky-700"></span>}
+        <span>{item}</span>
+      </li>
+    ))}
+    <slot />
+  </ul>
+) : (
+  <ul class={`list-disc space-y-2 pl-6 text-base leading-7 text-slate-700 marker:text-sky-700 ${className}`.trim()}>
+    {safeItems.map((item) => (
+      <li>{item}</li>
+    ))}
+    <slot />
+  </ul>
+)}

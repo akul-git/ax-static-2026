@@ -1,0 +1,109 @@
+---
+const {
+  class: className = "",
+  frontTitle = "",
+  frontSubtitle = "",
+  frontImage = "",
+  frontAlt = "Front image",
+  backText = "",
+  backImage = "",
+  backAlt = "Back image",
+  href = "",
+  minHeight = "16rem",
+} = Astro.props;
+---
+
+{href ? (
+  <a href={href} class="block no-underline">
+    <article class={`ax-flip-card ${className}`.trim()} style={`--ax-flip-min-height:${minHeight};`}>
+      <div class="ax-flip-card__inner">
+        <div class="ax-flip-card__face ax-flip-card__face--front">
+          {frontImage ? <img src={frontImage} alt={frontAlt} class="ax-flip-card__media" /> : null}
+          <div class="ax-flip-card__content">
+            {frontTitle ? <h4 class="text-4xl leading-tight font-semibold text-sky-700">{frontTitle}</h4> : null}
+            {frontSubtitle ? <p class="mt-8 text-lg font-medium uppercase tracking-[0.04em] text-sky-700">{frontSubtitle}</p> : null}
+          </div>
+        </div>
+        <div class="ax-flip-card__face ax-flip-card__face--back">
+          {backImage ? <img src={backImage} alt={backAlt} class="ax-flip-card__media" /> : null}
+          <div class="ax-flip-card__content">
+            {backText ? <p class="text-4xl leading-8 font-medium text-sky-700">{backText}</p> : <slot />}
+          </div>
+        </div>
+      </div>
+    </article>
+  </a>
+) : (
+  <article class={`ax-flip-card ${className}`.trim()} style={`--ax-flip-min-height:${minHeight};`}>
+    <div class="ax-flip-card__inner">
+      <div class="ax-flip-card__face ax-flip-card__face--front">
+        {frontImage ? <img src={frontImage} alt={frontAlt} class="ax-flip-card__media" /> : null}
+        <div class="ax-flip-card__content">
+          {frontTitle ? <h4 class="text-4xl leading-tight font-semibold text-sky-700">{frontTitle}</h4> : null}
+          {frontSubtitle ? <p class="mt-8 text-lg font-medium uppercase tracking-[0.04em] text-sky-700">{frontSubtitle}</p> : null}
+        </div>
+      </div>
+      <div class="ax-flip-card__face ax-flip-card__face--back">
+        {backImage ? <img src={backImage} alt={backAlt} class="ax-flip-card__media" /> : null}
+        <div class="ax-flip-card__content">
+          {backText ? <p class="text-4xl leading-8 font-medium text-sky-700">{backText}</p> : <slot />}
+        </div>
+      </div>
+    </div>
+  </article>
+)}
+
+<style>
+  .ax-flip-card {
+    position: relative;
+    min-height: var(--ax-flip-min-height, 16rem);
+    border: 1px solid rgb(14 116 204 / 0.85);
+    border-radius: 0.75rem;
+    perspective: 1000px;
+    background: #fff;
+  }
+
+  .ax-flip-card__inner {
+    position: relative;
+    min-height: inherit;
+    transition: transform 420ms ease;
+    transform-style: preserve-3d;
+  }
+
+  .ax-flip-card:hover .ax-flip-card__inner,
+  .ax-flip-card:focus-within .ax-flip-card__inner {
+    transform: rotateY(180deg);
+  }
+
+  .ax-flip-card__face {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: inherit;
+    overflow: hidden;
+    backface-visibility: hidden;
+    background: #f8fafc;
+  }
+
+  .ax-flip-card__face--back {
+    transform: rotateY(180deg);
+  }
+
+  .ax-flip-card__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.18;
+  }
+
+  .ax-flip-card__content {
+    position: relative;
+    z-index: 1;
+    max-width: 18rem;
+    padding: 1.5rem;
+    text-align: center;
+  }
+</style>

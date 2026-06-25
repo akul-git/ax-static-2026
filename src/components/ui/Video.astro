@@ -1,0 +1,44 @@
+---
+const {
+  class: className = "",
+  title = "Video",
+  src = "",
+  embedUrl = "",
+  poster = "",
+  caption = "",
+  controls = true,
+  autoplay = false,
+  loop = false,
+  muted = false,
+} = Astro.props;
+---
+
+<section class={`overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm ${className}`.trim()}>
+  <div class="aspect-video w-full">
+    {embedUrl ? (
+      <iframe
+        class="h-full w-full"
+        src={embedUrl}
+        title={title}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    ) : (
+      <video
+        class="h-full w-full object-cover"
+        src={src}
+        poster={poster}
+        controls={controls}
+        autoplay={autoplay}
+        loop={loop}
+        muted={muted}
+        playsinline
+        preload="metadata"
+      >
+        Your browser does not support the video tag.
+      </video>
+    )}
+  </div>
+  {caption ? <p class="border-t border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-200">{caption}</p> : null}
+</section>
