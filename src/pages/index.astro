@@ -9,7 +9,19 @@ import "../styles/global.css";
 
 <Layout>
 	<Welcome />
+<div class="hero">
+	<div class="hero__content">
+<Card>
+				
+	<h2 class="text-xl font-semibold text-slate-900">Modern Asset Intelligence</h2>
+				<p class="mt-3 text-slate-600">Deliver faster decisions with data-driven asset analytics, predictive insights, and connected operations.</p>
+				<Button href="/solutions" class="mt-6">Explore solutions</Button>
+				<span style="font-family: BusinessPeople">ABC</span>
+				
+			</Card>
 
+	</div>
+</div>
 	<Section class="mt-16">
 		<div class="grid gap-6 lg:grid-cols-3">
 			<Card>
@@ -30,3 +42,30 @@ import "../styles/global.css";
 		</div>
 	</Section>
 </Layout>
+
+<style>
+	.hero {
+  position: relative;
+  min-height: 320px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(39,93,122,.95),
+      rgba(14,57,83,.95)
+    );
+
+  /* clip-path: polygon(
+    0 0,
+    100% 45px,
+    100% calc(100% - 45px),
+    0 100%
+  ); */
+
+  clip-path: polygon(0 46%, 100% 18%, 100% 100%, 0% 100%);
+}
+
+.hero__content {
+  padding: 80px;
+  color: white;
+}
+	</style>

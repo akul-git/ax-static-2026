@@ -1,0 +1,22 @@
+---
+import { icons, type IconName } from '../data/icons';
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const {
+  name,
+  class: className = '',
+} = Astro.props;
+
+const icon = icons[name];
+---
+
+<span
+  class={className}
+  style={`font-family:${icon.family}`}
+>
+  {icon.value}
+</span>

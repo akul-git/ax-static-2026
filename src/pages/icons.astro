@@ -1,0 +1,23 @@
+---
+import { icons } from '../data/icons';
+---
+
+<h1>Icon Library</h1>
+
+<div class="grid">
+  {
+    Object.entries(icons).map(([name, icon]) => (
+      <div class="card">
+        <span style={`font-family:${icon.family};font-size:48px`}>
+          {icon.value}
+        </span>
+
+        <p>{name}</p>
+
+        <code>
+          {`<Icon name="${name}" />`}
+        </code>
+      </div>
+    ))
+  }
+</div>
