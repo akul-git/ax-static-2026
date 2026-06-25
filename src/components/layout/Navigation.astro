@@ -1,4 +1,5 @@
 ---
+// import axIcon from "../../assets/ax-icon.svg";
 import menu from "../../data/menu.json";
 
 type MenuLink = { label: string; href: string };
@@ -82,6 +83,7 @@ const isActiveItem = (item: MenuItem) => {
   >
     <div class="sticky top-0 flex justify-between items-center px-6 py-5 bg-white border-b border-gray-100 shadow-sm">
       <div class="font-semibold text-slate-900">Menu</div>
+       <!-- <img src={axIcon.src}  alt="AX Homepage" class="h-10 w-auto" /> -->
       <button
         id="menu-close"
         type="button"
