@@ -41,6 +41,45 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Contact Form (Self-Hosted)
+
+The contact form posts to `POST /api/contact` and requires server mode (`@astrojs/node` adapter already configured).
+
+### 1. Configure environment variables
+
+Create a `.env` file from `.env.example` and set:
+
+- `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`
+- `SMTP_FROM` or `CONTACT_FORM_FROM`
+- `CONTACT_FORM_TO`
+
+Optional:
+
+- `ALLOWED_ORIGINS` (comma-separated extra origins)
+- CAPTCHA settings (`CAPTCHA_PROVIDER`, `HCAPTCHA_SECRET`, `RECAPTCHA_SECRET_KEY`)
+
+### 2. Build and run
+
+```sh
+npm run build
+npm run start
+```
+
+### 3. Security controls included
+
+- server-side schema validation (`zod`)
+- honeypot field trap
+- origin allow-list checks
+- basic per-IP rate limiting
+- payload size limit
+- optional CAPTCHA verification
+
+### 4. Production recommendations
+
+- run behind HTTPS and reverse proxy limits
+- add persistent distributed rate limiting (Redis or similar)
+- monitor mail delivery failures and bounce handling
+
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

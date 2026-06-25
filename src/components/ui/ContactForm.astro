@@ -9,36 +9,39 @@ const {
 } = Astro.props;
 ---
 
-<form class={`rounded-sm bg-slate-100 p-6 shadow-sm sm:p-8 ${className}`.trim()} action={action} method={method} novalidate>
+<form class={`rounded-sm bg-slate-100 p-6 shadow-sm sm:p-8 ${className}`.trim()} action={action} method={method} accept-charset="UTF-8">
   <input type="hidden" name="form_name" value="contact-us" />
   <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+  <input type="hidden" name="captchaToken" value="" />
+  <input type="hidden" name="g-recaptcha-response" value="" />
+  <input type="hidden" name="h-captcha-response" value="" />
 
   <div class="grid gap-6 sm:grid-cols-2">
     <div>
       <label for="firstName" class="block text-lg font-semibold text-slate-800">Name <span class="text-red-500">*</span></label>
-      <input id="firstName" name="firstName" type="text" required autocomplete="given-name" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+      <input id="firstName" name="firstName" type="text" maxlength="80" required autocomplete="given-name" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
       <p class="mt-2 text-sm text-slate-600">First</p>
     </div>
     <div class="sm:pt-8">
       <label for="lastName" class="sr-only">Last name</label>
-      <input id="lastName" name="lastName" type="text" required autocomplete="family-name" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200 sm:mt-0" />
+      <input id="lastName" name="lastName" type="text" maxlength="80" required autocomplete="family-name" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200 sm:mt-0" />
       <p class="mt-2 text-sm text-slate-600">Last</p>
     </div>
   </div>
 
   <div class="mt-6">
     <label for="companyName" class="block text-lg font-semibold text-slate-800">Company Name <span class="text-red-500">*</span></label>
-    <input id="companyName" name="companyName" type="text" required autocomplete="organization" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+    <input id="companyName" name="companyName" type="text" maxlength="140" required autocomplete="organization" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
   </div>
 
   <div class="mt-6">
     <label for="jobTitle" class="block text-lg font-semibold text-slate-800">Job Title <span class="text-red-500">*</span></label>
-    <input id="jobTitle" name="jobTitle" type="text" required autocomplete="organization-title" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+    <input id="jobTitle" name="jobTitle" type="text" maxlength="140" required autocomplete="organization-title" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
   </div>
 
   <div class="mt-6">
     <label for="workEmail" class="block text-lg font-semibold text-slate-800">Work Email <span class="text-red-500">*</span></label>
-    <input id="workEmail" name="workEmail" type="email" required autocomplete="email" inputmode="email" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+    <input id="workEmail" name="workEmail" type="email" maxlength="254" required autocomplete="email" inputmode="email" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
   </div>
 
   <div class="mt-8">

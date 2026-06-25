@@ -3,6 +3,21 @@ import Layout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import ContactForm from '../../components/ui/ContactForm.astro';
 import '../../styles/global.css';
+
+const status = Astro.url.searchParams.get("status") || "";
+const isSuccess = status === "submitted";
+
+const errorMessages = {
+  invalid: "Please complete all required fields with valid information.",
+  captcha_error: "CAPTCHA verification failed. Please try again.",
+  rate_limited: "Too many attempts. Please wait a few minutes and retry.",
+  origin_error: "Request origin could not be verified.",
+  payload_too_large: "Submission payload is too large.",
+  delivery_not_configured: "Form delivery is not configured yet. Set SMTP and recipient environment variables.",
+  server_error: "Something went wrong on our side. Please try again shortly.",
+};
+
+const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 ---
 
 <Layout title="Contact Us">
@@ -23,7 +38,19 @@ import '../../styles/global.css';
         </div>
       </div>
 
-      <ContactForm action="/api/contact" />
+      <div>
+        {isSuccess ? (
+          <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+            Thank you. Your message has been received.
+          </p>
+        ) : errorMessage ? (
+          <p class="mb-5 rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
+            {errorMessage}
+          </p>
+        ) : null}
+
+        <ContactForm action="/api/contact" />
+      </div>
     </div>
   </Section>
 </Layout>
