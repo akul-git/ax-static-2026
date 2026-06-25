@@ -72,7 +72,7 @@ export default function Navigation({ initialPath = "/" }) {
               <li key={item.href} className="relative group list-none">
                 <a
                   href={item.href}
-                  className={`px-4 py-2 rounded ${item.highlight ? "btn-primary" : ""} ${active ? "bg-sky-800 text-white font-semibold" : "text-gray-700 hover:text-sky-600"}`}
+                  className={`px-4 py-2 rounded ${item.highlight ? "btn-primary" : ""} ${active ? "bg-sky-300 text-white font-semibold" : "text-gray-700 hover:text-sky-600"}`}
                 >
                   {item.label}
                 </a>
@@ -88,7 +88,7 @@ export default function Navigation({ initialPath = "/" }) {
                           href={sub.href}
                           onMouseEnter={() => setHoveredSub(sub.href)}
                           onMouseLeave={() => setHoveredSub(null)}
-                          className={`block px-4 py-2 rounded ${isActiveSub(sub) ? "bg-sky-800 text-white" : hoveredSub === sub.href ? "bg-sky-100 text-sky-800" : "text-gray-600"}`}
+                          className={`block px-4 py-2 rounded ${isActiveSub(sub) ? "bg-sky-300 text-white" : hoveredSub === sub.href ? "bg-sky-100 text-sky-800" : "text-gray-600"}`}
                         >
                           {sub.label}
                         </a>
