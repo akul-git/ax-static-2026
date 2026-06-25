@@ -127,6 +127,14 @@ const isLikelySpam = (payload: ContactPayload): boolean => {
   );
 };
 
+const escapeHtml = (value: string): string =>
+  value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 const buildTransport = () => {
   const host = import.meta.env.SMTP_HOST || "";
   const port = Number(import.meta.env.SMTP_PORT || "587");
@@ -157,6 +165,15 @@ const sendContactEmail = async (payload: ContactPayload, request: Request, ip: s
   const newsletterOptIn = payload.newsletter === "yes" ? "Yes" : "No";
   const subject = `[Contact] ${payload.firstName} ${payload.lastName} - ${payload.companyName}`;
 
+  const safeFirstName = escapeHtml(payload.firstName);
+  const safeLastName = escapeHtml(payload.lastName);
+  const safeCompany = escapeHtml(payload.companyName);
+  const safeJobTitle = escapeHtml(payload.jobTitle);
+  const safeEmail = escapeHtml(payload.workEmail);
+  const safeNewsletter = escapeHtml(newsletterOptIn);
+  const safeIp = escapeHtml(ip);
+  const safeOrigin = escapeHtml(origin);
+
   const text = [
     "New contact form submission",
     `Name: ${payload.firstName} ${payload.lastName}`,
@@ -170,14 +187,14 @@ const sendContactEmail = async (payload: ContactPayload, request: Request, ip: s
 
   const html = `
     <h2>New contact form submission</h2>
-    <p><strong>Name:</strong> ${payload.firstName} ${payload.lastName}</p>
-    <p><strong>Company:</strong> ${payload.companyName}</p>
-    <p><strong>Job Title:</strong> ${payload.jobTitle}</p>
-    <p><strong>Work Email:</strong> ${payload.workEmail}</p>
-    <p><strong>Newsletter Opt-In:</strong> ${newsletterOptIn}</p>
+    <p><strong>Name:</strong> ${safeFirstName} ${safeLastName}</p>
+    <p><strong>Company:</strong> ${safeCompany}</p>
+    <p><strong>Job Title:</strong> ${safeJobTitle}</p>
+    <p><strong>Work Email:</strong> ${safeEmail}</p>
+    <p><strong>Newsletter Opt-In:</strong> ${safeNewsletter}</p>
     <hr />
-    <p><strong>IP:</strong> ${ip}</p>
-    <p><strong>Origin:</strong> ${origin}</p>
+    <p><strong>IP:</strong> ${safeIp}</p>
+    <p><strong>Origin:</strong> ${safeOrigin}</p>
   `;
 
   await transport.sendMail({

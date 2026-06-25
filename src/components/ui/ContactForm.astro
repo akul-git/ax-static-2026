@@ -7,9 +7,24 @@ const {
   newsletterLabel = "Yes, I would like to receive updates from Asset Analytix",
   showCaptchaPlaceholder = true,
 } = Astro.props;
+
+const publicCaptchaProvider = String(import.meta.env.PUBLIC_CAPTCHA_PROVIDER || "").toLowerCase();
+const recaptchaSiteKey = String(import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY || "");
+const hcaptchaSiteKey = String(import.meta.env.PUBLIC_HCAPTCHA_SITE_KEY || "");
+const captchaProvider = publicCaptchaProvider === "hcaptcha" ? "hcaptcha" : publicCaptchaProvider === "recaptcha" ? "recaptcha" : "";
+const activeSiteKey = captchaProvider === "hcaptcha" ? hcaptchaSiteKey : recaptchaSiteKey;
+const hasLiveCaptcha = Boolean(captchaProvider && activeSiteKey);
 ---
 
-<form class={`rounded-sm bg-slate-100 p-6 shadow-sm sm:p-8 ${className}`.trim()} action={action} method={method} accept-charset="UTF-8">
+<form
+  data-contact-form
+  data-captcha-provider={captchaProvider}
+  data-site-key={activeSiteKey}
+  class={`rounded-sm bg-slate-100 p-6 shadow-sm sm:p-8 ${className}`.trim()}
+  action={action}
+  method={method}
+  accept-charset="UTF-8"
+>
   <input type="hidden" name="form_name" value="contact-us" />
   <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
   <input type="hidden" name="captchaToken" value="" />
@@ -52,7 +67,14 @@ const {
     </label>
   </div>
 
-  {showCaptchaPlaceholder ? (
+  {hasLiveCaptcha ? (
+    <div class="mt-8 max-w-sm rounded-sm border border-slate-300 bg-white p-4 shadow-xs">
+      <div data-captcha-widget class="min-h-20"></div>
+      <p data-captcha-error class="mt-3 hidden text-sm font-medium text-rose-700">
+        Please complete CAPTCHA verification before submitting.
+      </p>
+    </div>
+  ) : showCaptchaPlaceholder ? (
     <div class="mt-8 max-w-sm rounded-sm border border-slate-300 bg-white p-4 shadow-xs">
       <div class="flex items-center justify-between gap-4">
         <label class="flex items-center gap-3 text-lg text-slate-800">
@@ -71,3 +93,135 @@ const {
     <button type="submit" class="inline-flex rounded-sm bg-sky-700 px-6 py-3 text-lg font-semibold text-white transition hover:bg-sky-600">{submitLabel}</button>
   </div>
 </form>
+
+<script>
+  const initContactCaptcha = () => {
+    const win = window;
+    const winAny = /** @type {any} */ (window);
+
+    document.querySelectorAll("[data-contact-form]").forEach((form) => {
+      if (!(form instanceof HTMLFormElement) || form.dataset.captchaBound === "true") return;
+      form.dataset.captchaBound = "true";
+
+      const provider = form.dataset.captchaProvider || "";
+      const siteKey = form.dataset.siteKey || "";
+      const widgetHost = form.querySelector("[data-captcha-widget]");
+      const errorText = form.querySelector("[data-captcha-error]");
+      const tokenInput = form.querySelector("input[name='captchaToken']");
+      const recaptchaInput = form.querySelector("input[name='g-recaptcha-response']");
+      const hcaptchaInput = form.querySelector("input[name='h-captcha-response']");
+      const submitButton = form.querySelector("button[type='submit']");
+
+      if (!(widgetHost instanceof HTMLElement) || !provider || !siteKey) return;
+
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = true;
+      }
+
+      const setToken = (tokenValue = "") => {
+        const safeToken = String(tokenValue || "");
+        if (tokenInput instanceof HTMLInputElement) tokenInput.value = safeToken;
+        if (recaptchaInput instanceof HTMLInputElement) recaptchaInput.value = provider === "recaptcha" ? safeToken : "";
+        if (hcaptchaInput instanceof HTMLInputElement) hcaptchaInput.value = provider === "hcaptcha" ? safeToken : "";
+        if (errorText instanceof HTMLElement) {
+          errorText.classList.toggle("hidden", Boolean(safeToken));
+        }
+        if (submitButton instanceof HTMLButtonElement) {
+          submitButton.disabled = !Boolean(safeToken);
+        }
+      };
+
+      const loadRecaptchaScript = () =>
+        new Promise((resolve, reject) => {
+          const scriptUrl = "https://www.google.com/recaptcha/api.js?render=explicit";
+          const existing = document.querySelector(`script[src="${scriptUrl}"]`);
+          if (existing) {
+            if (existing.getAttribute("data-loaded") === "true") {
+              resolve(true);
+            } else {
+              existing.addEventListener("load", () => resolve(true), { once: true });
+              existing.addEventListener("error", () => reject(new Error("captcha_script_error")), { once: true });
+            }
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = scriptUrl;
+          script.async = true;
+          script.defer = true;
+          script.addEventListener("load", () => {
+            script.setAttribute("data-loaded", "true");
+            resolve(true);
+          });
+          script.addEventListener("error", () => reject(new Error("captcha_script_error")));
+          document.head.appendChild(script);
+        });
+
+      const loadHCaptchaScript = () =>
+        new Promise((resolve, reject) => {
+          const scriptUrl = "https://js.hcaptcha.com/1/api.js?render=explicit";
+          const existing = document.querySelector(`script[src="${scriptUrl}"]`);
+          if (existing) {
+            if (existing.getAttribute("data-loaded") === "true") {
+              resolve(true);
+            } else {
+              existing.addEventListener("load", () => resolve(true), { once: true });
+              existing.addEventListener("error", () => reject(new Error("captcha_script_error")), { once: true });
+            }
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = scriptUrl;
+          script.async = true;
+          script.defer = true;
+          script.addEventListener("load", () => {
+            script.setAttribute("data-loaded", "true");
+            resolve(true);
+          });
+          script.addEventListener("error", () => reject(new Error("captcha_script_error")));
+          document.head.appendChild(script);
+        });
+
+      const renderCaptcha = async () => {
+        try {
+          if (provider === "recaptcha") {
+            await loadRecaptchaScript();
+            // @ts-ignore runtime global injected by Google script
+            const recaptcha = winAny.grecaptcha;
+            if (!recaptcha || typeof recaptcha.render !== "function") return;
+            recaptcha.render(widgetHost, {
+              sitekey: siteKey,
+              callback: (receivedToken = "") => setToken(receivedToken),
+              "expired-callback": () => setToken(""),
+            });
+            return;
+          }
+
+          if (provider === "hcaptcha") {
+            await loadHCaptchaScript();
+            // @ts-ignore runtime global injected by hCaptcha script
+            const hcaptcha = winAny.hcaptcha;
+            if (!hcaptcha || typeof hcaptcha.render !== "function") return;
+            hcaptcha.render(widgetHost, {
+              sitekey: siteKey,
+              callback: (receivedToken = "") => setToken(receivedToken),
+              "expired-callback": () => setToken(""),
+            });
+          }
+        } catch {
+          if (errorText instanceof HTMLElement) {
+            errorText.textContent = "Captcha failed to load. Please refresh and retry.";
+            errorText.classList.remove("hidden");
+          }
+        }
+      };
+
+      renderCaptcha();
+    });
+  };
+
+  initContactCaptcha();
+  document.addEventListener("DOMContentLoaded", initContactCaptcha);
+  document.addEventListener("astro:page-load", initContactCaptcha);
+</script>

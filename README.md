@@ -58,6 +58,11 @@ Optional:
 - `ALLOWED_ORIGINS` (comma-separated extra origins)
 - CAPTCHA settings (`CAPTCHA_PROVIDER`, `HCAPTCHA_SECRET`, `RECAPTCHA_SECRET_KEY`)
 
+Client CAPTCHA widget keys (required if CAPTCHA is enabled):
+
+- `PUBLIC_CAPTCHA_PROVIDER` (`recaptcha` or `hcaptcha`)
+- `PUBLIC_RECAPTCHA_SITE_KEY` or `PUBLIC_HCAPTCHA_SITE_KEY`
+
 ### 2. Build and run
 
 ```sh
