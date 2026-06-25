@@ -64,7 +64,7 @@ export default function Navigation({ initialPath = "/" }) {
 
   return (
     <div>
-      <nav className="hidden md:flex">
+      <nav className="hidden lg:flex">
         <ul className="flex space-x-6 items-center">
           {safeMenu.map((item) => {
             const active = isActiveItem(item);
@@ -102,7 +102,7 @@ export default function Navigation({ initialPath = "/" }) {
         </ul>
       </nav>
 
-      <div className="flex justify-end items-center px-6 py-4 md:hidden">
+      <div className="flex justify-end items-center px-6 py-4 lg:hidden">
         <button
           type="button"
           className="text-gray-700 focus:outline-none"
@@ -114,16 +114,16 @@ export default function Navigation({ initialPath = "/" }) {
         </button>
       </div>
 
-      {isDrawerOpen && (
-        <div
-          className="fixed inset-0 bg-black/40 z-40 md:hidden"
-          onClick={() => setIsDrawerOpen(false)}
-          aria-hidden="true"
-        />
-      )}
+      <div
+        className={`fixed inset-0 z-40 bg-black/45 transition-opacity duration-300 lg:hidden ${
+          isDrawerOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setIsDrawerOpen(false)}
+        aria-hidden="true"
+      />
 
       <div
-        className={`fixed top-0 left-0 w-3/4 max-w-sm h-screen bg-white shadow-2xl z-50 overflow-y-auto transform transition-transform duration-300 ease-out md:hidden ${
+        className={`fixed top-0 left-0 w-4/5 max-w-md h-screen bg-white shadow-2xl z-50 overflow-y-auto transform transition-transform duration-300 ease-out lg:hidden ${
           isDrawerOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -147,17 +147,18 @@ export default function Navigation({ initialPath = "/" }) {
               const hasChildren = item.children && item.children.length > 0;
               return (
                 <li key={item.href} className="list-none">
-                  <button
-                    type="button"
-                    onClick={() => hasChildren && toggleIndex(index)}
-                    className={`w-full flex justify-between items-center px-6 py-4 text-left font-medium transition-all duration-200 ${
-                      active
-                        ? "bg-linear-to-r from-sky-800 to-sky-700 text-white shadow-sm"
-                        : "text-gray-700 hover:bg-gray-50"
-                    }`}
-                  >
-                    <span className="text-base font-semibold">{item.label}</span>
-                    {hasChildren && (
+                  {hasChildren ? (
+                    <button
+                      type="button"
+                      onClick={() => toggleIndex(index)}
+                      className={`w-full flex justify-between items-center px-6 py-4 text-left font-medium transition-all duration-200 ${
+                        active
+                          ? "bg-linear-to-r from-sky-800 to-sky-700 text-white shadow-sm"
+                          : "text-gray-700 hover:bg-gray-50"
+                      }`}
+                      aria-expanded={openIndex === index}
+                    >
+                      <span className="text-base font-semibold">{item.label}</span>
                       <svg
                         className={`w-5 h-5 transition-transform duration-300 shrink-0 ${
                           openIndex === index ? "rotate-180" : ""
@@ -168,11 +169,27 @@ export default function Navigation({ initialPath = "/" }) {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                       </svg>
-                    )}
-                  </button>
+                    </button>
+                  ) : (
+                    <a
+                      href={item.href}
+                      className={`block w-full px-6 py-4 text-left text-base font-semibold transition-all duration-200 ${
+                        active
+                          ? "bg-linear-to-r from-sky-800 to-sky-700 text-white shadow-sm"
+                          : "text-gray-700 hover:bg-gray-50"
+                      }`}
+                      onClick={() => setIsDrawerOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  )}
 
-                  {hasChildren && openIndex === index && (
-                    <ul className="bg-gray-50 border-t border-gray-100 animate-in fade-in duration-200">
+                  {hasChildren && (
+                    <ul
+                      className={`overflow-hidden bg-gray-50 border-t border-gray-100 transition-all duration-300 ease-out ${
+                        openIndex === index ? "max-h-144 opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                    >
                       {item.children.map((sub) => (
                         <li key={sub.href} className="list-none">
                           <a

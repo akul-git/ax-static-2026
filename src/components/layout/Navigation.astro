@@ -1,0 +1,256 @@
+---
+import menu from "../../data/menu.json";
+
+type MenuLink = { label: string; href: string };
+type MenuItem = { label: string; href: string; highlight?: boolean; children?: MenuLink[] };
+
+const safeMenu = Array.isArray(menu) ? menu : [];
+const normalizeHref = (href?: string) => (href || "/").replace(/\/$/, "") || "/";
+const currentPath = normalizeHref(Astro.url.pathname);
+
+const isActiveSub = (sub: MenuLink) => normalizeHref(sub.href) === currentPath;
+const isActiveItem = (item: MenuItem) => {
+  if (normalizeHref(item.href) === currentPath) return true;
+  if (item.children && item.children.length) {
+    return item.children.some((sub) => isActiveSub(sub));
+  }
+  return false;
+};
+---
+
+<div data-mobile-nav>
+  <nav class="hidden lg:flex" aria-label="Primary">
+    <ul class="flex space-x-6 items-center">
+      {safeMenu.map((item) => {
+        const active = isActiveItem(item);
+        return (
+          <li class="relative group list-none">
+            <a
+              href={item.href}
+              class={`px-4 py-2 rounded ${item.highlight ? "btn-primary" : ""} ${active ? "bg-sky-300 text-white font-semibold" : "text-gray-700 hover:text-sky-600"}`}
+            >
+              {item.label}
+            </a>
+
+            {item.children && item.children.length > 0 && (
+              <ul class="absolute left-0 mt-2 w-72 bg-white shadow-lg rounded-md origin-top transition-all duration-200 ease-out opacity-0 scale-y-0 group-hover:opacity-100 group-hover:scale-y-100">
+                {item.children.map((sub) => (
+                  <li class="list-none">
+                    <a
+                      href={sub.href}
+                      class={`block px-4 py-2 rounded ${isActiveSub(sub) ? "bg-sky-300 text-white" : "text-gray-600 hover:bg-sky-100 hover:text-sky-800"}`}
+                    >
+                      {sub.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+
+  <div class="flex justify-end items-center px-2 py-2 lg:hidden">
+    <button
+      id="menu-toggle"
+      type="button"
+      class="text-gray-700 focus:outline-none p-2"
+      aria-label="Open menu"
+      aria-controls="mobile-drawer"
+      aria-expanded="false"
+    >
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-overlay"
+    class="fixed inset-0 bg-black/45 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+    style="z-index: 9998;"
+    aria-hidden="true"
+  ></div>
+
+  <aside
+    id="mobile-drawer"
+    class="fixed top-0 left-0 w-4/5 max-w-md h-screen bg-white shadow-2xl overflow-y-auto transform -translate-x-full transition-transform duration-300 ease-out lg:hidden"
+    style="z-index: 9999;"
+    aria-label="Mobile menu"
+  >
+    <div class="sticky top-0 flex justify-between items-center px-6 py-5 bg-white border-b border-gray-100 shadow-sm">
+      <div class="font-semibold text-slate-900">Menu</div>
+      <button
+        id="menu-close"
+        type="button"
+        class="text-gray-400 hover:text-gray-600 focus:outline-none transition-colors duration-200 p-1"
+        aria-label="Close menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <nav class="py-2" aria-label="Mobile navigation">
+      <ul class="flex flex-col">
+        {safeMenu.map((item, index) => {
+          const active = isActiveItem(item);
+          const hasChildren = item.children && item.children.length > 0;
+          const submenuId = `submenu-${index}`;
+
+          return (
+            <li class="list-none border-b border-gray-100">
+              {hasChildren ? (
+                <button
+                  type="button"
+                  class={`mobile-parent-trigger w-full flex justify-between items-center px-6 py-4 text-left font-medium transition-all duration-200 ${active ? "bg-linear-to-r from-sky-800 to-sky-700 text-white shadow-sm" : "text-gray-700 hover:bg-gray-50"}`}
+                  data-target={submenuId}
+                  aria-controls={submenuId}
+                  aria-expanded={active ? "true" : "false"}
+                >
+                  <span class="text-base font-semibold">{item.label}</span>
+                  <svg
+                    class={`w-5 h-5 transition-transform duration-300 shrink-0 ${active ? "rotate-180" : ""}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              ) : (
+                <a
+                  href={item.href}
+                  class={`block w-full px-6 py-4 text-left text-base font-semibold transition-all duration-200 ${active ? "bg-linear-to-r from-sky-800 to-sky-700 text-white shadow-sm" : "text-gray-700 hover:bg-gray-50"}`}
+                >
+                  {item.label}
+                </a>
+              )}
+
+              {hasChildren && (
+                <ul
+                  id={submenuId}
+                  class={`mobile-submenu overflow-hidden bg-gray-50 transition-all duration-300 ease-out ${active ? "max-h-144 opacity-100" : "max-h-0 opacity-0"}`}
+                >
+                  {item.children.map((sub) => (
+                    <li class="list-none">
+                      <a
+                        href={sub.href}
+                        class={`block px-8 py-3 text-sm border-l-4 transition-all duration-200 ${isActiveSub(sub) ? "bg-sky-100 text-sky-800 border-sky-800 font-semibold" : "text-gray-600 border-transparent hover:bg-gray-100 hover:text-gray-800"}`}
+                      >
+                        {sub.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  </aside>
+</div>
+
+<script>
+  const initMobileNav = () => {
+    const root = document.querySelector("[data-mobile-nav]");
+    if (!root || root.dataset.navBound === "true") return;
+    root.dataset.navBound = "true";
+
+    const toggleBtn = root.querySelector("#menu-toggle");
+    const closeBtn = root.querySelector("#menu-close");
+    const overlay = root.querySelector("#mobile-overlay");
+    const drawer = root.querySelector("#mobile-drawer");
+    const triggers = Array.from(root.querySelectorAll(".mobile-parent-trigger"));
+
+    const openDrawer = () => {
+      if (!drawer || !overlay || !toggleBtn) return;
+      drawer.classList.remove("-translate-x-full");
+      drawer.classList.add("translate-x-0");
+      overlay.classList.remove("opacity-0", "pointer-events-none");
+      overlay.classList.add("opacity-100", "pointer-events-auto");
+      toggleBtn.setAttribute("aria-expanded", "true");
+      document.body.style.overflow = "hidden";
+    };
+
+    const closeDrawer = () => {
+      if (!drawer || !overlay || !toggleBtn) return;
+      drawer.classList.remove("translate-x-0");
+      drawer.classList.add("-translate-x-full");
+      overlay.classList.remove("opacity-100", "pointer-events-auto");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+      toggleBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    };
+
+    const closeAllSubmenus = () => {
+      triggers.forEach((trigger) => {
+        const target = trigger.getAttribute("data-target");
+        const submenu = target ? root.querySelector(`#${target}`) : null;
+        const icon = trigger.querySelector("svg");
+
+        trigger.setAttribute("aria-expanded", "false");
+        trigger.classList.remove("bg-linear-to-r", "from-sky-800", "to-sky-700", "text-white", "shadow-sm");
+        trigger.classList.add("text-gray-700");
+
+        if (submenu) {
+          submenu.classList.remove("max-h-144", "opacity-100");
+          submenu.classList.add("max-h-0", "opacity-0");
+        }
+
+        if (icon) {
+          icon.classList.remove("rotate-180");
+        }
+      });
+    };
+
+    toggleBtn?.addEventListener("click", openDrawer);
+    closeBtn?.addEventListener("click", closeDrawer);
+    overlay?.addEventListener("click", closeDrawer);
+
+    root.querySelectorAll("#mobile-drawer a").forEach((link) => {
+      link.addEventListener("click", closeDrawer);
+    });
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const target = trigger.getAttribute("data-target");
+        const submenu = target ? root.querySelector(`#${target}`) : null;
+        const icon = trigger.querySelector("svg");
+        const isOpen = trigger.getAttribute("aria-expanded") === "true";
+
+        closeAllSubmenus();
+
+        if (!isOpen) {
+          trigger.setAttribute("aria-expanded", "true");
+          trigger.classList.remove("text-gray-700");
+          trigger.classList.add("bg-linear-to-r", "from-sky-800", "to-sky-700", "text-white", "shadow-sm");
+
+          if (submenu) {
+            submenu.classList.remove("max-h-0", "opacity-0");
+            submenu.classList.add("max-h-144", "opacity-100");
+          }
+
+          if (icon) {
+            icon.classList.add("rotate-180");
+          }
+        }
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 1024) {
+        closeDrawer();
+      }
+    });
+  };
+
+  initMobileNav();
+  document.addEventListener("DOMContentLoaded", initMobileNav);
+  document.addEventListener("astro:page-load", initMobileNav);
+</script>
