@@ -159,14 +159,15 @@ const isActiveItem = (item: MenuItem) => {
 <script>
   const initMobileNav = () => {
     const root = document.querySelector("[data-mobile-nav]");
-    if (!root || root.dataset.navBound === "true") return;
-    root.dataset.navBound = "true";
+    const navRoot = root instanceof HTMLElement ? root : null;
+    if (!navRoot || navRoot.dataset.navBound === "true") return;
+    navRoot.dataset.navBound = "true";
 
-    const toggleBtn = root.querySelector("#menu-toggle");
-    const closeBtn = root.querySelector("#menu-close");
-    const overlay = root.querySelector("#mobile-overlay");
-    const drawer = root.querySelector("#mobile-drawer");
-    const triggers = Array.from(root.querySelectorAll(".mobile-parent-trigger"));
+    const toggleBtn = navRoot.querySelector("#menu-toggle");
+    const closeBtn = navRoot.querySelector("#menu-close");
+    const overlay = navRoot.querySelector("#mobile-overlay");
+    const drawer = navRoot.querySelector("#mobile-drawer");
+    const triggers = Array.from(navRoot.querySelectorAll(".mobile-parent-trigger"));
 
     const openDrawer = () => {
       if (!drawer || !overlay || !toggleBtn) return;
@@ -191,7 +192,7 @@ const isActiveItem = (item: MenuItem) => {
     const closeAllSubmenus = () => {
       triggers.forEach((trigger) => {
         const target = trigger.getAttribute("data-target");
-        const submenu = target ? root.querySelector(`#${target}`) : null;
+        const submenu = target ? navRoot.querySelector(`#${target}`) : null;
         const icon = trigger.querySelector("svg");
 
         trigger.setAttribute("aria-expanded", "false");
@@ -213,14 +214,14 @@ const isActiveItem = (item: MenuItem) => {
     closeBtn?.addEventListener("click", closeDrawer);
     overlay?.addEventListener("click", closeDrawer);
 
-    root.querySelectorAll("#mobile-drawer a").forEach((link) => {
+    navRoot.querySelectorAll("#mobile-drawer a").forEach((link) => {
       link.addEventListener("click", closeDrawer);
     });
 
     triggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
         const target = trigger.getAttribute("data-target");
-        const submenu = target ? root.querySelector(`#${target}`) : null;
+        const submenu = target ? navRoot.querySelector(`#${target}`) : null;
         const icon = trigger.querySelector("svg");
         const isOpen = trigger.getAttribute("aria-expanded") === "true";
 
