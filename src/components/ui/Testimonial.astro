@@ -1,11 +1,25 @@
 ---
+import siteContent from "../../data/site-content.json";
+
+type TestimonialItem = {
+  title?: string;
+  quote?: string;
+  rating?: number;
+  role?: string;
+  author?: string;
+};
+
+const defaultTestimonial = Array.isArray(siteContent.testimonials) && siteContent.testimonials.length > 0
+  ? (siteContent.testimonials[0] as TestimonialItem)
+  : {};
+
 const {
   class: className = "",
-  title = "Advanced Skill Development!",
-  quote = "My team who have never been trained in FMEA or RCM were actually doing it in our second session and they did not even know it.",
-  rating = 5,
-  role = "Manager of Reliability",
-  author = "Petro Chem",
+  title = defaultTestimonial.title || "Advanced Skill Development!",
+  quote = defaultTestimonial.quote || "My team who have never been trained in FMEA or RCM were actually doing it in our second session and they did not even know it.",
+  rating = defaultTestimonial.rating || 5,
+  role = defaultTestimonial.role || "Manager of Reliability",
+  author = defaultTestimonial.author || "Petro Chem",
 } = Astro.props;
 
 const safeRating = Math.max(0, Math.min(5, Number(rating) || 0));

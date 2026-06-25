@@ -13,6 +13,7 @@ import BookDemo from "../components/ui/BookDemo.astro";
 import Testimonial from "../components/ui/Testimonial.astro";
 import ClientLogoSlider from "../components/ui/ClientLogoSlider.astro";
 import Button from "../components/ui/Button.astro";
+import siteContent from "../data/site-content.json";
 import "../styles/global.css";
 
 const slides = [
@@ -60,16 +61,10 @@ const iconItems = [
   "Weekly executive visibility and progress updates.",
 ];
 
-const clientLogos = [
-  { src: "/android-chrome-192x192.png", alt: "Amgen" },
-  { src: "/android-chrome-512x512.png", alt: "Honda" },
-  { src: "/apple-touch-icon.png", alt: "Kite" },
-  { src: "/favicon-32x32.png", alt: "Methanex" },
-  { src: "/favicon-16x16.png", alt: "Client 5" },
-  { src: "/android-chrome-192x192.png", alt: "Client 6" },
-  { src: "/android-chrome-512x512.png", alt: "Client 7" },
-  { src: "/apple-touch-icon.png", alt: "Client 8" },
-];
+const clientLogos = Array.isArray(siteContent.clientLogos) ? siteContent.clientLogos : [];
+const showcaseTestimonial = Array.isArray(siteContent.testimonials) && siteContent.testimonials.length > 0
+  ? siteContent.testimonials[0]
+  : null;
 ---
 
 <Layout title="Components Showcase">
@@ -216,17 +211,11 @@ const clientLogos = [
 
   <Section>
     <h2 class="mb-5 text-3xl font-semibold text-slate-900">11. Testimonial</h2>
-    <Testimonial
-      title="Advanced Skill Development!"
-      quote="My team who have never been trained in FMEA or RCM were actually doing it in our second session and they did not even know it."
-      rating={5}
-      role="Manager of Reliability"
-      author="Petro Chem"
-    />
+    {showcaseTestimonial ? <Testimonial {...showcaseTestimonial} /> : <Testimonial />}
   </Section>
 
   <Section>
     <h2 class="mb-5 text-3xl font-semibold text-slate-900">12. Client Logo Slider</h2>
-    <ClientLogoSlider logos={clientLogos} interval={3200} />
+    <ClientLogoSlider logos={clientLogos} interval={3200} mobileItemsPerSlide={2} tabletItemsPerSlide={3} desktopItemsPerSlide={4} />
   </Section>
 </Layout>

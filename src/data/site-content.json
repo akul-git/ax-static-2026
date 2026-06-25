@@ -1,0 +1,21 @@
+{
+  "testimonials": [
+    {
+      "title": "Advanced Skill Development!",
+      "quote": "My team who have never been trained in FMEA or RCM were actually doing it in our second session and they did not even know it.",
+      "rating": 5,
+      "role": "Manager of Reliability",
+      "author": "Petro Chem"
+    }
+  ],
+  "clientLogos": [
+    { "src": "/android-chrome-192x192.png", "alt": "Amgen" },
+    { "src": "/android-chrome-512x512.png", "alt": "Honda" },
+    { "src": "/apple-touch-icon.png", "alt": "Kite" },
+    { "src": "/favicon-32x32.png", "alt": "Methanex" },
+    { "src": "/favicon-16x16.png", "alt": "Client 5" },
+    { "src": "/android-chrome-192x192.png", "alt": "Client 6" },
+    { "src": "/android-chrome-512x512.png", "alt": "Client 7" },
+    { "src": "/apple-touch-icon.png", "alt": "Client 8" }
+  ]
+}

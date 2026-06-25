@@ -1,0 +1,70 @@
+---
+const {
+  class: className = "",
+  action = "/api/contact",
+  method = "post",
+  submitLabel = "Submit",
+  newsletterLabel = "Yes, I would like to receive updates from Asset Analytix",
+  showCaptchaPlaceholder = true,
+} = Astro.props;
+---
+
+<form class={`rounded-sm bg-slate-100 p-6 shadow-sm sm:p-8 ${className}`.trim()} action={action} method={method} novalidate>
+  <input type="hidden" name="form_name" value="contact-us" />
+  <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    <div>
+      <label for="firstName" class="block text-lg font-semibold text-slate-800">Name <span class="text-red-500">*</span></label>
+      <input id="firstName" name="firstName" type="text" required autocomplete="given-name" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+      <p class="mt-2 text-sm text-slate-600">First</p>
+    </div>
+    <div class="sm:pt-8">
+      <label for="lastName" class="sr-only">Last name</label>
+      <input id="lastName" name="lastName" type="text" required autocomplete="family-name" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200 sm:mt-0" />
+      <p class="mt-2 text-sm text-slate-600">Last</p>
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <label for="companyName" class="block text-lg font-semibold text-slate-800">Company Name <span class="text-red-500">*</span></label>
+    <input id="companyName" name="companyName" type="text" required autocomplete="organization" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+  </div>
+
+  <div class="mt-6">
+    <label for="jobTitle" class="block text-lg font-semibold text-slate-800">Job Title <span class="text-red-500">*</span></label>
+    <input id="jobTitle" name="jobTitle" type="text" required autocomplete="organization-title" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+  </div>
+
+  <div class="mt-6">
+    <label for="workEmail" class="block text-lg font-semibold text-slate-800">Work Email <span class="text-red-500">*</span></label>
+    <input id="workEmail" name="workEmail" type="email" required autocomplete="email" inputmode="email" class="mt-3 w-full rounded-sm border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 outline-none transition focus:border-sky-600 focus:ring-2 focus:ring-sky-200" />
+  </div>
+
+  <div class="mt-8">
+    <p class="text-lg text-red-500">*</p>
+    <label class="mt-2 inline-flex items-start gap-3 text-lg text-slate-700">
+      <input type="checkbox" name="newsletter" value="yes" class="mt-1 h-5 w-5 rounded border-slate-300 text-sky-700 focus:ring-sky-600" />
+      <span>{newsletterLabel}</span>
+    </label>
+  </div>
+
+  {showCaptchaPlaceholder ? (
+    <div class="mt-8 max-w-sm rounded-sm border border-slate-300 bg-white p-4 shadow-xs">
+      <div class="flex items-center justify-between gap-4">
+        <label class="flex items-center gap-3 text-lg text-slate-800">
+          <span class="flex h-8 w-8 items-center justify-center border-2 border-slate-500 bg-white"></span>
+          <span>I'm not a robot</span>
+        </label>
+        <div class="text-right text-xs text-slate-500">
+          <div class="font-semibold text-slate-600">reCAPTCHA</div>
+          <div>Connect live key here</div>
+        </div>
+      </div>
+    </div>
+  ) : null}
+
+  <div class="mt-8">
+    <button type="submit" class="inline-flex rounded-sm bg-sky-700 px-6 py-3 text-lg font-semibold text-white transition hover:bg-sky-600">{submitLabel}</button>
+  </div>
+</form>

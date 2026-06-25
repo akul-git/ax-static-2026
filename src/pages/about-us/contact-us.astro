@@ -1,16 +1,29 @@
 ---
 import Layout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
+import ContactForm from '../../components/ui/ContactForm.astro';
 import '../../styles/global.css';
 ---
 
-<Layout>
+<Layout title="Contact Us">
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Contact Us</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Contact Us.</p>
-      <p class="mt-4 text-slate-600">Replace this text with contact channels, office details, and inquiry guidance.</p>
+    <div class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] xl:items-start">
+      <div>
+        <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p>
+        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Contact Us</h1>
+        <p class="mt-6 text-lg leading-8 text-slate-600">Use the form to connect with our team about consulting, solutions, workshops, or a product demonstration.</p>
+        <div class="mt-8 space-y-4 text-slate-700">
+          <p><strong>Email:</strong> info@assetanalytix.com</p>
+          <p><strong>Phone:</strong> +1 (800) 555-0140</p>
+          <p><strong>Response time:</strong> Typically within one business day.</p>
+        </div>
+        <div class="mt-8 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-7 text-slate-600 shadow-sm">
+          <p class="font-semibold text-slate-900">Secure deployment note</p>
+          <p class="mt-2">This form UI is ready for a same-origin secure backend endpoint. Connect a real CAPTCHA provider and server-side validation before going live.</p>
+        </div>
+      </div>
+
+      <ContactForm action="/api/contact" />
     </div>
   </Section>
 </Layout>

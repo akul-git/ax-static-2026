@@ -1,23 +1,31 @@
 ---
+import siteContent from "../../data/site-content.json";
+
 type LogoItem = { src: string; alt: string; href?: string };
 
 const {
   class: className = "",
   logos = [],
   interval = 4000,
-  itemsPerSlide = 4,
+  mobileItemsPerSlide = 2,
+  tabletItemsPerSlide = 3,
+  desktopItemsPerSlide = 4,
 } = Astro.props;
 
-const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
-const safeItemsPerSlide = Math.max(1, Number(itemsPerSlide) || 4);
-const logoGroups: LogoItem[][] = [];
-
-for (let index = 0; index < safeLogos.length; index += safeItemsPerSlide) {
-  logoGroups.push(safeLogos.slice(index, index + safeItemsPerSlide));
-}
+const defaultLogos: LogoItem[] = Array.isArray(siteContent.clientLogos) ? (siteContent.clientLogos as LogoItem[]) : [];
+const safeLogos: LogoItem[] = Array.isArray(logos) && logos.length > 0 ? (logos as LogoItem[]) : defaultLogos;
 ---
 
-<section data-client-logo-slider class={`relative rounded-sm border border-slate-200 bg-slate-100 px-16 py-8 ${className}`.trim()} aria-label="Client logo slider">
+<section
+  data-client-logo-slider
+  data-logos={JSON.stringify(safeLogos)}
+  data-interval={String(interval)}
+  data-mobile-items={String(mobileItemsPerSlide)}
+  data-tablet-items={String(tabletItemsPerSlide)}
+  data-desktop-items={String(desktopItemsPerSlide)}
+  class={`relative rounded-sm border border-slate-200 bg-slate-100 px-16 py-8 ${className}`.trim()}
+  aria-label="Client logo slider"
+>
   <button type="button" class="ax-client-prev absolute left-4 top-1/2 -translate-y-1/2 text-slate-700 transition hover:text-sky-700" aria-label="Previous logos">
     <svg class="h-9 w-9" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -25,25 +33,7 @@ for (let index = 0; index < safeLogos.length; index += safeItemsPerSlide) {
   </button>
 
   <div class="overflow-hidden">
-    <div class="ax-client-track flex transition-transform duration-700 ease-out">
-      {logoGroups.map((group) => (
-        <div class="min-w-full px-4">
-          <ul class="grid min-h-24 grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-4 md:gap-12">
-            {group.map((logo) => (
-              <li class="flex min-h-20 w-full items-center justify-center">
-                {logo.href ? (
-                  <a href={logo.href} class="flex items-center justify-center" aria-label={logo.alt}>
-                    <img src={logo.src} alt={logo.alt} class="h-20 w-auto max-w-full object-contain opacity-90 transition hover:opacity-100" loading="lazy" />
-                  </a>
-                ) : (
-                  <img src={logo.src} alt={logo.alt} class="h-20 w-auto max-w-full object-contain opacity-90" loading="lazy" />
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+    <div class="ax-client-track flex transition-transform duration-700 ease-out"></div>
   </div>
 
   <button type="button" class="ax-client-next absolute right-4 top-1/2 -translate-y-1/2 text-slate-700 transition hover:text-sky-700" aria-label="Next logos">
@@ -65,21 +55,91 @@ for (let index = 0; index < safeLogos.length; index += safeItemsPerSlide) {
 
       if (!(track instanceof HTMLElement)) return;
 
-      const slides = Array.from(track.children);
-      if (slides.length <= 1) return;
+      let logos = [];
+      try {
+        const raw = root.getAttribute("data-logos") || "[]";
+        const parsed = JSON.parse(raw);
+        logos = Array.isArray(parsed) ? parsed : [];
+      } catch {
+        logos = [];
+      }
+
+      if (logos.length === 0) return;
 
       let activeIndex = 0;
       let timer = -1;
       const intervalMs = Number(root.getAttribute("data-interval")) || 4000;
+      const mobileItems = Math.max(1, Number(root.getAttribute("data-mobile-items")) || 2);
+      const tabletItems = Math.max(1, Number(root.getAttribute("data-tablet-items")) || 3);
+      const desktopItems = Math.max(1, Number(root.getAttribute("data-desktop-items")) || 4);
+      let slideCount = 0;
+      let currentItemsPerSlide = 0;
+
+      const getItemsPerSlide = () => {
+        if (window.innerWidth >= 1024) return desktopItems;
+        if (window.innerWidth >= 640) return tabletItems;
+        return mobileItems;
+      };
+
+      const createLogoNode = (logo = { src: "", alt: "", href: "" }) => {
+        const item = document.createElement("li");
+        item.className = "flex min-h-20 w-full items-center justify-center";
+
+        const image = document.createElement("img");
+        image.src = logo.src;
+        image.alt = logo.alt;
+        image.loading = "lazy";
+        image.className = "h-20 w-auto max-w-full object-contain opacity-90 transition hover:opacity-100";
+
+        if (logo.href) {
+          const link = document.createElement("a");
+          link.href = logo.href;
+          link.className = "flex items-center justify-center";
+          link.setAttribute("aria-label", logo.alt);
+          link.appendChild(image);
+          item.appendChild(link);
+        } else {
+          item.appendChild(image);
+        }
+
+        return item;
+      };
+
+      const buildSlides = () => {
+        const itemsPerSlide = getItemsPerSlide();
+        currentItemsPerSlide = itemsPerSlide;
+        track.innerHTML = "";
+
+        for (let index = 0; index < logos.length; index += itemsPerSlide) {
+          const group = logos.slice(index, index + itemsPerSlide);
+          const slide = document.createElement("div");
+          slide.className = "min-w-full px-4";
+
+          const list = document.createElement("ul");
+          list.className = `grid min-h-24 items-center justify-items-center gap-8 ${itemsPerSlide <= 2 ? "grid-cols-2" : itemsPerSlide === 3 ? "grid-cols-3" : "grid-cols-2 md:grid-cols-4 md:gap-12"}`;
+
+          group.forEach((logo) => {
+            list.appendChild(createLogoNode(logo));
+          });
+
+          slide.appendChild(list);
+          track.appendChild(slide);
+        }
+
+        slideCount = track.children.length;
+        prev?.classList.toggle("hidden", slideCount <= 1);
+        next?.classList.toggle("hidden", slideCount <= 1);
+      };
 
       const sync = () => {
         track.style.transform = `translateX(-${activeIndex * 100}%)`;
       };
 
       const startAutoplay = () => {
+        if (slideCount <= 1) return;
         stopAutoplay();
         timer = window.setInterval(() => {
-          activeIndex = (activeIndex + 1 + slides.length) % slides.length;
+          activeIndex = (activeIndex + 1 + slideCount) % slideCount;
           sync();
         }, intervalMs);
       };
@@ -92,18 +152,30 @@ for (let index = 0; index < safeLogos.length; index += safeItemsPerSlide) {
       };
 
       prev?.addEventListener("click", () => {
-        activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+        activeIndex = (activeIndex - 1 + slideCount) % slideCount;
         sync();
       });
 
       next?.addEventListener("click", () => {
-        activeIndex = (activeIndex + 1 + slides.length) % slides.length;
+        activeIndex = (activeIndex + 1 + slideCount) % slideCount;
         sync();
       });
 
+      const handleResize = () => {
+        const nextItemsPerSlide = getItemsPerSlide();
+        if (nextItemsPerSlide !== currentItemsPerSlide) {
+          activeIndex = 0;
+          buildSlides();
+          sync();
+          startAutoplay();
+        }
+      };
+
       root.addEventListener("mouseenter", stopAutoplay);
       root.addEventListener("mouseleave", startAutoplay);
+      window.addEventListener("resize", handleResize);
 
+      buildSlides();
       sync();
       startAutoplay();
     });
