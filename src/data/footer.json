@@ -1,0 +1,47 @@
+{
+  "columns": [
+    {
+      "title": "Houston Office",
+      "lines": [
+        "1234 Energy Corridor Dr",
+        "Houston, TX 77077",
+        "United States"
+      ]
+    },
+    {
+      "title": "Toronto Office",
+      "lines": [
+        "255 Front Street West",
+        "Toronto, ON M5V 2W6",
+        "Canada"
+      ]
+    },
+    {
+      "title": "Contact",
+      "lines": [
+        "Phone: +1 (800) 555-0140",
+        "Email: info@assetanalytix.com",
+        "Support: support@assetanalytix.com"
+      ]
+    },
+    {
+      "title": "Hours",
+      "lines": [
+        "Monday - Friday: 8:00 AM - 6:00 PM",
+        "Saturday: 9:00 AM - 1:00 PM",
+        "Sunday: Closed"
+      ]
+    }
+  ],
+  "extraLinks": [
+    {
+      "label": "Private Policy",
+      "href": "/private-policy"
+    },
+    {
+      "label": "Our Approach",
+      "href": "/our-approach"
+    }
+  ],
+  "backToTopLabel": "Back to Top"
+}

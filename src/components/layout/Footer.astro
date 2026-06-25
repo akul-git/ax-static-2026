@@ -1,0 +1,94 @@
+---
+import menu from "../../data/menu.json";
+import footerData from "../../data/footer.json";
+
+type MenuLink = { label: string; href: string };
+type MenuItem = MenuLink & { children?: MenuLink[] };
+type FooterColumn = { title: string; lines: string[] };
+type FooterData = {
+  columns?: FooterColumn[];
+  extraLinks?: MenuLink[];
+  backToTopLabel?: string;
+};
+
+const safeMenu: MenuItem[] = Array.isArray(menu) ? (menu as MenuItem[]) : [];
+const primaryLinks: MenuLink[] = safeMenu.map((item) => ({ label: item.label, href: item.href }));
+const safeFooterData: FooterData = (footerData || {}) as FooterData;
+const footerColumns: FooterColumn[] = Array.isArray(safeFooterData.columns) ? safeFooterData.columns : [];
+const footerExtras: MenuLink[] = Array.isArray(safeFooterData.extraLinks) ? safeFooterData.extraLinks : [];
+const backToTopLabel = safeFooterData.backToTopLabel || "Back to Top";
+
+const footerLinks = [...primaryLinks, ...footerExtras];
+---
+
+<footer data-site-footer class="mt-16 border-t border-slate-200 bg-slate-900 text-slate-100">
+  <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+    <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+      {footerColumns.map((column) => (
+        <div>
+          <h3 class="text-lg font-semibold text-white">{column.title}</h3>
+          <p class="mt-3 text-sm leading-7 text-slate-300">
+            {column.lines.map((line, index) => (
+              <>
+                {line}
+                {index < column.lines.length - 1 ? <br /> : null}
+              </>
+            ))}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="border-t border-slate-800">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <nav aria-label="Footer navigation">
+        <ul class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-200">
+          {footerLinks.map((link) => (
+            <li class="list-none">
+              <a href={link.href} class="transition hover:text-sky-300">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <button
+        type="button"
+        data-back-to-top
+        class="hidden rounded-md border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
+      >
+        {backToTopLabel}
+      </button>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const initFooter = () => {
+    const footer = document.querySelector("[data-site-footer]");
+    if (!(footer instanceof HTMLElement) || footer.dataset.footerBound === "true") return;
+    footer.dataset.footerBound = "true";
+
+    const backBtn = footer.querySelector("[data-back-to-top]");
+    if (!(backBtn instanceof HTMLButtonElement)) return;
+
+    const updateState = () => {
+      const canScroll = document.documentElement.scrollHeight > window.innerHeight + 60;
+      const shouldShow = canScroll && window.scrollY > 240;
+      backBtn.classList.toggle("hidden", !shouldShow);
+      backBtn.classList.toggle("inline-flex", shouldShow);
+    };
+
+    backBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    updateState();
+    window.addEventListener("scroll", updateState, { passive: true });
+    window.addEventListener("resize", updateState);
+  };
+
+  initFooter();
+  document.addEventListener("DOMContentLoaded", initFooter);
+  document.addEventListener("astro:page-load", initFooter);
+</script>

@@ -1,0 +1,69 @@
+---
+type LogoItem = { src: string; alt: string; href?: string };
+
+const {
+  class: className = "",
+  logos = [],
+} = Astro.props;
+
+const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
+---
+
+<section data-client-logo-slider class={`relative rounded-sm border border-slate-200 bg-slate-100 px-16 py-8 ${className}`.trim()} aria-label="Client logo slider">
+  <button type="button" class="ax-client-prev absolute left-4 top-1/2 -translate-y-1/2 text-slate-700 transition hover:text-sky-700" aria-label="Previous logos">
+    <svg class="h-9 w-9" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+
+  <div class="ax-client-track overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <ul class="flex min-w-max items-center gap-16 px-4">
+      {safeLogos.map((logo) => (
+        <li class="shrink-0">
+          {logo.href ? (
+            <a href={logo.href} class="block" aria-label={logo.alt}>
+              <img src={logo.src} alt={logo.alt} class="h-20 w-auto object-contain opacity-90 transition hover:opacity-100" loading="lazy" />
+            </a>
+          ) : (
+            <img src={logo.src} alt={logo.alt} class="h-20 w-auto object-contain opacity-90" loading="lazy" />
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <button type="button" class="ax-client-next absolute right-4 top-1/2 -translate-y-1/2 text-slate-700 transition hover:text-sky-700" aria-label="Next logos">
+    <svg class="h-9 w-9" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+  </button>
+</section>
+
+<script>
+  const initLogoSlider = () => {
+    document.querySelectorAll("[data-client-logo-slider]").forEach((root) => {
+      if (!(root instanceof HTMLElement) || root.dataset.logoBound === "true") return;
+      root.dataset.logoBound = "true";
+
+      const track = root.querySelector(".ax-client-track");
+      const prev = root.querySelector(".ax-client-prev");
+      const next = root.querySelector(".ax-client-next");
+
+      if (!(track instanceof HTMLElement)) return;
+
+      const scrollAmount = () => Math.max(280, Math.floor(track.clientWidth * 0.72));
+
+      prev?.addEventListener("click", () => {
+        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+
+      next?.addEventListener("click", () => {
+        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+    });
+  };
+
+  initLogoSlider();
+  document.addEventListener("DOMContentLoaded", initLogoSlider);
+  document.addEventListener("astro:page-load", initLogoSlider);
+</script>

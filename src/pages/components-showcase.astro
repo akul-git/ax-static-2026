@@ -10,6 +10,8 @@ import Blockquote from "../components/ui/Blockquote.astro";
 import List from "../components/ui/List.astro";
 import Video from "../components/ui/Video.astro";
 import BookDemo from "../components/ui/BookDemo.astro";
+import Testimonial from "../components/ui/Testimonial.astro";
+import ClientLogoSlider from "../components/ui/ClientLogoSlider.astro";
 import Button from "../components/ui/Button.astro";
 import "../styles/global.css";
 
@@ -56,6 +58,14 @@ const iconItems = [
   "Remote workshops for distributed teams.",
   "Hands-on pilot with measurable targets.",
   "Weekly executive visibility and progress updates.",
+];
+
+const clientLogos = [
+  { src: "/android-chrome-192x192.png", alt: "Amgen" },
+  { src: "/android-chrome-512x512.png", alt: "Honda" },
+  { src: "/apple-touch-icon.png", alt: "Kite" },
+  { src: "/favicon-32x32.png", alt: "Methanex" },
+  { src: "/favicon-16x16.png", alt: "Client 5" },
 ];
 ---
 
@@ -199,5 +209,21 @@ const iconItems = [
       href="/book-demo"
       minHeight="20rem"
     />
+  </Section>
+
+  <Section>
+    <h2 class="mb-5 text-3xl font-semibold text-slate-900">11. Testimonial</h2>
+    <Testimonial
+      title="Advanced Skill Development!"
+      quote="My team who have never been trained in FMEA or RCM were actually doing it in our second session and they did not even know it."
+      rating={5}
+      role="Manager of Reliability"
+      author="Petro Chem"
+    />
+  </Section>
+
+  <Section>
+    <h2 class="mb-5 text-3xl font-semibold text-slate-900">12. Client Logo Slider</h2>
+    <ClientLogoSlider logos={clientLogos} />
   </Section>
 </Layout>

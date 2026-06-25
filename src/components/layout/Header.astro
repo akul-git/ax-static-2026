@@ -2,9 +2,51 @@
 import Navigation from "../layout/Navigation.astro";
 import axLogo from "../../assets/asset-analytix-logo.svg";
 ---
-<header class="bg-white shadow-sm">
+<header data-site-header class="sticky top-0 z-[120] bg-white shadow-sm transition-transform duration-300 ease-out">
   <div class="container mx-auto flex justify-between items-center py-4 px-6">
     <a href="/"><img src={axLogo.src} width="206" height="54" alt="AX Homepage" /></a>
     <Navigation />
   </div>
 </header>
+
+<script>
+  const initHeaderScroll = () => {
+    const header = document.querySelector("[data-site-header]");
+    if (!(header instanceof HTMLElement) || header.dataset.headerBound === "true") return;
+    header.dataset.headerBound = "true";
+
+    let lastY = window.scrollY;
+    let ticking = false;
+    const revealAt = 180;
+
+    const update = () => {
+      const currentY = window.scrollY;
+      const scrollingDown = currentY > lastY;
+
+      if (currentY <= revealAt) {
+        header.classList.remove("-translate-y-full", "shadow-md");
+      } else if (scrollingDown) {
+        header.classList.add("-translate-y-full");
+      } else {
+        header.classList.remove("-translate-y-full");
+        header.classList.add("shadow-md");
+      }
+
+      lastY = currentY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+  };
+
+  initHeaderScroll();
+  document.addEventListener("DOMContentLoaded", initHeaderScroll);
+  document.addEventListener("astro:page-load", initHeaderScroll);
+</script>

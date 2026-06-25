@@ -1,0 +1,29 @@
+---
+const {
+  class: className = "",
+  title = "Advanced Skill Development!",
+  quote = "My team who have never been trained in FMEA or RCM were actually doing it in our second session and they did not even know it.",
+  rating = 5,
+  role = "Manager of Reliability",
+  author = "Petro Chem",
+} = Astro.props;
+
+const safeRating = Math.max(0, Math.min(5, Number(rating) || 0));
+const stars = Array.from({ length: safeRating });
+---
+
+<article class={`rounded-sm bg-sky-900 px-8 py-10 text-center text-white shadow-sm ${className}`.trim()}>
+  <h3 class="text-5xl font-medium tracking-tight">{title}</h3>
+  <p class="mx-auto mt-5 max-w-4xl text-2xl leading-relaxed text-slate-100">{quote}</p>
+
+  <div class="mt-6 flex items-center justify-center gap-1" aria-label={`${safeRating} star rating`}>
+    {stars.map(() => (
+      <svg class="h-5 w-5 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.57l-5.9 3.1 1.13-6.57L2.45 9.44l6.6-.96L12 2.5z"></path>
+      </svg>
+    ))}
+  </div>
+
+  <p class="mt-6 text-lg uppercase tracking-[0.12em] text-slate-100">{role}</p>
+  <p class="mt-3 text-4xl font-medium text-orange-400">{author}</p>
+</article>
