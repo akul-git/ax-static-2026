@@ -1,0 +1,10 @@
+---
+import Navigation from "../layout/Navigation.jsx";
+import axLogo from "../../assets/asset-analytix-logo.svg";
+---
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <a href="/"><img src={axLogo.src} width="206" height="54" alt="AX Homepage" /></a>
+    <Navigation client:load initialPath={Astro.url.pathname} />
+  </div>
+</header>

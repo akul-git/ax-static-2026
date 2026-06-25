@@ -1,0 +1,37 @@
+---
+const {
+  quote = "",
+  cite = "",
+  role = "",
+  logo = "",
+  class: className = "",
+  bg = "bg-slate-100",
+  textColor = "text-slate-900",
+} = Astro.props;
+---
+<section class={`relative overflow-hidden rounded-3xl border border-slate-200 ${bg} ${className}`.trim()}>
+  <div
+    class="pointer-events-none absolute inset-y-0 left-0 w-24"
+    style="background: radial-gradient(circle at top left, rgba(14,165,233,0.15), transparent 40%);"
+  />
+  <div class="relative px-6 py-10 sm:px-10 sm:py-12">
+    <div class="absolute -top-2 left-6 text-8xl font-black leading-none text-slate-300">"</div>
+    <blockquote class="relative">
+      <p class={`text-lg md:text-2xl leading-relaxed ${textColor} md:leading-[1.85]`}>{quote}<slot /></p>
+    </blockquote>
+
+    {(cite || role || logo) ? (
+      <div class="mt-10 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          {cite ? <p class="font-semibold text-slate-900">{cite}</p> : null}
+          {role ? <p class="text-sm text-slate-600">{role}</p> : null}
+        </div>
+        {logo ? (
+          <div class="flex items-center justify-start sm:justify-end">
+            <img src={logo} alt={cite ? `${cite} logo` : "Quote logo"} class="h-10 w-auto object-contain" />
+          </div>
+        ) : null}
+      </div>
+    ) : null}
+  </div>
+</section>

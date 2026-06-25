@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Button from '../components/ui/Button.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+  <Section>
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Book a demo</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">See the platform in action for your asset operations.</h1>
+      <p class="mt-6 text-lg leading-8 text-slate-600">Schedule a guided walkthrough and discover how your team can improve asset reliability and performance.</p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <Button href="/contact">Contact us</Button>
+        <Button href="/resources" variant="secondary">Browse resources</Button>
+      </div>
+    </div>
+  </Section>
+</Layout>

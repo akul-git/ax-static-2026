@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+  <Section>
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Resources</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Materials to support your asset analytics journey.</h1>
+      <p class="mt-6 text-lg leading-8 text-slate-600">Browse guides, case studies, and insights designed to help teams move from strategy to execution.</p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <Button href="/about-us">About our expertise</Button>
+        <Button href="/book-demo" variant="secondary">Book a walkthrough</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="bg-slate-100">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <Card>
+        <h2 class="text-xl font-semibold text-slate-900">Guides</h2>
+        <p class="mt-3 text-slate-600">Practical playbooks for asset reliability, analytics, and digital transformation.</p>
+      </Card>
+      <Card>
+        <h2 class="text-xl font-semibold text-slate-900">Case studies</h2>
+        <p class="mt-3 text-slate-600">See how teams have improved uptime and reduced risk with analytics-driven operations.</p>
+      </Card>
+      <Card>
+        <h2 class="text-xl font-semibold text-slate-900">Insights</h2>
+        <p class="mt-3 text-slate-600">Trends, frameworks, and decision support for asset-intensive organizations.</p>
+      </Card>
+    </div>
+  </Section>
+</Layout>

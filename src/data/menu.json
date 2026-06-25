@@ -1,0 +1,99 @@
+[
+  {
+    "label": "Solutions",
+    "href": "/solutions",
+    "children": [
+      {
+        "label": "Our Unique Improvement System",
+        "href": "/solutions/our-unique-improvement-system"
+      },
+      {
+        "label": "Criticality Management",
+        "href": "/solutions/criticality-management"
+      },
+      {
+        "label": "CMMS Data Optimization",
+        "href": "/solutions/cmms-data-optimization"
+      },
+      {
+        "label": "PM Optimization",
+        "href": "/solutions/pm-optimization"
+      },
+      {
+        "label": "Precision EAM Assessments",
+        "href": "/solutions/precision-eam-assessments"
+      },
+      {
+        "label": "Reporting and Analytics",
+        "href": "/solutions/reporting-and-analytics"
+      },
+      {
+        "label": "Work Management Optimization",
+        "href": "/solutions/work-management-optimization"
+      },
+      {
+        "label": "Asset Onboarding Readiness",
+        "href": "/solutions/asset-onboarding-readiness"
+      },
+      {
+        "label": "360 Command Center",
+        "href": "/solutions/360-command-center"
+      }
+    ]
+  },
+  {
+    "label": "Consulting",
+    "href": "/consulting",
+    "children": [
+      {
+        "label": "Consulting Services",
+        "href": "/consulting/consulting-services"
+      },
+      {
+        "label": "Remote Workshops",
+        "href": "/consulting/remote-workshops"
+      }
+    ]
+  },
+  {
+    "label": "Resources",
+    "href": "/resources",
+    "children": [
+      {
+        "label": "Webinar Recording",
+        "href": "/resources/webinar-recording"
+      }
+    ]
+  },
+  {
+    "label": "About Us",
+    "href": "/about-us",
+    "children": [
+      {
+        "label": "About Asset Analytix",
+        "href": "/about-us/about-asset-analytix"
+      },
+      {
+        "label": "Contact Us",
+        "href": "/about-us/contact-us"
+      },
+      {
+        "label": "Join Our Newsletter",
+        "href": "/about-us/join-our-newsletter"
+      },
+      {
+        "label": "Careers",
+        "href": "/about-us/careers"
+      },
+      {
+        "label": "TRC 2026",
+        "href": "/about-us/trc-2026"
+      }
+    ]
+  },
+  {
+    "label": "Book demo",
+    "href": "/book-demo",
+    "highlight": true
+  }
+]

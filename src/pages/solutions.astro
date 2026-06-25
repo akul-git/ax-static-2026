@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Section from '../components/ui/Section.astro';
+import Card from '../components/ui/Card.astro';
+import Button from '../components/ui/Button.astro';
+import '../styles/global.css';
+---
+
+<Layout>
+  <Section>
+    <div class="mx-auto max-w-4xl text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
+      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Transform asset intelligence across your enterprise.</h1>
+      <p class="mt-6 text-lg leading-8 text-slate-600">Leverage modern analytics, predictive maintenance, and digital operations to reduce downtime, improve resiliency, and unlock higher asset value.</p>
+      <div class="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+        <Button href="/book-demo">Book a demo</Button>
+        <Button href="/consulting" variant="secondary">Consulting services</Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section class="bg-slate-100">
+    <div class="grid gap-6 lg:grid-cols-3">
+      <Card>
+        <h2 class="text-xl font-semibold text-slate-900">Asset analytics</h2>
+        <p class="mt-3 text-slate-600">Visualize performance, identify risk, and optimize asset health with real-time dashboards.</p>
+      </Card>
+      <Card>
+        <h2 class="text-xl font-semibold text-slate-900">Predictive maintenance</h2>
+        <p class="mt-3 text-slate-600">Reduce unplanned downtime with condition-based alerts and reliability modeling.</p>
+      </Card>
+      <Card>
+        <h2 class="text-xl font-semibold text-slate-900">Operations optimization</h2>
+        <p class="mt-3 text-slate-600">Drive continuous improvement across asset lifecycle planning, execution, and review.</p>
+      </Card>
+    </div>
+  </Section>
+</Layout>
