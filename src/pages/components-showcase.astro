@@ -66,6 +66,9 @@ const clientLogos = [
   { src: "/apple-touch-icon.png", alt: "Kite" },
   { src: "/favicon-32x32.png", alt: "Methanex" },
   { src: "/favicon-16x16.png", alt: "Client 5" },
+  { src: "/android-chrome-192x192.png", alt: "Client 6" },
+  { src: "/android-chrome-512x512.png", alt: "Client 7" },
+  { src: "/apple-touch-icon.png", alt: "Client 8" },
 ];
 ---
 
@@ -224,6 +227,6 @@ const clientLogos = [
 
   <Section>
     <h2 class="mb-5 text-3xl font-semibold text-slate-900">12. Client Logo Slider</h2>
-    <ClientLogoSlider logos={clientLogos} />
+    <ClientLogoSlider logos={clientLogos} interval={3200} />
   </Section>
 </Layout>

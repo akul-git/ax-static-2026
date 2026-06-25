@@ -4,9 +4,17 @@ type LogoItem = { src: string; alt: string; href?: string };
 const {
   class: className = "",
   logos = [],
+  interval = 4000,
+  itemsPerSlide = 4,
 } = Astro.props;
 
 const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
+const safeItemsPerSlide = Math.max(1, Number(itemsPerSlide) || 4);
+const logoGroups: LogoItem[][] = [];
+
+for (let index = 0; index < safeLogos.length; index += safeItemsPerSlide) {
+  logoGroups.push(safeLogos.slice(index, index + safeItemsPerSlide));
+}
 ---
 
 <section data-client-logo-slider class={`relative rounded-sm border border-slate-200 bg-slate-100 px-16 py-8 ${className}`.trim()} aria-label="Client logo slider">
@@ -16,20 +24,26 @@ const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
     </svg>
   </button>
 
-  <div class="ax-client-track overflow-x-auto scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-    <ul class="flex min-w-max items-center gap-16 px-4">
-      {safeLogos.map((logo) => (
-        <li class="shrink-0">
-          {logo.href ? (
-            <a href={logo.href} class="block" aria-label={logo.alt}>
-              <img src={logo.src} alt={logo.alt} class="h-20 w-auto object-contain opacity-90 transition hover:opacity-100" loading="lazy" />
-            </a>
-          ) : (
-            <img src={logo.src} alt={logo.alt} class="h-20 w-auto object-contain opacity-90" loading="lazy" />
-          )}
-        </li>
+  <div class="overflow-hidden">
+    <div class="ax-client-track flex transition-transform duration-700 ease-out">
+      {logoGroups.map((group) => (
+        <div class="min-w-full px-4">
+          <ul class="grid min-h-24 grid-cols-2 items-center justify-items-center gap-8 md:grid-cols-4 md:gap-12">
+            {group.map((logo) => (
+              <li class="flex min-h-20 w-full items-center justify-center">
+                {logo.href ? (
+                  <a href={logo.href} class="flex items-center justify-center" aria-label={logo.alt}>
+                    <img src={logo.src} alt={logo.alt} class="h-20 w-auto max-w-full object-contain opacity-90 transition hover:opacity-100" loading="lazy" />
+                  </a>
+                ) : (
+                  <img src={logo.src} alt={logo.alt} class="h-20 w-auto max-w-full object-contain opacity-90" loading="lazy" />
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
       ))}
-    </ul>
+    </div>
   </div>
 
   <button type="button" class="ax-client-next absolute right-4 top-1/2 -translate-y-1/2 text-slate-700 transition hover:text-sky-700" aria-label="Next logos">
@@ -51,15 +65,47 @@ const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
 
       if (!(track instanceof HTMLElement)) return;
 
-      const scrollAmount = () => Math.max(280, Math.floor(track.clientWidth * 0.72));
+      const slides = Array.from(track.children);
+      if (slides.length <= 1) return;
+
+      let activeIndex = 0;
+      let timer = -1;
+      const intervalMs = Number(root.getAttribute("data-interval")) || 4000;
+
+      const sync = () => {
+        track.style.transform = `translateX(-${activeIndex * 100}%)`;
+      };
+
+      const startAutoplay = () => {
+        stopAutoplay();
+        timer = window.setInterval(() => {
+          activeIndex = (activeIndex + 1 + slides.length) % slides.length;
+          sync();
+        }, intervalMs);
+      };
+
+      const stopAutoplay = () => {
+        if (timer !== -1) {
+          window.clearInterval(timer);
+          timer = -1;
+        }
+      };
 
       prev?.addEventListener("click", () => {
-        track.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+        activeIndex = (activeIndex - 1 + slides.length) % slides.length;
+        sync();
       });
 
       next?.addEventListener("click", () => {
-        track.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+        activeIndex = (activeIndex + 1 + slides.length) % slides.length;
+        sync();
       });
+
+      root.addEventListener("mouseenter", stopAutoplay);
+      root.addEventListener("mouseleave", startAutoplay);
+
+      sync();
+      startAutoplay();
     });
   };
 
