@@ -9,6 +9,7 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 import Blockquote from "../components/ui/Blockquote.astro";
 import List from "../components/ui/List.astro";
 import Video from "../components/ui/Video.astro";
+import BookDemo from "../components/ui/BookDemo.astro";
 import Button from "../components/ui/Button.astro";
 import "../styles/global.css";
 
@@ -184,8 +185,19 @@ const iconItems = [
     <h2 class="mb-5 text-3xl font-semibold text-slate-900">9. Video</h2>
     <Video
       title="Asset Optimization Overview"
-      embedUrl="https://www.youtube.com/embed/ScMzIvxBSi4"
-      caption="Sample embedded video component for webinars, demos, or product explainers."
+      src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+      poster="/android-chrome-512x512.png"
+      caption="MediaElement.js powered player configured for standardized controls."
+    />
+  </Section>
+
+  <Section>
+    <h2 class="mb-5 text-3xl font-semibold text-slate-900">10. Book-a-Demo CTA</h2>
+    <BookDemo
+      backgroundImage="/android-chrome-512x512.png"
+      buttonLabel="BOOK A DEMO"
+      href="/book-demo"
+      minHeight="20rem"
     />
   </Section>
 </Layout>

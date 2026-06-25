@@ -1,4 +1,6 @@
 ---
+import "mediaelement/build/mediaelementplayer.min.css";
+
 const {
   class: className = "",
   title = "Video",
@@ -26,7 +28,9 @@ const {
       ></iframe>
     ) : (
       <video
-        class="h-full w-full object-cover"
+        class="mejs__player h-full w-full object-cover"
+        data-ax-mediaelement
+        data-mejsoptions='{"stretching":"responsive","features":["playpause","progress","current","duration","volume","fullscreen"]}'
         src={src}
         poster={poster}
         controls={controls}
@@ -42,3 +46,25 @@ const {
   </div>
   {caption ? <p class="border-t border-slate-800 bg-slate-900 px-4 py-3 text-sm text-slate-200">{caption}</p> : null}
 </section>
+
+<script type="module">
+  import "mediaelement/full";
+
+  const initMediaElements = () => {
+    const Player = window.MediaElementPlayer;
+    if (!Player) return;
+
+    document.querySelectorAll("video[data-ax-mediaelement]").forEach((node) => {
+      if (!(node instanceof HTMLVideoElement) || node.dataset.meBound === "true") return;
+      node.dataset.meBound = "true";
+      new Player(node, {
+        stretching: "responsive",
+        features: ["playpause", "progress", "current", "duration", "volume", "fullscreen"],
+      });
+    });
+  };
+
+  initMediaElements();
+  document.addEventListener("DOMContentLoaded", initMediaElements);
+  document.addEventListener("astro:page-load", initMediaElements);
+</script>
