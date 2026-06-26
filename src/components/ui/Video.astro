@@ -6,6 +6,7 @@ const {
   title = "Video",
   src = "",
   embedUrl = "",
+  mediaType = "auto",
   poster = "",
   caption = "",
   controls = true,
@@ -13,10 +14,18 @@ const {
   loop = false,
   muted = false,
 } = Astro.props;
+
+const isAudioSource = typeof src === "string" && /\.(mp3|m4a|aac|wav|ogg)(\?|#|$)/i.test(src);
+const resolvedMediaType = mediaType === "auto" ? (isAudioSource ? "audio" : "video") : mediaType;
+const isAudio = resolvedMediaType === "audio";
 ---
 
-<section class={`overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-sm ${className}`.trim()}>
-  <div class="aspect-video w-full">
+<section
+  class={`overflow-hidden rounded-2xl border border-slate-200 ${
+    isAudio ? "bg-white" : "bg-slate-950"
+  } shadow-sm ${className}`.trim()}
+>
+  <div class={isAudio ? "w-full p-4" : "aspect-video w-full"}>
     {embedUrl ? (
       <iframe
         class="h-full w-full"
@@ -26,6 +35,20 @@ const {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
+    ) : isAudio ? (
+      <audio
+        class="mejs__player w-full"
+        data-ax-mediaelement
+        data-mejsoptions='{"stretching":"responsive","features":["playpause","progress","current","duration","volume"]}'
+        src={src}
+        controls={controls}
+        autoplay={autoplay}
+        loop={loop}
+        muted={muted}
+        preload="metadata"
+      >
+        Your browser does not support the audio tag.
+      </audio>
     ) : (
       <video
         class="mejs__player h-full w-full object-cover"
@@ -54,12 +77,14 @@ const {
     const Player = window.MediaElementPlayer;
     if (!Player) return;
 
-    document.querySelectorAll("video[data-ax-mediaelement]").forEach((node) => {
-      if (!(node instanceof HTMLVideoElement) || node.dataset.meBound === "true") return;
+    document.querySelectorAll("video[data-ax-mediaelement], audio[data-ax-mediaelement]").forEach((node) => {
+      if (!(node instanceof HTMLMediaElement) || node.dataset.meBound === "true") return;
       node.dataset.meBound = "true";
+      const optionsRaw = node.dataset.mejsoptions;
+      const parsedOptions = optionsRaw ? JSON.parse(optionsRaw) : {};
       new Player(node, {
+        ...parsedOptions,
         stretching: "responsive",
-        features: ["playpause", "progress", "current", "duration", "volume", "fullscreen"],
       });
     });
   };
