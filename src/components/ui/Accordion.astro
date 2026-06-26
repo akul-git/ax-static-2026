@@ -1,0 +1,91 @@
+---
+type AccordionItem = {
+  title: string;
+  content?: string;
+  bullets?: string[];
+  open?: boolean;
+};
+
+type Props = {
+  items: AccordionItem[];
+  class?: string;
+  allowMultiple?: boolean;
+  openFirst?: boolean;
+};
+
+const {
+  items = [],
+  class: className = "",
+  allowMultiple = false,
+  openFirst = true,
+} = Astro.props as Props;
+---
+
+<section
+  class={`rounded-2xl border border-slate-300 bg-slate-100/60 px-4 sm:px-6 ${className}`.trim()}
+  data-ax-accordion
+  data-allow-multiple={allowMultiple ? "true" : "false"}
+>
+  {items.map((item, index) => {
+    const isOpen = item.open ?? (openFirst && index === 0);
+    const hasBody = Boolean(item.content) || (Array.isArray(item.bullets) && item.bullets.length > 0);
+
+    return (
+      <details class="group border-b border-slate-300 py-2 last:border-b-0" open={isOpen} data-ax-accordion-item>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-2 text-3xl font-normal tracking-tight text-sky-700 marker:content-none">
+          <span>{item.title}</span>
+          <svg
+            class="h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </summary>
+
+        {hasBody ? (
+          <div class="pb-4 pr-0 text-lg leading-8 text-slate-800 sm:pr-10">
+            {item.content ? <p>{item.content}</p> : null}
+            {Array.isArray(item.bullets) && item.bullets.length > 0 ? (
+              <ul class="mt-4 list-disc space-y-2 pl-6">
+                {item.bullets.map((bullet) => (
+                  <li>{bullet}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        ) : null}
+      </details>
+    );
+  })}
+</section>
+
+<script>
+  const setupAccordions = () => {
+    document.querySelectorAll("[data-ax-accordion]").forEach((accordion) => {
+      if (!(accordion instanceof HTMLElement)) return;
+      if (accordion.dataset.axAccordionBound === "true") return;
+
+      accordion.dataset.axAccordionBound = "true";
+      const allowMultiple = accordion.dataset.allowMultiple === "true";
+      if (allowMultiple) return;
+
+      accordion.querySelectorAll("details[data-ax-accordion-item]").forEach((item) => {
+        item.addEventListener("toggle", () => {
+          if (!(item instanceof HTMLDetailsElement) || !item.open) return;
+
+          accordion.querySelectorAll("details[data-ax-accordion-item]").forEach((otherItem) => {
+            if (!(otherItem instanceof HTMLDetailsElement)) return;
+            if (otherItem !== item) otherItem.open = false;
+          });
+        });
+      });
+    });
+  };
+
+  setupAccordions();
+  document.addEventListener("DOMContentLoaded", setupAccordions);
+  document.addEventListener("astro:page-load", setupAccordions);
+</script>

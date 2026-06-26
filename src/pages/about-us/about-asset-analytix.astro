@@ -1,7 +1,41 @@
 ---
 import Layout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
+import Accordion from '../../components/ui/Accordion.astro';
 import '../../styles/global.css';
+
+const assessmentAccordion = [
+  {
+    title: '360 Precision Assessment',
+    content: 'A complete baseline to identify technical constraints, data quality gaps, and execution opportunities across your operation.',
+  },
+  {
+    title: 'Measures Architecture',
+    content: 'Build a practical KPI architecture that aligns leadership expectations with frontline execution and reliability outcomes.',
+  },
+  {
+    title: 'Baselining Pilot Events',
+    content:
+      'At AX, baselining is a process, a series of actions, and a discovery cycle required to achieve the targeted technical end state. Each 2-week event becomes a micro experience of a full-scale solution.',
+    bullets: [
+      'EAM Program Assessment',
+      'Reliability Strategies / PMO',
+      'Work Management P&S',
+      'Storeroom / Procurement',
+      'I&E / Calibration',
+      'Production Op-Ex',
+    ],
+    open: true,
+  },
+  {
+    title: 'Solution Deployment',
+    content: 'Translate the pilot into measurable rollout waves with clear ownership, milestones, and practical governance.',
+  },
+  {
+    title: 'Data & Analytics',
+    content: 'Operationalize trusted dashboards and analysis routines that support faster decisions and consistent execution.',
+  },
+];
 ---
 
 <Layout>
@@ -12,6 +46,10 @@ import '../../styles/global.css';
       <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">About Asset Analytix</h1>
       <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for About Asset Analytix.</p>
       <p class="mt-4 text-slate-600">Replace this text with your company overview, mission, and differentiators.</p>
+
+      <div class="mt-10">
+        <Accordion items={assessmentAccordion} />
+      </div>
     </div>
   </Section>
 </Layout>
