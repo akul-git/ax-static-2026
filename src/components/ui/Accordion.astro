@@ -46,15 +46,17 @@ const {
         </summary>
 
         {hasBody ? (
-          <div class="pb-4 pr-0 text-lg leading-8 text-slate-800 sm:pr-10">
-            {item.content ? <p>{item.content}</p> : null}
-            {Array.isArray(item.bullets) && item.bullets.length > 0 ? (
-              <ul class="mt-4 list-disc space-y-2 pl-6">
-                {item.bullets.map((bullet) => (
-                  <li>{bullet}</li>
-                ))}
-              </ul>
-            ) : null}
+          <div data-ax-accordion-panel>
+            <div class="pb-4 pr-0 text-lg leading-8 text-slate-800 sm:pr-10">
+              {item.content ? <p>{item.content}</p> : null}
+              {Array.isArray(item.bullets) && item.bullets.length > 0 ? (
+                <ul class="mt-4 list-disc space-y-2 pl-6">
+                  {item.bullets.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+              ) : null}
+            </div>
           </div>
         ) : null}
       </details>
@@ -63,6 +65,88 @@ const {
 </section>
 
 <script>
+  const DURATION = 420;
+  const EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+  const getPanel = (item: HTMLDetailsElement | Element | null) => {
+    if (!(item instanceof HTMLDetailsElement)) return null;
+    const panel = item.querySelector("[data-ax-accordion-panel]");
+    return panel instanceof HTMLElement ? panel : null;
+  };
+
+  const preparePanel = (item: HTMLDetailsElement) => {
+    const panel = getPanel(item);
+    if (!panel) return;
+
+    panel.style.overflow = "hidden";
+    panel.style.willChange = "height, opacity, transform";
+    panel.style.transition = `height ${DURATION}ms ${EASING}, opacity ${Math.round(DURATION * 0.9)}ms ${EASING}, transform ${DURATION}ms ${EASING}`;
+
+    if (item.open) {
+      panel.style.height = "auto";
+      panel.style.opacity = "1";
+      panel.style.transform = "translateY(0)";
+    } else {
+      panel.style.height = "0px";
+      panel.style.opacity = "0";
+      panel.style.transform = "translateY(-4px)";
+    }
+  };
+
+  const expandItem = (item: HTMLDetailsElement) => {
+    const panel = getPanel(item);
+    if (!panel || item.dataset.axAnimating === "true") return;
+
+    item.dataset.axAnimating = "true";
+    item.open = true;
+    panel.style.height = "0px";
+    panel.style.opacity = "0";
+    panel.style.transform = "translateY(-4px)";
+
+    requestAnimationFrame(() => {
+      const targetHeight = panel.scrollHeight;
+      panel.style.height = `${targetHeight}px`;
+      panel.style.opacity = "1";
+      panel.style.transform = "translateY(0)";
+
+      const onEnd = (event: TransitionEvent) => {
+        if (event.propertyName !== "height") return;
+        panel.style.height = "auto";
+        item.dataset.axAnimating = "false";
+        panel.removeEventListener("transitionend", onEnd);
+      };
+
+      panel.addEventListener("transitionend", onEnd);
+    });
+  };
+
+  const collapseItem = (item: HTMLDetailsElement) => {
+    const panel = getPanel(item);
+    if (!panel || item.dataset.axAnimating === "true" || !item.open) return;
+
+    item.dataset.axAnimating = "true";
+    const startHeight = panel.scrollHeight;
+    panel.style.height = `${startHeight}px`;
+    panel.style.opacity = "1";
+    panel.style.transform = "translateY(0)";
+    void panel.offsetHeight;
+
+    requestAnimationFrame(() => {
+      panel.style.height = "0px";
+      panel.style.opacity = "0";
+      panel.style.transform = "translateY(-4px)";
+
+      const onEnd = (event: TransitionEvent) => {
+        if (event.propertyName !== "height") return;
+        item.open = false;
+        item.dataset.axAnimating = "false";
+        panel.removeEventListener("transitionend", onEnd);
+      };
+
+      panel.addEventListener("transitionend", onEnd);
+    });
+  };
+
   const setupAccordions = () => {
     document.querySelectorAll("[data-ax-accordion]").forEach((accordion) => {
       if (!(accordion instanceof HTMLElement)) return;
@@ -70,16 +154,31 @@ const {
 
       accordion.dataset.axAccordionBound = "true";
       const allowMultiple = accordion.dataset.allowMultiple === "true";
-      if (allowMultiple) return;
 
       accordion.querySelectorAll("details[data-ax-accordion-item]").forEach((item) => {
-        item.addEventListener("toggle", () => {
-          if (!(item instanceof HTMLDetailsElement) || !item.open) return;
+        if (!(item instanceof HTMLDetailsElement)) return;
+        preparePanel(item);
 
-          accordion.querySelectorAll("details[data-ax-accordion-item]").forEach((otherItem) => {
-            if (!(otherItem instanceof HTMLDetailsElement)) return;
-            if (otherItem !== item) otherItem.open = false;
-          });
+        const summary = item.querySelector("summary");
+        if (!(summary instanceof HTMLElement)) return;
+
+        summary.addEventListener("click", (event) => {
+          event.preventDefault();
+          if (item.dataset.axAnimating === "true") return;
+
+          if (item.open) {
+            collapseItem(item);
+            return;
+          }
+
+          if (!allowMultiple) {
+            accordion.querySelectorAll("details[data-ax-accordion-item]").forEach((otherItem) => {
+              if (!(otherItem instanceof HTMLDetailsElement) || otherItem === item) return;
+              collapseItem(otherItem);
+            });
+          }
+
+          expandItem(item);
         });
       });
     });
