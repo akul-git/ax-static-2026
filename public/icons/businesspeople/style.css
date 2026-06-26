@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "BusinessPeople";
+    src: url("fonts/BusinessPeople.woff2") format("woff2"),
+        url("fonts/BusinessPeople.ttf") format("truetype"),
+        url("fonts/BusinessPeople.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+[class^="icon-businesspeople-"],
+[class*=" icon-businesspeople-"] {
+  font-family: "BusinessPeople" !important;
+  speak: never;
+
+  display: inline-block;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
+  font-size: inherit;
+  color: currentColor;
+}
+
+
+
+.icon-businesspeople-01:before { content: "\e900"; }
+.icon-businesspeople-02:before { content: "\e901"; }
+.icon-businesspeople-03:before { content: "\e902"; }
+.icon-businesspeople-04:before { content: "\e903"; }
+.icon-businesspeople-05:before { content: "\e904"; }
+.icon-businesspeople-06:before { content: "\e905"; }
+.icon-businesspeople-07:before { content: "\e906"; }
+.icon-businesspeople-08:before { content: "\e907"; }
+.icon-businesspeople-09:before { content: "\e908"; }
+.icon-businesspeople-10:before { content: "\e909"; }
+.icon-businesspeople-11:before { content: "\e90a"; }
+.icon-businesspeople-12:before { content: "\e90b"; }
+.icon-businesspeople-13:before { content: "\e90c"; }
+.icon-businesspeople-14:before { content: "\e90d"; }
+.icon-businesspeople-15:before { content: "\e90e"; }
+.icon-businesspeople-16:before { content: "\e90f"; }
+.icon-businesspeople-17:before { content: "\e910"; }
+.icon-businesspeople-18:before { content: "\e911"; }
+.icon-businesspeople-19:before { content: "\e912"; }
+.icon-businesspeople-20:before { content: "\e913"; }
+.icon-businesspeople-21:before { content: "\e914"; }
+.icon-businesspeople-22:before { content: "\e915"; }
+.icon-businesspeople-23:before { content: "\e916"; }
+.icon-businesspeople-24:before { content: "\e917"; }
+.icon-businesspeople-25:before { content: "\e918"; }
+.icon-businesspeople-26:before { content: "\e919"; }
+.icon-businesspeople-27:before { content: "\e91a"; }
+.icon-businesspeople-28:before { content: "\e91b"; }
+.icon-businesspeople-29:before { content: "\e91c"; }
+.icon-businesspeople-30:before { content: "\e91d"; }
+

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/icons/businesspeople/style.css" />
+  </Fragment>
+
+  <div class="rounded-xl border border-slate-200 bg-white p-6 text-slate-900 shadow-sm">
+    <div class="flex items-center gap-6">
+      <span class="icon-businesspeople-01 text-yellow-400 text-4xl" aria-hidden="true"></span>
+      <span class="icon-businesspeople-02 text-blue-400 text-7xl" aria-hidden="true"></span>
+      <span class="icon-businesspeople-03 text-red-400 text-9xl" aria-hidden="true"></span>
+      <span class="icon-businesspeople-04 text-green-400 text-5xl" aria-hidden="true"></span>
+    </div>
+  </div>
+  
+<h1 class="text-3xl">
+    <span class="icon-businesspeople-05 text-purple-900 text-5xl block" aria-hidden="true"></span>
+    <span class="block">Office</span></h1>
+
+</BaseLayout>
+

@@ -1,3 +1,19 @@
+
+@font-face {
+  font-family: "BusinessPeople";
+  src:
+    url("/fonts/BusinessPeople/BusinessPeople.woff") format("woff"),
+    url("/fonts/BusinessPeople/BusinessPeople.ttf") format("truetype");
+}
+
+.test-icon::before {
+  font-family: "BusinessPeople";
+  content: "A";
+  font-size: 80px;
+}
+
+
+
 @font-face {
     font-family: "AnalyticsAndInvestment";
     src: url("/fonts/AnalyticsAndInvestment/AnalyticsAndInvestment.woff") format("woff"),url("/fonts/AnalyticsAndInvestment/AnalyticsAndInvestment.ttf") format("truetype");

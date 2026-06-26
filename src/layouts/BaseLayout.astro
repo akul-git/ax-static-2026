@@ -3,7 +3,6 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import menu from '../data/menu.json';
 import '../assets/css/icon-fonts.css';
-
 type MenuLink = { label: string; href: string };
 type MenuItem = MenuLink & { children?: MenuLink[] };
 
@@ -38,6 +37,8 @@ const documentTitle = resolvedTitle === 'Asset Analytix' ? resolvedTitle : `${re
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{documentTitle}</title>
+    <slot name="head" />
+     <link rel="stylesheet" href="/icons/businesspeople/style.css" />
   </head>
   <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
     <Header />
