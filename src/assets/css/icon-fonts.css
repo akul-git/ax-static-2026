@@ -25,16 +25,6 @@
 }
 
 @font-face {
-    font-family: "Avantage";
-    src: url("/fonts/Avantage/Avantage.woff") format("woff"),url("/fonts/Avantage/Avantage.ttf") format("truetype");
-}
-
-*[data-ico-avantage]:before {
-    font-family: Avantage;
-    content: attr(data-ico-avantage);
-}
-
-@font-face {
     font-family: "Business";
     src: url("/fonts/Business/Business.woff") format("woff"),url("/fonts/Business/Business.ttf") format("truetype");
 }
@@ -185,46 +175,6 @@
 }
 
 @font-face {
-    font-family: "FontAwesome";
-    src: url("/fonts/FontAwesome/FontAwesome.woff") format("woff"),url("/fonts/FontAwesome/FontAwesome.ttf") format("truetype");
-}
-
-*[data-ico-fontawesome]:before {
-    font-family: FontAwesome;
-    content: attr(data-ico-fontawesome);
-}
-
-@font-face {
-    font-family: "FontAwesome5Brands";
-    src: url("/fonts/FontAwesome5Brands/FontAwesome5Brands.woff") format("woff"),url("/fonts/FontAwesome5Brands/FontAwesome5Brands.ttf") format("truetype");
-}
-
-*[data-ico-fontawesome5brands]:before {
-    font-family: FontAwesome5Brands;
-    content: attr(data-ico-fontawesome5brands);
-}
-
-@font-face {
-    font-family: "FontAwesome5Regular";
-    src: url("/fonts/FontAwesome5Regular/FontAwesome5Regular.woff") format("woff"),url("/fonts/FontAwesome5Regular/FontAwesome5Regular.ttf") format("truetype");
-}
-
-*[data-ico-fontawesome5regular]:before {
-    font-family: FontAwesome5Regular;
-    content: attr(data-ico-fontawesome5regular);
-}
-
-@font-face {
-    font-family: "FontAwesome5Solid";
-    src: url("/fonts/FontAwesome5Solid/FontAwesome5Solid.woff") format("woff"),url("/fonts/FontAwesome5Solid/FontAwesome5Solid.ttf") format("truetype");
-}
-
-*[data-ico-fontawesome5solid]:before {
-    font-family: FontAwesome5Solid;
-    content: attr(data-ico-fontawesome5solid);
-}
-
-@font-face {
     font-family: "GlobalBusiness";
     src: url("/fonts/GlobalBusiness/GlobalBusiness.woff") format("woff"),url("/fonts/GlobalBusiness/GlobalBusiness.ttf") format("truetype");
 }
@@ -322,16 +272,6 @@
 *[data-ico-taxesaccounting]:before {
     font-family: TaxesAccounting;
     content: attr(data-ico-taxesaccounting);
-}
-
-@font-face {
-    font-family: "TeamWork2";
-    src: url("/fonts/TeamWork2/TeamWork2.woff") format("woff"),url("/fonts/TeamWork2/TeamWork2.ttf") format("truetype");
-}
-
-*[data-ico-teamwork2]:before {
-    font-family: TeamWork2;
-    content: attr(data-ico-teamwork2);
 }
 
 @font-face {

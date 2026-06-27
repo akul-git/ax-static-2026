@@ -1,7 +1,7 @@
 export const videoData = {
   className: "",
   title: "Video",
-  src: "/media/video-placeholder.mp4",
+  src: "/media/4-Min-360CapEx-Commercial-FINAL.mp4",
   embedUrl: "",
   mediaType: "auto",
   poster: "/images/video-poster.jpg",

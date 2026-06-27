@@ -13,6 +13,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# large local media source copy
+src/assets/images/4-Min-360CapEx-Commercial-FINAL.mp4
+
 # environment variables
 .env
 .env.production

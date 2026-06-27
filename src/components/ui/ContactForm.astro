@@ -1,7 +1,7 @@
 ---
 const {
   class: className = "",
-  action = "/api/contact",
+  action = String(import.meta.env.PUBLIC_CONTACT_FORM_ACTION || ""),
   method = "post",
   submitLabel = "Submit",
   newsletterLabel = "Yes, I would like to receive updates from Asset Analytix",
@@ -18,6 +18,7 @@ const hasLiveCaptcha = Boolean(captchaProvider && activeSiteKey);
 
 <form
   data-contact-form
+  data-form-action={action}
   data-captcha-provider={captchaProvider}
   data-site-key={activeSiteKey}
   class={`rounded-sm bg-slate-100 p-6 shadow-sm sm:p-8 ${className}`.trim()}
@@ -25,6 +26,12 @@ const hasLiveCaptcha = Boolean(captchaProvider && activeSiteKey);
   method={method}
   accept-charset="UTF-8"
 >
+  {!action ? (
+    <p class="mb-6 rounded-sm border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+      Contact form endpoint is not configured. Set <strong>PUBLIC_CONTACT_FORM_ACTION</strong> to enable submissions on static hosting.
+    </p>
+  ) : null}
+
   <input type="hidden" name="form_name" value="contact-us" />
   <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
   <input type="hidden" name="captchaToken" value="" />
@@ -90,7 +97,7 @@ const hasLiveCaptcha = Boolean(captchaProvider && activeSiteKey);
   ) : null}
 
   <div class="mt-8">
-    <button type="submit" class="inline-flex rounded-sm bg-sky-700 px-6 py-3 text-lg font-semibold text-white transition hover:bg-sky-600">{submitLabel}</button>
+    <button type="submit" disabled={!action} class="inline-flex rounded-sm bg-sky-700 px-6 py-3 text-lg font-semibold text-white transition hover:bg-sky-600 disabled:cursor-not-allowed disabled:opacity-50">{submitLabel}</button>
   </div>
 </form>
 
@@ -102,6 +109,10 @@ const hasLiveCaptcha = Boolean(captchaProvider && activeSiteKey);
     document.querySelectorAll("[data-contact-form]").forEach((form) => {
       if (!(form instanceof HTMLFormElement) || form.dataset.captchaBound === "true") return;
       form.dataset.captchaBound = "true";
+
+      if (!form.dataset.formAction) {
+        return;
+      }
 
       const provider = form.dataset.captchaProvider || "";
       const siteKey = form.dataset.siteKey || "";
