@@ -1,15 +1,24 @@
 ---
+type ButtonVariant = "primary" | "secondary";
+
+type Props = {
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  variant?: ButtonVariant;
+  class?: string;
+};
+
 const {
   href,
   type = "button",
   variant = "primary",
   class: className = "",
-} = Astro.props;
+} = Astro.props as Props;
 
 const variants = {
   primary: "inline-flex items-center justify-center rounded-full bg-sky-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-600",
   secondary: "inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100",
-};
+} as const;
 
 const classes = `${variants[variant] ?? variants.primary} ${className}`.trim();
 ---

@@ -1,10 +1,20 @@
 ---
+type TypographyVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body" | "small" | "label" | "lead";
+type TypographyTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+
+type Props = {
+  as?: TypographyTag;
+  variant?: TypographyVariant;
+  class?: string;
+  id?: string;
+};
+
 const {
   as = "p",
   variant = "body",
   class: className = "",
   id,
-} = Astro.props;
+} = Astro.props as Props;
 
 const variants = {
   h1: "text-4xl md:text-[2.25rem] leading-tight font-bold tracking-tight text-slate-900",
@@ -17,11 +27,10 @@ const variants = {
   small: "text-sm leading-6 text-slate-600",
   label: "text-sm uppercase tracking-[0.18em] text-slate-600",
   lead: "text-lg leading-8 text-slate-700",
-};
+} as const;
 
 const tag = as;
-const variantNames = ["h1", "h2", "h3", "h4", "h5", "h6", "body", "small", "label", "lead"];
-const variantKey = variantNames.includes(variant) ? variant : "body";
+const variantKey: TypographyVariant = variant in variants ? variant : "body";
 const classes = `${variants[variantKey] ?? variants.body} ${className}`.trim();
 ---
 {tag === "h1" ? (

@@ -1,0 +1,16 @@
+export { accordionData } from "./accordion";
+export { blockquoteData } from "./blockquote";
+export { bookDemoData } from "./book-demo";
+export { buttonData } from "./button";
+export { cardData } from "./card";
+export { clientLogoSliderData } from "./client-logo-slider";
+export { contactFormData } from "./contact-form";
+export { flippingCardData } from "./flipping-card";
+export { heroBannerData } from "./hero-banner";
+export { listData } from "./list";
+export { sectionData } from "./section";
+export { sliderData } from "./slider";
+export { tableData } from "./table";
+export { testimonialData } from "./testimonial";
+export { typographyData } from "./typography";
+export { videoData } from "./video";
