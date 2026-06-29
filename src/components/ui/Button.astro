@@ -1,10 +1,15 @@
 ---
-type ButtonVariant = "primary" | "secondary";
+import { buttonVariants, buttonSizes } from "../../lib/theme";
+
+type ButtonVariant = keyof typeof buttonVariants;
+type ButtonSize = keyof typeof buttonSizes;
 
 type Props = {
   href?: string;
   type?: "button" | "submit" | "reset";
   variant?: ButtonVariant;
+  size?: ButtonSize;
+  disabled?: boolean;
   class?: string;
 };
 
@@ -12,22 +17,55 @@ const {
   href,
   type = "button",
   variant = "primary",
+  size = "md",
+  disabled = false,
   class: className = "",
 } = Astro.props as Props;
 
-const variants = {
-  primary: "inline-flex items-center justify-center rounded-full bg-sky-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-sky-600",
-  secondary: "inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100",
-} as const;
+const normalizedVariant = String(variant ?? "primary").trim().toLowerCase();
+const normalizedSize = String(size ?? "md").trim().toLowerCase();
 
-const classes = `${variants[variant] ?? variants.primary} ${className}`.trim();
+const resolvedVariant: ButtonVariant =
+  normalizedVariant in buttonVariants
+    ? (normalizedVariant as ButtonVariant)
+    : "primary";
+
+const resolvedSize: ButtonSize =
+  normalizedSize in buttonSizes
+    ? (normalizedSize as ButtonSize)
+    : "md";
+
+const classes = [
+  "inline-flex items-center justify-center rounded-md font-semibold shadow-sm transition-all duration-300 ease-out transform-gpu hover:-translate-y-1 hover:shadow-md",
+
+  buttonVariants[resolvedVariant],
+
+  buttonSizes[resolvedSize],
+
+  disabled && "pointer-events-none opacity-50 hover:translate-y-0 hover:shadow-sm",
+
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
 ---
-{href ? (
-  <a href={href} class={classes}>
-    <slot />
-  </a>
-) : (
-  <button type={type} class={classes}>
-    <slot />
-  </button>
-)}
+
+{
+  href ? (
+    <a
+      href={disabled ? undefined : href}
+      aria-disabled={disabled}
+      class={classes}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type={type}
+      disabled={disabled}
+      class={classes}
+    >
+      <slot />
+    </button>
+  )
+}

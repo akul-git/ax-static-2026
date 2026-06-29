@@ -1,31 +1,88 @@
 ---
+import { titleVariants, linkVariants } from "../../lib/theme";
+
+type TitleVariant = keyof typeof titleVariants;
+
+type TitleLine = {
+  text: string;
+  variant?: TitleVariant;
+};
+
+type CardProps = {
+  class?: string;
+  eyebrow?: string;
+  title?: string | TitleLine[];
+  description?: string;
+  href?: string;
+  linkLabel?: string;
+};
+
 const {
   class: className = "",
   eyebrow = "",
-  title = "",
+  title = [],
   description = "",
   href = "",
-  linkLabel = "Learn more",
-} = Astro.props;
+  linkLabel = "Learn More",
+} = Astro.props as CardProps;
 
-const hasStructuredContent = Boolean(eyebrow || title || description || href);
+const normalizedTitle: TitleLine[] =
+  typeof title === "string"
+    ? [{ text: title, variant: "brand" }]
+    : title;
+
+const hasStructuredContent =
+  eyebrow ||
+  normalizedTitle.length ||
+  description ||
+  href;
 ---
-<article class={`rounded-3xl border border-slate-200 bg-white p-6 shadow-sm ${className}`.trim()}>
+
+<article
+  class={`rounded border border-slate-200 bg-white p-6 shadow-sm ${className}`.trim()}
+>
   {hasStructuredContent ? (
     <>
-      {eyebrow ? (
-        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
-          <span class="mr-3 inline-block h-0.5 w-10 align-middle bg-sky-600"></span>{eyebrow}
+      {eyebrow && (
+        <p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700">
+          <span class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"></span>
+          {eyebrow}
         </p>
-      ) : null}
-      {title ? <h4 class="text-4xl leading-tight font-semibold text-sky-800">{title}</h4> : null}
-      {description ? <p class="mt-4 text-xl leading-8 text-slate-700">{description}</p> : null}
-      {href ? (
-        <a href={href} class="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-sky-700 hover:text-sky-600">
+      )}
+
+      {normalizedTitle.length > 0 && (
+        <h4 class="text-4xl font-semibold leading-tight">
+          {normalizedTitle.map((line: TitleLine) => (
+            <span
+              class:list={[
+                "block",
+                titleVariants[line.variant ?? "brand"],
+              ]}
+            >
+              {line.text}
+            </span>
+          ))}
+        </h4>
+      )}
+
+      {description && (
+        <p class="mt-4 text-xl leading-8 text-slate-700">
+          {description}
+        </p>
+      )}
+
+      {href && (
+        <a
+          href={href}
+          class:list={[
+            "mt-6 inline-flex items-center gap-2 text-lg font-semibold transition-colors duration-200",
+            linkVariants.accent,
+          ]}
+        >
           {linkLabel}
           <span aria-hidden="true">&raquo;</span>
         </a>
-      ) : null}
+      )}
     </>
   ) : (
     <slot />

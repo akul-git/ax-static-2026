@@ -15,6 +15,7 @@ import Testimonial from "../components/ui/Testimonial.astro";
 import ClientLogoSlider from "../components/ui/ClientLogoSlider.astro";
 import Button from "../components/ui/Button.astro";
 import siteContent from "../data/site-content.json";
+import { cards, standaloneCard, wmo } from "../data/ui/card";
 import "../styles/global.css";
 
 const slides = [
@@ -121,24 +122,13 @@ const showcaseTestimonial = Array.isArray(siteContent.testimonials) && siteConte
 
   <Section>
     <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2>
-    <div class="grid gap-6 lg:grid-cols-2">
-      <Card
-        eyebrow="Data, Structure, and Usage"
-        title="CMMS Program Optimization"
-        description="We evaluate data quality, process gaps, and governance so your CMMS drives measurable reliability gains."
-        href="/solutions/cmms-data-optimization"
-        linkLabel="Learn more"
-      />
-      <Card>
-        <p class="mb-3 text-xs uppercase tracking-[0.14em] text-slate-600">Custom Card Slot</p>
-        <h4 class="text-4xl font-semibold text-sky-800">Precision EAM Assessments</h4>
-        <p class="mt-4 text-xl leading-8 text-slate-700">
-          Slot content still works for fully custom card markup where needed.
-        </p>
-        <a href="/solutions/precision-eam-assessments" class="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-sky-700">
-          Learn more <span aria-hidden="true">&raquo;</span>
-        </a>
-      </Card>
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      {cards.map((card) => (
+        <Card {...card} />
+      ))}
+
+      <Card {...standaloneCard} />
+      <Card {...wmo} />
     </div>
   </Section>
 

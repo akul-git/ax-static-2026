@@ -1,43 +1,103 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/BaseLayout.astro';
-import Section from '../components/ui/Section.astro';
-import Button from '../components/ui/Button.astro';
-import Card from '../components/ui/Card.astro';
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import Button from "../components/ui/Button.astro";
+import Card from "../components/ui/Card.astro";
 import "../styles/global.css";
 ---
 
 <Layout>
-	<Welcome />
-<div class="hero">
-	<div class="hero__content">
-<Card>
-				
-	<h2 class="text-xl font-semibold text-slate-900">Modern Asset Intelligence</h2>
-				<p class="mt-3 text-slate-600">Deliver faster decisions with data-driven asset analytics, predictive insights, and connected operations.</p>
-				<Button href="/solutions" class="mt-6">Explore solutions</Button>
-				<span style="font-family: BusinessPeople">ABC</span>
-				
-			</Card>
+	<!-- <Welcome /> -->
+	<div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
+		<article>
+			<p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700">
+				<span class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"></span>
+				AT A GLANCE</p>
+			<h1 class="text-4xl font-semibold">
+				<span class="block text-brand"> Asset Analytix </span><span class="block text-accent">Solutions
+				</span></h1>
 
+			<p>
+				The Asset Analytix team represents full-scale, diverse subject
+				matter expertise for a complete end-to-end solution across your
+				entire organization involved with Enterprise Asset Management.
+			</p>
+			<p>
+				Our Analytics-Driven Improvement Management System provides
+				everything needed from detailed problem
+				identification/verification, solution design, training,
+				coaching, 360Navigator Technology Software, and the essential
+				services around reporting and analytics for sustainable change.
+			</p>
+		</article>
+		<article>
+
+			<h2 class="text-4xl font-semibold">
+				<span class="block text-accent"> PM Baselining and CMMS Assessment Special Offers </span></h2>
+
+			<p>
+				Asset Analytix is pleased to offer two powerful solutions to evaluate the most critical aspects of your Reliability and Asset Management program and a Deep-Dive Baselining training event for your PM Program.
+			</p>
+			<p>
+				Together, these solutions offer a comprehensive approach to improving asset management and reliability across your organization. By evaluating your current strategies and providing targeted training, Asset Analytix helps you make informed decisions, increase uptime, streamline processes, optimize asset strategies, reduce operational costs, identify performance gaps, and enhance asset reliability.
+			</p>
+			<Button href="/specialoffers" class="mt-2 uppercase" variant="secondary" size="md">View The Offer</Button>
+		</article>
 	</div>
-</div>
+
+	<div class="hero">
+		<div class="hero__content">
+			<Card>
+				<h2 class="text-xl font-semibold text-slate-900">
+					Modern Asset Intelligence
+				</h2>
+				<p class="mt-3 text-slate-600">
+					Deliver faster decisions with data-driven asset analytics,
+					predictive insights, and connected operations.
+				</p>
+				<Button href="/solutions" class="mt-6">Explore solutions</Button
+				>
+				<span style="font-family: BusinessPeople">ABC</span>
+			</Card>
+		</div>
+	</div>
 	<Section class="mt-16">
 		<div class="grid gap-6 lg:grid-cols-3">
 			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">Modern Asset Intelligence</h2>
-				<p class="mt-3 text-slate-600">Deliver faster decisions with data-driven asset analytics, predictive insights, and connected operations.</p>
-				<Button href="/solutions" class="mt-6">Explore solutions</Button>
+				<h2 class="text-xl font-semibold text-slate-900">
+					Modern Asset Intelligence
+				</h2>
+				<p class="mt-3 text-slate-600">
+					Deliver faster decisions with data-driven asset analytics,
+					predictive insights, and connected operations.
+				</p>
+				<Button href="/solutions" class="mt-6">Explore solutions</Button
+				>
 			</Card>
 			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">Consulting & advisory</h2>
-				<p class="mt-3 text-slate-600">Partner with our team to modernize asset management, reduce risk, and accelerate digital transformation.</p>
-				<Button href="/consulting" variant="secondary" class="mt-6">See consulting</Button>
+				<h2 class="text-xl font-semibold text-slate-900">
+					Consulting & advisory
+				</h2>
+				<p class="mt-3 text-slate-600">
+					Partner with our team to modernize asset management, reduce
+					risk, and accelerate digital transformation.
+				</p>
+				<Button href="/consulting" variant="secondary" class="mt-6"
+					>See consulting</Button
+				>
 			</Card>
 			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">Resources for teams</h2>
-				<p class="mt-3 text-slate-600">Find guides, case studies, and product insights to support asset analytics adoption across your organization.</p>
-				<Button href="/resources" variant="secondary" class="mt-6">View resources</Button>
+				<h2 class="text-xl font-semibold text-slate-900">
+					Resources for teams
+				</h2>
+				<p class="mt-3 text-slate-600">
+					Find guides, case studies, and product insights to support
+					asset analytics adoption across your organization.
+				</p>
+				<Button href="/resources" variant="secondary" class="mt-6"
+					>View resources</Button
+				>
 			</Card>
 		</div>
 	</Section>
@@ -45,27 +105,26 @@ import "../styles/global.css";
 
 <style>
 	.hero {
-  position: relative;
-  min-height: 320px;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(39,93,122,.95),
-      rgba(14,57,83,.95)
-    );
+		position: relative;
+		min-height: 320px;
+		background: linear-gradient(
+			90deg,
+			rgba(39, 93, 122, 0.95),
+			rgba(14, 57, 83, 0.95)
+		);
 
-  /* clip-path: polygon(
+		/* clip-path: polygon(
     0 0,
     100% 45px,
     100% calc(100% - 45px),
     0 100%
   ); */
 
-  clip-path: polygon(0 46%, 100% 18%, 100% 100%, 0% 100%);
-}
+		clip-path: polygon(0 46%, 100% 18%, 100% 100%, 0% 100%);
+	}
 
-.hero__content {
-  padding: 80px;
-  color: white;
-}
-	</style>
+	.hero__content {
+		padding: 80px;
+		color: white;
+	}
+</style>
