@@ -1,10 +1,13 @@
 ---
-import Welcome from "../components/Welcome.astro";
 import Layout from "../layouts/BaseLayout.astro";
 import Section from "../components/ui/Section.astro";
 import Button from "../components/ui/Button.astro";
 import Card from "../components/ui/Card.astro";
 import "../styles/global.css";
+import Slider from "../components/ui/Slider.astro";
+import { slides, sliderConfig } from "../data/slider";
+import { cards, standaloneCard, consultingServices } from "../data/ui/card";
+
 ---
 
 <Layout>
@@ -31,7 +34,7 @@ import "../styles/global.css";
 				services around reporting and analytics for sustainable change.
 			</p>
 		</article>
-		<article>
+		<article class="bg-slate-100 p-6">
 
 			<h2 class="text-4xl font-semibold">
 				<span class="block text-accent"> PM Baselining and CMMS Assessment Special Offers </span></h2>
@@ -44,7 +47,33 @@ import "../styles/global.css";
 			</p>
 			<Button href="/specialoffers" class="mt-2 uppercase" variant="secondary" size="md">View The Offer</Button>
 		</article>
+
+		  <article class="pt-0">
+    <!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">1. Slider</h2> -->
+    <Slider
+		slides={slides}
+		autoPlay={sliderConfig.autoPlay}
+		interval={sliderConfig.interval}
+		showDots={sliderConfig.showDots}
+		showArrows={sliderConfig.showArrows}
+		altFallback={sliderConfig.altFallback}
+	/>
+  </article>
 	</div>
+
+
+	
+  <Section>
+    <!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2> -->
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3">
+      {cards.map((card) => (
+        <Card {...card} />
+      ))}
+
+      <Card {...consultingServices} className="col-span-3" />
+    </div>
+  </Section>
+
 
 	<div class="hero">
 		<div class="hero__content">

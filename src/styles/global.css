@@ -3,6 +3,9 @@
 @theme {
 	--color-brand: #1b4962;
 	--color-accent: #1e73be;
+	--container-8xl: 90rem; /* 1440px - Best for standard layout readability */
+	--container-9xl: 96rem; /* 1536px - Great for grids, cards, and dashboards */
+	--container-10xl: 105rem; /* 1680px - Ultra-wide layout for heavy media or data */
 }
 
 :root {
@@ -32,6 +35,8 @@ a:not([class]) {
 
 img {
 	max-width: 100%;
+	width: 100%;
+	height: auto;
 	display: block;
 }
 

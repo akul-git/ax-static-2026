@@ -15,7 +15,7 @@ import Testimonial from "../components/ui/Testimonial.astro";
 import ClientLogoSlider from "../components/ui/ClientLogoSlider.astro";
 import Button from "../components/ui/Button.astro";
 import siteContent from "../data/site-content.json";
-import { cards, standaloneCard, wmo } from "../data/ui/card";
+import { cards, standaloneCard } from "../data/ui/card";
 import "../styles/global.css";
 
 const slides = [
@@ -128,7 +128,7 @@ const showcaseTestimonial = Array.isArray(siteContent.testimonials) && siteConte
       ))}
 
       <Card {...standaloneCard} />
-      <Card {...wmo} />
+      <!-- <Card {...wmo} /> -->
     </div>
   </Section>
 

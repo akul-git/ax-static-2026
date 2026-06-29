@@ -1,3 +1,7 @@
+import winnersTrophy from "../../assets/images/winners-trophy.jpg";
+import goldAward from "../../assets/images/asset-analytix_Gold-Award-1.jpg";
+import solutionAward from "../../assets/images/solution-awards-winner-gold.jpg";
+
 export const sliderData = {
   className: "",
   autoPlay: true,
@@ -7,14 +11,20 @@ export const sliderData = {
   altFallback: "Slide image",
   slides: [
     {
-      src: "/images/slide-1.jpg",
-      alt: "Slide 1",
-      caption: "Replace with slide caption",
-    },
-    {
-      src: "/images/slide-2.jpg",
-      alt: "Slide 2",
-      caption: "Second slide caption",
-    },
+    src: winnersTrophy.src,
+    alt: "Award style reference",
+    caption: "Asset Analytix recognition",
+  },
+  {
+    src: goldAward.src,
+    alt: "Brand mark",
+    caption: "Brand moment",
+  },
+  {
+    src: solutionAward.src,
+    alt: "Icon sample",
+    caption: "Compact icon sample",
+  },
   ],
 } as const;
+

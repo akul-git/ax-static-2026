@@ -28,7 +28,7 @@ const isActiveItem = (item: MenuItem) => {
           <li class="relative group list-none">
             <a
               href={item.href}
-              class={`px-4 py-2 rounded ${item.highlight ? "btn-primary" : ""} ${active ? "bg-sky-300 text-white font-semibold" : "text-gray-700 hover:text-sky-600"}`}
+              class={`px-4 py-2 rounded ${item.highlight ? "btn-primary" : ""} ${active ? "bg-accent text-white font-semibold" : "text-gray-700 hover:text-sky-600"}`}
             >
               {item.label}
             </a>
@@ -39,7 +39,7 @@ const isActiveItem = (item: MenuItem) => {
                   <li class="list-none">
                     <a
                       href={sub.href}
-                      class={`block px-4 py-2 rounded ${isActiveSub(sub) ? "bg-sky-300 text-white" : "text-gray-600 hover:bg-sky-100 hover:text-sky-800"}`}
+                      class={`block px-4 py-2  ${isActiveSub(sub) ? "bg-accent text-white" : "text-gray-600 hover:bg-sky-100 hover:text-sky-800"}`}
                     >
                       {sub.label}
                     </a>

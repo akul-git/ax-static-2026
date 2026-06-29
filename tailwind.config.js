@@ -10,6 +10,7 @@ module.exports = {
         brand: "#1b4962",
         accent: "#1e73be",
       },
+       
     },
   },
   plugins: [],
