@@ -20,8 +20,8 @@ const {
         <div class="ax-flip-card__face ax-flip-card__face--front">
           {frontImage ? <img src={frontImage} alt={frontAlt} class="ax-flip-card__media" /> : null}
           <div class="ax-flip-card__content">
-            {frontTitle ? <h4 class="text-4xl leading-tight font-semibold text-sky-700">{frontTitle}</h4> : null}
-            {frontSubtitle ? <p class="mt-8 text-lg font-medium uppercase tracking-[0.04em] text-sky-700">{frontSubtitle}</p> : null}
+            {frontTitle ? <h4 class="whitespace-pre-line text-4xl leading-tight font-semibold text-sky-700">{frontTitle}</h4> : null}
+            {frontSubtitle ? <p class="mt-8 whitespace-pre-line text-lg font-medium uppercase tracking-[0.04em] text-sky-700">{frontSubtitle}</p> : null}
           </div>
         </div>
         <div class="ax-flip-card__face ax-flip-card__face--back">
@@ -39,8 +39,8 @@ const {
       <div class="ax-flip-card__face ax-flip-card__face--front">
         {frontImage ? <img src={frontImage} alt={frontAlt} class="ax-flip-card__media" /> : null}
         <div class="ax-flip-card__content">
-          {frontTitle ? <h4 class="text-4xl leading-tight font-semibold text-sky-700">{frontTitle}</h4> : null}
-          {frontSubtitle ? <p class="mt-8 text-lg font-medium uppercase tracking-[0.04em] text-sky-700">{frontSubtitle}</p> : null}
+          {frontTitle ? <h4 class="whitespace-pre-line text-4xl leading-tight font-semibold text-sky-700">{frontTitle}</h4> : null}
+          {frontSubtitle ? <p class="mt-8 whitespace-pre-line text-lg font-medium uppercase tracking-[0.04em] text-sky-700">{frontSubtitle}</p> : null}
         </div>
       </div>
       <div class="ax-flip-card__face ax-flip-card__face--back">
@@ -61,6 +61,8 @@ const {
     border-radius: 0.75rem;
     perspective: 1000px;
     background: #fff;
+    overflow: hidden;
+    isolation: isolate;
   }
 
   .ax-flip-card__inner {
@@ -83,6 +85,7 @@ const {
     border-radius: inherit;
     overflow: hidden;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     background: #f8fafc;
   }
 

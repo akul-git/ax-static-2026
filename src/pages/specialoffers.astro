@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/BaseLayout.astro";
+import FlippingCard from "../components/ui/FlippingCard.astro";
 import "../styles/global.css";
 
 const formAction = String(import.meta.env.PUBLIC_CONTACT_FORM_ACTION || "");
@@ -16,19 +17,21 @@ const formAction = String(import.meta.env.PUBLIC_CONTACT_FORM_ACTION || "");
       </p>
 
       <div class="offer-card-grid">
-        <article class="offer-card" aria-label="PM Baselining Analysis">
-          <h2 class="offer-card-title">PM Baselining<br />Analysis</h2>
-          <p class="offer-card-subtitle">Register NOW for your</p>
-          <p class="offer-card-logo" aria-hidden="true">360 Navigator</p>
-          <p class="offer-card-cta">FLIP TO LEARN MORE</p>
-        </article>
+        <FlippingCard
+          class="offer-flip"
+          minHeight="28.75rem"
+          frontTitle="PM Baselining\nAnalysis"
+          frontSubtitle="Register NOW for your\n360 Navigator\nFLIP TO LEARN MORE"
+          backText="The 360 PM BASELINING ANALYSIS will provide a full-scale evaluation report of your entire PM program and the hidden value of reliability,labor and resources!"
+        />
 
-        <article class="offer-card" aria-label="Assess your CMMS Assessment">
-          <h2 class="offer-card-title">Assess your CMMS<br />Assessment</h2>
-          <p class="offer-card-subtitle">Register NOW for your</p>
-          <p class="offer-card-logo" aria-hidden="true">360 Navigator</p>
-          <p class="offer-card-cta">FLIP TO LEARN MORE</p>
-        </article>
+        <FlippingCard
+          class="offer-flip"
+          minHeight="28.75rem"
+          frontTitle="Assess your CMMS\nAssessment"
+          frontSubtitle="Register NOW for your\n360 Navigator\nFLIP TO LEARN MORE"
+          backText="The CMMS Assessment will evaluate your current implementation maturity, identify gaps, provide detailed analysis and develop strategic actions for program improvement velocity!"
+        />
       </div>
     </div>
 
@@ -99,20 +102,27 @@ const formAction = String(import.meta.env.PUBLIC_CONTACT_FORM_ACTION || "");
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .offer-card {
-    min-height: 460px;
+  :global(.offer-flip.ax-flip-card) {
     border: 1px solid var(--color-accent);
     border-radius: 10px;
+    background: transparent;
+  }
+
+  :global(.offer-flip .ax-flip-card__face) {
     background: #f5f6f8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  }
+
+  :global(.offer-flip .ax-flip-card__face--back) {
+    background: #eaf2fa;
+    box-shadow: inset 0 0 0 1px #9db9d6;
+  }
+
+  :global(.offer-flip .ax-flip-card__content) {
+    max-width: 32ch;
     padding: 1.75rem 1.25rem;
   }
 
-  .offer-card-title {
+  :global(.offer-flip .ax-flip-card__face--front h4) {
     margin: 0;
     font-size: clamp(2rem, 2.6vw, 2.35rem);
     line-height: 1.05;
@@ -120,28 +130,21 @@ const formAction = String(import.meta.env.PUBLIC_CONTACT_FORM_ACTION || "");
     color: #2a7ebb;
   }
 
-  .offer-card-subtitle {
-    margin: 1.15rem 0 0;
-    font-size: 2rem;
-    line-height: 1;
+  :global(.offer-flip .ax-flip-card__face--front p) {
+    margin: 1rem 0 0;
+    font-size: 1.2rem;
+    line-height: 1.45;
     color: #2a7ebb;
-    font-weight: 400;
-  }
-
-  .offer-card-logo {
-    margin: 0.8rem 0 0;
-    font-size: 2.55rem;
-    line-height: 1;
-    color: #2a7ebb;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-  }
-
-  .offer-card-cta {
-    margin: 1.8rem 0 0;
-    font-size: 1.05rem;
-    color: #303030;
+    font-weight: 500;
     letter-spacing: 0.01em;
+  }
+
+  :global(.offer-flip .ax-flip-card__face--back p) {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: #245c8f;
+    font-weight: 500;
   }
 
   .offers-form-wrap {
@@ -228,8 +231,8 @@ const formAction = String(import.meta.env.PUBLIC_CONTACT_FORM_ACTION || "");
       grid-template-columns: 1fr;
     }
 
-    .offer-card {
-      min-height: 360px;
+    :global(.offer-flip .ax-flip-card__face--back p) {
+      font-size: 0.98rem;
     }
   }
 </style>
