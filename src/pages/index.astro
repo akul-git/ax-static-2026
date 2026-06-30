@@ -124,7 +124,7 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 		</div>
 	</Section>
 
-	<div class="hero relative min-h-80">
+	<div class="hero">
 		<div class="hero__content">
 			<Card>
 				<h2 class="text-xl font-semibold text-slate-900">
@@ -183,16 +183,17 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 
 <style>
 	.hero {
-		background: linear-gradient(
-			90deg,
-			rgba(39, 93, 122, 0.95),
-			rgba(14, 57, 83, 0.95)
-		),
-		url('/assets/images/bgn-quotes.jpg');
+		position: relative;
+		min-height: 320px;
+		background:rgb(39, 93, 122) url('/assets/images/bgn-quotes.jpg');
+		/* background-image: 
+			linear-gradient(90deg, rgba(39, 93, 122, 0.5), rgba(14, 57, 83, 0.5)), 
+			url('/assets/images/bgn-quotes.jpg'); */
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
-		clip-path: polygon(0 0, 100% 25%, 100% 100%, 0 100%);
+		background-attachment: scroll;
+		clip-path: polygon(0 0, 100% 25%, 100% 100%, 0% 100%);
 	}
 
 	.hero__content {

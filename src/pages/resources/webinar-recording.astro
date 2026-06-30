@@ -1,16 +1,73 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import HubSpotForm from "../../components/ui/HubSpotForm.astro";
+import Heading from "../../components/ui/Heading.astro";
 ---
 
 <Layout>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Resources</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Webinar Recording</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Webinar Recording.</p>
-      <p class="mt-4 text-slate-600">Replace this text with webinar summary, key insights, and replay instructions.</p>
-    </div>
+    <div
+      class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4 sm:gap-2 md:gap-4 lg:gap-6 xl:gap-8"
+>
+      <article>
+        <h2>Take Control of Your CMMS Data Quality</h2>
+        <p>
+          In this session, we explored one of the most common challenges facing
+          maintenance and reliability organizations today — poor CMMS data
+          quality.
+        </p>
+        <p>
+          Our CMMS Data Quality Module helps organizations identify, clean,
+          standardize, and continuously monitor CMMS data, creating a reliable
+          foundation for maintenance planning, reliability improvement, analytics,
+          and AI initiatives.
+        </p>
+        <h2>Business Impact</h2>
+        <p>
+          Organizations that implement a structured CMMS Data Quality program can
+          achieve:
+        </p>
+        <ul class="list-disc space-y-2 pl-6 text-base leading-7 text-slate-700 marker:text-sky-700 mt-4">
+          <li>Reduced wasted labor and rework</li>
+          <li>
+            Elimination of duplicate and misclassified parts and asset records
+          </li>
+          <li>Improved planning and scheduling efficiency</li>
+          <li>Increased confidence in maintenance and reliability reporting</li>
+          <li>Better reliability analytics and decision-making</li>
+          <li>Stronger foundation for Analytics and AI initiatives</li>
+          <li>Improved trust in the CMMS as a system of record</li>
+        </ul>
+        <p>
+          Thank you again for your interest in the webinar. We appreciate the
+          opportunity to share our approach to CMMS Data Quality and look forward
+          to continuing the conversation around reliability, analytics, and
+          operational excellence.
+        </p>
+      </article>
+      <article>
+        <Heading level={5}>
+          <span class="text-accent">To access the webinar recording, please complete the form below</span>
+  <!-- CMMS Program
+  <span class="text-accent">
+    Optimization 
+  </span>-->
+</Heading>
+      <h2>To access the webinar recording, please complete the form below</h2>
+        <HubSpotForm
+  portalId="25291755"
+  formId="8d856a10-eb06-45dd-a968-0b8556aeffb7"
+/>
+      <!-- <div class="aspect-video">
+        <iframe
+          src="https://www.youtube.com/embed/0g6k1r7j3xM"
+          title="CMMS Data Quality Webinar Recording"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="w-full h-full rounded-lg shadow-lg"
+        ></iframe>
+    </div> -->
   </Section>
 </Layout>

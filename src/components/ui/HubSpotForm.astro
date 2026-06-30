@@ -1,0 +1,39 @@
+---
+type Props = {
+  portalId: string;
+  formId: string;
+  region?: string;
+};
+
+const {
+  portalId,
+  formId,
+  region = "eu1",
+} = Astro.props;
+---
+
+<div id={`hubspot-form-${formId}`}></div>
+
+<script define:vars={{ portalId, formId, region }}>
+  const target = `#hubspot-form-${formId}`;
+
+  function createForm() {
+    if (!window.hbspt) return;
+
+    window.hbspt.forms.create({
+      portalId,
+      formId,
+      region,
+      target,
+    });
+  }
+
+  if (!window.hbspt) {
+    const script = document.createElement("script");
+    script.src = `https://js-${region}.hsforms.net/forms/embed/v2.js`;
+    script.onload = createForm;
+    document.body.appendChild(script);
+  } else {
+    createForm();
+  }
+</script>
