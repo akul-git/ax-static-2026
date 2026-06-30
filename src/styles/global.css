@@ -56,3 +56,9 @@ textarea {
 .page-copy {
 	max-width: 42rem;
 }
+
+article p {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	line-height: 1.5;
+}

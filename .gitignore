@@ -13,8 +13,10 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# large local media source copy
+# large local media — exclude all mp4/mp3 from public/assets/images
 src/assets/images/4-Min-360CapEx-Commercial-FINAL.mp4
+public/assets/images/*.mp4
+public/assets/images/*.mp3
 
 # environment variables
 .env
