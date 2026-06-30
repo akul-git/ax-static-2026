@@ -6,15 +6,21 @@ import Card from "../components/ui/Card.astro";
 import "../styles/global.css";
 import Slider from "../components/ui/Slider.astro";
 import { slides, sliderConfig } from "../data/slider";
+import { testimonials } from "../data/ui/testimonial";
 import { cards, consultingServices } from "../data/ui/card";
 import HeroBanner from "../components/ui/HeroBanner.astro";
+import Heading from "../components/ui/Heading.astro";
+import Testimonial from "../components/ui/Testimonial.astro";
+
 ---
 
 <Layout>
-	<div class="max-w-9xl mx-auto text-center text-shadow-md text-shadow-neutral-950">
+	<div
+		class="max-w-9xl mx-auto text-center text-shadow-md text-shadow-neutral-950"
+	>
 		<HeroBanner image="/assets/images/hmpg-hero.jpg">
 			<h1
-				class="text-6xl font-medium  leading-tight text-white lg:text-6xl"
+				class="text-6xl font-medium leading-tight text-white lg:text-6xl"
 			>
 				Analytics-Driven
 				<span class="block text-white"> Reliability Improvement </span>
@@ -115,9 +121,13 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 		</div>
 	</Section>
 
-	<Section class="bg-[url(/assets/images/bgn-industries.png)] bg-cover bg-center bg-no-repeat">
+	<Section
+		class="bg-[url(/assets/images/bgn-industries.png)] bg-cover bg-center bg-no-repeat"
+	>
 		<!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2> -->
-		<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3 max-w-7xl mx-auto">
+		<div
+			class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3 max-w-7xl mx-auto"
+		>
 			{cards.map((card) => <Card {...card} />)}
 
 			<Card {...consultingServices} className="col-span-3" />
@@ -125,22 +135,31 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 	</Section>
 
 	<div class="hero">
-		<div class="hero__content">
-			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">
-					Modern Asset Intelligence
-				</h2>
-				<p class="mt-3 text-slate-600">
-					Deliver faster decisions with data-driven asset analytics,
-					predictive insights, and connected operations.
-				</p>
-				<Button href="/solutions" class="mt-6">Explore solutions</Button
-				>
-				<span style="font-family: BusinessPeople">ABC</span>
-			</Card>
+		<div class="hero__content max-w-7xl mx-auto">
+			<p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-white mt-0!">
+				<span
+					class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"
+				></span> GREAT REVIEWS FOR OUR SERVICES
+			</p>
+
+			<Heading level={2}>
+				<span class="text-white">Real Results </span>
+				<span class="block text-white">
+					Client Praise
+				</span>
+			</Heading>
+<section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+	
+		<Testimonial {...testimonials[0]} />
+		<Testimonial {...testimonials[1]} />
+		<Testimonial {...testimonials[2]} />
+	
+</section>
+
 		</div>
 	</div>
-	<Section class="mt-16">
+
+	<!-- <Section class="mt-16">
 		<div class="grid gap-6 lg:grid-cols-3">
 			<Card>
 				<h2 class="text-xl font-semibold text-slate-900">
@@ -178,14 +197,14 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 				>
 			</Card>
 		</div>
-	</Section>
+	</Section> -->
 </Layout>
 
 <style>
 	.hero {
 		position: relative;
 		min-height: 320px;
-		background:rgb(39, 93, 122) url('/assets/images/bgn-quotes.jpg');
+		background: rgb(39, 93, 122) url("/assets/images/bgn-quotes.jpg");
 		/* background-image: 
 			linear-gradient(90deg, rgba(39, 93, 122, 0.5), rgba(14, 57, 83, 0.5)), 
 			url('/assets/images/bgn-quotes.jpg'); */
@@ -197,7 +216,7 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 	}
 
 	.hero__content {
-		padding: 80px;
+		/* padding: 80px; */
 		color: white;
 	}
 </style>
