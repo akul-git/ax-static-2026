@@ -11,14 +11,31 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 ---
 
 <Layout>
-	<div class="max-w-9xl mx-auto">
-		<HeroBanner
-			variant="hero"
-			title="Analytics-Driven Reliability Improvement"
-			subtitle="Streamlined technology software, processes, and training, delivering total control over managing the lifecycle of your assets."
-			backgroundImage="/assets/images/hmpg-hero.jpg"
-			overlay="rgba(255, 255, 255, .05);"
-		/>
+	<div class="max-w-9xl mx-auto text-center text-shadow-md text-shadow-neutral-950">
+		<HeroBanner image="/assets/images/hmpg-hero.jpg">
+			<h1
+				class="text-6xl font-medium  leading-tight text-white lg:text-6xl"
+			>
+				Analytics-Driven
+				<span class="block text-white"> Reliability Improvement </span>
+			</h1>
+
+			<p class="mt-6 max-w-2xl mx-auto text-3xl leading-8 text-slate-100">
+				Streamlined technology software, processes, and training,
+				delivering total control over managing the lifecycle of your
+				assets.
+			</p>
+
+			<!-- <div class="mt-8 flex flex-wrap gap-4">
+        <Button href="/contact">
+            Contact Us
+        </Button>
+
+        <Button href="/services" variant="secondary">
+            Our Services
+        </Button>
+    </div> -->
+		</HeroBanner>
 	</div>
 
 	<Section>
@@ -98,16 +115,16 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 		</div>
 	</Section>
 
-	<Section>
+	<Section class="bg-[url(/assets/images/bgn-industries.png)] bg-cover bg-center bg-no-repeat">
 		<!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2> -->
-		<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3">
+		<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3 max-w-7xl mx-auto">
 			{cards.map((card) => <Card {...card} />)}
 
 			<Card {...consultingServices} className="col-span-3" />
 		</div>
 	</Section>
 
-	<div class="hero">
+	<div class="hero relative min-h-80">
 		<div class="hero__content">
 			<Card>
 				<h2 class="text-xl font-semibold text-slate-900">
@@ -166,22 +183,16 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 
 <style>
 	.hero {
-		position: relative;
-		min-height: 320px;
 		background: linear-gradient(
 			90deg,
 			rgba(39, 93, 122, 0.95),
 			rgba(14, 57, 83, 0.95)
-		);
-
-		/* clip-path: polygon(
-    0 0,
-    100% 45px,
-    100% calc(100% - 45px),
-    0 100%
-  ); */
-
-		clip-path: polygon(0 46%, 100% 18%, 100% 100%, 0% 100%);
+		),
+		url('/assets/images/bgn-quotes.jpg');
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		clip-path: polygon(0 0, 100% 25%, 100% 100%, 0 100%);
 	}
 
 	.hero__content {
