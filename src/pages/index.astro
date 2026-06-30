@@ -8,86 +8,104 @@ import Slider from "../components/ui/Slider.astro";
 import { slides, sliderConfig } from "../data/slider";
 import { cards, consultingServices } from "../data/ui/card";
 import HeroBanner from "../components/ui/HeroBanner.astro";
-
 ---
 
 <Layout>
-	
-    <div class="space-y-8">
-      <HeroBanner
-        variant="hero"
-        title="Analytics-Driven Reliability Improvement"
-        subtitle="Streamlined technology, process, and training across your asset lifecycle."
-        backgroundImage="/assets/images/hmpg-hero.jpg" 
-        overlay="linear-gradient(90deg, rgba(15,23,42,0.65), rgba(15,23,42,0.35))"
-      >
-        <Button href="/solutions" class="mt-2">Explore Solutions</Button>
-      </HeroBanner>
-
-    </div>
-
-	<div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
-		<article>
-			<p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700">
-				<span class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"></span>
-				AT A GLANCE</p>
-			<h1 class="text-4xl mb-2 font-semibold">
-				<span class="block text-brand"> Asset Analytix </span><span class="block text-accent">Solutions
-				</span></h1>
-
-			<p>
-				The Asset Analytix team represents full-scale, diverse subject
-				matter expertise for a complete end-to-end solution across your
-				entire organization involved with Enterprise Asset Management.
-			</p>
-			<p>
-				Our Analytics-Driven Improvement Management System provides
-				everything needed from detailed problem
-				identification/verification, solution design, training,
-				coaching, 360Navigator Technology Software, and the essential
-				services around reporting and analytics for sustainable change.
-			</p>
-		</article>
-		<article class="bg-slate-100 p-6">
-
-			<h2 class="text-2xl mb-2 font-semibold">
-				<span class="block text-accent"> PM Baselining and CMMS Assessment Special Offers </span></h2>
-
-			<p>
-				Asset Analytix is pleased to offer two powerful solutions to evaluate the most critical aspects of your Reliability and Asset Management program and a Deep-Dive Baselining training event for your PM Program.
-			</p>
-			<p>
-				Together, these solutions offer a comprehensive approach to improving asset management and reliability across your organization. By evaluating your current strategies and providing targeted training, Asset Analytix helps you make informed decisions, increase uptime, streamline processes, optimize asset strategies, reduce operational costs, identify performance gaps, and enhance asset reliability.
-			</p>
-			<Button href="/specialoffers" class="mt-2 uppercase" variant="secondary" size="md">View The Offer</Button>
-		</article>
-
-		  <article class="pt-0">
-    <!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">1. Slider</h2> -->
-    <Slider
-		slides={slides}
-		autoPlay={sliderConfig.autoPlay}
-		interval={sliderConfig.interval}
-		showDots={sliderConfig.showDots}
-		showArrows={sliderConfig.showArrows}
-		altFallback={sliderConfig.altFallback}
-	/>
-  </article>
+	<div class="max-w-9xl mx-auto">
+		<HeroBanner
+			variant="hero"
+			title="Analytics-Driven Reliability Improvement"
+			subtitle="Streamlined technology software, processes, and training, delivering total control over managing the lifecycle of your assets."
+			backgroundImage="/assets/images/hmpg-hero.jpg"
+			overlay="rgba(255, 255, 255, .05);"
+		/>
 	</div>
 
+	<Section>
+		<div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
+			<article>
+				<p
+					class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700"
+				>
+					<span
+						class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"
+					></span>
+					AT A GLANCE
+				</p>
+				<h1 class="text-4xl mb-2 font-semibold">
+					<span class="block text-brand"> Asset Analytix </span><span
+						class="block text-accent"
+						>Solutions
+					</span>
+				</h1>
 
-	
-  <Section>
-    <!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2> -->
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3">
-      {cards.map((card) => (
-        <Card {...card} />
-      ))}
+				<p>
+					The Asset Analytix team represents full-scale, diverse
+					subject matter expertise for a complete end-to-end solution
+					across your entire organization involved with Enterprise
+					Asset Management.
+				</p>
+				<p>
+					Our Analytics-Driven Improvement Management System provides
+					everything needed from detailed problem
+					identification/verification, solution design, training,
+					coaching, 360Navigator Technology Software, and the
+					essential services around reporting and analytics for
+					sustainable change.
+				</p>
+			</article>
+			<article class="bg-slate-100 p-6">
+				<h2 class="text-2xl mb-2 font-semibold">
+					<span class="block text-accent">
+						PM Baselining and CMMS Assessment Special Offers
+					</span>
+				</h2>
 
-      <Card {...consultingServices} className="col-span-3" />
-    </div>
-  </Section>
+				<p>
+					Asset Analytix is pleased to offer two powerful solutions to
+					evaluate the most critical aspects of your Reliability and
+					Asset Management program and a Deep-Dive Baselining training
+					event for your PM Program.
+				</p>
+				<p>
+					Together, these solutions offer a comprehensive approach to
+					improving asset management and reliability across your
+					organization. By evaluating your current strategies and
+					providing targeted training, Asset Analytix helps you make
+					informed decisions, increase uptime, streamline processes,
+					optimize asset strategies, reduce operational costs,
+					identify performance gaps, and enhance asset reliability.
+				</p>
+				<Button
+					href="/specialoffers"
+					class="mt-2 uppercase"
+					variant="secondary"
+					size="md">View The Offer</Button
+				>
+			</article>
 
+			<article class="pt-0">
+				<!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">1. Slider</h2> -->
+				<Slider
+					slides={slides}
+					autoPlay={sliderConfig.autoPlay}
+					interval={sliderConfig.interval}
+					showDots={sliderConfig.showDots}
+					showArrows={sliderConfig.showArrows}
+					altFallback={sliderConfig.altFallback}
+				/>
+			</article>
+		</div>
+	</Section>
+
+	<Section>
+		<!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2> -->
+		<div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3">
+			{cards.map((card) => <Card {...card} />)}
+
+			<Card {...consultingServices} className="col-span-3" />
+		</div>
+	</Section>
 
 	<div class="hero">
 		<div class="hero__content">

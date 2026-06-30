@@ -39,7 +39,7 @@ const hasStructuredContent =
 ---
 
 <article
-  class={`rounded border border-slate-200 bg-white p-6 shadow-sm ${className}`.trim()}
+  class={`rounded border border-slate-200 bg-white p-4 sm:p-6 shadow-sm ${className}`.trim()}
 >
   {hasStructuredContent ? (
     <>
@@ -51,7 +51,7 @@ const hasStructuredContent =
       )}
 
       {normalizedTitle.length > 0 && (
-        <h4 class="text-3xl font-semibold">
+        <h4 class="text-xl sm:text-2xl md:text-3xl font-semibold">
           {normalizedTitle.map((line: TitleLine) => (
             <span
               class:list={[

@@ -16,7 +16,7 @@ const safeSlides = Array.isArray(slides) ? slides : [];
   data-ax-slider
   data-autoplay={String(Boolean(autoPlay))}
   data-interval={String(interval)}
-  class={`relative overflow-hidden rounded-sm bg-slate-200 ${className}`.trim()}
+  class={`relative w-full overflow-hidden rounded-sm bg-slate-200 ${className}`.trim()}
   aria-label="Image slider"
 >
   <div class="ax-slider-track flex transition-transform duration-500 ease-out">
