@@ -6,47 +6,47 @@ export const clientLogoSliderData = {
   desktopItemsPerSlide: 4,
   logos: [
     {
-      src: "/assets/images/amgen1.png",
+      src: "/assets/images/client-logos/amgen.png",
       alt: "amgen",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/Biogen-Logo.jpg",
+      src: "/assets/images/client-logos/Biogen.png",
       alt: "Biogen",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/chevron1.png",
+      src: "/assets/images/client-logos/chevron.png",
       alt: "chevron",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/city-kansas-city1.png",
+      src: "/assets/images/client-logos/city-kansas-city.png",
       alt: "city-kansas-city",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/corpus-christi1.png",
+      src: "/assets/images/client-logos/corpus-christi.png",
       alt: "corpus-christi",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/honda1.png",
+      src: "/assets/images/client-logos/honda.png",
       alt: "honda",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/hunt1.png",
+      src: "/assets/images/client-logos/hunt.png",
       alt: "hunt",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/kite1.png",
+      src: "/assets/images/client-logos/kite.png",
       alt: "kite",
       // href: "https://example.com",
     },
     {
-      src: "/assets/images/methanex1.png",
+      src: "/assets/images/client-logos/methanex.png",
       alt: "methanex",
       // href: "https://example.com",
     },

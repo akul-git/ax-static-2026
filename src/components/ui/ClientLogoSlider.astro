@@ -1,6 +1,4 @@
 ---
-import siteContent from "../../data/site-content.json";
-
 type LogoItem = { src: string; alt: string; href?: string };
 
 const {
@@ -12,8 +10,7 @@ const {
   desktopItemsPerSlide = 4,
 } = Astro.props;
 
-const defaultLogos: LogoItem[] = Array.isArray(siteContent.clientLogos) ? (siteContent.clientLogos as LogoItem[]) : [];
-const safeLogos: LogoItem[] = Array.isArray(logos) && logos.length > 0 ? (logos as LogoItem[]) : defaultLogos;
+const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
 ---
 
 <section
