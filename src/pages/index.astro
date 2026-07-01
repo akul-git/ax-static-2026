@@ -11,6 +11,8 @@ import { cards, consultingServices } from "../data/ui/card";
 import HeroBanner from "../components/ui/HeroBanner.astro";
 import Heading from "../components/ui/Heading.astro";
 import Testimonial from "../components/ui/Testimonial.astro";
+import ClientLogoSlider from "../components/ui/ClientLogoSlider.astro";
+import { clientLogoSliderData } from "../data/ui";
 
 ---
 
@@ -148,7 +150,7 @@ import Testimonial from "../components/ui/Testimonial.astro";
 					Client Praise
 				</span>
 			</Heading>
-<section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
+<section class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
 	
 		<Testimonial {...testimonials[0]} />
 		<Testimonial {...testimonials[1]} />
@@ -159,45 +161,11 @@ import Testimonial from "../components/ui/Testimonial.astro";
 		</div>
 	</div>
 
-	<!-- <Section class="mt-16">
-		<div class="grid gap-6 lg:grid-cols-3">
-			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">
-					Modern Asset Intelligence
-				</h2>
-				<p class="mt-3 text-slate-600">
-					Deliver faster decisions with data-driven asset analytics,
-					predictive insights, and connected operations.
-				</p>
-				<Button href="/solutions" class="mt-6">Explore solutions</Button
-				>
-			</Card>
-			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">
-					Consulting & advisory
-				</h2>
-				<p class="mt-3 text-slate-600">
-					Partner with our team to modernize asset management, reduce
-					risk, and accelerate digital transformation.
-				</p>
-				<Button href="/consulting" variant="secondary" class="mt-6"
-					>See consulting</Button
-				>
-			</Card>
-			<Card>
-				<h2 class="text-xl font-semibold text-slate-900">
-					Resources for teams
-				</h2>
-				<p class="mt-3 text-slate-600">
-					Find guides, case studies, and product insights to support
-					asset analytics adoption across your organization.
-				</p>
-				<Button href="/resources" variant="secondary" class="mt-6"
-					>View resources</Button
-				>
-			</Card>
-		</div>
-	</Section> -->
+	
+  <Section>
+	  <ClientLogoSlider {...clientLogoSliderData} interval={3200} mobileItemsPerSlide={2} tabletItemsPerSlide={3} desktopItemsPerSlide={4} />
+  </Section>
+	
 </Layout>
 
 <style>
@@ -212,11 +180,11 @@ import Testimonial from "../components/ui/Testimonial.astro";
 		background-position: center;
 		background-repeat: no-repeat;
 		background-attachment: scroll;
-		clip-path: polygon(0 0, 100% 25%, 100% 100%, 0% 100%);
+		clip-path: polygon(0 0, 100% 40%, 100% 100%, 0% 100%);
 	}
 
 	.hero__content {
-		/* padding: 80px; */
+		padding-top:116px;
 		color: white;
 	}
 </style>

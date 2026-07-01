@@ -22,40 +22,40 @@ const stars = Array.from({ length: Math.max(0, Math.min(5, rating)) });
 
 <article
   class:list={[
-    "rounded-sm bg-brand-dark px-8 py-10 text-center text-white",
+    "rounded-sm bg-brand-dark mt-4 p-4 text-center flex flex-col text-white",
     className,
   ]}
 >
-  <h3 class="text-2xl font-light leading-tight lg:text-4xl">
+  <h3 class="text-xl leading-tight lg:text-2xl">
     {title}
   </h3>
 
-  <p class="mx-auto mt-6 max-w-4xl  leading-8 text-slate-100 ">
+  <p class="mx-auto mb-6 max-w-4xl  leading-8 text-slate-100 ">
     {quote}
   </p>
 
-  <div
-    class="mt-6 flex justify-center gap-1"
-    aria-label={`${rating} star rating`}
-  >
-    {
-      stars.map(() => (
-        <svg
-          class="h-5 w-5 fill-white"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.57l-5.9 3.1 1.13-6.57L2.45 9.44l6.6-.96L12 2.5z" />
-        </svg>
-      ))
-    }
+  <div class="mt-auto">
+    <div
+      class="flex justify-center gap-1"
+      aria-label={`${rating} star rating`}
+    >
+      {
+        stars.map(() => (
+          <svg
+            class="h-5 w-5 fill-white"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.57l-5.9 3.1 1.13-6.57L2.45 9.44l6.6-.96L12 2.5z" />
+          </svg>
+        ))
+      }
+    </div>
+    <p class="mt-6 text-sm font-semibold uppercase tracking-[0.18em] text-slate-200">
+      {role}
+    </p>
+    <p class="mt-3 text-lg font-medium text-orange-400 lg:text-xl">
+      {author}
+    </p>
   </div>
-
-  <p class="mt-6 text-sm font-semibold uppercase tracking-[0.18em] text-slate-200">
-    {role}
-  </p>
-
-  <p class="mt-3 text-xl font-medium text-orange-400 lg:text-2xl">
-    {author}
-  </p>
 </article>
