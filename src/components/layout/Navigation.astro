@@ -3,9 +3,9 @@
 import menu from "../../data/menu.json";
 
 type MenuLink = { label: string; href: string };
-type MenuItem = { label: string; href: string; highlight?: boolean; children?: MenuLink[] };
+type MenuItem = { label: string; href: string; highlight?: boolean; children?: MenuLink[]; external?: boolean; target?: string };
 
-const safeMenu = Array.isArray(menu) ? menu : [];
+const safeMenu: MenuItem[] = Array.isArray(menu) ? (menu as MenuItem[]) : [];
 const normalizeHref = (href?: string) => (href || "/").replace(/\/$/, "") || "/";
 const currentPath = normalizeHref(Astro.url.pathname);
 
@@ -28,6 +28,8 @@ const isActiveItem = (item: MenuItem) => {
           <li class="relative group list-none">
             <a
               href={item.href}
+               target={item.external ? "_blank" : undefined}
+  rel={item.external ? "noopener noreferrer" : undefined}
               class={`px-4 py-2 rounded ${item.highlight ? "btn-primary" : ""} ${active ? "bg-accent text-white font-semibold" : "text-gray-900 hover:text-sky-600"}`}
             >
               {item.label}
@@ -138,7 +140,7 @@ const isActiveItem = (item: MenuItem) => {
                   id={submenuId}
                   class={`mobile-submenu overflow-hidden bg-gray-50 transition-all duration-300 ease-out ${active ? "max-h-144 opacity-100" : "max-h-0 opacity-0"}`}
                 >
-                  {item.children.map((sub) => (
+                  {(item.children ?? []).map((sub) => (
                     <li class="list-none">
                       <a
                         href={sub.href}

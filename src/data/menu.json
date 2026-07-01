@@ -93,7 +93,9 @@
   },
   {
     "label": "Book demo",
-    "href": "/book-demo",
-    "highlight": true
+    "href": "https://calendly.com/edward-stanek/asset-analytix-introduction",
+    "highlight": true,
+    "external": true,
+    "rel": "noopener noreferrer"
   }
 ]
