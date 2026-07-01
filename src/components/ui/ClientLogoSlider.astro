@@ -15,7 +15,6 @@ const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
 
 <section
   data-client-logo-slider
-  data-logos={JSON.stringify(safeLogos)}
   data-interval={String(interval)}
   data-mobile-items={String(mobileItemsPerSlide)}
   data-tablet-items={String(tabletItemsPerSlide)}
@@ -30,7 +29,23 @@ const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
   </button>
 
   <div class="overflow-hidden">
-    <div class="ax-client-track flex transition-transform duration-700 ease-out"></div>
+    <div class="ax-client-track">
+      {
+        safeLogos.map((logo) => (
+          <div class="px-4">
+            <div class="flex min-h-20 w-full items-center justify-center">
+              {logo.href ? (
+                <a href={logo.href} class="flex items-center justify-center" aria-label={logo.alt}>
+                  <img src={logo.src} alt={logo.alt} loading="lazy" class="h-20 w-auto max-w-full object-contain opacity-90 transition hover:opacity-100" />
+                </a>
+              ) : (
+                <img src={logo.src} alt={logo.alt} loading="lazy" class="h-20 w-auto max-w-full object-contain opacity-90 transition hover:opacity-100" />
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 
   <button type="button" class="ax-client-next absolute right-4 top-1/2 -translate-y-1/2 text-slate-700 transition hover:text-sky-700" aria-label="Next logos">
@@ -41,7 +56,15 @@ const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
 </section>
 
 <script>
-  const initLogoSlider = () => {
+  const initLogoSlider = async () => {
+    if (typeof window === "undefined") return;
+
+    const jqueryModule = await import("jquery");
+    const $ = jqueryModule.default;
+    (window as Window & { $?: typeof $; jQuery?: typeof $ }).$ = $;
+    (window as Window & { $?: typeof $; jQuery?: typeof $ }).jQuery = $;
+    await import("slick-carousel");
+
     document.querySelectorAll("[data-client-logo-slider]").forEach((root) => {
       if (!(root instanceof HTMLElement) || root.dataset.logoBound === "true") return;
       root.dataset.logoBound = "true";
@@ -51,130 +74,49 @@ const safeLogos: LogoItem[] = Array.isArray(logos) ? (logos as LogoItem[]) : [];
       const next = root.querySelector(".ax-client-next");
 
       if (!(track instanceof HTMLElement)) return;
-
-      let logos = [];
-      try {
-        const raw = root.getAttribute("data-logos") || "[]";
-        const parsed = JSON.parse(raw);
-        logos = Array.isArray(parsed) ? parsed : [];
-      } catch {
-        logos = [];
-      }
-
-      if (logos.length === 0) return;
-
-      let activeIndex = 0;
-      let timer = -1;
       const intervalMs = Number(root.getAttribute("data-interval")) || 4000;
       const mobileItems = Math.max(1, Number(root.getAttribute("data-mobile-items")) || 2);
       const tabletItems = Math.max(1, Number(root.getAttribute("data-tablet-items")) || 3);
       const desktopItems = Math.max(1, Number(root.getAttribute("data-desktop-items")) || 4);
-      let slideCount = 0;
-      let currentItemsPerSlide = 0;
+      const $track = $(track);
 
-      const getItemsPerSlide = () => {
-        if (window.innerWidth >= 1024) return desktopItems;
-        if (window.innerWidth >= 640) return tabletItems;
-        return mobileItems;
-      };
+      if (track.children.length === 0) return;
 
-      const createLogoNode = (logo = { src: "", alt: "", href: "" }) => {
-        const item = document.createElement("li");
-        item.className = "flex min-h-20 w-full items-center justify-center";
-
-        const image = document.createElement("img");
-        image.src = logo.src;
-        image.alt = logo.alt;
-        image.loading = "lazy";
-        image.className = "h-20 w-auto max-w-full object-contain opacity-90 transition hover:opacity-100";
-
-        if (logo.href) {
-          const link = document.createElement("a");
-          link.href = logo.href;
-          link.className = "flex items-center justify-center";
-          link.setAttribute("aria-label", logo.alt);
-          link.appendChild(image);
-          item.appendChild(link);
-        } else {
-          item.appendChild(image);
+      try {
+        if ($track.hasClass("slick-initialized")) {
+          $track.slick("unslick");
         }
 
-        return item;
-      };
-
-      const buildSlides = () => {
-        const itemsPerSlide = getItemsPerSlide();
-        currentItemsPerSlide = itemsPerSlide;
-        track.innerHTML = "";
-
-        for (let index = 0; index < logos.length; index += itemsPerSlide) {
-          const group = logos.slice(index, index + itemsPerSlide);
-          const slide = document.createElement("div");
-          slide.className = "min-w-full px-4";
-
-          const list = document.createElement("ul");
-          list.className = `grid min-h-24 items-center justify-items-center gap-8 ${itemsPerSlide <= 2 ? "grid-cols-2" : itemsPerSlide === 3 ? "grid-cols-3" : "grid-cols-2 md:grid-cols-4 md:gap-12"}`;
-
-          group.forEach((logo) => {
-            list.appendChild(createLogoNode(logo));
-          });
-
-          slide.appendChild(list);
-          track.appendChild(slide);
-        }
-
-        slideCount = track.children.length;
-        prev?.classList.toggle("hidden", slideCount <= 1);
-        next?.classList.toggle("hidden", slideCount <= 1);
-      };
-
-      const sync = () => {
-        track.style.transform = `translateX(-${activeIndex * 100}%)`;
-      };
-
-      const startAutoplay = () => {
-        if (slideCount <= 1) return;
-        stopAutoplay();
-        timer = window.setInterval(() => {
-          activeIndex = (activeIndex + 1 + slideCount) % slideCount;
-          sync();
-        }, intervalMs);
-      };
-
-      const stopAutoplay = () => {
-        if (timer !== -1) {
-          window.clearInterval(timer);
-          timer = -1;
-        }
-      };
-
-      prev?.addEventListener("click", () => {
-        activeIndex = (activeIndex - 1 + slideCount) % slideCount;
-        sync();
-      });
-
-      next?.addEventListener("click", () => {
-        activeIndex = (activeIndex + 1 + slideCount) % slideCount;
-        sync();
-      });
-
-      const handleResize = () => {
-        const nextItemsPerSlide = getItemsPerSlide();
-        if (nextItemsPerSlide !== currentItemsPerSlide) {
-          activeIndex = 0;
-          buildSlides();
-          sync();
-          startAutoplay();
-        }
-      };
-
-      root.addEventListener("mouseenter", stopAutoplay);
-      root.addEventListener("mouseleave", startAutoplay);
-      window.addEventListener("resize", handleResize);
-
-      buildSlides();
-      sync();
-      startAutoplay();
+        $track.slick({
+          slidesToShow: desktopItems,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: intervalMs,
+          arrows: true,
+          prevArrow: prev instanceof HTMLElement ? prev : undefined,
+          nextArrow: next instanceof HTMLElement ? next : undefined,
+          dots: false,
+          infinite: true,
+          pauseOnHover: true,
+          pauseOnFocus: true,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: tabletItems,
+              },
+            },
+            {
+              breakpoint: 640,
+              settings: {
+                slidesToShow: mobileItems,
+              },
+            },
+          ],
+        });
+      } catch {
+        root.dataset.logoBound = "false";
+      }
     });
   };
 

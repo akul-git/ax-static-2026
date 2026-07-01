@@ -17,11 +17,16 @@
     "@astrojs/react": "^4.4.0",
     "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.4.7",
+    "jquery": "^3.7.1",
     "mediaelement": "^7.1.0",
     "nodemailer": "^9.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "slick-carousel": "^1.8.1",
     "tailwindcss": "^4.3.1",
     "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/jquery": "^4.0.1"
   }
 }
