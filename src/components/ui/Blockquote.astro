@@ -22,7 +22,7 @@ const isQuoteStyle = variant === "quote";
       {isQuoteStyle ? "\u201c\u201d" : "\u201c"}
     </div>
     <blockquote class="relative">
-      <p class={`${isQuoteStyle ? "text-5xl italic font-medium text-sky-700 text-center" : "text-lg md:text-2xl leading-relaxed"} ${textColor} md:leading-[1.85]`}>
+      <p class={`${isQuoteStyle ? "text-3xl italic font-medium text-sky-700 text-center" : "text-lg md:text-2xl leading-relaxed"} ${textColor} md:leading-[1.85]`}>
         {quote}<slot />
       </p>
     </blockquote>

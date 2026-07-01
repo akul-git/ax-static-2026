@@ -7,6 +7,7 @@ const {
   backgroundAlt = "Book a demo background",
   href = "/book-demo",
   buttonLabel = "BOOK A DEMO",
+  demoHeading = "",
   overlay = "linear-gradient(90deg, rgba(2,132,199,0.22), rgba(15,23,42,0.24))",
   minHeight = "18rem",
 } = Astro.props;
@@ -28,7 +29,12 @@ const {
 
   <div class="absolute inset-0" style={`background:${overlay};`}></div>
 
-  <div class="relative z-10 flex min-h-[inherit] items-center justify-center px-6 py-8">
+  <div class="relative z-10 flex flex-col gap-4 min-h-[inherit] items-center justify-center px-6 py-8">
+    {demoHeading ? (
+      <span class="text-center text-xl font-bold text-white">
+        {demoHeading}
+      </span>
+    ) : null}
     <Button
       href={href}
       class="rounded-lg bg-sky-600 px-12 py-4 text-4xl font-bold tracking-wide text-white shadow-lg hover:bg-sky-500"

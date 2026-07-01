@@ -1,16 +1,228 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import List from "../../components/ui/List.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner
+      height="sm"
+      image="../../assets/images/asset-criticality-banner-01.jpg"
+    >
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        Asset Criticality Management
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Establish, manage and reduce the risk of your asset base!
+      </p>
+    </HeroBanner>
+  </div>
+  <div
+    class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+  >
+    <div class="flex flex-col gap-6 divide-y divide-accent/80">
+      <div class="pb-6">
+        <Eyebrow class="text-black">
+          TAKE THE EMOTION OUT OF YOUR DECISIONS
+        </Eyebrow>
+
+        <Heading class="mb-4 font-normal!" level={4}>
+          <span class="">When Everything's Critical, Nothing is…</span>
+        </Heading>
+        <p>
+          After evaluating over 25 different <strong>criticality models</strong
+          >, we have come to one conclusion: they all fell short in their
+          program. From the calculation used to establish the score, how they
+          utilized the ranking index, and the overall amount of time it took to
+          chip away at their extensive asset registry, this system was both
+          ineffective and inefficient. We’ve solved these issues with our <span
+            class="text-orange-400 font-bold">ECR Management System</span
+          >.
+        </p>
+      </div>
+      <div class="pt-3 mb-10 max-w-127.5 mx-auto">
+        <blockquote class="relative">
+          <p
+            class={`text-lg italic font-medium  text-center" : " leading-relaxed"} md:leading-[1.85]`}
+          >
+            “ We thought our standard critically ranking calculation was pretty
+            solid, we soon found out that we forgot half of the equation and
+            more importantly how to use this value throughout the entire asset
+            life cycle.”
+          </p>
+        </blockquote>
+
+        <span class="block text-right mt-2 italic"
+          >~ Director of Global Engineering</span
+        >
+      </div>
+    </div>
+
+    <Section>
+      <h2 class="text-2xl mb-4">
+        <span class="block text-accent italic">
+          Discover this end-to-end system.
+        </span>
+      </h2>
+      <!-- ../images/asset-criticality-02-640x319.jpg -->
+      <BookDemo
+        backgroundImage="../../assets/images/asset-criticality-02-640x319.jpg"
+        buttonLabel="CLICK TO REQUEST A DEMO"
+        href="/book-demo"
+        minHeight="16rem"
+      />
+    </Section>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Criticality Management</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Criticality Management.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final approach, framework, and service outcomes.</p>
+    <div
+      class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div class="flex flex-col">
+        <div class="mb-4">
+          <Heading level={4} class="mb-4 font-normal!">
+            <span>Problems We Solve…</span>
+          </Heading>
+          <ul
+            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+          >
+            <li>Current scoring falls short</li>
+            <li>The process takes too long</li>
+            <li>We have a score – now what?</li>
+            <li>The ECR score is used to just prioritize work</li>
+            <li>No analysis of the impact of criticality</li>
+          </ul>
+        </div>
+        <div class="my-6">
+          <Heading level={4} class="mb-4 font-normal!">
+            <span>Solution Details…</span>
+          </Heading>
+          <p>
+            Our <strong>Criticality Management System</strong> allows you to utilize
+            your existing criteria, or you can develop/refine your program, scoring
+            and weights to establish an improved risk index. Simply load your CMMS
+            asset registry, plug in your criteria and you’re ready to go. You can
+            answer specific criteria on large groups of assets, by class, department
+            (operational impact) making the process of calculating risk quick & easy.
+            You will be able to analyze your total cost, time, parts, preventive maintenance,
+            and work history against your criticality index to make the right decisions
+          </p>
+
+          <ul
+            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+          >
+            <li>ECR Calculation calculator</li>
+            <li>CoE-Corporate program design</li>
+            <li>Full scale program analytics</li>
+            <li>Progress tracking</li>
+            <li>Tools / techniques alignment matrix</li>
+          </ul>
+        </div>
+        <div class="mt-8">
+          <h2 class="text-2xl">
+            <span class="block text-accent">
+              Ready to solve these problems?
+            </span>
+          </h2>
+          <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
+            <li>How to uncover the hidden gaps in your calculations</li>
+            <li>Using ECR only for prioritization</li>
+            <li>Not using ECR throughout the lifecycle of the asset</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <Blockquote
+          class="max-w-7xl mx-auto border-none shadow-none"
+          variant="quote"
+          textColor="text-accent"
+        >
+          Most organizations miss the mark on establishing, scoring, and using
+          their criticality ranking system.
+        </Blockquote>
+
+        <div class="mt-8">
+          <Heading level={4} class="mb-4 font-normal!">
+            <span>What we offer…</span>
+          </Heading>
+          <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4">
+            <FlippingCard
+              class="offer-flip"
+              minHeight="20rem"
+              frontTitle="360Navigator SaaS ECR Module"
+              frontPreText="FLIP TO LEARN MORE"
+              backText="Centralized and automated criticality process to establish, analyze and manage asset risk."
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="20rem"
+              frontTitle="Asset Criticality Program Design"
+              frontPreText="FLIP TO LEARN MORE"
+              backText="Develop or refine your ECR criteria, ranges of families, alignment of tools and techniques and the way to use the process"
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="20rem"
+              frontTitle="Facilitated Workshops"
+              frontPreText="FLIP TO LEARN MORE"
+              backText="Support and guidance to work through your asset registry in no time."
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="20rem"
+              frontTitle="ECR Program Analytics"
+              frontPreText="FLIP TO LEARN MORE"
+              backText="Full range of ready-for-use, interactive criticality program analytics at the click of a button."
+            />
+          </div>
+
+          <Heading level={5} class="my-4 font-normal! text-right italic">
+            <span
+              >A full suite of solutions for your asset criticality program!</span
+            >
+          </Heading>
+        </div>
+        <div class="mt-6 flex flex-col  ">
+          <Heading level={4} class=" font-normal! mb-4">
+            <span>We make the process of…</span>
+          </Heading>
+          <p>
+            …designing, calculating, analyzing, and managing risk of your assets
+            easy. Our full-range, ECR system enables you to capture
+            ever-changing, business-critical criteria to calculate and revisit
+            your asset base anytime you want. Align priorities, analyze ECR
+            program performance and sweep through your entire asset registry in
+            no time.
+          </p>
+           <div class="my-6">
+            
+             <BookDemo
+            backgroundImage="../../assets/images/bgn-searching.jpg"
+            buttonLabel="CLICK TO REQUEST A DEMO"
+            href="/book-demo"
+            minHeight="10rem"
+            demoHeading="Review and identify the gaps in your current system.."
+          >
+          
+
+        </BookDemo>
+
+           </div>
+         
+        </div>
+      </div>
     </div>
   </Section>
 </Layout>
