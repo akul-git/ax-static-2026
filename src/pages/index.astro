@@ -7,13 +7,12 @@ import "../styles/global.css";
 import Slider from "../components/ui/Slider.astro";
 import { slides, sliderConfig } from "../data/slider";
 import { testimonials } from "../data/ui/testimonial";
-import { cards, consultingServices } from "../data/ui/card";
+import { cards } from "../data/ui/card";
 import HeroBanner from "../components/ui/HeroBanner.astro";
 import Heading from "../components/ui/Heading.astro";
 import Testimonial from "../components/ui/Testimonial.astro";
 import ClientLogoSlider from "../components/ui/ClientLogoSlider.astro";
 import { clientLogoSliderData } from "../data/ui";
-
 ---
 
 <Layout>
@@ -127,18 +126,43 @@ import { clientLogoSliderData } from "../data/ui";
 		class="bg-[url(/assets/images/bgn-industries.png)] bg-cover bg-center bg-no-repeat"
 	>
 		<!-- <h2 class="mb-5 text-3xl font-semibold text-slate-900">2. Cards</h2> -->
-		<div
-			class="grid gap-6 md:grid-cols-2 xl:grid-cols-3 *:last:col-span-3 max-w-7xl mx-auto"
-		>
+		<div class="grid grid-col-1 gap-6 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto">
 			{cards.map((card) => <Card {...card} />)}
 
-			<Card {...consultingServices} className="col-span-3" />
+			<article class="rounded border border-slate-200 bg-white p-4 sm:p-6 shadow-lg grid grid-cols-1 lg:col-span-3 md:grid-cols-3 gap-4">
+				<div class="lg:col-span-2">
+					<p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700 mt-0!">
+						<span class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"></span>ACCELERATE YOUR TEAM'S RESULTS IN THE SHORTEST TIME
+</p>
+						<h4 class="text-xl sm:text-2xl md:text-3xl font-semibold">
+						<span class=" text-brand"> Focused
+						</span><span class=" text-accent">
+							Consulting Services
+						</span>
+					</h4>
+					<p class="mt-4 text-slate-700">
+						Our teams vast experience will help you design, fine-tune and deploy your most critical activities, achieving your objectives in a fraction of the time, leaving you the valuable time to run your organization.
+					</p>
+					<a href="/solutions/work-management-optimization" class="mt-6 inline-flex items-center gap-2 text-lg font-semibold transition-colors duration-200 text-accent hover:text-brand">
+						Learn more <span aria-hidden="true">»</span></a>
+				</div>
+				<ul class="list-disc space-y-1 pl-6 text-base leading-7  marker:text-sky-700 mt-4">
+          <li>Corporate, CoE Program Design</li>
+		  <li>Recapitalization Analytics</li>
+		  <li>TPM Operational Reliability</li>
+		  <li>Reliability Engineering</li>
+		  <li>Asset Health Assessments</li>
+        </ul>
+			</article>
 		</div>
 	</Section>
 
+
 	<div class="hero">
 		<div class="hero__content max-w-7xl mx-auto">
-			<p class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-white mt-0!">
+			<p
+				class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-white mt-0!"
+			>
 				<span
 					class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"
 				></span> GREAT REVIEWS FOR OUR SERVICES
@@ -146,28 +170,27 @@ import { clientLogoSliderData } from "../data/ui";
 
 			<Heading level={2}>
 				<span class="text-white">Real Results </span>
-				<span class="block text-white">
-					Client Praise
-				</span>
+				<span class="block text-white"> Client Praise </span>
 			</Heading>
-<section class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
-	
-		<Testimonial {...testimonials[0]} />
-		<Testimonial {...testimonials[1]} />
-		<Testimonial {...testimonials[2]} />
-	
-</section>
-
+			<section
+				class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto"
+			>
+				<Testimonial {...testimonials[0]} />
+				<Testimonial {...testimonials[1]} />
+				<Testimonial {...testimonials[2]} />
+			</section>
 		</div>
 	</div>
 
-	
-  <Section class="bg-[#f5f5f6]">
-	  <ClientLogoSlider {...clientLogoSliderData} interval={3200} mobileItemsPerSlide={2} tabletItemsPerSlide={3} desktopItemsPerSlide={4} />
-  </Section>
-
-  
-	
+	<Section class="bg-[#f5f5f6]">
+		<ClientLogoSlider
+			{...clientLogoSliderData}
+			interval={3200}
+			mobileItemsPerSlide={2}
+			tabletItemsPerSlide={3}
+			desktopItemsPerSlide={4}
+		/>
+	</Section>
 </Layout>
 
 <style>
@@ -186,7 +209,7 @@ import { clientLogoSliderData } from "../data/ui";
 	}
 
 	.hero__content {
-		padding-top:116px;
+		padding-top: 116px;
 		color: white;
 	}
 </style>
