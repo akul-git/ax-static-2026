@@ -1,0 +1,31 @@
+---
+type Props = {
+  align?: "left" | "center" | "right";
+  class?: string;
+};
+
+const {
+  align = "left",
+  class: className = "",
+} = Astro.props as Props;
+
+const alignments = {
+  left: "justify-start text-left",
+  center: "justify-center text-center",
+  right: "justify-end text-right",
+} as const;
+
+const classes = [
+  "mb-3 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-slate-700",
+  alignments[align],
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+<p class={classes}>
+  <span class="h-0.5 w-10 shrink-0 bg-accent"></span>
+
+  <slot />
+</p>

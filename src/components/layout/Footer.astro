@@ -1,6 +1,8 @@
 ---
 import menu from "../../data/menu.json";
 import footerData from "../../data/footer.json";
+import Heading from "../ui/Heading.astro";
+import Eyebrow from "../ui/Eyebrow.astro";
 
 type MenuLink = { label: string; href: string };
 type MenuItem = MenuLink & { children?: MenuLink[] };
@@ -12,20 +14,112 @@ type FooterData = {
 };
 
 const safeMenu: MenuItem[] = Array.isArray(menu) ? (menu as MenuItem[]) : [];
-const primaryLinks: MenuLink[] = safeMenu.map((item) => ({ label: item.label, href: item.href }));
+const primaryLinks: MenuLink[] = safeMenu.map((item) => ({
+  label: item.label,
+  href: item.href,
+}));
 const safeFooterData: FooterData = (footerData || {}) as FooterData;
-const footerColumns: FooterColumn[] = Array.isArray(safeFooterData.columns) ? safeFooterData.columns : [];
-const footerExtras: MenuLink[] = Array.isArray(safeFooterData.extraLinks) ? safeFooterData.extraLinks : [];
+const footerColumns: FooterColumn[] = Array.isArray(safeFooterData.columns)
+  ? safeFooterData.columns
+  : [];
+const footerExtras: MenuLink[] = Array.isArray(safeFooterData.extraLinks)
+  ? safeFooterData.extraLinks
+  : [];
 const backToTopLabel = safeFooterData.backToTopLabel || "Back to Top";
 
 const footerLinks = [...primaryLinks, ...footerExtras];
 ---
 
-<footer data-site-footer class="mt-auto border-t border-slate-200  text-slate-100">
+<footer
+  data-site-footer
+  class="mt-auto border-t border-slate-200 text-slate-100"
+>
   <div class="bg-brand">
     <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-      <div class="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-        {footerColumns.map((column) => (
+      <ul class="grid gap-8 md:grid-cols-2 xl:grid-cols-4 *:text-sm!">
+        <li>
+          <Eyebrow class="text-white"> ASSET ANALYTIX </Eyebrow>
+
+          <Heading class="mb-4" level={6}>
+            <span class="text-orange-400"> Headquarters </span>
+          </Heading>
+
+          <p class="text-white">
+            Contacting us is the shortest path from localized initiatives to
+            systemic maintenance productivity improvement.
+          </p>
+          <ul
+            class="text-white leading-6 marker:text-orange-400 mt-4 *:flex *:gap-2 *:items-center"
+          >
+            <li>
+              <i class="opacity-50 fa-sharp fa-solid fa-phone"></i> 919 342 5350
+            </li>
+            <li>
+              <i class="opacity-50 fa-sharp fa-solid fa-envelope"></i> sales@assetanalytix.com
+            </li>
+            <li>
+              <i class="opacity-50 fa-sharp fa-solid fa-globe"></i> assetanalytix.com
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <Eyebrow class="text-white"> OUR LOCATIONS </Eyebrow>
+
+          <Heading class="mb-4" level={6}>
+            <span class="text-orange-400"> Where to find us? </span>
+          </Heading>
+          <img
+            src="../../assets/images/asset-analytix-office-locations.png"
+            alt="Asset Analytix Office Locations"
+            class="w-auto! max-w-[inherit]!"
+          />
+        </li>
+
+        <li>
+          <Eyebrow class="text-white"> GET IN TOUCH </Eyebrow>
+
+          <Heading class="mb-4" level={6}>
+            <span class="text-orange-400"> Asset Analytix Social links </span>
+          </Heading>
+
+          <p >
+            <a
+              href="https://www.linkedin.com/company/assetanalytix-the-official-page/" target="_blank" class="border-b border-b-white/50! hover:border-b-white! transition">
+              Connect with us through LinkedIn.</a><i
+                class="fa-brands fa-square-linkedin fa-xl"></i>
+          </p>
+          <ul class="leading-6 text-white mt-4 *:flex *:gap-2 *:items-center">
+            <li>
+              <i class="fa-sharp fa-solid fa-location-dot opacity-50"></i> Corporate:
+              919 342 5350
+            </li>
+            <li>
+              <i class="fa-sharp fa-solid fa-location-dot opacity-50"></i> North Carolina:
+              sales@assetanalytix.com
+            </li>
+            <li>
+              <i class="fa-sharp fa-solid fa-location-dot opacity-50"></i> India:
+              +91-20-2729-5572
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <Eyebrow class="text-white"> SOC 2 Certified </Eyebrow>
+
+          <Heading class="mb-4" level={6}>
+            <span class="text-orange-400"> We are SOC 2 Certified </span>
+          </Heading>
+           <img
+            src="../../assets/images/aicpa-soc-160x160.png"
+            alt="Asset Analytix Office Locations"
+            class="w-auto! max-w-32!"
+          />
+        </li>
+      </ul>
+
+      <!-- {footerColumns.map((column) => (
           <div>
             <h3 class="text-lg font-semibold text-white">{column.title}</h3>
             <p class="mt-3 text-sm leading-7 text-slate-300">
@@ -37,20 +131,27 @@ const footerLinks = [...primaryLinks, ...footerExtras];
               ))}
             </p>
           </div>
-        ))}
-      </div>
+        ))} -->
     </div>
   </div>
 
-  <div class="border-t border-slate-800 bg-slate-900 ">
-    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+  <div class="border-t border-slate-800 bg-slate-900">
+    <div
+      class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8"
+    >
       <nav aria-label="Footer navigation">
-        <ul class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-200">
-          {footerLinks.map((link) => (
-            <li class="list-none">
-              <a href={link.href} class="transition hover:text-sky-300">{link.label}</a>
-            </li>
-          ))}
+        <ul
+          class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-200"
+        >
+          {
+            footerLinks.map((link) => (
+              <li class="list-none">
+                <a href={link.href} class="transition hover:text-sky-300">
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
       </nav>
 
@@ -68,14 +169,19 @@ const footerLinks = [...primaryLinks, ...footerExtras];
 <script>
   const initFooter = () => {
     const footer = document.querySelector("[data-site-footer]");
-    if (!(footer instanceof HTMLElement) || footer.dataset.footerBound === "true") return;
+    if (
+      !(footer instanceof HTMLElement) ||
+      footer.dataset.footerBound === "true"
+    )
+      return;
     footer.dataset.footerBound = "true";
 
     const backBtn = footer.querySelector("[data-back-to-top]");
     if (!(backBtn instanceof HTMLButtonElement)) return;
 
     const updateState = () => {
-      const canScroll = document.documentElement.scrollHeight > window.innerHeight + 60;
+      const canScroll =
+        document.documentElement.scrollHeight > window.innerHeight + 60;
       const shouldShow = canScroll && window.scrollY > 240;
       backBtn.classList.toggle("hidden", !shouldShow);
       backBtn.classList.toggle("inline-flex", shouldShow);
