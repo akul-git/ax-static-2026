@@ -6,6 +6,7 @@ import HeroBanner from "../../components/ui/HeroBanner.astro";
 import Eyebrow from "../../components/ui/Eyebrow.astro";
 import Heading from "../../components/ui/Heading.astro";
 import BookDemo from "../../components/ui/BookDemo.astro";
+import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
 ---
 
 <Layout>
@@ -72,17 +73,18 @@ import BookDemo from "../../components/ui/BookDemo.astro";
 
       <div>
         <h2 class="text-2xl mb-4">
-          <span class="block text-accent italic">
+          <span class="block text-accent">
             Take control of your CMMS data quality
           </span>
         </h2>
-        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <!-- ../images/asset-criticality-02-640x319.jpg  happy-with-data-ax-standard.jpg-->
         <BookDemo
-          backgroundImage="../../assets/images/asset-criticality-02-640x319.jpg"
+         backgroundImage={happyWithDataImage.src}
           buttonLabel="CLICK TO REQUEST A DEMO"
-          href="/book-demo"
-          minHeight="16rem"
+          href=""
+          minHeight="20rem"
         />
+        
       </div>
     </div>
     <article class="bg-slate-100 p-6">
