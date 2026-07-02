@@ -1,8 +1,10 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import ContactForm from '../../components/ui/ContactForm.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import ContactForm from "../../components/ui/ContactForm.astro";
+import "../../styles/global.css";
+import Heading from "../../components/ui/Heading.astro";
 
 const status = Astro.url.searchParams.get("status") || "";
 const isSuccess = status === "submitted";
@@ -13,7 +15,8 @@ const errorMessages = {
   rate_limited: "Too many attempts. Please wait a few minutes and retry.",
   origin_error: "Request origin could not be verified.",
   payload_too_large: "Submission payload is too large.",
-  delivery_not_configured: "Form delivery is not configured yet. Set SMTP and recipient environment variables.",
+  delivery_not_configured:
+    "Form delivery is not configured yet. Set SMTP and recipient environment variables.",
   server_error: "Something went wrong on our side. Please try again shortly.",
 };
 
@@ -21,33 +24,84 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 ---
 
 <Layout title="Contact Us">
-  <Section>
+  <Section class="max-w-7xl mx-auto">
+    <h1 class="text-4xl font-semibold tracking-tight text-slate-900">
+      Contact Us
+    </h1>
+    <p class="mt-6 text-lg">
+      Thank you for your interest in contacting us! Asset Analytix is an
+      international leader in providing solutions to maintenance productivity
+      and analytics issues. We encourage you to reach out and look forward to
+      hearing from you.
+    </p>
     <div class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] xl:items-start">
       <div>
-        <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p>
-        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Contact Us</h1>
-        <p class="mt-6 text-lg leading-8 text-slate-600">Use the form to connect with our team about consulting, solutions, workshops, or a product demonstration.</p>
-        <div class="mt-8 space-y-4 text-slate-700">
-          <p><strong>Email:</strong> info@assetanalytix.com</p>
-          <p><strong>Phone:</strong> +1 (800) 555-0140</p>
-          <p><strong>Response time:</strong> Typically within one business day.</p>
-        </div>
-        <div class="mt-8 rounded-xl border border-slate-200 bg-white p-5 text-sm leading-7 text-slate-600 shadow-sm">
-          <p class="font-semibold text-slate-900">Secure deployment note</p>
-          <p class="mt-2">This form UI is ready for a same-origin secure backend endpoint. Connect a real CAPTCHA provider and server-side validation before going live.</p>
+        <!-- <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p> -->
+
+        <div class="mt-8 space-y-4">
+          <Eyebrow> CONTACT US WITH EASE </Eyebrow>
+          <Heading level={2}>
+            <span class="text-accent">Get in </span>
+            <span class="text-brand"> touch </span>
+          </Heading>
+          <p>
+            Call us or simply send us an email anytime you want. If you have any
+            questions, please feel free to contact us using the form below.
+          </p>
+          <figure>
+            <img
+              src="/assets/images/imgContact-Us-block.jpg"
+              alt="Contact Us"
+            />
+          </figure>
         </div>
       </div>
 
       <div>
-        {isSuccess ? (
-          <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
-            Thank you. Your message has been received.
-          </p>
-        ) : errorMessage ? (
-          <p class="mb-5 rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
-            {errorMessage}
-          </p>
-        ) : null}
+        <div class="grid grid-cols-3 mt-8 mb-4">
+          <ul>
+            <li><span class="icon-ax-01 text-accent text-5xl"></span></li>
+            <li>
+              <Heading level={5} class="mb-2! mt-2">
+                <span class="text-brand">US Office </span>
+              </Heading>
+            </li>
+            <li>12820 Hwy 64 West,</li>
+            <li>Apex, NC 27523, USA</li>
+          </ul>
+          <ul>
+            <li><span class="icon-ax-02 text-accent text-5xl"></span></li>
+            <li>
+              <Heading level={5} class="mb-2! mt-2">
+                <span class="text-brand">Call Us </span>
+              </Heading>
+            </li>
+            <li>T: 919-342-5350</li>
+            <li>Fax: 877-787-7558</li>
+          </ul>
+          <ul>
+            <li><span class="icon-ax-03 text-accent text-5xl"></span></li>
+            <li>
+              <Heading level={5} class="mb-2! mt-2">
+                <span class="text-brand">Email Us </span>
+              </Heading>
+            </li>
+           <li>sales@assetanalytix.com</li>
+           <li>info@assetanalytix.com</li>
+           <li>Helpline@assetanalytix.com</li>
+          </ul>
+        </div>
+        {
+          isSuccess ? (
+            <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+              Thank you. Your message has been received.
+            </p>
+          ) : errorMessage ? (
+            <p class="mb-5 rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
+              {errorMessage}
+            </p>
+          ) : null
+        }
 
         <ContactForm action="/api/contact" />
       </div>
