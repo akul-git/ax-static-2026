@@ -34,7 +34,7 @@ const isQuoteStyle = variant === "quote";
   aria-hidden="true"
 ></i>
     <blockquote class="relative">
-      <p class={`${isQuoteStyle ? "text-3xl italic font-medium text-sky-700 text-center" : "text-lg md:text-2xl leading-relaxed"} ${textColor} md:leading-[1.85]`}>
+      <p class={`${isQuoteStyle ? "text-3xl font-medium text-sky-700 text-center" : "text-lg md:text-2xl leading-relaxed"} ${textColor} `}>
         {quote}<slot />
       </p>
     </blockquote>
