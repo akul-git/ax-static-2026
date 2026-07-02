@@ -1,16 +1,199 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
 ---
 
 <Layout>
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner height="sm" image="../../assets/images/cmms-banner-03.jpg">
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        CMMS Data Optimization
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Bad Data, Bad Decisions.
+      </p>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
+    <!-- <div class="mx-auto max-w-4xl">
       <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
       <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">CMMS Data Optimization</h1>
       <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for CMMS Data Optimization.</p>
       <p class="mt-4 text-slate-600">Replace this text with your final methodology, deliverables, and timeline.</p>
+    </div> -->
+
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6">
+          <h2 class="text-2xl mb-2 font-semibold">
+            <span class="block text-accent">
+              70% of CMMS Data Can’t Be Trusted — Let’s Fix That.
+            </span>
+          </h2>
+
+          <p class="font-bold leading-8 text-slate-900">
+            Bad Data, Bad Decisions.
+          </p>
+
+          <p>
+            Most maintenance and reliability teams know their CMMS data isn’t
+            right — but few realize just how costly it is.
+          </p>
+
+          <ul
+            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+          >
+            <li>
+              <strong>70% of organizations</strong> report unsatisfactory CMMS data
+              quality and low trust in their system (2025 ITI Research Findings).
+            </li>
+            <li>
+              <strong>$12.9 million per year</strong> — the average cost of poor data
+              quality for organizations (Gartner).
+            </li>
+            <li>
+              Distrust in CMMS creates wasted labor, unreliable schedules,
+              duplicate inventory, and misleading analytics.
+            </li>
+          </ul>
+          <p>If you can’t trust your CMMS, you can’t trust your decisions.</p>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl mb-4">
+          <span class="block text-accent italic">
+            Take control of your CMMS data quality
+          </span>
+        </h2>
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <BookDemo
+          backgroundImage="../../assets/images/asset-criticality-02-640x319.jpg"
+          buttonLabel="CLICK TO REQUEST A DEMO"
+          href="/book-demo"
+          minHeight="16rem"
+        />
+      </div>
     </div>
+    <article class="bg-slate-100 p-6">
+      <h2 class="text-2xl mb-2 font-semibold">
+        <span class="block text-accent">
+          How It Happens (The 3 Levels of Data Quality Issues)
+        </span>
+      </h2>
+
+      <p>Where CMMS Data Goes Wrong</p>
+
+      <p>CMMS data issues typically fall into three universal categories:</p>
+
+      <ul
+        class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+      >
+        <li>
+          <strong>Missing Data →</strong> report unsatisfactory CMMS data quality
+          and low trust in their system (2025 ITI Research Findings).
+        </li>
+        <li>
+          <strong>Incorrect Data →</strong> the average cost of poor data quality
+          for organizations (Gartner).
+        </li>
+        <li>
+          <strong>Data Drift → </strong>gradual misalignment over time as new
+          entries diverge from standards and governance lapses
+        </li>
+      </ul>
+      <p>CMMS data issues typically fall into three universal categories:</p>
+
+      <ul
+        class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+      >
+        <li><strong>Configuration Data</strong></li>
+
+        <li><strong>Master Data</strong></li>
+        <li><strong>Transactional Data</strong></li>
+        <li>
+          Examples: Manufacturers, asset classes, cost centers, failure codes.
+        </li>
+        <li>
+          Impact: Poor configuration creates chaos in reporting and prevents
+          consistent roll-ups across sites.
+        </li>
+        <li>Examples: Asset records, spare parts, PMs, job plans.</li>
+        <li>
+          Impact: Incomplete or inconsistent foundational records drive
+          inventory waste, unreliable schedules, and compliance risks.
+        </li>
+        <li>Examples: Work orders, notifications, service requests.</li>
+        <li>
+          Impact: Missing or inaccurate work order details make analytics
+          unreliable, masking trends and blocking meaningful insights.
+        </li>
+      </ul>
+
+      <Heading class=" mt-4 font-bold!" level={6}>
+        Summary line:
+      </Heading>
+      <p class="my-1!">Without active monitoring, missing, incorrect, and drifting data gradually compound across all three levels — until the CMMS can no longer be trusted.</p>
+    </article>
+
+
+     <article class="my-4 p-6">
+      <h2 class="text-2xl mb-2 font-semibold">
+        <span class="block text-accent">
+         The Solution – CMMS Data Optimization
+        </span>
+      </h2>
+
+      <p>A Guided Path to CMMS Excellence</p>
+
+      <p>CMMS Data Optimization is the easy, structured way to fix the problem for good.</p>
+
+      <ul
+        class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+      >
+        <li>
+          <strong>Monitor  →</strong> Score your CMMS data health, highlight risks, and build a cleansing plan.
+        </li>
+        <li>
+          <strong>Assess  →</strong> Conduct a deep-dive into your CMMS setup, workflows, and adoption.
+        </li>
+        <li>
+          <strong>Cleanse  → </strong>Deliver a fully refreshed dataset using accelerated tools, user-developed queries, and AI-powered smart detection.
+        </li>
+      </ul>
+      <h2 class="text-2xl my-2 font-semibold">
+        <span class="block text-accent">
+       Outcome
+        </span>
+      </h2>
+
+       <p>A  <strong>fully refreshed, standardized, analytics-ready dataset.</strong></p>
+
+      <ul
+        class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+      >
+        
+        <li>
+          <strong>Continuous monitoring</strong> to sustain data health as a living program.
+        </li>
+        <li>
+          Unlock <strong>rapid, accurate analysis</strong> across larger asset populations.
+        </li>
+        <li>A CMMS your teams can finally <strong>trust</strong>.</li>
+        
+      </ul>
+
+     
+    </article>
   </Section>
 </Layout>
