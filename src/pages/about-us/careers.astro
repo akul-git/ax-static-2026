@@ -1,16 +1,129 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import Button from "../../components/ui/Button.astro";
 ---
 
 <Layout>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Careers</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Careers.</p>
-      <p class="mt-4 text-slate-600">Replace this text with open roles, culture highlights, and hiring process details.</p>
+    <div class="mx-auto max-w-6xl">
+      <h1 class="text-5xl font-medium text-accent">Sr. Reliability Engineer</h1>
+      <div class="flex flex-col gap-7">
+        <div class="flex flex-col gap-1">
+          <div class="mt-5 flex gap-1 text-lg">
+            <span class="font-bold">Location:</span>
+            <span>US-Based Remote</span>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <span class="rounded-full bg-gray-200 px-4 py-1 text-lg">
+              Minimum 8–10 Years Experience
+            </span>
+
+            <span class="rounded-full bg-gray-200 px-4 py-1 text-lg">
+              Full-Time/Contract
+            </span>
+
+            <span class="rounded-full bg-gray-200 px-4 py-1 text-lg">
+              On-site travel 20-40%
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <h2 class="text-lg font-bold">About Asset Analytix</h2>
+
+          <div class="pl-8">
+            <p class="text-lg">
+              Asset Analytix, Inc. a leading software product (360 Navigator)
+              and services company, is seeking Sr. Reliability Engineer with
+              8–10 years of experience in
+            </p>
+
+            <ul class="list-disc pl-6 text-lg mt-2">
+              <li>Asset reliability & maintenance strategy optimization</li>
+              <li>Developing FMEA</li>
+              <li>We have a score – now what?</li>
+              <li>Bad actor management, FRACAS, RCA, Defect elimination</li>
+              <li>Asset reliability performance improvement</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <h2 class="text-lg font-bold">Key Responsibilities:</h2>
+
+          <div class="pl-8">
+            <ul class="list-disc pl-6 text-lg">
+              <li>
+                Support the execution of asset reliability improvement projects
+                under the guidance of senior consultants
+              </li>
+              <li>
+                Conduct and facilitate Failure Modes and Effects Analysis (FMEA)
+                and support Preventive Maintenance (PM) optimization initiatives
+              </li>
+              <li>
+                Analyse asset performance data to identify reliability gaps and
+                improvement opportunities
+              </li>
+              <li>
+                Assist in optimizing Preventive Maintenance (PM) programs based
+                on failure modes and asset criticality
+              </li>
+              <li>
+                Contribute to improving asset reliability and uptime through
+                structured reliability strategies and effective work management
+                practices
+              </li>
+              <li>
+                Support configuration and alignment of data between CMMS/EAM
+                systems and 360Navigator
+              </li>
+              <li>
+                Apply Lean principles to maintenance processes, focusing on
+                continuous improvement, waste reduction, and efficiency
+              </li>
+              <li>
+                Monitor program performance using data-driven metrics and
+                provide actionable insights for improvement
+              </li>
+              <li>
+                Support the delivery of consultancy services through a
+                combination of remote and on-site engagement.
+              </li>
+              <li>
+                Collaborate with leadership to continuously improve
+                methodologies, Processes and service delivery approaches
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <h2 class="text-lg font-bold">Qualifications:</h2>
+
+          <div class="pl-8">
+            <ul class="list-disc pl-6 text-lg">
+              <li>Bachelor's degree in Engineering or related field.</li>
+              <li>
+                Experience in pharmaceutical, biotech or manufacturing
+                preferred.
+              </li>
+              <li>Strong experience with FMEA and PM strategy development.</li>
+              <li>Excellent communication and facilitation skills.</li>
+              <li>Willingness to travel 20–40%.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Button -->
+      <Button
+        href="/specialoffers"
+        class="mt-7 uppercase"
+        variant="secondary"
+        size="md">Apply Now</Button
+      >
     </div>
   </Section>
 </Layout>
