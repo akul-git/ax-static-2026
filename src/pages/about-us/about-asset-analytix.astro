@@ -1,55 +1,279 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import Accordion from '../../components/ui/Accordion.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import "../../styles/global.css";
+import Heading from "../../components/ui/Heading.astro";
+import ContactForm from "../../components/ui/ContactForm.astro";
 
-const assessmentAccordion = [
-  {
-    title: '360 Precision Assessment',
-    content: 'A complete baseline to identify technical constraints, data quality gaps, and execution opportunities across your operation.',
-  },
-  {
-    title: 'Measures Architecture',
-    content: 'Build a practical KPI architecture that aligns leadership expectations with frontline execution and reliability outcomes.',
-  },
-  {
-    title: 'Baselining Pilot Events',
-    content:
-      'At AX, baselining is a process, a series of actions, and a discovery cycle required to achieve the targeted technical end state. Each 2-week event becomes a micro experience of a full-scale solution.',
-    bullets: [
-      'EAM Program Assessment',
-      'Reliability Strategies / PMO',
-      'Work Management P&S',
-      'Storeroom / Procurement',
-      'I&E / Calibration',
-      'Production Op-Ex',
-    ],
-    open: true,
-  },
-  {
-    title: 'Solution Deployment',
-    content: 'Translate the pilot into measurable rollout waves with clear ownership, milestones, and practical governance.',
-  },
-  {
-    title: 'Data & Analytics',
-    content: 'Operationalize trusted dashboards and analysis routines that support faster decisions and consistent execution.',
-  },
-];
+const status = Astro.url.searchParams.get("status") || "";
+
+const isSuccess = status === "submitted";
+
+const errorMessages = {
+  invalid: "Please complete all required fields with valid information.",
+  captcha_error: "CAPTCHA verification failed. Please try again.",
+  rate_limited: "Too many attempts. Please wait a few minutes and retry.",
+  origin_error: "Request origin could not be verified.",
+  payload_too_large: "Submission payload is too large.",
+  delivery_not_configured:
+    "Form delivery is not configured yet. Set SMTP and recipient environment variables.",
+  server_error: "Something went wrong on our side. Please try again shortly.",
+};
+const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 ---
 
 <Layout>
+  <!-- Hero -->
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner
+      height="sm"
+      image="../../assets/images/asset-criticality-banner-01.jpg"
+    >
+      <h1 class="text-7xl font-medium leading-tight text-white lg:text-6xl">
+        About Asset Analytix
+      </h1>
+    </HeroBanner>
+  </div>
+  <!-- Content -->
   <Section>
+    <div class="mx-auto flex flex-col gap-7">
+      <!-- Intro -->
+      <div>
+        <p class="text-xl leading-relaxed">
+          Since 1995,
+          <strong>Asset Analytix</strong>
+          has focused on one primary objective: Help our clients at all levels of
+          their organization get control of managing the entire life cycle of their
+          assets. Our
+          <strong>team of experts</strong>
+          are not just trainers, coaches and guides; we are former practitioners with
+          the experience to help you quickly identify, manage and close performance-limiting
+          gaps in your
+          <strong>Reliability &amp; Asset Management</strong>
+          programs.
+        </p>
+      </div>
 
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600"><span class="icon-businesspeople-08 text-purple-900 text-5xl block" aria-hidden="true"></span> About Us</p>
-      <h1 class="mt-4 text-4xl  tracking-tight text-slate-900">About Asset Analytix    <span class="icon-ax-04 text-orange-400 text-4xl"></span></h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for About Asset Analytix.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your company overview, mission, and differentiators.</p>
+      <!-- Mission -->
+      <div>
+        <h2 class="text-xl mb-3 font-bold text-accent">Mission</h2>
 
-      <div class="mt-10">
-     
-        <Accordion items={assessmentAccordion} />
+        <p class="text-xl leading-relaxed">
+          To be the catalyst that empowers organizations worldwide with
+          intelligent, data-driven asset management solutions—maximizing
+          performance, elevating reliability program maturity, and delivering
+          sustainable value across the asset lifecycle.
+        </p>
+      </div>
+
+      <!-- Vision -->
+      <div>
+        <h2 class="mb-3 text-xl font-bold text-accent">Vision</h2>
+
+        <p class="text-xl leading-relaxed">
+          To redefine the future of asset management by enabling organizations
+          to harness the power of data, optimize reliability strategies, and
+          build resilient, future-ready operations that deliver measurable,
+          sustainable value.
+        </p>
+      </div>
+
+      <!-- Quote -->
+      <Blockquote
+        variant="quote"
+        textColor="text-[#1e73be]"
+        class="border-none shadow-none"
+        quote="Our core philosophy: Design solutions that simplify the process of improving."
+      />
+
+      <!-- Image -->
+      <div class="grid grid-cols-7 ml-8 gap-8 items-start">
+        <!-- Left Image -->
+        <div class="col-span-2">
+          <img
+            src="../../assets/images/About-us-triangle.png"
+            alt="Asset Analytix Office Locations"
+            class="w-full max-w-sm"
+          />
+        </div>
+
+        <!-- Right Content -->
+        <div class="col-span-5">
+          <h2 class="text-3xl font-normal text-accent mb-4">
+            We are proud and excited to...
+          </h2>
+
+          <p class="mb-6 text-lg">
+            ...provide a total end-to-end solution; The perfect combination of
+            expertise, processes and tools to accomplish your asset management
+            objectives including:
+          </p>
+          <div class="mb-4">
+            <ul class="list-disc space-y-1 pl-6 text-lg leading-7 mt-4">
+              <li>
+                Subject matter expertise to accelerate your journey in training,
+                coaching or delivery
+              </li>
+              <li>Standardized processes for consistency and scale</li>
+              <li>
+                Information / Performance analytics to activate insight in the
+                clutter of data
+              </li>
+              <li>The ECR score is used to just prioritize work</li>
+              <li>
+                Software solutions for implementing change to simplify and
+                automate change
+              </li>
+            </ul>
+          </div>
+
+          <p class="text-lg leading-relaxed mb-8">
+            <strong
+              >Asset Analytix focuses our solutions at all levels of an
+              organization;</strong
+            >
+            from Corporate CoE program design and management to local site deployment.
+            This top-down / bottom-up approach has proven to be the perfect balance
+            of standardization, leverage and scale as well as solving localized problems
+            for true cultural transformation.
+          </p>
+
+          <!-- Services -->
+          <div class="grid grid-cols-3 gap-x-5 gap-y-5 mt-2">
+            <div class="flex gap-2">
+              <span class="icon-ax-08 text-sky-700 text-5xl"></span>
+              <div class="font-bold">Maintenance & Engineering</div>
+            </div>
+            <div class="flex gap-2">
+              <span class="icon-ax-04 text-sky-700 text-5xl"></span>
+              <div class="font-bold">Reliability Engineering</div>
+            </div>
+            <div class="flex gap-2">
+              <span class="icon-ax-05 text-sky-700 text-5xl"></span>
+              <div class="font-bold">IT, Systems and Data</div>
+            </div>
+            <div class="flex gap-2">
+              <span class="icon-ax-07 text-sky-700 text-5xl"></span>
+              <div class="font-bold">Storeroom</div>
+            </div>
+            <div class="flex gap-2">
+              <span class="icon-ax-06 text-sky-700 text-5xl"></span>
+              <div class="font-bold">Operational Excellence</div>
+            </div>
+            <div class="flex gap-2">
+              <span class="icon-ax-10 text-sky-700 text-5xl"></span>
+              <div class="font-bold">Facilities & Utilities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex flex-col">
+          <Eyebrow class="text-black"> BOTTOM LINE RESULTS </Eyebrow>
+          <h2 class="text-3xl text-black">
+            Quantifiable Improvements in the Shortest Time
+          </h2>
+          <p class="text-lg mt-2">
+            Our solutions open capacity, improve system performance, reduce cost
+            and elevate reliability by addressing key aspects of your
+            Reliability & asset management program including: asset
+            commissioning / onboarding, asset strategies (PMOptimization), TPM
+            Operator Driven Reliability, Failure management, Work execution
+            management, planning & scheduling, MRO storeroom optimization, CMMS
+            optimization, Measures/Reporting and Analytics, and program
+            performance management; all wrapped with analytics.
+          </p>
+          <div class="w-32 border-t-2 border-gray-400 mx-auto mt-8"></div>
+          <div class="text-black font-semibold text-center text-xl mt-5">
+            We look forward to sharing with you our unique approach and toolkit
+            to take your Reliability & Asset Management program to a whole new
+            level.
+          </div>
+          <div class="w-32 border-t-2 border-gray-400 mx-auto mt-8"></div>
+        </div>
+      </div>
+
+      <div class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] xl:items-start">
+        <div>
+          <!-- <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p> -->
+          <div class="mt-8 text-center">
+            <div class="flex justify-center gap-2">
+              <Eyebrow
+                ><span class="text-base"> CONTACT US WITH EASE</span>
+              </Eyebrow>
+              <Eyebrow />
+            </div>
+            <Heading level={2}>
+              <span class="text-accent">Get in </span>
+              <span class="text-brand"> touch </span>
+            </Heading>
+            <p class="mt-3 font-medium text-lg">
+              Call us or simply send us an email anytime you want. If you have
+              any questions, please feel free to contact us using the form
+              below.
+            </p>
+            <div class="w-130 border-t-2 border-gray-300 mx-auto mt-8"></div>
+
+            <div class="grid grid-cols-3 mt-8 mb-4">
+              <ul>
+                <li><span class="icon-ax-01 text-accent text-5xl"></span></li>
+                <li>
+                  <Heading level={5} class="mb-2! mt-2">
+                    <span class="text-brand">US Office </span>
+                  </Heading>
+                </li>
+                <li>12820 Hwy 64 West,</li>
+                <li>Apex, NC 27523, USA</li>
+              </ul>
+              <ul>
+                <li><span class="icon-ax-02 text-accent text-5xl"></span></li>
+                <li>
+                  <Heading level={5} class="mb-2! mt-2">
+                    <span class="text-brand">Call Us </span>
+                  </Heading>
+                </li>
+                <li>T: 919-342-5350</li>
+                <li>Fax: 877-787-7558</li>
+              </ul>
+              <ul>
+                <li><span class="icon-ax-03 text-accent text-5xl"></span></li>
+                <li>
+                  <Heading level={5} class="mb-2! mt-2">
+                    <span class="text-brand">Email Us </span>
+                  </Heading>
+                </li>
+                <li>sales@assetanalytix.com</li>
+                <li>info@assetanalytix.com</li>
+              </ul>
+            </div>
+            <figure class="mt-6">
+              <img
+                src="/assets/images/imgContact-Us-block.jpg"
+                alt="Contact Us"
+              />
+            </figure>
+          </div>
+        </div>
+        <div>
+          {
+            isSuccess ? (
+              <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
+                Thank you. Your message has been received.
+              </p>
+            ) : errorMessage ? (
+              <p class="mb-5 rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
+                {errorMessage}
+              </p>
+            ) : null
+          }
+          <ContactForm action="/api/contact" />
+        </div>
       </div>
     </div>
   </Section>
