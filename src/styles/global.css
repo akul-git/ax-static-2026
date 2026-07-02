@@ -68,3 +68,7 @@ article p {
 header nav ul li:last-child a {
     background-color: oklch(95.1% 0.026 236.824);
 }
+
+.bg-test {
+    background-image: linear-gradient(150deg, transparent 50%, hsl(220deg 8% 79% / 20%) 30%);
+}
