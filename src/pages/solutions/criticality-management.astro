@@ -30,8 +30,9 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </p>
     </HeroBanner>
   </div>
+  <Section>
   <div
-    class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+    class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
   >
     <div class="flex flex-col gap-6 divide-y divide-accent/80">
       <div class="pb-6">
@@ -71,7 +72,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </div>
     </div>
 
-    <Section>
+    <div>
       <h2 class="text-2xl mb-4">
         <span class="block text-accent italic">
           Discover this end-to-end system.
@@ -84,9 +85,9 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
         href="/book-demo"
         minHeight="16rem"
       />
-    </Section>
+    </div>
   </div>
-  <Section>
+  <div>
     <div
       class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
     >
@@ -224,5 +225,6 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
         </div>
       </div>
     </div>
+  </div>
   </Section>
 </Layout>
