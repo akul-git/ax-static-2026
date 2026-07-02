@@ -1,16 +1,37 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import Heading from "../../components/ui/Heading.astro";
+import HubSpotForm from "../../components/ui/HubSpotForm.astro";
 ---
 
 <Layout>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Join Our Newsletter</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Join Our Newsletter.</p>
-      <p class="mt-4 text-slate-600">Replace this text with subscription benefits, cadence, and signup details.</p>
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div>
+        <img
+          src="/assets/images/banner_Image_Newsletter.png"
+          alt="Join Our Newsletter"
+          class="w-full h-auto"
+        />
+      </div>
+      <div>
+        <Heading level={5}>
+          <span class="text-accent">Subscribe to our Newsletter</span>
+          <!-- CMMS Program
+                <span class="text-accent">
+                  Optimization 
+                </span>-->
+        </Heading>
+        <p class="mb-4 text-slate-600">
+          Stay updated about our news, promotions and events.
+        </p>
+        <HubSpotForm
+          portalId="25291755"
+          formId="84294f75-1401-4b3c-b7b6-1867aec7479c"
+        />
+      </div>
     </div>
   </Section>
 </Layout>

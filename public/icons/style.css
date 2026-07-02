@@ -1,5 +1,6 @@
 @font-face {
     font-family: "fonticon";
+    background-image: url(/src/assets/);
     src: url("fonts/fonticon.woff2") format("woff2"),
         url("fonts/fonticon.ttf") format("truetype"),
         url("fonts/fonticon.woff") format("woff");
@@ -7,6 +8,7 @@
     font-style: normal;
     font-display: block;
 }
+
 .icon {
     /* Use !important to prevent extensions from overriding this font. */
     font-family: "fonticon" !important;
@@ -40,14 +42,42 @@
     color: currentColor;
 }
 
-.icon-ax-01::before { content: "\e901"; }
-.icon-ax-02::before { content: "\e910"; }
-.icon-ax-03::before { content: "\e919"; }
-.icon-ax-04::before { content: "\e903"; }
-.icon-ax-05::before { content: "\e90d"; }
-.icon-ax-06::before { content: "\e90b"; }
-.icon-ax-07::before { content: "\e912"; }
-.icon-ax-08::before { content: "\f138"; }
-.icon-ax-09::before { content: "\f142"; }
-.icon-ax-10::before { content: "\f124"; }
+.icon-ax-01::before {
+    content: "\e901";
+}
 
+.icon-ax-02::before {
+    content: "\e910";
+}
+
+.icon-ax-03::before {
+    content: "\e919";
+}
+
+.icon-ax-04::before {
+    content: "\e903";
+}
+
+.icon-ax-05::before {
+    content: "\e90d";
+}
+
+.icon-ax-06::before {
+    content: "\e90b";
+}
+
+.icon-ax-07::before {
+    content: "\e912";
+}
+
+.icon-ax-08::before {
+    content: "\f138";
+}
+
+.icon-ax-09::before {
+    content: "\f142";
+}
+
+.icon-ax-10::before {
+    content: "\f124";
+}
