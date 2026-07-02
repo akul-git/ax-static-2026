@@ -1,16 +1,206 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import HubSpotForm from "../../components/ui/HubSpotForm.astro";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import List from "../../components/ui/List.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import FlippingCard from "../../components/ui/FlippingCard.astro";
+import Button from "../../components/ui/Button.astro";
 ---
 
 <Layout>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Consulting</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Remote Workshops</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Remote Workshops.</p>
-      <p class="mt-4 text-slate-600">Replace this text with workshop topics, format, and participation outcomes.</p>
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 pb-2 border-b-4 border-slate-200"
+    >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6">
+          <Eyebrow class="text-black">
+            TAKE THE EMOTION OUT OF YOUR DECISIONS
+          </Eyebrow>
+          <Heading level={2}>
+            <span class="text-brand block"> Remote, Facilitated </span>
+            <span class="text-accent block">Improvement Workshops </span>
+          </Heading>
+          <p class="mt-4 text-lg leading-8">
+            The 360LaunchPad Rapid Improvement Workshops solve the challenges in
+            balancing effective EAM continuous improvement efforts while
+            managing cost, time and travel.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <div class="h-3/5 w-2/3">
+          <figure class="flex justify-center">
+            <img src="../../assets/images/360-launchpad-logo@2x.png" />
+          </figure>
+        </div>
+        <div>
+          <Button
+            href="/specialoffers"
+            class="mt-12 uppercase"
+            variant="secondary"
+            size="md">Download 360LaunchPad whitepaper</Button
+          >
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div>
+        <Heading class="mb-4 font-normal!" level={4}>
+          <span class="">Unique Delivery Model</span>
+        </Heading>
+        <p>
+          Our unique delivery model was originally developed to help our
+          Fortune-100 clients deploy essential EAM improvement initiatives
+          around the world, in many locations (even from their kitchen table).
+          LaunchPad Remote Workshops provide the effectiveness of traditional
+          face-to-face consulting with the efficiency of flexible,
+          technology-based, facilitated working sessions at a fraction of the
+          cost.
+        </p>
+        <p class="mt-2">
+          And…It’s <strong>delivered live on your schedule.</strong>
+        </p>
+      </div>
+      <div>
+        <p>
+          <strong>LaunchPad solves these issues:</strong>
+        </p>
+        <ul
+          class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+        >
+          <li>Not sure what to work on</li>
+          <li>Difficulty justifying cost to improve</li>
+          <li>Limited time – lots of projects</li>
+          <li>Need help with the know-how</li>
+          <li>Hard to get everyone aligned</li>
+          <li>Hard to prove and sustain gains</li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6">
+          <Eyebrow class="text-black">
+            NO TRAVEL, NO TIME - NO PROBLEM
+          </Eyebrow>
+          <Heading level={2}>
+            <span class="text-brand block"> Facilitated Improvement </span>
+            <span class="text-accent block">ANYTIME - ANYWHERE </span>
+          </Heading>
+        </div>
+      </div>
+
+      <div>
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <figure class="flex justify-center">
+          <img src="../../assets/images/Launchpad-networking-rev4.jpg" />
+        </figure>
+      </div>
+    </div>
+
+    <div>
+      <Heading class="mb-4 mt-4 font-normal!" level={4}>
+        <span class="">Hands On Workshop – This is NO Webinar!</span>
+      </Heading>
+      <p>
+        <strong>ASSET ANALYTIX,</strong> with it’s 18 years of experience in Reliability
+        & Asset Management has identified the essential aspects of the most important
+        improvement initiatives that can be effectively delivered off-site and blended
+        into a Hands-On experience.
+      </p>
+      <ul
+        class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+      >
+        <li>Work together as a team</li>
+        <li>Join from any location (even from home!)</li>
+        <li>Bring multiple sites together for standardization</li>
+      </ul>
+    </div>
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 pb-2 border-b-4 border-slate-200"
+    >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6">
+          <Eyebrow class="text-black"> SELECTED FOR MAXIMUM IMPACT </Eyebrow>
+          <Heading level={2}>
+            <span class="text-brand block"> Essential Focused Events </span>
+            <span class="text-accent block">Get to Work Right Away </span>
+          </Heading>
+        </div>
+      </div>
+
+      <div>
+        <Heading class="mb-4 mt-4 font-normal!" level={3}>
+          <span class="">$4.2MM</span>
+        </Heading>
+        <p>Gains realized by a single PMOptimization Event</p>
+      </div>
+    </div>
+
+    <div class="flex flex-col justify-center mx-72">
+      <div>
+        <Heading class="mb-4 font-normal!" level={4}>
+          <span class="">How it works…</span>
+        </Heading>
+        <p>
+          This complete training workshop will keep you engaged every step of
+          the way, defining & applying processes and techniques, using our
+          advanced toolkit to deliver exceptional result! Get ready to roll up
+          your sleeves and get to work immediately.
+        </p>
+      </div>
+
+      <div class="pb-2 border-b-4 border-slate-200">
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <figure class="flex justify-center">
+          <img src="../../assets/images/LaunchPad-4-parts-web.jpg" />
+        </figure>
+      </div>
+    </div>
+
+    <div
+      class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4 sm:gap-2 md:gap-4 lg:gap-6 xl:gap-8 mt-7"
+    >
+      <article>
+        <Heading level={5}>
+          <span class="text-accent">Contact Us for a Free Consultation</span>
+        </Heading>
+        <p>
+          Reach out to us to find out how you can put together a Remote Workshop
+          program that will help your organization maximize the savings
+          opportunities through effective improvement initiatives.
+        </p>
+
+        <figure class="flex justify-center">
+          <img src="../../assets/images/imgContact-Us-block.jpg" />
+        </figure>
+      </article>
+      <article>
+        <!-- <Heading level={5}>
+          <span class="text-accent">
+            To access the webinar recording, please complete the form below
+          </span>
+        </Heading> -->
+        <HubSpotForm
+          portalId="25291755"
+          formId="8d856a10-eb06-45dd-a968-0b8556aeffb7"
+        />
+      </article>
     </div>
   </Section>
 </Layout>

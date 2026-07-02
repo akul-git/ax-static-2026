@@ -2,15 +2,209 @@
 import Layout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import '../../styles/global.css';
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import List from "../../components/ui/List.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
+    <div class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950" >
+    <HeroBanner
+      height="sm"
+      image="../../assets/images/consulting-banner-04.jpg"
+    >
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        Consulting Services
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Boots on the ground subject matter expertise to accelerate results.
+      </p>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
+     <div class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8" >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6">
+          <Eyebrow class="text-black">
+          SUPERCHARGE YOUR TEAM'S VELOCITY
+          </Eyebrow>
+
+          <Heading class="mb-4 font-normal!" level={4}>
+            <span class="">Expertise and Added Capacity When You Need It</span>
+          </Heading>
+          <p>
+           Sometimes you simply need a boost in your program deployment. Whether it’s adding bandwidth to hit the ground in an existing effort or strategic guidance with years of expertise, we have you covered.
+          </p>
+           <p>
+           Our teams vast experience will help you design, fine-tune and deploy your most critical activities, achieving your objectives in a fraction of the time, leaving you the valuable time to run your organization.
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <BookDemo
+          backgroundImage="../../assets/images/Consulting-block-02-e1617376305434-640x320.jpg"
+          buttonLabel="CLICK TO BOOK A REVIEW SESSION"
+          href="/book-demo"
+          minHeight="16rem"
+        />
+      </div>
+    </div> 
+    <div>
+      <div
+        class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+      >
+        <div class="flex flex-col">
+          <div class="mb-4">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>Problems We Solve…</span>
+            </Heading>
+            <ul
+              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+            >
+              <li>Implementation deadlines</li>
+              <li>Limited internal solutions</li>
+              <li>Need guidance and coaching</li>
+              <li>Need a strong partner in our journey</li>
+            </ul>
+          </div>
+          <div class="my-6">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>Solution Details…</span>
+            </Heading>
+            <p>
+              If you are looking for a dependable partner in your <strong>maintenance and reliability</strong> and  
+              <strong> asset management </strong> journey, you’ve found it. Our engagements can be fit to any need; from short-long term duration to design to deployment, our projects build long lasting relationships where our clients can call on us as needed.
+            </p>
+            <p>
+              You will save valuable time and resources and can hit the ground running utilizing Asset Analytix experience and standardized approaches that are adapted to each client’s unique circumstances.
+            </p>
+
+            <ul
+              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+            >
+              <li>Corporate reliability program design</li>
+              <li>Multi-site benchmarking</li>
+              <li>Training materials and process branding</li>
+              <li>Physical, boots on the ground expertise</li>
+              <li>Asset walkdowns</li>
+              <li>Staff augmentation and short-term assignments</li>
+              <li>New asset preventive maintenance development</li>
+              <li>Asset on-boarding programs</li>
+              <li>Recapitalization reporting and management</li>
+            </ul>
+          </div>
+          <div class="mt-8">
+            <h2 class="text-2xl">
+              <span class="block text-accent">
+                Ready to solve these problems?
+              </span>
+            </h2>
+            <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
+              <li>I have a limited budget, what can we get done?</li>
+              <li>Our company doesn’t like to work with consultants and prefers to deliver internally.</li>
+              <li>Our site is unique…</li>
+              <li>We got burned with a past consultant and our site is uncomfortable with going down this path again.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <Blockquote
+            class="max-w-7xl mx-auto border-none shadow-none"
+            variant="quote"
+            textColor="text-accent" >
+           Learn how our team of experts can accelerate your journey.
+          </Blockquote>
+
+          <div class="mt-8">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>What we offer…</span>
+            </Heading>
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Center of Excellence (CoE) Program Design"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Years of expertise in corporate asset managmeent program design and standardized processes and tools."
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Reliability Engineering"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Expertise in bad actor management, Root cause and failure mitigation, analytics and reporting."
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Recapitalization Support"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Development or support in analyzing and forecasting recapitalization investment and strategy."
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="ECR Program Analytics"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Full range of ready-for-use, interactive criticality program analytics at the click of a button."
+              />
+               <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Bill of Materials (BOMS) Development"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Development of critical bills of materials for your assets."
+              />
+               <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="TPM / ODR Operational Reliability"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Program design and deployment in front line operator-driven reliability."
+              />
+            </div>
+
+            <Heading level={5} class="my-4 font-normal! text-right italic">
+              <span
+                >Knowledge, processes and bandwidth to get the job done.</span
+              >
+            </Heading>
+          </div>
+          <div class="mt-6 flex flex-col">
+            <Heading level={4} class="font-normal! mb-4">
+              <span>We deliver on-site support services with our team of experts…</span>
+            </Heading>
+            <p>
+             …in a variety of common reliability, maintenance and asset management subjects. From turn-key to coaching and training, our team will extend your team’s capabilities with processes, technology, methodology or purely added bandwidth to accelerate your results.
+            </p>
+            <div class="my-6">
+              <BookDemo
+                backgroundImage="../../assets/images/bgn-searching.jpg"
+                buttonLabel="CLICK TO BOOK A REVIEW SESSION"
+                href="/book-demo"
+                minHeight="10rem"
+                demoHeading="Review and identify the gaps in your current system.."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="mx-auto max-w-4xl">
       <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Consulting</p>
       <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Consulting Services</h1>
       <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Consulting Services.</p>
       <p class="mt-4 text-slate-600">Replace this text with your service model, delivery process, and engagement options.</p>
-    </div>
+    </div> -->
   </Section>
 </Layout>
