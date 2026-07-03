@@ -2,20 +2,37 @@
 import Navigation from "../layout/Navigation.astro";
 import axLogo from "../../assets/asset-analytix-logo.svg";
 ---
-<header
-  data-site-header
-  class="sticky top-0 z-120 bg-white transition-all duration-300 ease-out shadow"
->
+<div data-site-header-spacer aria-hidden="true" class="h-0 transition-all duration-300 ease-out"></div>
+<header data-site-header class="site-header relative bg-white transition-all duration-300 ease-out shadow-sm">
   <div class="mx-auto flex max-w-7xl justify-between items-center py-4 px-6 lg:px-8">
     <a href="/"><img src={axLogo.src} width="206" height="54" alt="AX Homepage" /></a>
     <Navigation />
   </div>
 </header>
 
+<style>
+  .site-header {
+    z-index: 120;
+  }
+
+  .site-header.is-stuck {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  }
+</style>
+
 <script>
   const initHeaderScroll = () => {
     const header = document.querySelector("[data-site-header]");
-    if (!(header instanceof HTMLElement) || header.dataset.headerBound === "true") return;
+    const spacer = document.querySelector("[data-site-header-spacer]");
+    if (
+      !(header instanceof HTMLElement) ||
+      !(spacer instanceof HTMLElement) ||
+      header.dataset.headerBound === "true"
+    ) return;
     header.dataset.headerBound = "true";
 
     let ticking = false;
@@ -23,11 +40,14 @@ import axLogo from "../../assets/asset-analytix-logo.svg";
 
     const update = () => {
       const currentY = window.scrollY;
+      const headerHeight = header.offsetHeight;
 
       if (currentY >= stickAt) {
-        header.classList.add("shadow-md");
+        header.classList.add("is-stuck");
+        spacer.style.height = `${headerHeight}px`;
       } else {
-        header.classList.remove("shadow-md");
+        header.classList.remove("is-stuck");
+        spacer.style.height = "0px";
       }
 
       ticking = false;
@@ -41,6 +61,8 @@ import axLogo from "../../assets/asset-analytix-logo.svg";
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", update);
+    update();
   };
 
   initHeaderScroll();
