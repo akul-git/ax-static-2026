@@ -8,7 +8,7 @@ const {
   href = "/book-demo",
   buttonLabel = "BOOK A DEMO",
   demoHeading = "",
-  overlay = "linear-gradient(90deg, rgba(2,132,199,0.22), rgba(15,23,42,0.24))",
+  overlay = "rgb(0 0 0 / 10%)",
   minHeight = "18rem",
 } = Astro.props;
 ---
@@ -37,7 +37,7 @@ const {
     ) : null}
     <Button
       href={href}
-      class="rounded-lg bg-sky-600 px-12 py-4 text-4xl font-bold tracking-wide text-white shadow-lg hover:bg-sky-500"
+      class="rounded-lg bg-accent px-12 py-4 text-4xl font-bold  text-white shadow-lg hover:bg-sky-700"
     >
       {buttonLabel}
     </Button>
