@@ -5,6 +5,7 @@ import Eyebrow from "../../components/ui/Eyebrow.astro";
 import ContactForm from "../../components/ui/ContactForm.astro";
 import "../../styles/global.css";
 import Heading from "../../components/ui/Heading.astro";
+import HubSpotForm from "../../components/ui/HubSpotForm.astro";
 
 const status = Astro.url.searchParams.get("status") || "";
 const isSuccess = status === "submitted";
@@ -90,7 +91,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
              <li>Helpline@assetanalytix.com</li>
             </ul>
           </div>
-          {
+          <!-- {
             isSuccess ? (
               <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
                 Thank you. Your message has been received.
@@ -101,7 +102,11 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
               </p>
             ) : null
           }
-          <ContactForm action="/api/contact" />
+          <ContactForm action="/api/contact" /> -->
+         <HubSpotForm
+          portalId="25291755"
+          formId="88983a4a-2ebf-4e4c-8088-c344bddb2cae"
+        />
         </div>
       </div>
     </Section>

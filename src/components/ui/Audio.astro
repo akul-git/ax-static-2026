@@ -1,0 +1,50 @@
+---
+interface Props {
+  src: string;
+  controls?: boolean;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  preload?: "none" | "metadata" | "auto";
+  class?: string;
+  wrapperClass?: string;
+  audioClass?: string;
+  bg?: string;
+  border?: string;
+  padding?: string;
+  rounded?: string;
+  style?: string;
+}
+
+const {
+  src,
+  controls = true,
+  autoplay = false,
+  loop = false,
+  muted = false,
+  preload = "metadata",
+  class: className = "",
+  wrapperClass = "",
+  audioClass = "",
+  bg = "bg-slate-50",
+  border = "border-2 border-slate-200",
+  padding = "p-4",
+  rounded = "rounded-2xl",
+  style = "",
+} = Astro.props as Props;
+---
+
+<div class={`audio-wrapper  ${className} ${wrapperClass}`.trim()} style={style}>
+  <audio
+  controlsList="nodownload"
+    src={src}
+    controls={controls}
+    autoplay={autoplay}
+    loop={loop}
+    muted={muted}
+    preload={preload}
+    class={`w-full ${audioClass}`.trim()}
+  >
+    Your browser does not support the audio element.
+  </audio>
+</div>
