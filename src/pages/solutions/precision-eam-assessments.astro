@@ -14,7 +14,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
 <Layout>
   <Section>
      <div
-    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+    class="text-center text-shadow-md text-shadow-neutral-950"
   >
     <HeroBanner
       height="sm"
@@ -34,12 +34,12 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </p>
     </HeroBanner>
   </div>
-  <Section>
+
   <div
-    class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+    class="grid grid-cols-1 gap-8  pt-8  md:grid-cols-2 md:gap-10 lg:gap-14 "
   >
     <div class="flex flex-col gap-6 divide-y divide-accent/80">
-      <div class="pb-6">
+      <div class="pb-6 flex flex-col gap-3">
         <Eyebrow class="text-black">
           ASSESS - ANALYZE - BENCHMARK - STRATEGY DEVELOPMENT
 
@@ -55,9 +55,15 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
 
           <p>
          This lead to a major breakthrough! We developed the <span
-            class="text-orange-400 font-bold">Precision Assessment System</span>that you complete on-line with on-demand guidance and real-time analytics.
+            class="text-orange-400 font-bold">Precision Assessment System</span>that you complete on-line with on-demand guidance and real-time analytics.</p>
+          
+<p>
+         <span
+            class="text-accent font-bold">Book your Getting Started session</span>today to conduct  your complementary RAM GPS assessment. Discover the power of this next generation approach to baselining, benchmarking and strategy development.
 
+            
       </div>
+      
       <div class="pt-3 mb-10 max-w-127.5 mx-auto">
         <blockquote class="relative">
           <p
@@ -90,7 +96,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
   </div>
   <div>
     <div
-      class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+      class=" grid  grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
     >
       <div class="flex flex-col">
         <div class="mb-4">
@@ -100,11 +106,13 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
           <ul
             class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
           >
-            <li>Current scoring falls short</li>
-            <li>The process takes too long</li>
-            <li>We have a score – now what?</li>
-            <li>The ECR score is used to just prioritize work</li>
-            <li>No analysis of the impact of criticality</li>
+            <li>Assessments are incredibly costly and time consuming</li>
+            <li>We evaluate things that aren’t even important to us</li>
+            <li>They require facilitation we have to give up large chunks of time and take the assessment in totality</li>
+            <li>Average travel expenses for our facilitator is around $2K</li>
+            <li>The average cost of EAM assessments are $30,000</li>
+                        <li>We don’t do much with the findings!</li>
+
           </ul>
         </div>
         <div class="my-6">
@@ -112,24 +120,22 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
             <span>Solution Details…</span>
           </Heading>
           <p>
-            Our <strong>Criticality Management System</strong> allows you to utilize
-            your existing criteria, or you can develop/refine your program, scoring
-            and weights to establish an improved risk index. Simply load your CMMS
-            asset registry, plug in your criteria and you’re ready to go. You can
-            answer specific criteria on large groups of assets, by class, department
-            (operational impact) making the process of calculating risk quick & easy.
-            You will be able to analyze your total cost, time, parts, preventive maintenance,
-            and work history against your criticality index to make the right decisions
+            Our <strong>Precisions Assessment System</strong> comes fully loaded with RAM-GPS, modeled around the 
+            <strong> Uptime Elements Framework.</strong> 
+             You can build or load your own customized assessments. Gain the power of a centralized assessment model that can be benchmarked, and that provides an asynchronous accurate model with no travel.
           </p>
 
           <ul
             class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
           >
-            <li>ECR Calculation calculator</li>
-            <li>CoE-Corporate program design</li>
-            <li>Full scale program analytics</li>
-            <li>Progress tracking</li>
-            <li>Tools / techniques alignment matrix</li>
+            <li>Ready-for-use Reliability & Asset Management precision assessment</li>
+            <li>Customize your own assessment</li>
+            <li>Asynchronous, on-demand SaaS application</li>
+            <li>Full, real-time analytics</li>
+            <li>Strategy building module for taking the right action, immediately</li>
+               <li>Community benchmarking</li>
+            <li>Internal corporate benchmarking</li>
+
           </ul>
         </div>
         <div class="mt-8">
@@ -139,9 +145,13 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
             </span>
           </h2>
           <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
-            <li>How to uncover the hidden gaps in your calculations</li>
-            <li>Using ECR only for prioritization</li>
-            <li>Not using ECR throughout the lifecycle of the asset</li>
+            <li>Efforts are disconnected from the main goals of the organization</li>
+            <li>Chasing the wrong (too many) initiatives and/or in the wrong order</li>
+            <li>Not well coordinated across the organization – SILO’s of protective functions</li>
+                        <li>Lack of communication & correct measures to unite and lock in habits</li>
+
+                                    <li>Beyond “lip-service” – I feel like I’m fighting this battle alone</li>
+
           </ul>
         </div>
       </div>
@@ -151,77 +161,84 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
           variant="quote"
           textColor="text-accent"
         >
-          Most organizations miss the mark on establishing, scoring, and using
-          their criticality ranking system.
+          Focus your limited resources on the most impactful actions immediately.
         </Blockquote>
 
         <div class="mt-8">
           <Heading level={4} class="mb-4 font-normal!">
             <span>What we offer…</span>
           </Heading>
-          <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4">
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
 
 
 
 
             <FlippingCard
               class="offer-flip"
-              minHeight="20rem"
-              frontTitle="360Navigator SaaS ECR Module"
+              minHeight="14rem"
+              frontTitle="Corporate CoE & Site-based Models"
               frontBottomText="FLIP TO LEARN MORE"
-              backText="Centralized and automated criticality process to establish, analyze and manage asset risk."
+              backText="Pre-configured for individual or multi-site corporate benchmarking"
             />
             <FlippingCard
               class="offer-flip"
-              minHeight="20rem"
-              frontTitle="Asset Criticality Program Design"
+              minHeight="14rem"
+              frontTitle="RAM-GPS Uptime Elements Assessment"
               frontBottomText="FLIP TO LEARN MORE"
-              backText="Develop or refine your ECR criteria, ranges of families, alignment of tools and techniques and the way to use the process"
+              backText="A revolutionary, precision asessment system for your entire EAM program."
             />
             <FlippingCard
               class="offer-flip"
-              minHeight="20rem"
-              frontTitle="Facilitated Workshops"
+              minHeight="14rem"
+              frontTitle="Customized Assessments"
               frontBottomText="FLIP TO LEARN MORE"
-              backText="Support and guidance to work through your asset registry in no time."
+              backText="Load or build your own unlimited custom assessments in a single tool"
             />
             <FlippingCard
               class="offer-flip"
-              minHeight="20rem"
-              frontTitle="ECR Program Analytics"
+              minHeight="14rem"
+              frontTitle="Facilitated Working Sessions"
               frontBottomText="FLIP TO LEARN MORE"
-              backText="Full range of ready-for-use, interactive criticality program analytics at the click of a button."
+              backText="Remote or on-site Reliability & Asset Management expertise driving conversation and maximum discovery"
+            />
+             <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Train-the-Facilitator Program"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Skills and process transfer for internalizatoin of a multi-site deployment approach"
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Findings Evaluation and Strategy Design"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Expert lead findings review, interpretation and actionable strategy design"
             />
           </div>
 
           <Heading level={5} class="my-4 font-normal! text-right italic">
             <span
-              >A full suite of solutions for your asset criticality program!</span
-            >
+              >A balanced approach that is streamlined, scalable and fully automated</span
+  >
           </Heading>
         </div>
         <div class="mt-6 flex flex-col  ">
           <Heading level={4} class=" font-normal! mb-4">
-            <span>We make the process of…</span>
+            <span>We provide you with the insight and clarity…</span>
           </Heading>
           <p>
-            …designing, calculating, analyzing, and managing risk of your assets
-            easy. Our full-range, ECR system enables you to capture
-            ever-changing, business-critical criteria to calculate and revisit
-            your asset base anytime you want. Align priorities, analyze ECR
-            program performance and sweep through your entire asset registry in
-            no time.
+           …to know <strong>exactly</strong> where you are in your journey and what to work on based on your site’s individual objectives. Utilize our <span class="text-orange-400 font-bold">on-demand analytics</span> to evaluate your performance, identify your gaps, and <strong>PowerRank℠</strong>  focused areas that will make the most significant impact on your business objectives.
           </p>
            <div class="my-6">
             
              <BookDemo
-            backgroundImage="../../assets/images/bgn-searching.jpg"
-            buttonLabel="CLICK TO REQUEST A DEMO"
+            backgroundImage="../../assets/images/bgn-quotes.jpg"
+            buttonLabel="TAKE YOUR FIRST ASSESSMENT FREE"
             href="/book-demo"
-            minHeight="10rem"
-            demoHeading="Review and identify the gaps in your current system.."
+            minHeight="13rem"
+            demoHeading="If you want to experience the power and insight of our precision assessment system, sign up today for your own complimentary assessment and findings review session."
           >
-          
 
         </BookDemo>
 
@@ -231,6 +248,6 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </div>
     </div>
   </div>
-  </Section>
+ 
   </Section>
 </Layout>

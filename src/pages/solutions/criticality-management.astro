@@ -8,18 +8,70 @@ import Heading from "../../components/ui/Heading.astro";
 import BookDemo from "../../components/ui/BookDemo.astro";
 import List from "../../components/ui/List.astro";
 import Blockquote from "../../components/ui/Blockquote.astro";
-import FlippingCard from "../../components/ui/FlippingCard.astro"
+import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
-
+ 
 <Layout>
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner
+      height="sm"
+      image="../../assets/images/asset-criticality-banner-01.jpg"
+    >
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        Asset Criticality Management
+ 
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+ 
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Establish, manage and reduce the risk of your asset base!
+      </p>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Criticality Management</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Criticality Management.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final approach, framework, and service outcomes.</p>
+  <div
+    class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+  >
+    <div class="flex flex-col gap-6 divide-y divide-accent/80">
+      <div class="pb-6">
+        <Eyebrow class="text-black">
+          TAKE THE EMOTION OUT OF YOUR DECISIONS
+        </Eyebrow>
+ 
+        <Heading class="mb-4 font-normal!" level={4}>
+          <span class="">When Everything's Critical, Nothing is…</span>
+        </Heading>
+        <p>
+          After evaluating over 25 different <strong>criticality models</strong
+          >, we have come to one conclusion: they all fell short in their
+          program. From the calculation used to establish the score, how they
+          utilized the ranking index, and the overall amount of time it took to
+          chip away at their extensive asset registry, this system was both
+          ineffective and inefficient. We’ve solved these issues with our <span
+            class="text-orange-400 font-bold">ECR Management System</span
+          >.
+        </p>
+      </div>
+      <div class="pt-3 mb-10 max-w-127.5 mx-auto">
+        <blockquote class="relative">
+          <p
+            class={`text-lg italic font-medium  text-center" : " leading-relaxed"} md:leading-[1.85]`}
+          >
+            “ We thought our standard critically ranking calculation was pretty
+            solid, we soon found out that we forgot half of the equation and
+            more importantly how to use this value throughout the entire asset
+            life cycle.”
+          </p>
+        </blockquote>
+ 
+        <span class="block text-right mt-2 italic"
+          >~ Director of Global Engineering</span
+        >
+      </div>
     </div>
-
+ 
     <div>
       <h2 class="text-2xl mb-4">
         <span class="block text-accent ">
@@ -68,7 +120,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro"
             You will be able to analyze your total cost, time, parts, preventive maintenance,
             and work history against your criticality index to make the right decisions
           </p>
-
+ 
           <ul
             class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
           >
@@ -101,16 +153,16 @@ import FlippingCard from "../../components/ui/FlippingCard.astro"
           Most organizations miss the mark on establishing, scoring, and using
           their criticality ranking system.
         </Blockquote>
-
+ 
         <div class="mt-8">
           <Heading level={4} class="mb-4 font-normal!">
             <span>What we offer…</span>
           </Heading>
           <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4">
-
-
-
-
+ 
+ 
+ 
+ 
             <FlippingCard
               class="offer-flip"
               minHeight="20rem"
@@ -140,7 +192,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro"
               backText="Full range of ready-for-use, interactive criticality program analytics at the click of a button."
             />
           </div>
-
+ 
           <Heading level={5} class="my-4 font-normal! text-right italic">
             <span
               >A full suite of solutions for your asset criticality program!</span
@@ -160,7 +212,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro"
             no time.
           </p>
            <div class="my-6">
-            
+           
              <BookDemo
             backgroundImage="../../assets/images/bgn-searching.jpg"
             buttonLabel="CLICK TO REQUEST A DEMO"
@@ -168,10 +220,9 @@ import FlippingCard from "../../components/ui/FlippingCard.astro"
             minHeight="10rem"
             demoHeading="Review and identify the gaps in your current system.."
           >
-          
-
+      
         </BookDemo>
-
+ 
            </div>
          
         </div>
