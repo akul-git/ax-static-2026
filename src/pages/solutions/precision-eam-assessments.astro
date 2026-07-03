@@ -2,15 +2,252 @@
 import Layout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/ui/Section.astro';
 import '../../styles/global.css';
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import List from "../../components/ui/List.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Precision EAM Assessments</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Precision EAM Assessments.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final assessment model, findings, and recommendations.</p>
+     <div
+    class="text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner
+      height="sm"
+      image="../../assets/images/asset-criticality-banner-01.jpg"
+    >
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+       Precision EAM Assessments
+
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Identify and close the gaps in your Reliability & Asset Management Program!
+
+
+      </p>
+    </HeroBanner>
+  </div>
+
+  <div
+    class="grid grid-cols-1 gap-8  pt-8  md:grid-cols-2 md:gap-10 lg:gap-14 "
+  >
+    <div class="flex flex-col gap-6 divide-y divide-accent/80">
+      <div class="pb-6 flex flex-col gap-3">
+        <Eyebrow class="text-black">
+          ASSESS - ANALYZE - BENCHMARK - STRATEGY DEVELOPMENT
+
+        </Eyebrow>
+
+        <Heading class="mb-4 font-normal!" level={3}>
+          <span class="">Fully Automated Assessments</span>
+        </Heading>
+        <p>
+          We used to perform assessments the traditional way and found major problems. They took a <strong>week of time</strong>, averaged around <strong>$30,000</strong>, asked around <strong>600-700 questions</strong> and, in the end, <strong>nobody used the findings</strong>
+          
+        </p>
+
+          <p>
+         This lead to a major breakthrough! We developed the <span
+            class="text-orange-400 font-bold">Precision Assessment System</span>that you complete on-line with on-demand guidance and real-time analytics.</p>
+          
+<p>
+         <span
+            class="text-accent font-bold">Book your Getting Started session</span>today to conduct  your complementary RAM GPS assessment. Discover the power of this next generation approach to baselining, benchmarking and strategy development.
+
+            
+      </div>
+      
+      <div class="pt-3 mb-10 max-w-127.5 mx-auto">
+        <blockquote class="relative">
+          <p
+            class={`text-lg italic font-medium  text-center" : " leading-relaxed"} md:leading-[1.85]`}
+          >
+            “ This assessment was so intuitive and brought our teams together. The analytics of our findings led us to taking the correct actions immediately”
+          </p>
+        </blockquote>
+
+        <span class="block text-right mt-2 italic"
+          >~ Plant Manager</span
+        >
+      </div>
     </div>
+
+    <div>
+      <h2 class="text-2xl mb-4">
+        <span class="block text-accent ">
+          Discover this end-to-end system.
+        </span>
+      </h2>
+      <!-- ../images/asset-criticality-02-640x319.jpg -->
+      <BookDemo
+        backgroundImage="../../assets/images/asset-criticality-02-640x319.jpg"
+        buttonLabel="CLICK TO BOOK YOUR SESSION"
+        href="/book-demo"
+        minHeight="20rem"
+      />
+    </div>
+  </div>
+  <div>
+    <div
+      class=" grid  grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div class="flex flex-col">
+        <div class="mb-4">
+          <Heading level={4} class="mb-4 font-normal!">
+            <span>Problems We Solve…</span>
+          </Heading>
+          <ul
+            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+          >
+            <li>Assessments are incredibly costly and time consuming</li>
+            <li>We evaluate things that aren’t even important to us</li>
+            <li>They require facilitation we have to give up large chunks of time and take the assessment in totality</li>
+            <li>Average travel expenses for our facilitator is around $2K</li>
+            <li>The average cost of EAM assessments are $30,000</li>
+                        <li>We don’t do much with the findings!</li>
+
+          </ul>
+        </div>
+        <div class="my-6">
+          <Heading level={4} class="mb-4 font-normal!">
+            <span>Solution Details…</span>
+          </Heading>
+          <p>
+            Our <strong>Precisions Assessment System</strong> comes fully loaded with RAM-GPS, modeled around the 
+            <strong> Uptime Elements Framework.</strong> 
+             You can build or load your own customized assessments. Gain the power of a centralized assessment model that can be benchmarked, and that provides an asynchronous accurate model with no travel.
+          </p>
+
+          <ul
+            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+          >
+            <li>Ready-for-use Reliability & Asset Management precision assessment</li>
+            <li>Customize your own assessment</li>
+            <li>Asynchronous, on-demand SaaS application</li>
+            <li>Full, real-time analytics</li>
+            <li>Strategy building module for taking the right action, immediately</li>
+               <li>Community benchmarking</li>
+            <li>Internal corporate benchmarking</li>
+
+          </ul>
+        </div>
+        <div class="mt-8">
+          <h2 class="text-2xl">
+            <span class="block text-accent">
+              Ready to solve these problems?
+            </span>
+          </h2>
+          <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
+            <li>Efforts are disconnected from the main goals of the organization</li>
+            <li>Chasing the wrong (too many) initiatives and/or in the wrong order</li>
+            <li>Not well coordinated across the organization – SILO’s of protective functions</li>
+                        <li>Lack of communication & correct measures to unite and lock in habits</li>
+
+                                    <li>Beyond “lip-service” – I feel like I’m fighting this battle alone</li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <Blockquote
+          class="max-w-7xl mx-auto border-none shadow-none"
+          variant="quote"
+          textColor="text-accent"
+        >
+          Focus your limited resources on the most impactful actions immediately.
+        </Blockquote>
+
+        <div class="mt-8">
+          <Heading level={4} class="mb-4 font-normal!">
+            <span>What we offer…</span>
+          </Heading>
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+
+
+
+
+            <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Corporate CoE & Site-based Models"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Pre-configured for individual or multi-site corporate benchmarking"
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="RAM-GPS Uptime Elements Assessment"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="A revolutionary, precision asessment system for your entire EAM program."
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Customized Assessments"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Load or build your own unlimited custom assessments in a single tool"
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Facilitated Working Sessions"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Remote or on-site Reliability & Asset Management expertise driving conversation and maximum discovery"
+            />
+             <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Train-the-Facilitator Program"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Skills and process transfer for internalizatoin of a multi-site deployment approach"
+            />
+            <FlippingCard
+              class="offer-flip"
+              minHeight="14rem"
+              frontTitle="Findings Evaluation and Strategy Design"
+              frontBottomText="FLIP TO LEARN MORE"
+              backText="Expert lead findings review, interpretation and actionable strategy design"
+            />
+          </div>
+
+          <Heading level={5} class="my-4 font-normal! text-right italic">
+            <span
+              >A balanced approach that is streamlined, scalable and fully automated</span
+  >
+          </Heading>
+        </div>
+        <div class="mt-6 flex flex-col  ">
+          <Heading level={4} class=" font-normal! mb-4">
+            <span>We provide you with the insight and clarity…</span>
+          </Heading>
+          <p>
+           …to know <strong>exactly</strong> where you are in your journey and what to work on based on your site’s individual objectives. Utilize our <span class="text-orange-400 font-bold">on-demand analytics</span> to evaluate your performance, identify your gaps, and <strong>PowerRank℠</strong>  focused areas that will make the most significant impact on your business objectives.
+          </p>
+           <div class="my-6">
+            
+             <BookDemo
+            backgroundImage="../../assets/images/bgn-quotes.jpg"
+            buttonLabel="TAKE YOUR FIRST ASSESSMENT FREE"
+            href="/book-demo"
+            minHeight="13rem"
+            demoHeading="If you want to experience the power and insight of our precision assessment system, sign up today for your own complimentary assessment and findings review session."
+          >
+
+        </BookDemo>
+
+           </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+ 
   </Section>
 </Layout>
