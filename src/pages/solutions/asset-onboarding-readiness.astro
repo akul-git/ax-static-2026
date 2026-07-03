@@ -1,16 +1,273 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import TableAstroComponent from "../../components/ui/Table.astro";
+import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
+import aob from "../../assets/images/aob.png";
+import VideoAstroComponent from "../../components/ui/Video.astro";
+
+import BookDemo from "../../components/ui/BookDemo.astro";
+
+const headers = [
+  "Project Team Challenges",
+  "Onboarding (Reliability) Team Challenges",
+  "Shared Challenges",
+];
+
+const rows = [
+  [
+    "Underestimation of onboarding scope/costs in CapEx plans → overruns & milestone risks",
+    "Manual tracking across spreadsheets/folders → errors & inefficiency",
+    "Communication & visibility gaps → no joint tracking",
+  ],
+  [
+    "Mismatched asset lists vs. actual installations → confusion & adjustments",
+    "Resource strain from daily operations → burnout & backlogs",
+    "Funding misalignment → OpEx burden",
+  ],
+  [
+    "Limited visibility into onboarding progress → blind spots delaying commissioning",
+    "Data quality gaps → CMMS noise & analysis limits",
+    "Regulatory/compliance exposure → audit risks",
+  ],
+  [
+    "Inaccurate resource forecasting → subcontracting surprises & budget reallocations",
+    "Time-intensive PM development → prolonged timelines",
+    "Siloed projects → redundant work on commonalities (assets, BOMs, spares)",
+  ],
+  [
+    "Poor data handoff quality → rework before work starts",
+    "Undiscovered warranty defects → later costs & disputes",
+    "Underutilized legacy CMMS insights → missed optimizations",
+  ],
+  [
+    "",
+    "CMMS loading bottleneck → up to 30% effort on templates, formatting, rework",
+    "“Right First Time” failures → early failures & long-term cleanup",
+  ],
+];
 ---
 
 <Layout>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Asset Onboarding Readiness</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Asset Onboarding Readiness.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final onboarding plan, standards, and checklist items.</p>
+    <div class="mx-auto max-w-7xl flex flex-col gap-8">
+      <div
+        class="grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-10 lg:gap-14"
+      >
+        <div class="flex flex-col gap-6 divide-y divide-accent/80">
+          <div class="pb-6 flex flex-col gap-2">
+            <h2 class="text-xl mb-2 font-bold">
+              <span class="block text-accent">
+                Right First Time Handovers With 360Navigator
+              </span>
+            </h2>
+
+            <p>
+              Streamline CapEx asset handovers with 360Navigator’s Asset
+              Onboarding & Readiness module. Bridge Project and Reliability
+              teams to reduce labor 20–40%, avoid delays, and achieve
+              operational excellence from day one. Book a demo today.
+            </p>
+            <div class="flex flex-col">
+              <p class="text-black font-bold">Key Benefits</p>
+              <ul class="list-disc pl-6">
+                <li>20–40% less onboarding labor</li>
+                <li>2–3× faster readiness timelines</li>
+                <li>Millions avoided in overruns & rework</li>
+                <li>Seamless CMMS integration & governance</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl mb-4 font-semibold">
+            <span class="block text-accent">
+              Bridge CapEx Chaos to Operational Excellence
+            </span>
+          </h2>
+          <VideoAstroComponent
+            src="/media/4-Min-360CapEx-Commercial-FINAL.mp4"
+          />
+        </div>
+      </div>
+
+      <div class="flex gap-2 flex-col">
+        <h2 class="text-xl mb-2 font-bold">
+          <span class="block text-accent">
+            Right First Time Handovers With 360Navigator
+          </span>
+        </h2>
+        <p class="mb-4">
+          CapEx projects drive growth, but the handover to operations is a
+          common bottleneck: underestimated, under-scoped, and siloed. Project
+          teams face timeline/budget pressures; Reliability & Maintenance teams
+          get overwhelmed by incomplete data and manual work. The result?
+          Delays, rework, early failures, compliance risks—and millions in
+          hidden costs that both sides feel
+        </p>
+        <TableAstroComponent caption="" headers={headers} rows={rows} />
+      </div>
+
+      <div class="flex gap-4 flex-col">
+        <h2 class="text-xl mb-2 font-bold">
+          <span class="block text-accent">
+            360Navigator Asset Onboarding & Reliability Readiness: The Bridge
+            You Need
+          </span>
+        </h2>
+        <p>
+          This module transforms chaotic handovers into a governed, automated
+          process—from raw asset lists to fully CMMS-ready, operationally
+          excellent assets. It bridges Project and Reliability teams with shared
+          visibility, proactive forecasting, and intelligent
+          automation—empowering your existing CMMS rather than replacing it.
+        </p>
+        <div class="flex flex-col">
+          <p class="text-black font-bold">
+            Workflow Diagram/Numbered Steps (horizontal or vertical flowchart
+            with screenshots/icons):
+          </p>
+          <ol class="list-disc pl-6">
+            <li>
+              <strong> Project Setup & Command Center</strong> – Assign roles, stage
+              gates, Kanban, real-time analytics & governance.
+            </li>
+            <li>
+              <strong> Asset List Upload & Segmentation </strong>–
+              Auto-analysis, scalable chunking, CMMS ID assignment/registry
+              import.
+            </li>
+            <li>
+              <strong> Resource Simulation & Forecasting</strong> – Labor/timing/cost
+              projections for accurate CapEx budgeting.
+            </li>
+            <li>
+              <strong>Data Verification & Alignment</strong> – Clean hierarchies using
+              legacy CMMS data.
+            </li>
+            <li>
+              <strong>Criticality, PM & Strategy Build </strong> – Risk-based; 1,000+
+              Micro-FMEA library, OEM/like-for-like/historical reuse.
+            </li>
+            <li>
+              <strong>Calibration, CbM & Risk-Based BOM</strong> – Setup records &
+              stocking.
+            </li>
+            <li>
+              <strong> Mobile Walk-Downs & Health Audits</strong> – Field verification,
+              warranty defect tagging.
+            </li>
+            <li>
+              <strong>Cross-Project Optimization </strong>– Analyze
+              commonalities for standardization/reuse.
+            </li>
+            <li>
+              <strong> Full Analytics & Oversight </strong>– Track progress,
+              forecast staff/budget, ensure accountability.
+            </li>
+            <li>
+              <strong>CMMS-Ready Export </strong>– Automated packages
+              (formatted, error-free) for DEV → PROD upload.
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div
+        class="grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-10 lg:gap-14"
+      >
+        <div class="flex flex-col gap-6 divide-y divide-accent/80">
+          <div class="pb-6 flex flex-col gap-2">
+            <h2 class="text-xl mb-2 font-bold">
+              <span class="block text-accent">
+                Real Results: Green Dollars + Strategic Wins
+              </span>
+            </h2>
+
+            <div class="flex mt-3 flex-col">
+              <p class="text-black font-bold">
+                Green Dollars (Financial Savings)
+              </p>
+              <ul class="list-disc pl-6">
+                <li>20–40% reduction in onboarding labor</li>
+                <li>15–25% lower subcontracting spend</li>
+                <li>Significant CapEx overrun avoidance</li>
+                <li>Up to 30% time saved on CMMS loading</li>
+              </ul>
+            </div>
+            <div class="flex mt-3 flex-col">
+              <p class="text-black font-bold">Strategic & Operational Impact</p>
+              <ul class="list-disc pl-6">
+                <li>2–3× faster readiness & go-live</li>
+                <li>Improved first-year asset performance & reliability</li>
+                <li>Reduced regulatory/safety risks</li>
+                <li>Fleet-wide standardization via cross-project insights</li>
+                <li>Boosted team collaboration & ownership</li>
+                <li>Payback in 6–12 months (tracked in-platform)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl mb-4 font-semibold">
+            <span class="block text-accent">
+              Bridge CapEx Chaos to Operational Excellence
+            </span>
+          </h2>
+          <!-- ../images/asset-criticality-02-640x319.jpg  happy-with-data-ax-standard.jpg-->
+          <BookDemo
+            backgroundImage={aob.src}
+            buttonLabel="CLICK TO REQUEST A DEMO"
+            href=""
+            minHeight="18rem"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6 mt-6 divide-y divide-accent/80">
+        <div class="pb-6 flex flex-col gap-2">
+          <h2 class="text-xl mb-2 font-bold">
+            <span class="block text-accent">
+              Why Asset Onboarding & Readiness Stands Out
+            </span>
+          </h2>
+
+          <ul class="list-disc pl-6">
+            <li>Unified platform – no more spreadsheets or disparate tools</li>
+            <li>
+              CMMS empowerment – leverages historical data for smarter decisions
+            </li>
+            <li>
+              Cross-team bridge – shared governance for Project + Reliability
+              success
+            </li>
+            <li>
+              Enterprise intelligence – cross-project commonality analysis
+            </li>
+            <li>
+              Entry to full 360Navigator impact – fast ROI, foundation for
+              broader improvements
+            </li>
+          </ul>
+          <p>
+            Payback typically in 12–18 months — tracked and verified in
+            360Navigator.
+          </p>
+          <h2 class="text-xl mt-2 font-bold">
+            <span class="block text-accent">
+              Ready to Transform Your CapEx Handovers?
+            </span>
+          </h2>
+          <p>Start Your Journey to Operational Readiness</p>
+          <p>
+            Asset Onboarding & Readiness is the perfect entry point — delivering
+            fast ROI while laying the foundation for full 360Navigator impact.
+          </p>
+        </div>
+      </div>
     </div>
   </Section>
 </Layout>
