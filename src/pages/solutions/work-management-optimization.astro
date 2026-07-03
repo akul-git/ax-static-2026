@@ -1,16 +1,255 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import "../../styles/global.css";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner height="sm" image="../../assets/images/work-mgmt-banner-01.jpg">
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        Work Management Optimization
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Improve the velocity of workflow thorough your system by 50%!
+      </p>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Work Management Optimization</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Work Management Optimization.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final workflow design, controls, and governance details.</p>
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6">
+          <Eyebrow class="text-black">
+            THE PIPELINE OF WORK EXECUTION VELOCITY
+          </Eyebrow>
+
+          <Heading class="mb-4 font-normal!" level={4}>
+            <span class=""
+              >What Would You Do With 50% More Maintenance Capacity?</span
+            >
+          </Heading>
+          <p>
+            We are all trying to do more with less and the
+            <strong>maintenance team</strong>, is no exception. They feel they
+            could definitely use more resources, but fail to baseline,
+            uncovering that the current system is only
+            <span class="text-orange-400 font-bold"
+              >performing at about 50%
+            </span>of it’s true potential. The major breakthrough is a process
+            that identifies and analyzes the velocity of workflow and manageable
+            items that limit your effectiveness and efficiency. The result can
+            mitigate the risk of attrition, dependency on outside resources and
+            lower the overall costs of your<strong>
+              maintenance & reliability efforts.</strong
+            >
+          </p>
+        </div>
+        <div class="pt-3 mb-10 max-w-127.5 mx-auto">
+          <blockquote class="relative">
+            <p
+              class={`text-lg italic font-medium  text-center" : " leading-relaxed"} md:leading-[1.85]`}
+            >
+              “Just because we had a Planning function, we thought it was
+              working fine…what we quickly learned is that our craftspeople
+              dealt with a tremendous amount of “invisible” delay that was
+              accepted as normal and could have been minimized”
+            </p>
+          </blockquote>
+
+          <span class="block text-right mt-2 italic">~ Maintenance Manager</span
+          >
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl mb-4">
+          <span class="block text-accent">
+            Learn how we uncover hidden capacity.
+          </span>
+        </h2>
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <BookDemo
+          backgroundImage="../../assets/images/work-mgmt-block-02-640x360.jpg"
+          buttonLabel="CLICK TO BOOK A DEMO"
+          href="/book-demo"
+          minHeight="20rem"
+        />
+      </div>
+    </div>
+    <div>
+      <div
+        class="grid  grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+      >
+        <div class="flex flex-col">
+          <div class="mb-4">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>Problems We Solve…</span>
+            </Heading>
+            <ul
+              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+            >
+              <li>Don’t know what our productivity is</li>
+              <li>
+                We have planners but they don’t spend much time planning –
+                rather expediting
+              </li>
+              <li>
+                Don’t know where our bottlenecks are and how to improve flow
+              </li>
+              <li>
+                Little visibility and reporting on workflow, planning &
+                scheduling
+              </li>
+              <li>Our job plans primarily focus on PM’s not corrective work</li>
+              <li>
+                Common / repetitive jobs are not standardized requiring higher
+                skills
+              </li>
+              <li>Need a way to get more work done with less resources</li>
+              <li>Reduce risk in attrition-based knowledge loss</li>
+            </ul>
+          </div>
+          <div class="my-6">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>Solution Details…</span>
+            </Heading>
+            <p>
+              Our process, tools and training will take your work management
+              program to a whole new level. You will be able to set up a system
+              that opens the flow/velocity of work, controls the way work is
+              identified & prioritized, backlog management, planning, weekly
+              allocation, daily scheduling, work execution productivity and
+              full-range program analytics. Improving your work management
+              program will release untapped capacity to internalize concentrated
+              work, manage overtime, allow for attrition and drive down overall
+              costs.
+            </p>
+
+            <ul
+              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+            >
+              <li>Corrective maintenance job plan builder</li>
+              <li>Job Plan master library</li>
+              <li>Productivity Analysis (Mobile app for identifying controllable delay impacting the craft)</li>
+              <li>Planning & scheduling compliance</li>
+              
+            </ul>
+          </div>
+          <div class="mt-8">
+            <h2 class="text-2xl">
+              <span class="block text-accent">
+                Ready to solve these problems?
+              </span>
+            </h2>
+            <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
+              <li>The perception that if you have planners, planning is effective</li>
+              <li>We can’t justify planners or a planning role…</li>
+              <li>Crafts won’t want to participate in velocity studies</li>
+                            <li>Difficult time quantifying the impact of inefficiency</li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <Blockquote
+            class="max-w-7xl mx-auto border-none shadow-none"
+            variant="quote"
+            textColor="text-accent"
+          >
+            Maintenance productivity currently only averages 27%!
+          </Blockquote>
+
+          <div class="mt-8">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>What we offer…</span>
+            </Heading>
+            <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="360Navigator SaaS Work Management Suite"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Full automation of reporting, analytics and optimization of work execution management"
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Performance Management Analytics"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Ready for Use dynamic performance management analytics of your work management system."
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Standard Work Plan Optimization"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Analytics driven job selection and plan optimization for standardized work and work execution impact"
+              />
+               <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Craft Productivity Baselining and Analysis"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Increase work velocity and staff capacity by identifying and analyzing the manageable obstacles limiting craft productivity by 50%"
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Workflow Design and Optimization"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Design the optimum workflow, measures and reporting for maximum control and efficiency"
+              />
+              <FlippingCard
+                class="offer-flip"
+                minHeight="16rem"
+                frontTitle="Training and Coaching Programs"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Hands-on, remote and on-demand eLearning training programs for the entire work management process"
+              />
+            </div>
+
+            <Heading level={5} class="my-4 font-normal! text-right italic">
+              <span
+                >Complete solutions to optimize your work execution management.
+              </span
+              >
+            </Heading>
+          </div>
+          <div class="mt-6 flex flex-col">
+            <Heading level={4} class="font-normal! mb-4">
+              <span
+                >Your work management program is the both the pipeline and bottleneck…</span
+              >
+            </Heading>
+            <p>
+              …of how much work gets done and hides a tremendous amount of untapped valuable capacity. From the way work is identified, planned, scheduled and executed, 
+              this process the core of how effective and efficient your program operates.
+            </p>
+            <div class="my-6">
+              <BookDemo
+                backgroundImage="../../assets/images/bgn-quotes.jpg"
+                buttonLabel="CLICK TO BOOK A REVIEW SESSION"
+                href="/book-demo"
+                minHeight="12rem"
+                demoHeading="Learn how your system is limiting craft productivity and restricting the velocity of workflow."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </Section>
 </Layout>

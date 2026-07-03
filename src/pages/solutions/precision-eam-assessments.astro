@@ -6,15 +6,13 @@ import HeroBanner from "../../components/ui/HeroBanner.astro";
 import Eyebrow from "../../components/ui/Eyebrow.astro";
 import Heading from "../../components/ui/Heading.astro";
 import BookDemo from "../../components/ui/BookDemo.astro";
-import List from "../../components/ui/List.astro";
 import Blockquote from "../../components/ui/Blockquote.astro";
 import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
-  <Section>
-     <div
-    class="text-center text-shadow-md text-shadow-neutral-950"
+   <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
   >
     <HeroBanner
       height="sm"
@@ -34,6 +32,8 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </p>
     </HeroBanner>
   </div>
+  <Section>
+    
 
   <div
     class="grid grid-cols-1 gap-8  pt-8  md:grid-cols-2 md:gap-10 lg:gap-14 "
