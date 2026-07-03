@@ -1,16 +1,326 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
+import TableAstroComponent from "../../components/ui/Table.astro";
+
+import "../../styles/global.css";
+
+const headers = [
+  "Category",
+  "Typical Impact",
+  "Description / Business Outcome",
+];
+
+const rows = [
+  [
+    "Reduced Downtime & Incident Costs",
+    "$50K–$150K savings per incident avoided",
+    "24/7 alerts and Neural Causation reduce unplanned events by 25–50% — cutting emergency repair and overtime costs",
+  ],
+  [
+    "Optimized Spend & Efficiency Gains",
+    "$100K–$250K annual from resolved actions",
+    "Action tracking and companion metrics lead to spend optimizations (e.g., MRO, PM/Calibrations) — compounding year-over-year",
+  ],
+  [
+    "Reduced Analysis & Meeting Waste",
+    "$50K–$200K in productivity savings",
+    "15–25 hours/week saved on manual analysis/meetings — freeing teams for high-value work",
+  ],
+];
+
+const headers2 = [
+  "Category",
+  "Typical Impact",
+  "Description / Business Outcome",
+];
+
+const rows2 = [
+  [
+    "Performance Improvement",
+    "5–10% OEE boost",
+    "2Role-based cockpits and comparative analytics drive consistent gains across sites — with tracked resolutions proving ROI",
+  ],
+  [
+    "Speed to Insight & Resolution",
+    "30–50% reduction in data navigation time",
+    "Metric landing pages, alerts, and causal mapping compress troubleshooting from hours to minutes — 2–3× faster than traditional dashboards",
+  ],
+  [
+    "Sustainability & Standardization",
+    "Enterprise-wide consistency & governance",
+    "Harmonization of multiple CMMS and CoE-level benchmarking enable the 4-S’s (Scale, Standardization, Speed, Sustainability)",
+  ],
+  [
+    "Risk & Compliance Assurance",
+    "Significant reduction in exposure",
+    "Metrics Feasibility and Control Tower identify data gaps/issues early — reducing audit findings and liability",
+  ],
+  [
+    "Human Capital Empowerment",
+    "Boosts team participation & capability",
+    "Self-guided insights and Meeting in a Box simplify the heavy lift — building expertise and reducing burnout",
+  ],
+  [
+    "Cultural Transformation",
+    "Measurable shift in mindsets & behaviors",
+    "From reactive to proactive — daily engagement fosters trust, participation, and ownership across levels",
+  ],
+];
 ---
 
 <Layout>
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner height="sm" image="../../assets/images/cmms-banner-03.jpg">
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        360 Command Center
+      </h1>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">360 Command Center</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for 360 Command Center.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final capabilities, integrations, and operational model.</p>
+    <div class="mx-auto max-w-7xl flex flex-col gap-8">
+      <div class="flex flex-col gap-4">
+        <h2 class="text-xl font-bold">
+          <span class="block text-accent"> The Problem We Solve </span>
+        </h2>
+        <p>
+          The 360 Command Center is the central hub of Asset Analytix’s
+          award-winning 360Navigator SaaS platform, designed for industrial and
+          facilities organizations to achieve Maintenance & Reliability
+          Excellence.
+        </p>
+        <p>
+          This module transforms fragmented data from CMMS, ERP, and other
+          enterprise systems into a unified, intelligent management system for
+          proactive asset and program control. Featuring role-based cockpits,
+          AI-powered insights, Neural Causation for root-cause analysis, 24/7
+          Control Tower alerts, Action Management KanBan boards, and Meeting in
+          a Box tools, it empowers Reliability Leaders and Corporate teams with
+          comprehensive visibility, analytics-driven insights, and collaborative
+          workflows. Going beyond standard reporting dashboards like those in
+          CMMS or Power BI—without replacing them—Command Center provides a full
+          management and monitoring system.
+        </p>
+        <p>
+          It not only tracks asset performance but also monitors the health of
+          your Reliability Excellence Program, ensuring both dimensions are
+          addressed for true continuous improvement. This enables faster, more
+          precise decision-making through automated performance indicators,
+          driving cultural transformation from reactive to proactive reliability
+          and enabling standardization across multi-site operations.
+        </p>
+        <p>
+          Clients experience compounding year-over-year ROI through reduced
+          downtime, optimized spend, and enhanced sustainability, all while
+          saving years of custom development with front-loaded best practices.
+        </p>
+      </div>
+      <div
+        class="grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-10 lg:gap-14"
+      >
+        <div class="flex flex-col gap-6 divide-y divide-accent/80">
+          <div class="pb-6 flex flex-col gap-2">
+            <h2 class="text-xl mb-2 font-bold">
+              <span class="block text-accent">
+                From Reactive Chaos to Proactive Mastery
+              </span>
+            </h2>
+
+            <p class="font-bold leading-8 text-slate-900">
+              Cut Downtime by 25–50% with 24/7 Insights
+            </p>
+
+            <p>
+              Don’t let fragmented reports hold your reliability back. 360
+              Command Center empowers your CMMS with neural causation, alerts,
+              and action tracking — delivering greater control, faster results,
+              and more engagement without the manual drudgery.
+            </p>
+
+            <ul class="list-disc pl-6 mt-4">
+              <li>
+                <strong>25–50%</strong> reduction in unplanned events
+              </li>
+              <li>
+                <strong>5–10%</strong> OEE boost
+              </li>
+              <li><strong>15-25</strong>hours/week saved on analysis</li>
+            </ul>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl mb-4 font-semibold">
+            <span class="block text-accent"> Request a Demo </span>
+          </h2>
+          <!-- ../images/asset-criticality-02-640x319.jpg  happy-with-data-ax-standard.jpg-->
+          <BookDemo
+            backgroundImage={happyWithDataImage.src}
+            buttonLabel="CLICK TO REQUEST A DEMO"
+            href=""
+            minHeight="18rem"
+          />
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6 mt-6 divide-y divide-accent/80">
+        <div class="pb-6 flex flex-col gap-2">
+          <h2 class="text-xl mb-2 font-bold">
+            <span class="block text-accent">
+              The Problem – Why Traditional Reporting Fails
+            </span>
+          </h2>
+
+          <p>The Hidden Roadblocks in Reliability Reporting</p>
+
+          <div class="flex mt-2 flex-col">
+            <p>
+              Reliability leaders are drowning in data but starving for action:
+            </p>
+            <ul class="list-disc pl-6">
+              <li>
+                Overload from CMMS and dashboards — static views and manual
+                setups miss the big picture
+              </li>
+              <li>
+                Poor troubleshooting — subjective fixes, hidden causes, and no
+                causal mapping waste hours
+              </li>
+              <li>
+                No situational awareness — lacking 24/7 alerts for issues like
+                “things that shouldn’t happen”
+              </li>
+              <li>
+                Siloed meetings and actions — emails, notes, and disconnected
+                tools lead to roadblocks
+              </li>
+              <li>
+                Multi-site chaos — disparate systems and no benchmarking hinder
+                governance
+              </li>
+              <li>
+                Overwhelming complexity — metrics gaps and lack of
+                standardization paralyze progress
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6 mt-6 divide-y divide-accent/80">
+        <div class="pb-6 flex flex-col gap-2">
+          <h2 class="text-xl mb-2 font-bold">
+            <span class="block text-accent">
+              How We Solve It – The Next-Gen Command Center
+            </span>
+          </h2>
+
+          <p>Proactive Insights That Drive Real Improvement</p>
+          <p>
+            360 Command Center turns your data into action — empowering your
+            CMMS with 24/7 analysis, alerts, and tracking. No more static
+            displays; it’s a true DMAIC system for continuous improvement.
+          </p>
+
+          <ul class="list-disc pl-6">
+            <li>
+              Performance Cockpit — role-based dashboards with KPIs, risk
+              levels, and popups
+            </li>
+            <li>
+              Metric Landing Pages — trends, actions, exceptions, Neural
+              Causation
+            </li>
+            <li>
+              Measures Neural Network — causal mapping, human causes,
+              troubleshooting
+            </li>
+            <li>Control Tower — 24/7 event alerts tied to metrics</li>
+            <li>Action Management — KanBan boards for tracking</li>
+            <li>Meeting in a Box — centralized agendas, notes, actions</li>
+            <li>Comparative Analytics — site/region benchmarks</li>
+            <li>Companion Metrics — related insights recommendations</li>
+            <li>Data Handling — multi-source fusion, harmonization</li>
+            <li>Metrics Feasibility — data gap analysis</li>
+            <li>
+              2-Way Communication — weekly Pulse Checks with risk profiles
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-6 mt-6 divide-y divide-accent/80">
+        <div class="pb-6 flex flex-col gap-2">
+          <h2 class="text-xl mb-2 font-bold">
+            <span class="block text-accent">
+              Quantifiable Impact – Green Dollars & Strategic Wins
+            </span>
+          </h2>
+          <p>Results That Pay Off Immediately — And Compound Over Time</p>
+        </div>
+
+        <TableAstroComponent caption="" headers={headers} rows={rows} />
+
+        <TableAstroComponent
+          caption="Strategic & Operational Impact
+
+"
+          headers={headers2}
+          rows={rows2}
+        />
+
+        <div class="flex flex-col gap-6 mt-6 divide-y divide-accent/80">
+          <div class="pb-6 flex flex-col gap-2">
+            <h2 class="text-xl mb-2 font-bold">
+              <span class="block text-accent">
+                Real Client Results & Proof
+              </span>
+            </h2>
+
+            <p>Proven Results – Don’t Just Take Our Word for It</p>
+
+            <ul class="list-disc pl-6">
+              <li>
+                A multi-site manufacturer reduced unplanned events by 30%, saved
+                $150K per incident in downtime, and boosted OEE by 7% within 6
+                months — driven by Control Tower alerts and Neural Causation.
+              </li>
+            </ul>
+            <p>
+              Payback typically in 12–18 months — tracked and verified in
+              360Navigator.
+            </p>
+            <h2 class="text-xl mt-2 font-bold">
+              <span class="block text-accent">
+                The Long-Term Stakes – Get It Right Now, or Pay Later
+              </span>
+            </h2>
+            <p>Why Getting Onboarding Right Matters – The Ripple Effect</p>
+            <p>
+              Get reporting wrong, and you live with the consequences for years:
+              missing early issues, chasing reactive fixes, wasting resources on
+              manual analysis, and stalling reliability maturity. 360 Command
+              Center ensures proactive mastery — speed, control, and engagement
+              all at once — so your program starts strong and scales reliably.
+            </p>
+            <h2 class="text-xl mt-2 font-bold">
+              <span class="block text-accent">
+                Ready to Transform Your Reliability Reporting?
+              </span>
+            </h2>
+            <p>Start Your Journey to Proactive Mastery</p>
+            <p>
+              360 Command Center is the perfect entry point — delivering fast
+              ROI while laying the foundation for full 360Navigator impact.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </Section>
 </Layout>
