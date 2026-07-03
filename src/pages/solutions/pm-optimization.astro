@@ -1,16 +1,251 @@
 ---
-import Layout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/ui/Section.astro';
-import '../../styles/global.css';
+import Layout from "../../layouts/BaseLayout.astro";
+import Section from "../../components/ui/Section.astro";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Heading from "../../components/ui/Heading.astro";
+import BookDemo from "../../components/ui/BookDemo.astro";
+import Blockquote from "../../components/ui/Blockquote.astro";
+import FlippingCard from "../../components/ui/FlippingCard.astro";
+import "../../styles/global.css";
 ---
 
 <Layout>
+  <div
+    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
+  >
+    <HeroBanner
+      height="sm"
+      image="../../assets/images/asset-criticality-banner-01.jpg"
+    >
+      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+        Blended PM Optimization
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+        Increase uptime, reduce PM Cost – 30% faster!
+      </p>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">PM Optimization</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for PM Optimization.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final scope, activities, and expected impact.</p>
+    <div
+      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-1 md:gap-10 lg:gap-14 lg:px-8"
+    >
+      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+        <div class="pb-6 border-b border-accent/80">
+          <Eyebrow class="text-black">
+            TAKE THE EMOTION OUT OF YOUR DECISIONS
+          </Eyebrow>
+
+          <Heading class="mb-4 font-normal!" level={4}>
+            <span class="">Forget Spreadsheet-Based PM Optimization</span>
+          </Heading>
+          <p class="mb-6">
+            After years of facilitating <strong>PM Optimization</strong>,
+            exercises on spreadsheets, we had a major epiphany! We developed a
+            better way; a total solution that solves the most common problems
+            with traditional <strong>FMEA </strong> and <strong
+              >RCM programs</strong
+            >
+            in 30% of the time.
+          </p>
+
+          <p>
+            <strong>Blended PM Optimization</strong>
+            goes beyond simply optimizing the preventive maintenance plans into developing
+            an entire strategy for maintaining your assets. Include your digital strategy,
+            develop TPM/ODR Operations reliability, PdM Condition Monitoring, maintenance
+            inspections, lubrication, and replacement activities (where needed).
+          </p>
+        </div>
+
+        <p class="mt-6 max-w-6xl mx-auto text-xl leading-8 italic">
+          “Not only were we able to accomplish what would have taken us weeks in
+          a matter of days, the tangible results blew the doors off of our FMEA
+          approach”
+          <span class="block text-right mt-2 italic"
+            >~ Director of Global Engineering</span
+          >
+        </p>
+      </div>
+    </div>
+    <div>
+      <div
+        class="mx-auto grid grid-cols-1 gap-8  pt-8  md:grid-cols-3 md:gap-10 lg:gap-14 "
+      >
+        <div class="flex flex-col">
+          <div class="mb-4">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>Problems We Solve…</span>
+            </Heading>
+            <ul
+              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+            >
+              <li>The old process took WAY too long.</li>
+              <li>Was dependent on “experts” and intimidating.</li>
+              <li>No analytics on the impact of work performed.</li>
+              <li>Independent spreadsheets were not scalable.</li>
+              <li>
+                Management of the program was manual outside of the exercise.
+              </li>
+              <li>
+                Getting the work back into the CMMS was cumbersome & time
+                consuming.
+              </li>
+              <li>
+                No way to leverage our CMMS data, work order history or existing
+                job plans.
+              </li>
+            </ul>
+          </div>
+          <div class="my-6">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>Solution Details…</span>
+            </Heading>
+            <p>
+              The process, management, toolkit and training provides a full
+              end-to-end system that delivers massive results in a practical
+              model. Each aspect of the BPMO System ensures success for the
+              corporate team, local site or individual exercise.
+            </p>
+
+            <ul
+              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+            >
+              <li>Analytics-driven PM program baselining</li>
+              <li>CoE-Corporate program design</li>
+              <li>Strategic asset selection system</li>
+              <li>PMO exercise management</li>
+              <li>Self-guided PMO process</li>
+              <li>Full scale impact analytics</li>
+              <li>Exercise leverage library</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-span-2">
+          <Blockquote
+            class="max-w-7xl mx-auto border-none shadow-none"
+            variant="quote"
+            textColor="text-accent"
+          >
+            This is the fastest, most accurate and practical PM Optimization
+            System available.
+          </Blockquote>
+
+          <div class="mt-8">
+            <Heading level={4} class="mb-4 font-normal!">
+              <span>What we offer…</span>
+            </Heading>
+            <div class="grid lg:grid-cols-6 md:grid-cols-2 gap-4">
+              <FlippingCard
+                class="offer-flip col-span-2"
+                minHeight="16rem"
+                frontTitle="Full immersion Pilot Project"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Experience the total optimization process in a hand-on remote or on-site optimization of your assets."
+              />
+              <FlippingCard
+                class="offer-flip col-span-2"
+                minHeight="16rem"
+                frontTitle="Training & Coaching"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Remote, on-site and on-demand eLearning training programs to make you an expert in no time."
+              />
+              <FlippingCard
+                class="offer-flip col-span-2"
+                minHeight="16rem"
+                frontTitle="360Navigator SaaS Optimization Suite"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Self-guided and automated application to optimize or develop your total asset strategy."
+              />
+              <FlippingCard
+                class="offer-flip col-span-3"
+                minHeight="12rem"
+                frontTitle="Corporate CoE Program Solution"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Full-scale program design, training, exercise management and analytics across the entire organization"
+              />
+              <FlippingCard
+                class="offer-flip col-span-3"
+                minHeight="12rem"
+                frontTitle="Turn-Key Optimization Services"
+                frontBottomText="FLIP TO LEARN MORE"
+                backText="Supplement your capacity with our reliability team’s expertise and bandwidth for the fastest results"
+              />
+            </div>
+
+            <Heading level={5} class="my-4 font-normal! text-right italic">
+              <span
+                >Blended PM Optimization offers solutions to streamline your
+                processes and meet your challenges.</span
+              >
+            </Heading>
+          </div>
+         
+        </div>
+         <div class="col-span-3 border-b border-accent/80 ">
+            <h1 class="text-3xl  tracking-tight text-slate-900">
+             Following a unique, practical, and automated process…
+
+            </h1>
+            <p class="my-8">
+             This self-guided, standardized <strong>Blended PM Optimization </strong> System will make you an optimization expert in no time. You will revolutionize your overall asset reliability strategy, elevate uptime, and drive down the annual cost-to-maintain in a fraction of the time of traditional methods.
+            </p>
+          </div>
+      </div>
+      
+      <article class= " my-6 ">
+           <div class="">
+            <h1 class="text-3xl  tracking-tight text-slate-900">
+               Exercise Effectiveness and Process Efficiency
+
+            </h1>
+            <p class="mt-6">
+                In a side-by-side comparison between traditional FMEA/RCM and our BPMO approach, 30-50% time savings can be achieved using the Asset Analytix Blended PM Optimization approach.
+
+            </p>
+          </div>
+
+           <HeroBanner class="mt-6 min-h-125!"
+      height="lg"
+      image="../../assets/images/BPMO-Comparison-chevrons-02.png"
+    >
+      
+
+      
+    </HeroBanner>
+      </article>
+
+      <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2">
+        <div class="mt-8">
+          <h2 class="text-2xl">
+            <span class="block text-accent">
+              Wondering about these issues?
+            </span>
+          </h2>
+          <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
+            <li>How can we convey value to site leadership?</li>
+            <li>We want to own the process and not be tied to a consultant</li>
+            <li>We don’t have time to do this.</li>
+            <li>We already have a PMO program.</li>
+          </ul>
+        </div>
+        <div class="mt-6 flex flex-col">
+          
+          <div class="my-6">
+            <BookDemo
+              class="mx-auto"
+              backgroundImage="../../assets/images/bgn-quotes.jpg"
+              buttonLabel="Book a Demo Today"
+              href="/book-demo"
+              minHeight="5rem"
+              demoHeading="There is so much more to this amazing process and technology! Click to request a demo and learn more."
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </Section>
 </Layout>
