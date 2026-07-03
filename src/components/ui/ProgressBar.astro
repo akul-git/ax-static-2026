@@ -1,0 +1,38 @@
+---
+type Props = {
+  percentage?: number;
+  label?: string;
+  class?: string;
+  trackClass?: string;
+  barClass?: string;
+  showLabel?: boolean;
+  height?: string;
+};
+
+const {
+  percentage = 0,
+  label = "",
+  class: className = "",
+  trackClass = "",
+  barClass = "",
+  showLabel = true,
+  height = "h-1",
+} = Astro.props as Props;
+
+const normalizedPercentage = Math.min(Math.max(Number(percentage) || 0, 0), 100);
+const percentageText = `${normalizedPercentage}%`;
+---
+
+<div class={`space-y-3 ${className}`.trim()}>
+  <div class="flex items-center justify-between text-sm font-medium text-slate-700">
+    {label ? <span>{label}</span> : <span />}
+    <span>{percentageText}</span>
+  </div>
+
+  <div class={`overflow-hidden rounded-full bg-slate-200 ${height} ${trackClass}`.trim()}>
+    <div
+      class={`h-full rounded-full bg-sky-600 transition-all duration-500 ${barClass}`.trim()}
+      style={`width: ${normalizedPercentage}%;`}
+    />
+  </div>
+</div>

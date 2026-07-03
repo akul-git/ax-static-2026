@@ -1,16 +1,260 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
-import Section from '../components/ui/Section.astro';
-import '../styles/global.css';
+import Layout from "../layouts/BaseLayout.astro";
+import Section from "../components/ui/Section.astro";
+import "../styles/global.css";
+import HeroBanner from "../components/ui/HeroBanner.astro";
+import Heading from "../components/ui/Heading.astro";
+import ProgressBar from "../components/ui/ProgressBar.astro";
+import Eyebrow from "../components/ui/Eyebrow.astro";
+import VideoAstroComponent from "../components/ui/Video.astro";
+import Audio from "../components/ui/Audio.astro";
+import radioImage from "../assets/images/new_ReliabilityRadioweb-logo.jpg";
+import Accordion from "../components/ui/Accordion.astro";
+
+const accordionItems = [
+  {
+    title: "360 Precision Assessment",
+    content:
+      `The first ever assessment organized into multi-layers, allowing you to quickly understand your current position, prioritizing focus and objectives-based deeper dive where you need it.
+        
+      `,
+      bullets: [
+        "Level 1 EAM RAM-GPS Awareness Assessment",
+        "Power Ranking Prioritization",
+        "Deep-Dive Focused Assessment",
+        "Objectives / scenario driven strategy design",
+       
+      ],
+  },
+  {
+    title: "Measures Architecture",
+    content:
+      "Define a practical KPI model that links operations, maintenance, and leadership decisions to one shared execution rhythm.",
+      bullets: [
+        "Level 1 EAM RAM-GPS Awareness Assessment",
+        "Power Ranking Prioritization",
+        "Deep-Dive Focused Assessment",
+        "Objectives / scenario driven strategy design",
+       
+      ],
+  },
+  {
+    title: "Measures Architecture",
+    content:
+      "Focused project to establish a measures framework architecture and serves as a powerful management tool, a “virtual twin” of your EAM program, providing valuable insight.",
+    bullets: [
+      "Measures Design Workshop",
+      "360 Visualizer Software",
+    
+    ],
+  },
+  {
+    title: "Baselining Pilot Events",
+    content: "At AX, Baselining is a process, a series of actions, a verb. It’s the discovery, analysis, evaluation and testing required to achieve the target technical end state Each 2-week event is a micro experience of a full-scale solution",
+  bullets: [
+      "EAM Program Assessment",
+      "Reliability Strategies / PMO",
+      "Work Management P&S",
+       "Storeroom / Procurement",
+      "I&E / Calibration",
+      "Production Op-Ex",
+    
+    ],
+ 
+  },
+  {
+    title: "Solution Deployment",
+    content:
+      `From successful Targeted Baselining Events to deployment of full-scale roll-out at the site or corporate levels
+AX brings boots on the ground expertise, processes, tools and bandwidth to ensure maximum impact in the shortest time`,
+  bullets: [
+      "Project Design and Mgt.",
+      "Training / Skills Transfer",
+      "Coaching / Facilitation",
+       "Turn-Key SME Deployment",
+      "Off-Site Support Services",
+      "Tools / Technology Licensing",
+    
+    ],
+  },
+    {
+    title: "Data & Analytics",
+    content:
+      `Turning multiple data sources into analytics-ready information in an automated, documented, validated, process with a high degree of confidence. Bridging the gap between measures data and reporting requirements.`,
+  bullets: [
+      "Data Quality Gap Assessment",
+      "Data Source Mapping",
+      "Data Integrity Evaluation",
+       "Data Alignment",
+      "Quality Data Preparation",
+      "Master Data Management",
+      "Data Quality Monitoring",
+    
+    ],
+  },
+];
+
 ---
 
+
+
+
 <Layout title="Our Approach">
+  <div class="mx-auto text-center text-shadow-md">
+    <HeroBanner
+      class="min-h-100! lg:min-h-140!"
+      height="lg"
+      image="../../assets/images/approach-pgbg-02.jpg"
+    >
+      <div class="flex items-center gap-4 w-1/3 m-auto mb-6">
+        <hr class="flex-1 border border-sky-700" />
+
+        <span class="text-sm font-semibold tracking-widest uppercase">
+          THE PERFORMANCE IMPROVEMENT SYSTEM
+        </span>
+
+        <hr class="flex-1 border border-sky-700" />
+      </div>
+      <h1
+        class="max-w-5xl m-auto text-6xl font-medium leading-tight text-white lg:text-6xl"
+      >
+        <span class="text-sky-800"> Our Approach</span>
+        <br />
+        <span class="block text-accent">
+          The shortest distance from <br /> Data to Improvement
+        </span>
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+
+      <p class="mt-6 max-w-3xl mx-auto text-xl leading-8">
+        Organized into an easy to navigate, comprehensive approach, each of 5
+        focus disciplines complete the total analytics experience, enhancing
+        maintenance reliability.
+      </p>
+    </HeroBanner>
+  </div>
   <Section>
-    <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Company</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Our Approach</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for your Our Approach page.</p>
-      <p class="mt-4 text-slate-600">Replace this section with your final methodology, process model, and principles.</p>
+    <div class="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-1 gap-8">
+      <div class="flex flex-1 flex-col gap-6">
+        <p class="mb-6">
+          With over 18 years helping companies advance their performance
+          management programs, it became clear that there is a “secret formula”
+          for those realizing their full potential. This truly is the shortest
+          distance from data to improvement.
+        </p>
+
+        <p>
+          The Power of our
+          <strong>Asset Management Performance Improvement System:</strong>
+          An organized and controlled approach that solves the challenges in each
+          essential area of focus. Individually each domain solves local issues but
+          when used together, become a management system for Performance Improvement
+          at a program, site and personnel levels.
+        </p>
+        <p class="mb-6">
+          The <strong>
+            Asset Management Performance Improvement System
+          </strong>, is the Total Performance Improvement System, representing a
+          mature, effective and efficient future-state.
+        </p>
+      </div>
+      <div class="flex flex-1 flex-col gap-6">
+        <Heading level={4} class="text-accent">
+          Start Anywhere – Go <br /> Everywhere!
+        </Heading>
+        <p>
+          Maintenance and reliability professionals starting early in their
+          journey approach the system as a process, working through the model in
+          a strategic order having the system guide them to total control.
+        </p>
+
+        <p>
+          Those who have an approach in various states of effectiveness and have
+          specific objectives or problems to solve jump right to on a specific
+          domain. The value we provide is in filling gaps in your performance
+          management system to deliver the most effective system.
+        </p>
+      </div>
+
+      <div>
+        <Heading level={4} class="text-accent">
+          This percentage of clients experience these problems:
+        </Heading>
+        <div class="space-y-4 mt-6">
+          <ProgressBar percentage={85} label="Reactive Maintenance" />
+          <ProgressBar percentage={75} label="Disjointed Efforts / Silos" />
+          <ProgressBar percentage={90} label="Data Quality" />
+          <ProgressBar percentage={87} label="Reporting Limitations" />
+        </div>
+      </div>
     </div>
+    <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">
+      <div class="flex flex-1 flex-col gap-2">
+        <div class="w-150 m-auto">
+          <img   class="w-auto max-w-32"
+            src="../../assets/images/pentagon-figures-semicircle.jpg"
+            alt="Example image"
+           
+          />
+      
+            </div>
+       
+
+        <div class="flex flex-col gap-2 my-4">
+           <Heading level={4} class="text-accent">
+          <Eyebrow class="text-accent"
+            >The Performance Improvement System</Eyebrow
+          >
+          Ed Stanek Discusses The Approach
+        </Heading>
+          <div class="grid grid-cols-2 items-center gap-2 mt-2 p-2 bg-slate-200 border-2 border-slate-200 rounded-2xl">
+            <p>
+              COO of Asset Analytix, Ed was recently interviewed for a
+              Reliability Leadership Institute podcast, discussing the unique
+              Approach to maximizing maintenance reliability.
+            </p>
+            <img
+              src={radioImage.src}
+              alt="ReliabilityRadioweb logo"
+              class="w-auto max-w-32"
+            />
+            <Audio
+              src="/media/Asset_Analtyix_FINAL.mp3"
+              controls={true}
+              audioClass="w-full"
+              wrapperClass="col-span-2"
+            />
+          </div>
+         
+        </div>
+      </div>
+      <div>
+        <h1
+        class="max-w-5xl m-auto text-6xl font-medium leading-tight text-white lg:text-6xl"
+      >
+        <span class="text-sky-800"> The Asset  
+           <br>
+               <span class="text-sky-800"> Management</span>
+        </span>
+        <br /> 
+        <span class="block text-accent">
+         Performance <br /> Improvement System
+        </span>
+
+        <!-- <span class="block text-white"> Reliability Improvement </span> -->
+      </h1>
+      <p class="mt-6 max-w-3xl mx-auto  leading-8">
+       Organized into an easy to navigate, comprehensive approach, each of 5 focus disciplines complete the total analytics experience. While every organization has various aspects in place throughout the model, they struggle to complete the picture, maximizing their total potential.
+      </p>
+    
+     <Accordion  items={accordionItems} bullets={} />
+      </div>
+    </div>
+ 
+
+
+     
+
   </Section>
 </Layout>
