@@ -26,8 +26,20 @@ const footerExtras: MenuLink[] = Array.isArray(safeFooterData.extraLinks)
   ? safeFooterData.extraLinks
   : [];
 const backToTopLabel = safeFooterData.backToTopLabel || "Back to Top";
+const currentYear = new Date().getFullYear();
 
-const footerLinks = [...primaryLinks, ...footerExtras];
+const footerHrefOverrides: Record<string, string> = {
+  "solutions": "/solutions/our-unique-improvement-system",
+  "about us": "/about-us/about-asset-analytix",
+  "consulting": "/consulting/consulting-services",
+};
+
+const footerLinks = [...primaryLinks, ...footerExtras]
+  .filter((link) => link.label.trim().toLowerCase() !== "resources")
+  .map((link) => {
+    const overrideHref = footerHrefOverrides[link.label.trim().toLowerCase()];
+    return overrideHref ? { ...link, href: overrideHref } : link;
+  });
 ---
 
 <footer
@@ -137,31 +149,39 @@ const footerLinks = [...primaryLinks, ...footerExtras];
 
   <div class="border-t border-slate-800 bg-slate-900">
     <div
-      class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8"
-    >
-      <nav aria-label="Footer navigation">
-        <ul
-          class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-200"
-        >
-          {
-            footerLinks.map((link) => (
-              <li class="list-none">
-                <a href={link.href} class="transition hover:text-sky-300">
-                  {link.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-
-      <button
-        type="button"
-        data-back-to-top
-        class="hidden rounded-md border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
-      >
-        {backToTopLabel}
-      </button>
+      class="mx-auto flex max-w-7xl  flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      
+        <p class="text-sm text-slate-200">
+      © Copyright {currentYear} by <strong>Asset Analytix</strong>. All rights reserved.</p>
+       
+          <nav aria-label="Footer navigation"  class="ml-auto ">
+            <ul class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-200">
+              {
+                footerLinks.map((link) => (
+                  <li class="list-none">
+                    <a
+                      href={link.href}
+                      target={link.label.trim().toLowerCase() === "book demo" ? "_blank" : undefined}
+                      rel={link.label.trim().toLowerCase() === "book demo" ? "noopener noreferrer" : undefined}
+                      class="transition hover:text-sky-300"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))
+              }
+              <li> <button
+            type="button"
+            data-back-to-top
+            class="hidden rounded-md  border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
+          >
+            <span class="flex items-center gap-2"><i class="fa-light fa-arrow-up"></i> {backToTopLabel}</span>
+          </button></li>
+            </ul>
+          </nav>
+         
+       
+      
     </div>
   </div>
 </footer>
