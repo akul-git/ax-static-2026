@@ -22,7 +22,7 @@ const isAudio = resolvedMediaType === "audio";
 
 <section
   class={`overflow-hidden rounded-2xl border border-slate-200 ${
-    isAudio ? "bg-white" : "bg-slate-950"
+    isAudio ? "bg-transparent border-none shadow-none!" : "bg-slate-950"
   } shadow-sm ${className}`.trim()}
 >
   <div class={isAudio ? "w-full p-4" : "aspect-video w-full"}>

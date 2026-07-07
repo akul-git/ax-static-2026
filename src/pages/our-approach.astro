@@ -6,7 +6,7 @@ import HeroBanner from "../components/ui/HeroBanner.astro";
 import Heading from "../components/ui/Heading.astro";
 import ProgressBar from "../components/ui/ProgressBar.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
-import VideoAstroComponent from "../components/ui/Video.astro";
+// import VideoAstroComponent from "../components/ui/Video.astro";
 import Video from "../components/ui/Video.astro";
 import radioImage from "../assets/images/new_ReliabilityRadioweb-logo.jpg";
 import Accordion from "../components/ui/Accordion.astro";
@@ -170,7 +170,7 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
         <p class="mb-6">
           The <strong>
             Asset Management Performance Improvement System
-          </strong>, is the Total Performance Improvement System, representing a
+          </strong>is the Total Performance Improvement System, representing a
           mature, effective and efficient future-state.
         </p>
       </div>
@@ -204,26 +204,23 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
         </div>
       </div>
     </div>
-    <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4">
+    <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-8">
       <div class="flex flex-1 flex-col gap-2">
-        <div class="w-150 m-auto">
-          <img   class="w-auto max-w-32"
+        <div class="flex flex-col gap-8">
+          <img   class="w-auto max-w-150! block rounded-2xl!"
             src="../../assets/images/pentagon-figures-semicircle.jpg"
-            alt="Example image"
+            alt="360Nav Analytics Driven Performance Improvement"
            
           />
-      
-            </div>
-       
 
-        <div class="flex flex-col gap-2 my-4">
-           <Heading level={4} class="text-accent">
+          <div>
+                       <Heading level={4} class="text-accent">
           <Eyebrow class="text-accent"
             >The Performance Improvement System</Eyebrow
           >
           Ed Stanek Discusses The Approach
         </Heading>
-          <div class=" mt-2 p-2  border-2 border-slate-200 rounded-2xl">
+          <div class=" mt-2 p-4  border-2 border-slate-200 rounded-2xl">
             <p class="lg:flex lg:gap-4">
               COO of Asset Analytix, Ed was recently interviewed for a
               Reliability Leadership Institute podcast, discussing the unique
@@ -249,12 +246,19 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
       />  
 
           </div>
+      
+            </div>
+       
+
+      
+
+          </div>
          
-        </div>
+        
       </div>
-      <div>
+      <div class="flex flex-col">
         <h1
-        class="max-w-5xl m-auto text-6xl font-medium leading-tight text-white lg:text-6xl"
+        class="max-w-5xl text-6xl font-medium text-white lg:text-6xl"
       >
         <span class="text-sky-800"> The Asset  
            <br>
@@ -267,11 +271,11 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
 
         <!-- <span class="block text-white"> Reliability Improvement </span> -->
       </h1>
-      <p class="mt-6 max-w-3xl mx-auto  leading-8">
+      <p class="mt-6 max-w-3xl mx-auto">
        Organized into an easy to navigate, comprehensive approach, each of 5 focus disciplines complete the total analytics experience. While every organization has various aspects in place throughout the model, they struggle to complete the picture, maximizing their total potential.
       </p>
     
-     <Accordion items={accordionItems} />
+     <Accordion items={accordionItems} class="mt-4" />
       </div>
     </div>
  

@@ -39,7 +39,7 @@ const {
 
     return (
       <details class="group border-b border-slate-300 py-2 last:border-b-0" open={isOpen} data-ax-accordion-item>
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-2 text-3xl font-normal tracking-tight text-sky-700 marker:content-none">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-2 text-2xl font-normal tracking-tight text-sky-700 marker:content-none">
           <span>{item.title}</span>
           <svg
             class="h-5 w-5 shrink-0 text-slate-500 transition-transform duration-200 group-open:rotate-180"
@@ -54,7 +54,7 @@ const {
 
         {hasBody ? (
           <div data-ax-accordion-panel>
-            <div class="pb-4 pr-0 text-lg leading-8 text-slate-800 sm:pr-10">
+            <div class="pb-4 pr-0 sm:pr-10">
               {item.content ? <p>{item.content}</p> : null}
               {Array.isArray(item.bullets) && item.bullets.length > 0 ? (
                 <ul class="ax-accordion-list mt-4 list-disc space-y-2 pl-6">
@@ -70,7 +70,7 @@ const {
                           <ul class="ax-accordion-sublist mt-2 list-disc space-y-2 pl-6">
                             {bullet.bullets.map((nestedBullet) => {
                               if (typeof nestedBullet === "string") {
-                                return <li>{nestedBullet}</li>;
+                                return <li class="m-0">{nestedBullet}</li>;
                               }
 
                               return <li>{nestedBullet.text}</li>;
