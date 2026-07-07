@@ -7,7 +7,7 @@ import Heading from "../components/ui/Heading.astro";
 import ProgressBar from "../components/ui/ProgressBar.astro";
 import Eyebrow from "../components/ui/Eyebrow.astro";
 import VideoAstroComponent from "../components/ui/Video.astro";
-import Audio from "../components/ui/Audio.astro";
+import Video from "../components/ui/Video.astro";
 import radioImage from "../assets/images/new_ReliabilityRadioweb-logo.jpg";
 import Accordion from "../components/ui/Accordion.astro";
 
@@ -19,7 +19,14 @@ const accordionItems = [
         
       `,
       bullets: [
-        "Level 1 EAM RAM-GPS Awareness Assessment",
+        {
+          text: "Level 1 EAM RAM-GPS Awareness Assessment",
+          bullets: [
+            "Uptime™ Framework Lens",
+            "Site Objective Alignment",
+            "Comparative Benchmarking",
+          ],
+        },
         "Power Ranking Prioritization",
         "Deep-Dive Focused Assessment",
         "Objectives / scenario driven strategy design",
@@ -31,10 +38,18 @@ const accordionItems = [
     content:
       "Define a practical KPI model that links operations, maintenance, and leadership decisions to one shared execution rhythm.",
       bullets: [
-        "Level 1 EAM RAM-GPS Awareness Assessment",
-        "Power Ranking Prioritization",
-        "Deep-Dive Focused Assessment",
-        "Objectives / scenario driven strategy design",
+       {
+          text: "Measures Design Workshop",
+          bullets: [
+            "Top-Down Site Objectives",
+            "Functional Contributors",
+            "Current Measures",
+            "SMRP Gap Analysis",
+            "Causal Mapping Visualizer",
+            "Measures Ownership",
+                      ],
+        },
+        "360 Visualizer Software",
        
       ],
   },
@@ -208,23 +223,31 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
           >
           Ed Stanek Discusses The Approach
         </Heading>
-          <div class="grid grid-cols-2 items-center gap-2 mt-2 p-2 bg-slate-200 border-2 border-slate-200 rounded-2xl">
-            <p>
+          <div class=" mt-2 p-2  border-2 border-slate-200 rounded-2xl">
+            <p class="lg:flex lg:gap-4">
               COO of Asset Analytix, Ed was recently interviewed for a
               Reliability Leadership Institute podcast, discussing the unique
               Approach to maximizing maintenance reliability.
-            </p>
+            
             <img
               src={radioImage.src}
               alt="ReliabilityRadioweb logo"
-              class="w-auto max-w-32"
-            />
-            <Audio
+              class="w-auto! max-h-29! ml-auto"
+            /></p>
+            <!-- <Audio
               src="/media/Asset_Analtyix_FINAL.mp3"
               controls={true}
               audioClass="w-full"
               wrapperClass="col-span-2"
-            />
+            /> -->
+
+<Video
+       src="/media/Asset_Analtyix_FINAL.mp3"
+        mediaType="audio"
+        download="false"
+
+      />  
+
           </div>
          
         </div>
@@ -248,7 +271,7 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
        Organized into an easy to navigate, comprehensive approach, each of 5 focus disciplines complete the total analytics experience. While every organization has various aspects in place throughout the model, they struggle to complete the picture, maximizing their total potential.
       </p>
     
-     <Accordion  items={accordionItems} bullets={} />
+     <Accordion items={accordionItems} />
       </div>
     </div>
  
