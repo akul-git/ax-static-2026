@@ -1,8 +1,15 @@
 ---
+type AccordionBullet =
+  | string
+  | {
+      text: string;
+      bullets?: AccordionBullet[];
+    };
+
 type AccordionItem = {
   title: string;
   content?: string;
-  bullets?: string[];
+  bullets?: AccordionBullet[];
   open?: boolean;
 };
 
@@ -50,10 +57,29 @@ const {
             <div class="pb-4 pr-0 text-lg leading-8 text-slate-800 sm:pr-10">
               {item.content ? <p>{item.content}</p> : null}
               {Array.isArray(item.bullets) && item.bullets.length > 0 ? (
-                <ul class="mt-4 list-disc space-y-2 pl-6">
-                  {item.bullets.map((bullet) => (
-                    <li>{bullet}</li>
-                  ))}
+                <ul class="ax-accordion-list mt-4 list-disc space-y-2 pl-6">
+                  {item.bullets.map((bullet) => {
+                    if (typeof bullet === "string") {
+                      return <li>{bullet}</li>;
+                    }
+
+                    return (
+                      <li>
+                        <span>{bullet.text}</span>
+                        {Array.isArray(bullet.bullets) && bullet.bullets.length > 0 ? (
+                          <ul class="ax-accordion-sublist mt-2 list-disc space-y-2 pl-6">
+                            {bullet.bullets.map((nestedBullet) => {
+                              if (typeof nestedBullet === "string") {
+                                return <li>{nestedBullet}</li>;
+                              }
+
+                              return <li>{nestedBullet.text}</li>;
+                            })}
+                          </ul>
+                        ) : null}
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : null}
             </div>
@@ -63,6 +89,23 @@ const {
     );
   })}
 </section>
+
+<style>
+  .ax-accordion-list,
+  .ax-accordion-sublist {
+    list-style-position: outside;
+  }
+
+  .ax-accordion-list {
+    list-style-type: disc;
+    padding-inline-start: 1.5rem;
+  }
+
+  .ax-accordion-sublist {
+    list-style-type: circle;
+    padding-inline-start: 1.5rem;
+  }
+</style>
 
 <script>
   const DURATION = 420;

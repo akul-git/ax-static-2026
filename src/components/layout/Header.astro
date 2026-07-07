@@ -2,17 +2,24 @@
 import Navigation from "../layout/Navigation.astro";
 import axLogo from "../../assets/asset-analytix-logo.svg";
 ---
-<div data-site-header-spacer aria-hidden="true" class="h-0 transition-all duration-300 ease-out"></div>
-<header data-site-header class="site-header relative bg-white transition-all duration-300 ease-out shadow-sm">
-  <div class="mx-auto flex max-w-7xl justify-between items-center py-4 px-6 lg:px-8">
-    <a href="/"><img src={axLogo.src} width="206" height="54" alt="AX Homepage" /></a>
-    <Navigation />
-  </div>
-</header>
+<div data-site-header-shell class="site-header-shell">
+  <header data-site-header class="site-header relative bg-white transition-all duration-200 ease-out shadow-sm">
+    <div class="mx-auto flex max-w-7xl justify-between items-center py-4 px-6 lg:px-8">
+      <a href="/"><img src={axLogo.src} width="206" height="54" alt="AX Homepage" /></a>
+      <Navigation />
+    </div>
+  </header>
+</div>
 
 <style>
+  .site-header-shell {
+    width: 100%;
+  }
+
   .site-header {
     z-index: 120;
+    width: 100%;
+    will-change: opacity;
   }
 
   .site-header.is-stuck {
@@ -20,34 +27,71 @@ import axLogo from "../../assets/asset-analytix-logo.svg";
     top: 0;
     left: 0;
     right: 0;
+    opacity: 0;
+    pointer-events: none;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  }
+
+  .site-header.is-stuck.is-visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 </style>
 
 <script>
   const initHeaderScroll = () => {
     const header = document.querySelector("[data-site-header]");
-    const spacer = document.querySelector("[data-site-header-spacer]");
+    const shell = document.querySelector("[data-site-header-shell]");
     if (
       !(header instanceof HTMLElement) ||
-      !(spacer instanceof HTMLElement) ||
+      !(shell instanceof HTMLElement) ||
       header.dataset.headerBound === "true"
     ) return;
     header.dataset.headerBound = "true";
 
     let ticking = false;
+    let releasePending = false;
+    let releaseToken = 0;
     const stickAt = 300;
+    const transitionDuration = 200;
+
+    const syncShellHeight = () => {
+      shell.style.height = `${header.offsetHeight}px`;
+    };
+
+    const releaseHeader = () => {
+      if (releasePending) return;
+      releasePending = true;
+      releaseToken += 1;
+      const currentToken = releaseToken;
+
+      window.setTimeout(() => {
+        if (currentToken !== releaseToken) return;
+
+        releasePending = false;
+
+        if (window.scrollY < stickAt) {
+          header.classList.remove("is-stuck");
+        }
+      }, transitionDuration);
+    };
 
     const update = () => {
       const currentY = window.scrollY;
-      const headerHeight = header.offsetHeight;
+      syncShellHeight();
 
       if (currentY >= stickAt) {
+        releasePending = false;
         header.classList.add("is-stuck");
-        spacer.style.height = `${headerHeight}px`;
+        window.requestAnimationFrame(() => {
+          header.classList.add("is-visible");
+        });
       } else {
-        header.classList.remove("is-stuck");
-        spacer.style.height = "0px";
+        header.classList.remove("is-visible");
+
+        if (header.classList.contains("is-stuck")) {
+          releaseHeader();
+        }
       }
 
       ticking = false;
@@ -62,6 +106,7 @@ import axLogo from "../../assets/asset-analytix-logo.svg";
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", update);
+    syncShellHeight();
     update();
   };
 
