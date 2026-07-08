@@ -13,11 +13,11 @@ const safeFooter = Array.isArray(footer) ? footer : [];
 ---
 
 <div class={`overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm ${className}`.trim()}>
-  <table class="min-w-full border-collapse text-left text-sm text-slate-700">
-    {caption ? <caption class="px-4 py-3 text-left text-sm font-semibold text-slate-800">{caption}</caption> : null}
+  <table class="min-w-full border-collapse text-left text-sm ">
+    {caption ? <caption class="px-4 py-3 text-left text-lg font-semibold text-slate-800">{caption}</caption> : null}
 
     {safeHeaders.length > 0 ? (
-      <thead class="bg-slate-100 text-xs uppercase tracking-[0.08em] text-slate-700">
+      <thead class="bg-slate-100 text-xs uppercase tracking-[0.08em] ">
         <tr>
           {safeHeaders.map((header) => (
             <th scope="col" class="px-4 py-3 font-semibold">{header}</th>
@@ -31,7 +31,7 @@ const safeFooter = Array.isArray(footer) ? footer : [];
         {safeRows.map((row, rowIndex) => (
           <tr class={rowIndex % 2 === 0 ? "bg-white" : "bg-slate-50"}>
             {(Array.isArray(row) ? row : []).map((cell) => (
-              <td class="border-t border-slate-200 px-4 py-3 align-top">{cell}</td>
+              <td class="border-t border-slate-200 px-4 py-3 align-top text-slate-800">{cell}</td>
             ))}
           </tr>
         ))}
