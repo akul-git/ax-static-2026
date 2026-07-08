@@ -12,41 +12,45 @@ const {
 } = Astro.props;
 ---
 
-<div class="group relative overflow-hidden rounded-2xl cursor-pointer">
-
+<div class="group relative rounded-2xl cursor-pointer isolate">
   <!-- Image -->
-  {image && (
-    <img
-      src={image}
-      alt={title}
-      class="h-30 w-full object-cover transition duration-700 group-hover:scale-100"
-    />
-  )}
+  <div class="rounded-2xl overflow-hidden">
+    {
+      image && (
+        <img
+          src={image}
+          alt={title}
+          class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        />
+      )
+    }
+  </div>
 
   <!-- Dark Overlay -->
   <div
-    class="absolute inset-0  opacity-0 transition duration-500 group-hover:opacity-100"
-  ></div>
+    class="absolute inset-0 rounded-2xl opacity-0 transition duration-500 group-hover:opacity-100"
+  >
+  </div>
 
   <!-- Content -->
   <div
-    class="absolute inset-x-0 bottom-0 translate-y-full transition-all duration-700 group-hover:translate-y-0"
+    class="absolute inset-0 flex items-end rounded-2xl overflow-hidden pointer-events-none"
   >
-
-    <!-- Triangle -->
+    <!-- Triangle
     <div
-      class="h-20 bg-white"
+      class="h-20 bg-white/20 backdrop-blur-lg"
       style="clip-path: polygon(0 100%, 100% 0%, 100% 100%);"
-    ></div>
+    ></div> -->
 
     <!-- Card -->
-    <div class="bg-white  py-1 px-10   h-40 ">
-
-      <h3 class="text-2xl font-bold mb-4">
+    <div
+      class="w-full translate-y-full transition-all duration-700 group-hover:translate-y-0 pointer-events-auto rounded-b-2xl h-2/3 overflow-hidden bg-white/50 backdrop-blur-lg py-1 px-10"
+    >
+      <h3 class="text-xl font-bold mt-3 mb-1">
         {title}
       </h3>
 
-      <p class="text-gray-600 mb-4">
+      <p>
         {description}
       </p>
 
@@ -55,9 +59,6 @@ const {
       >
         Read More
       </button> -->
-
     </div>
-
   </div>
-
 </div>

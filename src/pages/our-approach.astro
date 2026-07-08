@@ -10,109 +10,94 @@ import Eyebrow from "../components/ui/Eyebrow.astro";
 import Video from "../components/ui/Video.astro";
 import radioImage from "../assets/images/new_ReliabilityRadioweb-logo.jpg";
 import Accordion from "../components/ui/Accordion.astro";
+import HoverCard from "../components/ui/HoverCard.astro";
 
 const accordionItems = [
   {
     title: "360 Precision Assessment",
-    content:
-      `The first ever assessment organized into multi-layers, allowing you to quickly understand your current position, prioritizing focus and objectives-based deeper dive where you need it.
+    content: `The first ever assessment organized into multi-layers, allowing you to quickly understand your current position, prioritizing focus and objectives-based deeper dive where you need it.
         
       `,
-      bullets: [
-        {
-          text: "Level 1 EAM RAM-GPS Awareness Assessment",
-          bullets: [
-            "Uptime™ Framework Lens",
-            "Site Objective Alignment",
-            "Comparative Benchmarking",
-          ],
-        },
-        "Power Ranking Prioritization",
-        "Deep-Dive Focused Assessment",
-        "Objectives / scenario driven strategy design",
-       
-      ],
+    bullets: [
+      {
+        text: "Level 1 EAM RAM-GPS Awareness Assessment",
+        bullets: [
+          "Uptime™ Framework Lens",
+          "Site Objective Alignment",
+          "Comparative Benchmarking",
+        ],
+      },
+      "Power Ranking Prioritization",
+      "Deep-Dive Focused Assessment",
+      "Objectives / scenario driven strategy design",
+    ],
   },
   {
     title: "Measures Architecture",
     content:
       "Define a practical KPI model that links operations, maintenance, and leadership decisions to one shared execution rhythm.",
-      bullets: [
-       {
-          text: "Measures Design Workshop",
-          bullets: [
-            "Top-Down Site Objectives",
-            "Functional Contributors",
-            "Current Measures",
-            "SMRP Gap Analysis",
-            "Causal Mapping Visualizer",
-            "Measures Ownership",
-                      ],
-        },
-        "360 Visualizer Software",
-       
-      ],
+    bullets: [
+      {
+        text: "Measures Design Workshop",
+        bullets: [
+          "Top-Down Site Objectives",
+          "Functional Contributors",
+          "Current Measures",
+          "SMRP Gap Analysis",
+          "Causal Mapping Visualizer",
+          "Measures Ownership",
+        ],
+      },
+      "360 Visualizer Software",
+    ],
   },
   {
     title: "Measures Architecture",
     content:
       "Focused project to establish a measures framework architecture and serves as a powerful management tool, a “virtual twin” of your EAM program, providing valuable insight.",
-    bullets: [
-      "Measures Design Workshop",
-      "360 Visualizer Software",
-    
-    ],
+    bullets: ["Measures Design Workshop", "360 Visualizer Software"],
   },
   {
     title: "Baselining Pilot Events",
-    content: "At AX, Baselining is a process, a series of actions, a verb. It’s the discovery, analysis, evaluation and testing required to achieve the target technical end state Each 2-week event is a micro experience of a full-scale solution",
-  bullets: [
+    content:
+      "At AX, Baselining is a process, a series of actions, a verb. It’s the discovery, analysis, evaluation and testing required to achieve the target technical end state Each 2-week event is a micro experience of a full-scale solution",
+    bullets: [
       "EAM Program Assessment",
       "Reliability Strategies / PMO",
       "Work Management P&S",
-       "Storeroom / Procurement",
+      "Storeroom / Procurement",
       "I&E / Calibration",
       "Production Op-Ex",
-    
     ],
- 
   },
   {
     title: "Solution Deployment",
-    content:
-      `From successful Targeted Baselining Events to deployment of full-scale roll-out at the site or corporate levels
+    content: `From successful Targeted Baselining Events to deployment of full-scale roll-out at the site or corporate levels
 AX brings boots on the ground expertise, processes, tools and bandwidth to ensure maximum impact in the shortest time`,
-  bullets: [
+    bullets: [
       "Project Design and Mgt.",
       "Training / Skills Transfer",
       "Coaching / Facilitation",
-       "Turn-Key SME Deployment",
+      "Turn-Key SME Deployment",
       "Off-Site Support Services",
       "Tools / Technology Licensing",
-    
     ],
   },
-    {
+  {
     title: "Data & Analytics",
-    content:
-      `Turning multiple data sources into analytics-ready information in an automated, documented, validated, process with a high degree of confidence. Bridging the gap between measures data and reporting requirements.`,
-  bullets: [
+    content: `Turning multiple data sources into analytics-ready information in an automated, documented, validated, process with a high degree of confidence. Bridging the gap between measures data and reporting requirements.`,
+    bullets: [
       "Data Quality Gap Assessment",
       "Data Source Mapping",
       "Data Integrity Evaluation",
-       "Data Alignment",
+      "Data Alignment",
       "Quality Data Preparation",
       "Master Data Management",
       "Data Quality Monitoring",
-    
     ],
   },
 ];
-
 ---
-
-
-
 
 <Layout title="Our Approach">
   <div class="mx-auto text-center text-shadow-md">
@@ -207,81 +192,103 @@ AX brings boots on the ground expertise, processes, tools and bandwidth to ensur
     <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-8">
       <div class="flex flex-1 flex-col gap-2">
         <div class="flex flex-col gap-8">
-          <img   class="w-auto max-w-150! block rounded-2xl!"
+          <img
+            class="w-auto max-w-150! block rounded-2xl!"
             src="../../assets/images/pentagon-figures-semicircle.jpg"
             alt="360Nav Analytics Driven Performance Improvement"
-           
           />
 
           <div>
-                       <Heading level={4} class="text-accent">
-          <Eyebrow class="text-accent"
-            >The Performance Improvement System</Eyebrow
-          >
-          Ed Stanek Discusses The Approach
-        </Heading>
-          <div class=" mt-2 p-4  border-2 border-slate-200 rounded-2xl">
-            <p class="lg:flex lg:gap-4">
-              COO of Asset Analytix, Ed was recently interviewed for a
-              Reliability Leadership Institute podcast, discussing the unique
-              Approach to maximizing maintenance reliability.
-            
-            <img
-              src={radioImage.src}
-              alt="ReliabilityRadioweb logo"
-              class="w-auto! max-h-29! ml-auto"
-            /></p>
-            <!-- <Audio
+            <Heading level={4} class="text-accent">
+              <Eyebrow class="text-accent"
+                >The Performance Improvement System</Eyebrow
+              >
+              Ed Stanek Discusses The Approach
+            </Heading>
+            <div class="mt-2 p-4 border-2 border-slate-200 rounded-2xl">
+              <p class="lg:flex lg:gap-4">
+                COO of Asset Analytix, Ed was recently interviewed for a
+                Reliability Leadership Institute podcast, discussing the unique
+                Approach to maximizing maintenance reliability.
+
+                <img
+                  src={radioImage.src}
+                  alt="ReliabilityRadioweb logo"
+                  class="w-auto! max-h-29! ml-auto"
+                />
+              </p>
+              <!-- <Audio
               src="/media/Asset_Analtyix_FINAL.mp3"
               controls={true}
               audioClass="w-full"
               wrapperClass="col-span-2"
             /> -->
 
-<Video
-       src="/media/Asset_Analtyix_FINAL.mp3"
-        mediaType="audio"
-        download="false"
-
-      />  
-
-          </div>
-      
+              <Video
+                src="/media/Asset_Analtyix_FINAL.mp3"
+                mediaType="audio"
+                download="false"
+              />
             </div>
-       
-
-      
-
           </div>
-         
-        
+        </div>
       </div>
       <div class="flex flex-col">
-        <h1
-        class="max-w-5xl text-6xl font-medium text-white lg:text-6xl"
-      >
-        <span class="text-sky-800"> The Asset  
-           <br>
-               <span class="text-sky-800"> Management</span>
-        </span>
-        <br /> 
-        <span class="block text-accent">
-         Performance <br /> Improvement System
-        </span>
+        <h1 class="max-w-5xl text-6xl font-medium text-white lg:text-6xl">
+          <span class="text-sky-800">
+            The Asset
+            <br />
+            <span class="text-sky-800"> Management</span>
+          </span>
+          <br />
+          <span class="block text-accent">
+            Performance <br /> Improvement System
+          </span>
 
-        <!-- <span class="block text-white"> Reliability Improvement </span> -->
-      </h1>
-      <p class="mt-6 max-w-3xl mx-auto">
-       Organized into an easy to navigate, comprehensive approach, each of 5 focus disciplines complete the total analytics experience. While every organization has various aspects in place throughout the model, they struggle to complete the picture, maximizing their total potential.
-      </p>
-    
-     <Accordion items={accordionItems} class="mt-4" />
+          <!-- <span class="block text-white"> Reliability Improvement </span> -->
+        </h1>
+        <p class="mt-6 max-w-3xl mx-auto">
+          Organized into an easy to navigate, comprehensive approach, each of 5
+          focus disciplines complete the total analytics experience. While every
+          organization has various aspects in place throughout the model, they
+          struggle to complete the picture, maximizing their total potential.
+        </p>
+
+        <Accordion items={accordionItems} class="mt-4" />
       </div>
     </div>
- 
 
-
-     
-
+    <div class="grid lg:grid-cols-3 gap-4 my-4">
+      <div class="col-span-1">
+        <Heading level={4} class="mb-4">
+          <span class="block text-brand">Implementation</span>
+          <span class="block text-accent">Delivery Options</span>
+        </Heading>
+        <p>
+          Asset Analytix had developed a few unique ways to achieve your desired
+          future state. Each delivery approach offers different benefits around
+          the same topics, tools and methodology. Depending on your current
+          situation, there’s a solution aligned to your needs.
+        </p>
+      </div>
+      <div class="col-span-2 flex gap-4">
+        <HoverCard
+          image="/assets/images/portfolio-public-02.jpg"
+          title="On-site Delivery"
+          description="Boots on the ground, face-to-face, training, coaching or turn-key delivery."
+        />
+        <HoverCard
+          image="/assets/images/portfolio-boots-02.jpg"
+          title="Remote, Web-based Workshops"
+          description="No touch consulting, private facilitated workshops."
+        />
+        <HoverCard
+          image="/assets/images/portfolio-remote-02.jpg"
+          title="Public Events  "
+          description="Regional awareness and high-level training  .
+               "
+        />
+      </div>
+    </div>
   </Section>
 </Layout>

@@ -78,3 +78,7 @@ article p {
 .bg-test {
     background-image: linear-gradient(150deg, transparent 50%, hsl(220deg 8% 79% / 20%) 30%);
 }
+
+ul.hightlight-book-demo > li:nth-child(5) > a {
+    background-color: oklch(93.2% 0.032 255.585);
+}
