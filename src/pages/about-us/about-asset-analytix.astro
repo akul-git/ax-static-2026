@@ -7,6 +7,7 @@ import Eyebrow from "../../components/ui/Eyebrow.astro";
 import "../../styles/global.css";
 import Heading from "../../components/ui/Heading.astro";
 import ContactForm from "../../components/ui/ContactForm.astro";
+import HubSpotForm from "../../components/ui/HubSpotForm.astro";
 
 const status = Astro.url.searchParams.get("status") || "";
 
@@ -204,7 +205,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
       <div class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] xl:items-start">
         <div>
           <!-- <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p> -->
-          <div class="mt-8 text-center">
+          <div class="text-center">
             <div class="flex justify-center gap-2">
               <Eyebrow
                 ><span class="text-base"> CONTACT US WITH EASE</span>
@@ -263,7 +264,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
           </div>
         </div>
         <div>
-          {
+          <!-- {
             isSuccess ? (
               <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
                 Thank you. Your message has been received.
@@ -274,7 +275,11 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
               </p>
             ) : null
           }
-          <ContactForm action="/api/contact" />
+          <ContactForm action="/api/contact" /> -->
+          <HubSpotForm
+          portalId="25291755"
+          formId="88983a4a-2ebf-4e4c-8088-c344bddb2cae"
+        />
         </div>
       </div>
     </div>
