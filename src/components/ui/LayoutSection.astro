@@ -1,0 +1,91 @@
+---
+export interface Props {
+  variant?: "default" | "surface" | "image" | "dark";
+  shape?: "none" | "clip-top" | "clip-bottom" | "diagonal" | "diagonal-reverse";
+
+  bgImage?: string;
+
+  padding?: string;
+
+  class?: string;
+
+  contentClass?: string;
+}
+
+const {
+  variant = "default",
+  shape = "none",
+
+  bgImage = "",
+
+  padding = "py-8",
+
+  class: sectionClass = "",
+
+  contentClass = "",
+} = Astro.props;
+
+const variantClasses = {
+  default: "bg-white",
+
+  surface: "bg-slate-100",
+
+  image: "bg-cover bg-center bg-no-repeat",
+
+  dark: "bg-slate-900 text-white",
+};
+
+const shapeClass = {
+  none: "",
+
+  "clip-top": "layout-section--clip-top",
+
+  "clip-bottom": "layout-section--clip-bottom",
+
+  diagonal: "layout-section--diagonal",
+
+  "diagonal-reverse": "layout-section--diagonal-reverse",
+};
+
+const style =
+  variant === "image" && bgImage
+    ? `background-image:url('${bgImage}')`
+    : "";
+---
+
+<section
+  class:list={[
+    variantClasses[variant],
+    shapeClass[shape],
+    padding,
+    sectionClass,
+  ]}
+  style={style}
+>
+  <article
+    class:list={[
+      "max-w-9xl mx-auto px-6",
+      contentClass,
+    ]}
+  >
+    <slot />
+  </article>
+</section>
+
+<style>
+.layout-section--clip-top {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+.layout-section--clip-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.layout-section--diagonal {
+  clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+}
+
+.layout-section--diagonal-reverse {
+  clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+}
+</style>
