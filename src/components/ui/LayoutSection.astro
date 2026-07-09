@@ -25,6 +25,8 @@ export interface Props {
   /** Preferred name */
   containerClass?: string;
 
+   fullWidth?: boolean;
+
   /** Inline styles for the section */
   style?: string;
 
@@ -45,6 +47,8 @@ const {
   contentClass = "",
 
   containerClass = "",
+
+   fullWidth = false,
 
   style: customStyle = "",
 
@@ -97,20 +101,26 @@ const style = [
   ]}
   style={style}
 >
-<article
-  class:list={[
-    "mx-auto",
-    "max-w-9xl",
-    "px-6",
-    "lg:px-8",
+  {
+    fullWidth ? (
+      <slot />
+    ) : (
+      <article
+        class:list={[
+          "mx-auto",
+          "max-w-9xl",
+          "px-6",
+          "lg:px-8",
 
-    contentClass,
+          contentClass,
 
-    containerClass,
-  ]}
->
-    <slot />
-  </article>
+          containerClass,
+        ]}
+      >
+        <slot />
+      </article>
+    )
+  }
 </section>
 
 <style>
