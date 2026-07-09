@@ -86,6 +86,7 @@ const isAudio = resolvedMediaType === "audio";
       const parsedOptions = optionsRaw ? JSON.parse(optionsRaw) : {};
       new Player(node, {
         ...parsedOptions,
+        iconSprite: "/mejs-controls.svg",
         stretching: "responsive",
       });
     });

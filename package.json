@@ -13,11 +13,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^10.1.4",
-    "@astrojs/react": "^4.4.0",
+    "@astrojs/node": "^11.0.2",
+    "@astrojs/react": "^6.0.1",
     "@fontsource/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^6.4.7",
+    "astro": "^7.0.7",
     "jquery": "^3.7.1",
     "mediaelement": "^7.1.0",
     "nodemailer": "^9.0.1",

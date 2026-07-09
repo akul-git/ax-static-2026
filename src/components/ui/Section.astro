@@ -1,8 +1,31 @@
 ---
-const { class: className = "" } = Astro.props;
+import LayoutSection from "./LayoutSection.astro";
+
+const {
+  class: className = "",
+
+  variant = "default",
+
+  shape = "none",
+
+  bgImage = "",
+
+  padding = "py-8",
+
+  containerClass = "",
+
+  contentClass = "",
+} = Astro.props;
 ---
-<section class={`py-8 ${className}`.trim()}>
-  <div class="mx-auto max-w-9xl px-6 lg:px-8">
-    <slot />
-  </div>
-</section>
+
+<LayoutSection
+  variant={variant}
+  shape={shape}
+  bgImage={bgImage}
+  padding={padding}
+  class={className}
+  containerClass={containerClass}
+  contentClass={contentClass}
+>
+  <slot />
+</LayoutSection>

@@ -1,6 +1,7 @@
 ---
 export interface Props {
   variant?: "default" | "surface" | "image" | "dark";
+
   shape?:
     | "none"
     | "clip-top"
@@ -12,11 +13,23 @@ export interface Props {
 
   bgImage?: string;
 
+  /** Vertical spacing */
   padding?: string;
 
+  /** Additional classes on the <section> */
   class?: string;
 
+  /** Legacy name (keep for compatibility) */
   contentClass?: string;
+
+  /** Preferred name */
+  containerClass?: string;
+
+  /** Inline styles for the section */
+  style?: string;
+
+  /** Optional HTML id */
+  id?: string;
 }
 
 const {
@@ -30,6 +43,12 @@ const {
   class: sectionClass = "",
 
   contentClass = "",
+
+  containerClass = "",
+
+  style: customStyle = "",
+
+  id = "",
 } = Astro.props;
 
 const variantClasses = {
@@ -58,13 +77,18 @@ const shapeClass = {
   "left-top-bottom-clipped": "layout-section--left-top-bottom-clipped",
 };
 
-const style =
+const style = [
   variant === "image" && bgImage
     ? `background-image:url('${bgImage}')`
-    : "";
+    : "",
+  customStyle,
+]
+  .filter(Boolean)
+  .join(";");
 ---
 
 <section
+  id={id}
   class:list={[
     variantClasses[variant],
     shapeClass[shape],
@@ -73,12 +97,18 @@ const style =
   ]}
   style={style}
 >
-  <article
-    class:list={[
-      "max-w-9xl mx-auto px-6",
-      contentClass,
-    ]}
-  >
+<article
+  class:list={[
+    "mx-auto",
+    "max-w-9xl",
+    "px-6",
+    "lg:px-8",
+
+    contentClass,
+
+    containerClass,
+  ]}
+>
     <slot />
   </article>
 </section>
