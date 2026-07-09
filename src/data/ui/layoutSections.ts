@@ -47,9 +47,25 @@ export const layoutSections = {
     padding: "py-8",
   },
 
+  rightTopBottomClipped: {
+    title: "Right Top-Bottom Clipped",
+    description: "Top-right and bottom-right edges clipped for directional flow.",
+    variant: "default",
+    shape: "right-top-bottom-clipped",
+    padding: "py-8",
+  },
+
+  leftTopBottomClipped: {
+    title: "Left Top-Bottom Clipped",
+    description: "Top-left and bottom-left edges clipped for mirrored directional flow.",
+    variant: "default",
+    shape: "left-top-bottom-clipped",
+    padding: "py-8",
+  },
+
   diagonal: {
     title: "Diagonal",
-    description: "Top and bottom clipping for a diagonal section profile.",
+    description: "Legacy alias of left top-bottom clipped profile.",
     variant: "default",
     shape: "diagonal",
     padding: "py-8",
@@ -57,7 +73,7 @@ export const layoutSections = {
 
   diagonalReverse: {
     title: "Diagonal Reverse (Flip X)",
-    description: "Horizontally flipped diagonal clipping for mirrored section flow.",
+    description: "Legacy alias of right top-bottom clipped profile.",
     variant: "default",
     shape: "diagonal-reverse",
     padding: "py-8",

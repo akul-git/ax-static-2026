@@ -1,7 +1,14 @@
 ---
 export interface Props {
   variant?: "default" | "surface" | "image" | "dark";
-  shape?: "none" | "clip-top" | "clip-bottom" | "diagonal" | "diagonal-reverse";
+  shape?:
+    | "none"
+    | "clip-top"
+    | "clip-bottom"
+    | "diagonal"
+    | "diagonal-reverse"
+    | "right-top-bottom-clipped"
+    | "left-top-bottom-clipped";
 
   bgImage?: string;
 
@@ -45,6 +52,10 @@ const shapeClass = {
   diagonal: "layout-section--diagonal",
 
   "diagonal-reverse": "layout-section--diagonal-reverse",
+
+  "right-top-bottom-clipped": "layout-section--right-top-bottom-clipped",
+
+  "left-top-bottom-clipped": "layout-section--left-top-bottom-clipped",
 };
 
 const style =
@@ -82,10 +93,18 @@ const style =
 }
 
 .layout-section--diagonal {
-  clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
 }
 
 .layout-section--diagonal-reverse {
-  clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 85%);
+  clip-path: polygon(0 0, 100% 12%, 100% 88%, 0 100%);
+}
+
+.layout-section--right-top-bottom-clipped {
+  clip-path: polygon(0 0, 100% 12%, 100% 88%, 0 100%);
+}
+
+.layout-section--left-top-bottom-clipped {
+  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
 }
 </style>
