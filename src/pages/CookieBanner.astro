@@ -1,0 +1,65 @@
+---
+import Button from "../components/ui/Button.astro";
+import Card  from "../components/ui/Card.astro"
+import Heading from "../components/ui/Heading.astro";
+const consent = Astro.cookies.get("cookieConsent")?.value
+---
+
+<Card
+  id=""
+  class="cookie-banner fixed bottom-6 right-11 z-50 w-1/4 hidden"
+>
+  <div
+    class=""
+  >
+    <div>
+      <Heading level={5}>We value you privacy</Heading>
+
+      <p class="mt-2 text-sm">
+      This website stores cookies on your computer. These cookies are used to collect information about how you interact with our website and allow us to remember you. We use this information in order to improve and customize your browsing experience and for analytics and metrics about our visitors both on this website and other media.
+       To find out more about the cookies we use, see our
+        <a href="/private-policy" class="font-medium text-blue-400 hover:underline">
+          Cookies/Privacy Policy
+        </a>
+      </p>
+    </div>
+
+    <div class="flex gap-2 w-full">
+      <Button variant="outline" class="w-full reject-btn cursor-pointer" >Reject All</Button>
+      <Button class="w-full accept-btn cursor-pointer" >Accept All</Button>
+    </div>
+  </div>
+</Card>
+
+<script is:inline>
+  function getCookie(name) {
+    return document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(name + "="))
+      ?.split("=")[1];
+  }
+
+  function setCookie(name, value) {
+    document.cookie =
+      `${name}=${value}; Max-Age=31536000; Path=/; SameSite=Lax Secure`;
+  }
+
+  const banner = document.querySelector(".cookie-banner");
+  const acceptBtn = document.querySelector(".accept-btn");
+  const rejectBtn = document.querySelector(".reject-btn");
+
+  // Show only if no cookie exists
+  if (!getCookie("cookieConsent")) {
+    banner?.classList.remove("hidden");
+  }
+
+  acceptBtn?.addEventListener("click", () => {
+    setCookie("cookieConsent", "accepted");
+    banner?.classList.add("hidden");
+  });
+
+  rejectBtn?.addEventListener("click", () => {
+    setCookie("cookieConsent", "rejected");
+    banner?.classList.add("hidden");
+  });
+</script>
