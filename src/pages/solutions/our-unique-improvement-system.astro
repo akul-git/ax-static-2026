@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
 import Section from "../../components/ui/Section.astro";
-import "../../styles/global.css";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
+// import "../../styles/global.css";
 import Heading from "../../components/ui/Heading.astro";
 import Eyebrow from "../../components/ui/Eyebrow.astro";
 import { cards } from "../../data/ui/card";
@@ -25,19 +26,20 @@ const errorMessages = {
 const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 ---
 
+
+
+
+
+
+
+
 <Layout>
-  <Section>
-    <!-- <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">Our Unique Improvement System</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for Our Unique Improvement System.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final messaging, value proposition, and implementation details.</p>
-    </div> -->
-    <div class="mx-auto max-w-7xl">
-      <!-- <h1 class="text-6xl mb-2 flex gap-3 justify-center font-medium">
-        <span class="block text-brand"> Asset Analytix </span>
-        <span class="block text-accent"> Solutions </span>
-      </h1> -->
+
+    <LayoutSection
+  variant="image"
+  bgImage="../../assets/images/bgn-industries.png"
+containerSize="7xl">
+
       <h1
         class="mb-2 flex flex-wrap justify-center gap-2 text-center font-medium
          text-4xl sm:text-5xl lg:text-6xl"
@@ -53,8 +55,8 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
         <span class="text-accent">Our 3-Part Equation for</span>
         <span class="text-brand">Improved Reliability</span>
       </h1>
-      <div class="flex flex-col gap-12">
-        <div class="flex flex-col mt-4 gap-4">
+
+              <div class="flex flex-col mt-4 gap-4">
           <p>
             <strong>For over 20 years,</strong> the Asset Analytix team has found
             that a balanced approach of just the right skills and standardized processes,
@@ -68,10 +70,9 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
             can be leveraged for scale across your entire organization.
           </p>
         </div>
-
-        <div
-          class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto"
-        >
+      <div
+          class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto mt-8">
+        
           <article
             class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
           >
@@ -97,7 +98,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
                 design.
               </p>
 
-              <!-- Paragraph -->
+             
               <p>
                 This experience is ready for use and shaves years off your
                 efforts with acceleration gained only by those who have walked
@@ -129,7 +130,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
                 for consistent and immediate deployment.
               </p>
 
-              <!-- Paragraph -->
+           
               <p>
                 By creating standardization, corporate asset management teams
                 can leverage the experience and approaches for the quickest
@@ -171,6 +172,15 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
             </div>
           </article>
         </div>
+</LayoutSection>
+
+
+ <LayoutSection
+  variant="image"
+  bgImage="../../assets/images/bgn-industries.png"
+containerSize="7xl">
+<div class="flex flex-col gap-12">
+    
 
         <div>
           <Eyebrow>Our Solutions</Eyebrow>
@@ -235,14 +245,23 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
           </article>
         </div>
 
-        <div
-          class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] mt-8 xl:items-start"
-        >
-          <!-- <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p> -->
+
+      </div>
+</LayoutSection>
+
+  <LayoutSection shape="clip-top-right" variant="surface" padding="pt-30 pb-10" containerSize="7xl">
+           <div class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] mt-8 xl:items-start">
+        
           <div class="flex flex-col gap-4">
-            <h1 class="text-xl">
-              <span class="block text-accent"> Contact us today </span>
-            </h1>
+ <Heading level={5}>
+          <span class="text-accent">Contact us today</span>
+          <!-- CMMS Program
+  <span class="text-accent">
+    Optimization 
+  </span>-->
+        </Heading>
+
+            
             <p>
               Reach out to us to find out how Asset Analytix Solutions will help
               your organization maximize the savings opportunities through
@@ -257,25 +276,12 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
           </div>
 
           <div>
-            <!-- {
-              isSuccess ? (
-                <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
-                  Thank you. Your message has been received.
-                </p>
-              ) : errorMessage ? (
-                <p class="mb-5 rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
-                  {errorMessage}
-                </p>
-              ) : null
-            }
-            <ContactForm action="/api/contact" /> -->
+          
              <HubSpotForm
           portalId="25291755"
           formId="88983a4a-2ebf-4e4c-8088-c344bddb2cae"
         />
           </div>
         </div>
-      </div>
-    </div>
-  </Section>
+  </LayoutSection>
 </Layout>

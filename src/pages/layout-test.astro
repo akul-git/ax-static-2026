@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LayoutSection from "../components/ui/LayoutSection.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout>
+
+  <LayoutSection>
+    <h1 class="text-4xl font-bold">
+      Default section
+    </h1>
+  </LayoutSection>
+
+  <LayoutSection variant="surface">
+    <h2 class="text-3xl">
+      Surface section
+    </h2>
+  </LayoutSection>
+  <LayoutSection shape="clip-top-left" variant="surface">
+    <h2 class="text-3xl">
+     Digonal section
+    </h2>
+  </LayoutSection>
+
+  <LayoutSection
+    variant="dark"
+    padding="py-20"
+  >
+    <h2 class="text-3xl">
+      Dark section
+    </h2>
+  </LayoutSection>
+
+</BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 import Section from "../../components/ui/Section.astro";
 import "../../styles/global.css";
 import HeroBanner from "../../components/ui/HeroBanner.astro";
@@ -23,17 +24,11 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
       </p>
     </HeroBanner>
   </div>
-  <Section>
-    <!-- <div class="mx-auto max-w-4xl">
-      <p class="text-sm uppercase tracking-[0.3em] text-sky-600">Solutions</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900">CMMS Data Optimization</h1>
-      <p class="mt-6 text-lg leading-8 text-slate-600">This is placeholder content for CMMS Data Optimization.</p>
-      <p class="mt-4 text-slate-600">Replace this text with your final methodology, deliverables, and timeline.</p>
-    </div> -->
 
-    <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
-    >
+ 
+
+  <LayoutSection>
+       <div class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8">
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
         <div class="pb-6">
           <h2 class="text-2xl mb-2 font-semibold">
@@ -81,13 +76,15 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
         <BookDemo
          backgroundImage={happyWithDataImage.src}
           buttonLabel="BOOK A DEMO"
-          href=""
+          href="/book-demo"
           minHeight="20rem"
         />
         
       </div>
     </div>
-    <article class="bg-slate-100 p-6">
+  </LayoutSection>
+  <LayoutSection shape="diagonal-reverse"  padding="py-30" class="bg-white">
+    <article>
       <h2 class="text-2xl mb-2 font-semibold">
         <span class="block text-accent">
           How It Happens (The 3 Levels of Data Quality Issues)
@@ -147,9 +144,9 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
       </Heading>
       <p class="my-1!">Without active monitoring, missing, incorrect, and drifting data gradually compound across all three levels — until the CMMS can no longer be trusted.</p>
     </article>
-
-
-     <article class="my-4 p-6">
+  </LayoutSection>
+  <LayoutSection>
+        <article class="my-4 p-6">
       <h2 class="text-2xl mb-2 font-semibold">
         <span class="block text-accent">
          The Solution – CMMS Data Optimization
@@ -197,5 +194,13 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
 
      
     </article>
-  </Section>
+  </LayoutSection>
+
+
+
+   
+
+
+
+ 
 </Layout>

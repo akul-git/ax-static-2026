@@ -2,35 +2,42 @@
 export interface Props {
   variant?: "default" | "surface" | "image" | "dark";
 
-  shape?:
-    | "none"
-    | "clip-top"
-    | "clip-bottom"
-    | "diagonal"
-    | "diagonal-reverse"
-    | "right-top-bottom-clipped"
-    | "left-top-bottom-clipped";
+ shape?:
+  | "none"
+
+  | "clip-top-left"
+  | "clip-top-right"
+
+  | "clip-bottom-left"
+  | "clip-bottom-right"
+
+  | "diagonal"
+  | "diagonal-reverse"
+
+  | "right-top-bottom-clipped"
+  | "left-top-bottom-clipped";
 
   bgImage?: string;
 
   /** Vertical spacing */
   padding?: string;
 
-  /** Additional classes on the <section> */
+  /** Extra classes on the section */
   class?: string;
 
-  /** Legacy name (keep for compatibility) */
-  contentClass?: string;
+  /** Container width preset */
+  containerSize?: "7xl" | "8xl" | "9xl" | "full";
 
-  /** Preferred name */
+  /** Extra classes on the inner container */
   containerClass?: string;
 
-   fullWidth?: boolean;
+  /** Remove container wrapper */
+  fullWidth?: boolean;
 
-  /** Inline styles for the section */
+  /** Inline styles */
   style?: string;
 
-  /** Optional HTML id */
+  /** Optional section id */
   id?: string;
 }
 
@@ -44,23 +51,25 @@ const {
 
   class: sectionClass = "",
 
-  contentClass = "",
+  containerSize = "9xl",
 
   containerClass = "",
 
-   fullWidth = false,
+  fullWidth = false,
 
   style: customStyle = "",
 
   id = "",
+
+  ...rest
 } = Astro.props;
 
 const variantClasses = {
-  default: "bg-white",
+  default: "bg-transparent",
 
-  surface: "bg-slate-100",
+  surface: "bg-neutral-100",
 
-  image: "bg-cover bg-center bg-no-repeat",
+  image: "bg-contain bg-center bg-no-repeat",
 
   dark: "bg-slate-900 text-white",
 };
@@ -68,20 +77,36 @@ const variantClasses = {
 const shapeClass = {
   none: "",
 
-  "clip-top": "layout-section--clip-top",
+  "clip-top-left": "layout-section--clip-top-left",
 
-  "clip-bottom": "layout-section--clip-bottom",
+  "clip-top-right": "layout-section--clip-top-right",
+
+  "clip-bottom-left": "layout-section--clip-bottom-left",
+
+  "clip-bottom-right": "layout-section--clip-bottom-right",
 
   diagonal: "layout-section--diagonal",
 
   "diagonal-reverse": "layout-section--diagonal-reverse",
 
-  "right-top-bottom-clipped": "layout-section--right-top-bottom-clipped",
+  "right-top-bottom-clipped":
+    "layout-section--right-top-bottom-clipped",
 
-  "left-top-bottom-clipped": "layout-section--left-top-bottom-clipped",
+  "left-top-bottom-clipped":
+    "layout-section--left-top-bottom-clipped",
 };
 
-const style = [
+const containerSizes = {
+  "7xl": "max-w-7xl",
+
+  "8xl": "max-w-8xl",
+
+  "9xl": "max-w-9xl",
+
+  full: "max-w-full",
+};
+
+const computedStyle = [
   variant === "image" && bgImage
     ? `background-image:url('${bgImage}')`
     : "",
@@ -99,52 +124,85 @@ const style = [
     padding,
     sectionClass,
   ]}
-  style={style}
+  style={computedStyle}
+  {...rest}
 >
   {
     fullWidth ? (
       <slot />
     ) : (
-      <article
+      <div
         class:list={[
           "mx-auto",
-          "max-w-9xl",
-          "px-6",
-          "lg:px-8",
-
-          contentClass,
-
+          containerSizes[containerSize],
+          "px-6 lg:px-8",
           containerClass,
         ]}
       >
         <slot />
-      </article>
+      </div>
     )
   }
 </section>
 
 <style>
-.layout-section--clip-top {
-  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+/* Top-left corner clipped */
+
+.layout-section--clip-top-left {
+  clip-path: polygon(
+    0 18%,
+    100% 0,
+    100% 100%,
+    0 100%
+  );
 }
 
-.layout-section--clip-bottom {
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+/* Top-right corner clipped */
+
+.layout-section--clip-top-right {
+  clip-path: polygon(
+    0 0,
+    100% 18%,
+    100% 100%,
+    0 100%
+  );
 }
 
-.layout-section--diagonal {
-  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
+/* Bottom-left corner clipped */
+
+.layout-section--clip-bottom-left {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 85%
+  );
 }
 
-.layout-section--diagonal-reverse {
-  clip-path: polygon(0 0, 100% 12%, 100% 88%, 0 100%);
+/* Bottom-right corner clipped */
+
+.layout-section--clip-bottom-right {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 85%,
+    0 100%
+  );
 }
 
-.layout-section--right-top-bottom-clipped {
-  clip-path: polygon(0 0, 100% 12%, 100% 88%, 0 100%);
-}
+  .layout-section--diagonal {
+    clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
+  }
 
-.layout-section--left-top-bottom-clipped {
-  clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
-}
+  .layout-section--diagonal-reverse {
+    clip-path: polygon(0 0, 100% 12%, 100% 88%, 0 100%);
+  }
+
+  .layout-section--right-top-bottom-clipped {
+    clip-path: polygon(0 0, 100% 12%, 100% 88%, 0 100%);
+  }
+
+  .layout-section--left-top-bottom-clipped {
+    clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
+  }
 </style>

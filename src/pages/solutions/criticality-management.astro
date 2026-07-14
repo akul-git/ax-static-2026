@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 import Section from "../../components/ui/Section.astro";
 import "../../styles/global.css";
 import HeroBanner from "../../components/ui/HeroBanner.astro";
@@ -12,9 +13,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
  
 <Layout>
-  <div
-    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
-  >
+  <div class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950">
     <HeroBanner
       height="sm"
       image="../../assets/images/asset-criticality-banner-01.jpg"
@@ -30,10 +29,9 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </p>
     </HeroBanner>
   </div>
-  <Section>
-  <div
-    class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 bg-test"
-  >
+
+  <LayoutSection shape="clip-bottom-right" variant="surface" padding="pt-30 pb-10" containerSize="7xl">
+           <div class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8">
     <div class="flex flex-col gap-6 divide-y divide-accent/80">
       <div class="pb-6">
         <Eyebrow class="text-black">
@@ -83,11 +81,14 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
         backgroundImage="../../assets/images/asset-criticality-02-640x319.jpg"
         buttonLabel="CLICK TO REQUEST A DEMO"
         href="/book-demo"
-        minHeight="20rem"
+        minHeight="17rem"
       />
     </div>
   </div>
-  <div>
+  </LayoutSection>
+
+  <LayoutSection>
+    <div>
     <div
       class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
     >
@@ -230,5 +231,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </div>
     </div>
   </div>
-  </Section>
+  </LayoutSection>
+  
+  
 </Layout>
