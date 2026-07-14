@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 import Section from "../../components/ui/Section.astro";
 import HeroBanner from "../../components/ui/HeroBanner.astro";
 import Eyebrow from "../../components/ui/Eyebrow.astro";
@@ -29,12 +30,11 @@ import "../../styles/global.css";
       </p>
     </HeroBanner>
   </div>
-  <Section>
-    <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-1 md:gap-10 lg:gap-14 lg:px-8"
-    >
+
+  <LayoutSection containerSize="7xl">
+<div class="grid grid-cols-1 gap-8 pt-8  md:grid-cols-1 md:gap-10 lg:gap-14">
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
-        <div class="pb-6 border-b border-accent/80">
+        <div class="pb-6 border-b border-neutral-300">
           <Eyebrow class="text-black">
             TAKE THE EMOTION OUT OF YOUR DECISIONS
           </Eyebrow>
@@ -71,10 +71,9 @@ import "../../styles/global.css";
         </p>
       </div>
     </div>
-    <div>
-      <div
-        class="mx-auto grid grid-cols-1 gap-8  pt-8  md:grid-cols-3 md:gap-10 lg:gap-14 "
-      >
+  </LayoutSection>
+  <LayoutSection containerSize="7xl" variant="surface" shape="right-top-bottom-clipped" padding="py-30">
+   <div class="mx-auto grid grid-cols-1 gap-8  pt-8  md:grid-cols-3 md:gap-10 lg:gap-14">
         <div class="flex flex-col">
           <div class="mb-4">
             <Heading level={4} class="mb-4 ">
@@ -176,7 +175,7 @@ import "../../styles/global.css";
               />
             </div>
 
-            <Heading level={5} class="my-4  text-right italic">
+            <Heading level={5} class="my-6 font-normal! leading-normal  text-right italic text-neutral-500">
               <span
                 >Blended PM Optimization offers solutions to streamline your
                 processes and meet your challenges.</span
@@ -185,28 +184,28 @@ import "../../styles/global.css";
           </div>
          
         </div>
-         <div class="col-span-3 border-b border-accent/80 ">
-            <h1 class="text-3xl  tracking-tight text-slate-900">
+
+      </div>
+  </LayoutSection>
+  <LayoutSection containerSize="7xl">
+
+      <article class= " my-6 ">
+           <h1 class="text-3xl  tracking-tight text-slate-900">
              Following a unique, practical, and automated process…
 
             </h1>
-            <p class="my-8">
+            <p>
              This self-guided, standardized <strong>Blended PM Optimization </strong> System will make you an optimization expert in no time. You will revolutionize your overall asset reliability strategy, elevate uptime, and drive down the annual cost-to-maintain in a fraction of the time of traditional methods.
             </p>
-          </div>
-      </div>
-      
-      <article class= " my-6 ">
-           <div class="">
             <h1 class="text-3xl  tracking-tight text-slate-900">
                Exercise Effectiveness and Process Efficiency
 
             </h1>
-            <p class="mt-6">
+            <p>
                 In a side-by-side comparison between traditional FMEA/RCM and our BPMO approach, 30-50% time savings can be achieved using the Asset Analytix Blended PM Optimization approach.
 
             </p>
-          </div>
+          
 
            <HeroBanner class="mt-6 min-h-125!"
       height="lg"
@@ -217,7 +216,8 @@ import "../../styles/global.css";
       
     </HeroBanner>
       </article>
-
+  </LayoutSection>
+  <LayoutSection containerSize="7xl">
       <div class="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-2">
         <div class="mt-8">
           <h2 class="text-2xl">
@@ -246,6 +246,9 @@ import "../../styles/global.css";
           </div>
         </div>
       </div>
-    </div>
-  </Section>
+  </LayoutSection>
+
+    
+
+ 
 </Layout>
