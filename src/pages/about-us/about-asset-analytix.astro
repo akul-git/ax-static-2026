@@ -8,6 +8,7 @@ import "../../styles/global.css";
 import Heading from "../../components/ui/Heading.astro";
 import ContactForm from "../../components/ui/ContactForm.astro";
 import HubSpotForm from "../../components/ui/HubSpotForm.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 
 const status = Astro.url.searchParams.get("status") || "";
 
@@ -30,18 +31,16 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 <Layout>
   <!--Hello changes -->
   <!-- Hero -->
-  <div
-    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
-  >
-    <HeroBanner
-      height="sm"
-      image="../../assets/images/asset-criticality-banner-01.jpg"
-    >
-      <h1 class="text-7xl font-medium leading-tight text-white lg:text-6xl">
-        About Asset Analytix
-      </h1>
-    </HeroBanner>
-  </div>
+      <LayoutSection containerSize="full" padding="p-0">
+    <div class="text-center text-shadow-md text-shadow-neutral-950">
+      <HeroBanner height="sm" image="../../assets/images/asset-criticality-banner-01.jpg">
+        <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+           About Asset Analytix
+        </h1>
+       
+      </HeroBanner>
+    </div>
+  </LayoutSection>
   <!-- Content -->
   <Section>
     <div class="mx-auto flex flex-col gap-7">

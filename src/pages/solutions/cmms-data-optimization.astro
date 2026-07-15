@@ -11,31 +11,28 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
 ---
 
 <Layout>
-  <div
-    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
-  >
-    <HeroBanner height="sm" image="../../assets/images/cmms-banner-03.jpg">
-      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
-        CMMS Data Optimization
-      </h1>
 
-      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+      <LayoutSection containerSize="full" padding="p-0">
+    <div class="text-center text-shadow-md text-shadow-neutral-950">
+      <HeroBanner height="sm" image="../../assets/images/cmms-banner-03.jpg">
+        <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+           CMMS Data Optimization
+        </h1>
+         <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
         Bad Data, Bad Decisions.
       </p>
-    </HeroBanner>
-  </div>
-
+      </HeroBanner>
+    </div>
+  </LayoutSection>
  
 
-  <LayoutSection>
-       <div class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8">
+  <LayoutSection containerSize="7xl">
+       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
-        <div class="pb-6">
-          <h2 class="text-2xl mb-2 font-semibold">
-            <span class="block text-accent">
-              70% of CMMS Data Can’t Be Trusted — Let’s Fix That.
-            </span>
-          </h2>
+        <div>
+<Heading level={5} class="mb-4">
+        <span class="block text-accent">70% of CMMS Data Can’t Be Trusted — Let’s Fix That.</span></Heading>
+
 
           <p class="font-bold leading-8 text-slate-900">
             Bad Data, Bad Decisions.
@@ -83,7 +80,7 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
       </div>
     </div>
   </LayoutSection>
-  <LayoutSection shape="diagonal-reverse"  padding="py-30" class="bg-white">
+  <LayoutSection shape="diagonal-reverse"  padding="py-30" class="bg-white" containerSize="7xl">
     <article>
       <h2 class="text-2xl mb-2 font-semibold">
         <span class="block text-accent">
@@ -145,7 +142,7 @@ import happyWithDataImage from "../../assets/images/happy-with-data.jpg";
       <p class="my-1!">Without active monitoring, missing, incorrect, and drifting data gradually compound across all three levels — until the CMMS can no longer be trusted.</p>
     </article>
   </LayoutSection>
-  <LayoutSection>
+  <LayoutSection containerSize="7xl">
         <article class="my-4 p-6">
       <h2 class="text-2xl mb-2 font-semibold">
         <span class="block text-accent">

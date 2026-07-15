@@ -11,12 +11,14 @@ import List from "../../components/ui/List.astro";
 import Blockquote from "../../components/ui/Blockquote.astro";
 import FlippingCard from "../../components/ui/FlippingCard.astro";
 import Button from "../../components/ui/Button.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 ---
 
 <Layout>
-  <Section>
-    <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 pb-2 border-b-4 border-slate-200"
+
+<LayoutSection containerSize="7xl" padding="py-8">
+      <div
+      class="grid grid-cols-1 gap-8  md:grid-cols-2 md:gap-10 lg:gap-14 pb-2"
     >
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
         <div class="pb-6">
@@ -53,10 +55,10 @@ import Button from "../../components/ui/Button.astro";
         </div>
       </div>
     </div>
+</LayoutSection>
 
-    <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 "
-    >
+<LayoutSection containerSize="7xl" padding="py-8" class="bg-white" shape="diagonal" padding="py-30">
+    <div class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 ">
       <div>
         <Heading class="mb-4 " level={4}>
           <span class="">Unique Delivery Model</span>
@@ -91,9 +93,7 @@ import Button from "../../components/ui/Button.astro";
       </div>
     </div>
 
-    <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
-    >
+    <div class="grid grid-cols-1 gap-8  md:grid-cols-2 md:gap-10 lg:gap-14">
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
         <div class="pb-6">
           <Eyebrow class="text-black">
@@ -132,9 +132,7 @@ import Button from "../../components/ui/Button.astro";
         <li>Bring multiple sites together for standardization</li>
       </ul>
     </div>
-    <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 pb-2 border-b-4 border-slate-200"
-    >
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
         <div class="pb-6">
           <Eyebrow class="text-black"> SELECTED FOR MAXIMUM IMPACT </Eyebrow>
@@ -152,7 +150,9 @@ import Button from "../../components/ui/Button.astro";
         <p>Gains realized by a single PMOptimization Event</p>
       </div>
     </div>
+</LayoutSection>
 
+<LayoutSection containerSize="7xl" padding="py-8">
     <div class="flex flex-col justify-center mx-72">
       <div>
         <Heading class="mb-4 " level={4}>
@@ -173,10 +173,10 @@ import Button from "../../components/ui/Button.astro";
         </figure>
       </div>
     </div>
+</LayoutSection>
 
-    <div
-      class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4 sm:gap-2 md:gap-4 lg:gap-6 xl:gap-8 mt-7"
-    >
+<LayoutSection containerSize="7xl" padding="py-8">
+    <div class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4 sm:gap-2 md:gap-4 lg:gap-6 xl:gap-8 mt-7">
       <article>
         <Heading level={5}>
           <span class="text-accent">Contact Us for a Free Consultation</span>
@@ -203,5 +203,8 @@ import Button from "../../components/ui/Button.astro";
         />
       </article>
     </div>
-  </Section>
+</LayoutSection>
+
+
+
 </Layout>
