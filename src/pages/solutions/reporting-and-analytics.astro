@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 import Section from "../../components/ui/Section.astro";
 import "../../styles/global.css";
 import HeroBanner from "../../components/ui/HeroBanner.astro";
@@ -11,144 +12,133 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
-   <div
-    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
-  >
-    <HeroBanner
-      height="sm"
-      image="../../assets/images/reporting-banner-02.jpg"
-    >
-      <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
-        Reporting and Analytics
-
- 
-        <!-- <span class="block text-white"> Reliability Improvement </span> -->
-      </h1>
- 
-      <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
-        Put your data to work immediately!
-      </p>
-    </HeroBanner>
-  </div>
-  <Section>
-  <div
-    class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
-  >
-    <div class="flex flex-col gap-6 divide-y divide-accent/80">
-      <div class="pb-6">
-        <Eyebrow class="text-black">
-          UNLOCK YOUR CMMS's POWER
-        </Eyebrow>
- 
-        <Heading class="mb-4 " level={4}>
-          <span class="">No More Manual Reporting</span>
-        </Heading>
-        <p>
-
-          <strong>Our Performance Analytics solutions</strong
-          >, sprovide state-of-the-art analytic tools with speed, precision, and clarity through a full range of interactive EAM reporting. Stop spending hours running queries, assembling pivot tables, nudging data to create an Excel bar chart to then paste into PowerPoint, all looking in the rearview mirror.
-           
+  <LayoutSection variant="surface" containerSize="full" padding="p-0">
+    <div class="text-center text-shadow-md text-shadow-neutral-950">
+      <HeroBanner
+        height="sm"
+        image="../../assets/images/reporting-banner-02.jpg"
+      >
+        <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
+          Reporting and Analytics
+        </h1>
+        <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
+          Put your data to work immediately!
         </p>
+      </HeroBanner>
+    </div>
+  </LayoutSection>
+  <!-- =refactor -->
+  <LayoutSection
+    containerSize="7xl"
+    padding="py-8"
+    shape="clip-bottom-left"
+    variant="surface"
+  >
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-14">
+      <div class="flex flex-col gap-6 divide-y divide-neutral-300">
+        <div class="pb-6">
+          <Eyebrow class="text-black"> UNLOCK YOUR CMMS's POWER </Eyebrow>
 
-         <p>
-
-          <strong>Immediately have access</strong
-          >to a <span class="text-orange-400 font-bold"> professional reporting toolkit </span
-          >that would have taken in-house teams tens of thousands of hours and years to build.
-
-
-           
-        </p>
-      </div>
-      <div class="pt-3 mb-10 max-w-127.5 mx-auto">
-        <blockquote class="relative">
-          <p
-            class={`text-lg italic font-medium  text-center" : " leading-relaxed"} md:leading-[1.85]`}
-          >
-            “ Finally have the reports I need to run our maintenance and asset management program that drill down to the details we need to make immediate decisions”
+          <Heading class="mb-4" level={3}>
+            <span class="">No More Manual Reporting</span>
+          </Heading>
+          <p>
+            <strong>Our Performance Analytics solutions</strong>, sprovide
+            state-of-the-art analytic tools with speed, precision, and clarity
+            through a full range of interactive EAM reporting. Stop spending
+            hours running queries, assembling pivot tables, nudging data to
+            create an Excel bar chart to then paste into PowerPoint, all looking
+            in the rearview mirror.
           </p>
-        </blockquote>
- 
-        <span class="block text-right mt-2 italic"
-          >~ Engineering Director</span
-        >
+
+          <p>
+            <strong>Immediately have access</strong> to a <span
+              class="text-orange-400 font-bold"
+            >
+              professional reporting toolkit
+            </span>that would have taken in-house teams tens of thousands of
+            hours and years to build.
+          </p>
+        </div>
+        <div class="pt-3 mb-10 max-w-127.5 mx-auto">
+          <blockquote class="relative">
+            <p
+              class={`text-lg italic font-medium  text-center" : " leading-normal`}
+            >
+              “ Finally have the reports I need to run our maintenance and asset
+              management program that drill down to the details we need to make
+              immediate decisions”
+            </p>
+          </blockquote>
+
+          <span class="block text-right mt-2 italic"
+            >~ Engineering Director</span
+          >
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-2xl mb-4">
+          <span class="block text-accent">
+            See our ready-for-use reporting toolkit.
+          </span>
+        </h2>
+        <!-- ../images/asset-criticality-02-640x319.jpg -->
+        <BookDemo
+          backgroundImage="../../assets/images/reporting-analytics-block-02-640x321.jpg"
+          buttonLabel="CLICK TO BOOK A DEMO"
+          href="/book-demo"
+          minHeight="18rem"
+        />
       </div>
     </div>
- 
-    <div>
-      <h2 class="text-2xl mb-4">
-        <span class="block text-accent ">
-         See our ready-for-use reporting toolkit.
+  </LayoutSection>
 
-        </span>
-      </h2>
-      <!-- ../images/asset-criticality-02-640x319.jpg -->
-      <BookDemo
-        backgroundImage="../../assets/images/reporting-analytics-block-02-640x321.jpg"
-        buttonLabel="CLICK TO BOOK A DEMO"
-        href="/book-demo"
-        minHeight="20rem"
-      />
-    </div>
-  </div>
-  <div>
+  <LayoutSection
+    containerSize="7xl"
+    padding="py-8"
+    variant="image"
+    bgImage="../../assets/images/bgn-industries.png"
+    class="bg-cover"
+  >
     <div
-      class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+      class="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14"
     >
       <div class="flex flex-col">
         <div class="mb-4">
-          <Heading level={4} class="mb-4 ">
+          <Heading level={4} class="mb-4">
             <span>Problems We Solve…</span>
           </Heading>
-          <ul
-            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
-           >
-            
-                    <li>Hours of manual report generation</li>
-                    <li>No reporting history</li>
-                    <li>CMMS limitations</li>
-                    <li>Lots of data, limited reporting</li>
-                    <li>Flat reporting, no way to drill down</li>
-                    <li>Time for it to support the reports</li>
-                    <li>Our reports don’t tell stories</li>
-                    <li>Poor data!</li>
-
-          
+          <ul class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4">
+            <li>Hours of manual report generation</li>
+            <li>No reporting history</li>
+            <li>CMMS limitations</li>
+            <li>Lots of data, limited reporting</li>
+            <li>Flat reporting, no way to drill down</li>
+            <li>Time for it to support the reports</li>
+            <li>Our reports don’t tell stories</li>
+            <li>Poor data!</li>
           </ul>
         </div>
         <div class="my-6">
-          <Heading level={4} class="mb-4 ">
+          <Heading level={4} class="mb-4">
             <span>Solution Details…</span>
           </Heading>
           <p>
-           Our advanced reporting and analytics solutions cover the full range of your enterprise asset management (EAM) program. Provide the tools and insight required to manage all aspects of your business at the click of a button.
+            Our advanced reporting and analytics solutions cover the full range
+            of your enterprise asset management (EAM) program. Provide the tools
+            and insight required to manage all aspects of your business at the
+            click of a button.
           </p>
- 
-          <ul
-            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
-          >
 
-           <li>Reliability and bad actor management</li>
-           <li>Preventive maintenance program analysis</li>
-           <li>Work management, planning & scheduling</li>
-           <li>MRO spares and inventory management</li>
-           <li>Asset life cycle reporting</li>
-           <li>Cost and labor reporting</li>
+          <ul class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4">
+            <li>Reliability and bad actor management</li>
+            <li>Preventive maintenance program analysis</li>
+            <li>Work management, planning & scheduling</li>
+            <li>MRO spares and inventory management</li>
+            <li>Asset life cycle reporting</li>
+            <li>Cost and labor reporting</li>
             <li>Equipment criticality analysis</li>
-
-          </ul>
-        </div>
-        <div class="mt-8">
-          <h2 class="text-2xl">
-            <span class="block text-accent">
-              Ready to solve these problems?
-            </span>
-          </h2>
-          <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
-              <li>Our data isn’t good…</li>
-              <li>Our IT team writes reports…</li>
-              <li>Not sure how big of a problem this is…</li>
-         
           </ul>
         </div>
       </div>
@@ -158,19 +148,15 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
           variant="quote"
           textColor="text-accent"
         >
-          Plug & Play; state of the art
-performance management reporting at your fingertips.
+          Plug & Play; state of the art performance management reporting at your
+          fingertips.
         </Blockquote>
- 
+
         <div class="mt-8">
-          <Heading level={4} class="mb-4 ">
+          <Heading level={4} class="mb-4">
             <span>What we offer…</span>
           </Heading>
           <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
- 
- 
- 
- 
             <FlippingCard
               class="offer-flip"
               minHeight="16rem"
@@ -192,40 +178,55 @@ performance management reporting at your fingertips.
               frontBottomText="FLIP TO LEARN MORE"
               backText="Turnkey report authoring services to augment your IT bandwidth in your existing platforms."
             />
-         
           </div>
- 
-          <Heading level={5} class="my-4  text-right italic">
-            <span
-              >The tools and services you need
-to make your analytics work for you – not against you!</span
+
+          <Heading level={6} class="my-4 text-right italic">
+            <span class="text-neutral-500 font-medium"
+              >The tools and services you need to make your analytics work for
+              you – not against you!</span
             >
           </Heading>
         </div>
-        <div class="mt-6 flex flex-col  ">
-          <Heading level={4} class="  mb-4">
+        <div class="mt-6 flex flex-col">
+          <Heading level={5} class="mb-4">
             <span>We help reliability and asset management professionals…</span>
           </Heading>
           <p>
-            With powerful insights to manage and improve their EAM program. Tap into the hidden but existing data of your CMMS and support systems with plug & play measures, reporting and analytics to take control of your entire asset management program.
+            With powerful insights to manage and improve their EAM program. Tap
+            into the hidden but existing data of your CMMS and support systems
+            with plug & play measures, reporting and analytics to take control
+            of your entire asset management program.
           </p>
-           <div class="my-6">
-           
-             <BookDemo
-            backgroundImage="../../assets/images/bgn-quotes.jpg"
-            buttonLabel="CLICK TO REQUEST A DEMO"
-            href="/book-demo"
-            minHeight="8rem"
-            demoHeading="Learn for yourself how our standardized, industry-recognized performance management analytics can provide powerful insights. Click to request a demo and learn more."
-          >
-      
-        </BookDemo>
- 
-           </div>
-         
         </div>
       </div>
     </div>
-  </div>
-  </Section>
+  </LayoutSection>
+
+  <LayoutSection containerSize="7xl" padding="py-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14">
+      <div>
+        <h2 class="text-2xl">
+          <span class="block text-accent">
+            Ready to solve these problems?
+          </span>
+        </h2>
+        <ul class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4">
+          <li>Our data isn’t good…</li>
+          <li>Our IT team writes reports…</li>
+          <li>Not sure how big of a problem this is…</li>
+        </ul>
+      </div>
+
+      <div class="col-span-2">
+        <BookDemo
+          backgroundImage="../../assets/images/bgn-quotes.jpg"
+          buttonLabel="CLICK TO REQUEST A DEMO"
+          href="/book-demo"
+          minHeight="8rem"
+          demoHeading="Learn for yourself how our standardized, industry-recognized performance management analytics can provide powerful insights. Click to request a demo and learn more."
+        />
+      </div>
+    </div>
+  </LayoutSection>
+  <!-- =refactor end -->
 </Layout>

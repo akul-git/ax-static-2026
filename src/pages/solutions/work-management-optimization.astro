@@ -8,35 +8,36 @@ import Heading from "../../components/ui/Heading.astro";
 import BookDemo from "../../components/ui/BookDemo.astro";
 import Blockquote from "../../components/ui/Blockquote.astro";
 import FlippingCard from "../../components/ui/FlippingCard.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
 ---
 
 <Layout>
-  <div
-    class="max-w-[110rem] mx-auto text-center text-shadow-md text-shadow-neutral-950"
-  >
-    <HeroBanner height="sm" image="../../assets/images/work-mgmt-banner-01.jpg">
+
+   <LayoutSection containerSize="full" padding="p-0">
+        <div class="text-center text-shadow-md text-shadow-neutral-950">
+         <HeroBanner height="sm" image="../../assets/images/work-mgmt-banner-01.jpg">
       <h1 class="text-6xl font-medium leading-tight text-white lg:text-6xl">
         Work Management Optimization
-
-        <!-- <span class="block text-white"> Reliability Improvement </span> -->
       </h1>
 
       <p class="mt-6 max-w-3xl mx-auto text-3xl leading-8 text-slate-100">
         Improve the velocity of workflow thorough your system by 50%!
       </p>
     </HeroBanner>
-  </div>
-  <Section>
+        </div>
+  </LayoutSection>
+
+  <LayoutSection containerSize="7xl" padding="py-8">
     <div
-      class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8"
+      class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:gap-14"
     >
-      <div class="flex flex-col gap-6 divide-y divide-accent/80">
+      <div class="flex flex-col gap-6 divide-y divide-neutral-300">
         <div class="pb-6">
           <Eyebrow class="text-black">
             THE PIPELINE OF WORK EXECUTION VELOCITY
           </Eyebrow>
 
-          <Heading class="mb-4 " level={4}>
+          <Heading class="mb-4 " level={3}>
             <span class=""
               >What Would You Do With 50% More Maintenance Capacity?</span
             >
@@ -47,7 +48,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
             could definitely use more resources, but fail to baseline,
             uncovering that the current system is only
             <span class="text-orange-400 font-bold"
-              >performing at about 50%
+              > performing at about 50%
             </span>of it’s true potential. The major breakthrough is a process
             that identifies and analyzes the velocity of workflow and manageable
             items that limit your effectiveness and efficiency. The result can
@@ -60,7 +61,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
         <div class="pt-3 mb-10 max-w-127.5 mx-auto">
           <blockquote class="relative">
             <p
-              class={`text-lg italic font-medium  text-center" : " leading-relaxed"} md:leading-[1.85]`}
+              class={`text-lg italic font-medium  text-center" : " leading-normal`}
             >
               “Just because we had a Planning function, we thought it was
               working fine…what we quickly learned is that our craftspeople
@@ -89,9 +90,11 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
         />
       </div>
     </div>
-    <div>
-      <div
-        class="grid  grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8"
+  </LayoutSection>
+
+  <LayoutSection containerSize="7xl" padding="py-8" shape="diagonal-reverse" class="bg-white" padding="py-40" >
+<div
+        class="grid  grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14 "
       >
         <div class="flex flex-col">
           <div class="mb-4">
@@ -99,7 +102,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
               <span>Problems We Solve…</span>
             </Heading>
             <ul
-              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+              class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4"
             >
               <li>Don’t know what our productivity is</li>
               <li>
@@ -139,7 +142,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
             </p>
 
             <ul
-              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+              class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4"
             >
               <li>Corrective maintenance job plan builder</li>
               <li>Job Plan master library</li>
@@ -148,20 +151,10 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
               
             </ul>
           </div>
-          <div class="mt-8">
-            <h2 class="text-2xl">
-              <span class="block text-accent">
-                Ready to solve these problems?
-              </span>
-            </h2>
-            <ul class="list-disc pl-6 text-base leading-7 marker:text-sky-700">
-              <li>The perception that if you have planners, planning is effective</li>
-              <li>We can’t justify planners or a planning role…</li>
-              <li>Crafts won’t want to participate in velocity studies</li>
-                            <li>Difficult time quantifying the impact of inefficiency</li>
 
-            </ul>
-          </div>
+
+         
+
         </div>
         <div class="col-span-2">
           <Blockquote
@@ -221,15 +214,15 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
               />
             </div>
 
-            <Heading level={5} class="my-4  text-right italic">
-              <span
+            <Heading level={6} class="my-4  text-right italic">
+              <span class="text-neutral-500 font-medium"
                 >Complete solutions to optimize your work execution management.
               </span
               >
             </Heading>
           </div>
           <div class="mt-6 flex flex-col">
-            <Heading level={4} class=" mb-4">
+            <Heading level={5} class=" mb-4">
               <span
                 >Your work management program is the both the pipeline and bottleneck…</span
               >
@@ -238,18 +231,38 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
               …of how much work gets done and hides a tremendous amount of untapped valuable capacity. From the way work is identified, planned, scheduled and executed, 
               this process the core of how effective and efficient your program operates.
             </p>
-            <div class="my-6">
-              <BookDemo
-                backgroundImage="../../assets/images/bgn-quotes.jpg"
-                buttonLabel="CLICK TO BOOK A REVIEW SESSION"
-                href="/book-demo"
-                minHeight="12rem"
-                demoHeading="Learn how your system is limiting craft productivity and restricting the velocity of workflow."
-              />
-            </div>
+
           </div>
         </div>
       </div>
-    </div>
-  </Section>
+  </LayoutSection>
+
+  <LayoutSection containerSize="7xl" padding="py-8">
+ <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14">
+   <div>
+              <h2 class="text-2xl">
+                <span class="block text-accent">
+                  Ready to solve these problems?
+                </span>
+              </h2>
+              <ul class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4">
+                <li>The perception that if you have planners, planning is effective</li>
+                <li>We can’t justify planners or a planning role…</li>
+                <li>Crafts won’t want to participate in velocity studies</li>
+                              <li>Difficult time quantifying the impact of inefficiency</li>
+              </ul>
+            </div>
+              <div class="col-span-2">
+                <BookDemo
+                  backgroundImage="../../assets/images/bgn-quotes.jpg"
+                  buttonLabel="CLICK TO BOOK A REVIEW SESSION"
+                  href="/book-demo"
+                  minHeight="12rem"
+                  demoHeading="Learn how your system is limiting craft productivity and restricting the velocity of workflow."
+                />
+              </div>
+ </div>
+  </LayoutSection>
+
+
 </Layout>

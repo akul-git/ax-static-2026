@@ -31,6 +31,8 @@ export interface Props {
   /** Extra classes on the inner container */
   containerClass?: string;
 
+  contentClass?: string;
+
   /** Remove container wrapper */
   fullWidth?: boolean;
 
@@ -177,6 +179,7 @@ const computedStyle = [
     100% 100%,
     0 85%
   );
+  /* box-shadow: inset  0 0 7rem 7px hsl(220, 7%, 82%); */
 }
 
 /* Bottom-right corner clipped */
@@ -188,10 +191,12 @@ const computedStyle = [
     100% 85%,
     0 100%
   );
+  
 }
 
   .layout-section--diagonal {
     clip-path: polygon(0 12%, 100% 0, 100% 100%, 0 88%);
+    box-shadow: inset  0 0 7rem 7px hsl(220, 7%, 82%);
   }
 
   .layout-section--diagonal-reverse {
