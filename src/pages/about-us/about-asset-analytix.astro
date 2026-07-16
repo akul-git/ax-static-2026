@@ -42,9 +42,8 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
     </div>
   </LayoutSection>
   <!-- Content -->
-  <Section>
-    <div class="mx-auto flex flex-col gap-7">
-      <!-- Intro -->
+
+  <LayoutSection containerSize="7xl" padding="py-8">
       <div>
         <p class=" leading-relaxed">
           Since 1995,
@@ -63,8 +62,10 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 
       <!-- Mission -->
       <div>
-        <h2 class=" text-xl font-bold text-accent">Mission</h2>
-
+        <Heading level={5} class="mt-4 mb-0!">
+            <span class="block text-accent">Mission</span>
+          </Heading>
+       
         <p class=" leading-relaxed">
           To be the catalyst that empowers organizations worldwide with
           intelligent, data-driven asset management solutions—maximizing
@@ -75,7 +76,10 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 
       <!-- Vision -->
       <div>
-        <h2 class="text-xl  font-bold text-accent">Vision</h2>
+        <Heading level={5} class="mt-4 mb-0!">
+            <span class="block text-accent">Vision</span>
+          </Heading>
+
 
         <p class=" leading-relaxed">
           To redefine the future of asset management by enabling organizations
@@ -84,6 +88,11 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
           sustainable value.
         </p>
       </div>
+  </LayoutSection>
+<LayoutSection containerSize="7xl" padding="py-8">
+ <div class="mx-auto flex flex-col gap-7">
+      <!-- Intro -->
+    
 
       <!-- Quote -->
       <Blockquote
@@ -106,9 +115,11 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 
         <!-- Right Content -->
         <div class="col-span-4">
-          <h2 class="text-3xl font-normal text-accent mb-4">
-            We are proud and excited to...
-          </h2>
+
+          <Heading level={5} class="mb-4 ">
+            <span class="block text-accent"> We are proud and excited to...</span>
+          </Heading>
+     
 
           <p class="mb-6 ">
             ...provide a total end-to-end solution; The perfect combination of
@@ -116,7 +127,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
             objectives including:
           </p>
           <div class="mb-4">
-            <ul class="list-disc space-y-1 pl-6  leading-7 mt-4">
+            <ul class="list-disc space-y-1.5 pl-6 mt-4 marker:text-accent">
               <li>
                 Subject matter expertise to accelerate your journey in training,
                 coaching or delivery
@@ -147,40 +158,47 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 
           <!-- Services -->
           <div class="grid grid-cols-3 gap-x-5 gap-y-5 mt-2">
-            <div class="flex gap-2">
+            <div class="flex gap-4">
               <span class="icon-ax-08 text-sky-700 text-5xl"></span>
-              <div class="font-bold">Maintenance & Engineering</div>
+              <div class="font-bold text-brand">Maintenance & Engineering</div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-4">
               <span class="icon-ax-04 text-sky-700 text-5xl"></span>
-              <div class="font-bold">Reliability Engineering</div>
+              <div class="font-bold text-brand">Reliability Engineering</div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-4">
               <span class="icon-ax-05 text-sky-700 text-5xl"></span>
-              <div class="font-bold">IT, Systems and Data</div>
+              <div class="font-bold text-brand">IT, Systems and Data</div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-4">
               <span class="icon-ax-07 text-sky-700 text-5xl"></span>
-              <div class="font-bold">Storeroom</div>
+              <div class="font-bold text-brand">Storeroom</div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-4">
               <span class="icon-ax-06 text-sky-700 text-5xl"></span>
-              <div class="font-bold">Operational Excellence</div>
+              <div class="font-bold text-brand">Operational Excellence</div>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-4">
               <span class="icon-ax-10 text-sky-700 text-5xl"></span>
-              <div class="font-bold">Facilities & Utilities</div>
+              <div class="font-bold text-brand">Facilities & Utilities</div>
             </div>
           </div>
         </div>
       </div>
 
+ 
+    </div>
+</LayoutSection>
+
+<LayoutSection containerSize="7xl" padding="py-8" variant="surface" shape="diagonal" padding="py-30">
       <div>
         <div class="flex flex-col">
           <Eyebrow class="text-black"> BOTTOM LINE RESULTS </Eyebrow>
-          <h2 class="text-3xl text-black">
-            Quantifiable Improvements in the Shortest Time
-          </h2>
+
+          <Heading level={5} class="mb-4 ">
+            <span class="block text-brand">Quantifiable Improvements in the Shortest Time</span>
+          </Heading>
+
           <p class=" mt-2">
             Our solutions open capacity, improve system performance, reduce cost
             and elevate reliability by addressing key aspects of your
@@ -191,17 +209,25 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
             optimization, Measures/Reporting and Analytics, and program
             performance management; all wrapped with analytics.
           </p>
-          <div class="w-32 border-t-2 border-gray-400 mx-auto mt-8"></div>
-          <div class="text-black font-semibold text-center  mt-5">
-            We look forward to sharing with you our unique approach and toolkit
-            to take your Reliability & Asset Management program to a whole new
-            level.
-          </div>
-          <div class="w-32 border-t-2 border-gray-400 mx-auto mt-8"></div>
-        </div>
-      </div>
 
-      <div class="grid gap-10 xl:grid-cols-[0.95fr_1.35fr] xl:items-start">
+          <Heading level={5}>
+            <span class="block text-neutral-500 text-center italic my-6">We truly are the shortest distance from Data to Action.</span>
+          </Heading>
+          <div class="text-black font-semibold text-center">
+            <div class="w-32 border-t-2 border-gray-400 mx-auto"></div>
+            <p class="py-4">
+              We look forward to sharing with you our unique approach and toolkit
+              to take your Reliability & Asset Management program to a whole new
+              level.
+            </p>
+            <div class="w-32 border-t-2 border-gray-400 mx-auto"></div>
+          </div>
+        </div>
+      </div> 
+</LayoutSection>
+
+  <LayoutSection containerSize="7xl" padding="py-8">
+  <div class="grid gap-10 xl:grid-cols-2">
         <div>
           <!-- <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p> -->
           <div class="text-center">
@@ -281,6 +307,5 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
         />
         </div>
       </div>
-    </div>
-  </Section>
+  </LayoutSection>
 </Layout>

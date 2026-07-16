@@ -53,13 +53,15 @@ import LayoutSection from '../../components/ui/LayoutSection.astro';
           backgroundImage="../../assets/images/Consulting-block-02-e1617376305434-640x320.jpg"
           buttonLabel="CLICK TO BOOK A REVIEW SESSION"
           href="/book-demo"
-          minHeight="20rem"
+          minHeight="18rem"
         />
       </div>
     </div> 
 </LayoutSection>
 
-<LayoutSection containerSize="7xl" padding="py-8">
+<LayoutSection containerSize="7xl" padding="py-8" variant="image"
+    bgImage="../../assets/images/bgn-industries.png"
+    class="bg-cover">
 <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-3 md:gap-10 lg:gap-14 lg:px-8">
         <div class="flex flex-col">
           <div class="mb-4">
@@ -185,7 +187,7 @@ import LayoutSection from '../../components/ui/LayoutSection.astro';
    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14">
      <div>
       <Heading level={5} class="mb-4">
-        <span>Ready to solve these problems?</span>
+        <span class="block text-accent">Ready to solve these problems?</span>
       </Heading>
              
               <ul class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4">
