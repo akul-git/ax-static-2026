@@ -90,7 +90,7 @@ const {
                 {frontTitle}
               </h4>
             ) : null}
-            <div class="mt-auto">
+            <div>
               {frontPreText ? (
                 <p class="text-base text-sky-700">{frontPreText}</p>
               ) : null}
@@ -101,12 +101,13 @@ const {
                   class="mx-auto h-auto max-w-42!"
                 />
               ) : null}
+              </div>
               {frontBottomText ? (
                 <p class="text-sm font-semibold uppercase tracking-[0.12em] text-slate-500 mb-0!">
                   {frontBottomText}
                 </p>
               ) : null}
-            </div>
+            
           </div>
         </div>
         <div class="ax-flip-card__face ax-flip-card__face--back">
@@ -185,6 +186,7 @@ const {
     padding: 1.25rem;
     text-align: center;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     flex-grow: 1;
   }
