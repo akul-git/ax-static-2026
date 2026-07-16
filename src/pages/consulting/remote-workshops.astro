@@ -58,7 +58,7 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
 </LayoutSection>
 
 <LayoutSection containerSize="7xl" padding="py-8" class="bg-white" shape="diagonal" padding="py-30">
-    <div class="grid grid-cols-1 gap-8 px-4 pt-8 sm:px-6 md:grid-cols-2 md:gap-10 lg:gap-14 lg:px-8 ">
+    <div class="grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-10 lg:gap-14  ">
       <div>
         <Heading class="mb-4 " level={4}>
           <span class="">Unique Delivery Model</span>
@@ -93,7 +93,7 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
       </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-8  md:grid-cols-2 md:gap-10 lg:gap-14">
+    <div class="grid grid-cols-1 gap-8  md:grid-cols-2 md:gap-10 lg:gap-14 py-15">
       <div class="flex flex-col gap-6 divide-y divide-accent/80">
         <div class="pb-6">
           <Eyebrow class="text-black">
@@ -114,8 +114,8 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
       </div>
     </div>
 
-    <div>
-      <Heading class="mb-4 mt-4 " level={4}>
+    <div class="pb-15">
+      <Heading level={4}>
         <span class="">Hands On Workshop – This is NO Webinar!</span>
       </Heading>
       <p>
@@ -143,8 +143,8 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
         </div>
       </div>
 
-      <div>
-        <Heading class="mb-4 mt-4 " level={3}>
+      <div class="lg:w-1/2 text-right">
+        <Heading level={1}>
           <span class="">$4.2MM</span>
         </Heading>
         <p>Gains realized by a single PMOptimization Event</p>
@@ -153,8 +153,8 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
 </LayoutSection>
 
 <LayoutSection containerSize="7xl" padding="py-8">
-    <div class="flex flex-col justify-center mx-72">
-      <div>
+    <div class="grid lg:grid-cols-5 gap-8 md:gap-10 lg:gap-14">
+      <div class="lg:col-span-2">
         <Heading class="mb-4 " level={4}>
           <span class="">How it works…</span>
         </Heading>
@@ -166,7 +166,7 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
         </p>
       </div>
 
-      <div class="pb-2">
+      <div class="pb-2 lg:col-span-3">
         <!-- ../images/asset-criticality-02-640x319.jpg -->
         <figure class="flex justify-center">
           <img src="../../assets/images/LaunchPad-4-parts-web.jpg" />
@@ -204,7 +204,5 @@ import LayoutSection from "../../components/ui/LayoutSection.astro";
       </article>
     </div>
 </LayoutSection>
-
-
 
 </Layout>
