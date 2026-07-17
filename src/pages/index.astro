@@ -20,31 +20,23 @@ import { clientLogoSliderData } from "../data/ui";
 	>
 		<HeroBanner image="/assets/images/hmpg-hero.jpg">
 			<h1
-				class="text-6xl font-medium leading-tight text-white lg:text-6xl"
-			>
+  class="text-4xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white"
+>
 				Analytics-Driven
 				<span class="block text-white"> Reliability Improvement </span>
 			</h1>
 
-			<p class="mt-6 max-w-2xl mx-auto text-3xl leading-8 text-slate-100">
+			<p
+  class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl lg:text-3xl leading-relaxed text-white"
+>
 				Streamlined technology software, processes, and training,
 				delivering total control over managing the lifecycle of your
 				assets.
 			</p>
-
-			<!-- <div class="mt-8 flex flex-wrap gap-4">
-        <Button href="/contact">
-            Contact Us
-        </Button>
-
-        <Button href="/services" variant="secondary">
-            Our Services
-        </Button>
-    </div> -->
 		</HeroBanner>
 	</div>
 
-	<Section class="*:px-0!">
+	<Section>
 		<div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-4">
 			<article>
 				<p
@@ -138,7 +130,7 @@ import { clientLogoSliderData } from "../data/ui";
 			{cards.map((card) => <Card {...card} />)}
 
 			<article
-				class="rounded border border-slate-200 bg-white p-4 sm:p-6 shadow-lg grid grid-cols-1 lg:col-span-3 md:grid-cols-3 gap-4"
+				class="rounded border border-slate-200 bg-white p-4 sm:p-6 shadow-lg grid grid-cols-1 md:col-span-full lg:grid-cols-3 gap-4"
 			>
 				<div class="lg:col-span-2">
 					<p
@@ -182,7 +174,7 @@ import { clientLogoSliderData } from "../data/ui";
 		</div>
 	</Section>
 
-	<div class="hero">
+	<div class="hero px-6">
 		<div class="hero__content max-w-7xl mx-auto">
 			<p
 				class="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-white mt-0!"
@@ -218,22 +210,57 @@ import { clientLogoSliderData } from "../data/ui";
 </Layout>
 
 <style>
-	.hero {
-		position: relative;
-		min-height: 320px;
-		background: rgb(39, 93, 122) url("/assets/images/bgn-quotes.jpg");
-		/* background-image: 
-			linear-gradient(90deg, rgba(39, 93, 122, 0.5), rgba(14, 57, 83, 0.5)), 
-			url('/assets/images/bgn-quotes.jpg'); */
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-attachment: scroll;
-		clip-path: polygon(0 0, 100% 40%, 100% 100%, 0% 100%);
-	}
+
+.hero {
+  position: relative;
+  min-height: 320px;
+
+  background: rgb(39, 93, 122) url("/assets/images/bgn-quotes.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+
+  /* Mobile (default) */
+  clip-path: none;
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+  .hero {
+    clip-path: polygon(
+      0 0,
+      100% 20%,
+      100% 100%,
+      0 100%
+    );
+  }
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+  .hero {
+    clip-path: polygon(
+      0 0,
+      100% 40%,
+      100% 100%,
+      0 100%
+    );
+  }
+}
+
+
 
 	.hero__content {
-		padding-top: 116px;
-		color: white;
-	}
+  padding-top: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .hero__content {
+    padding-top: 116px;
+  }
+}
 </style>

@@ -14,9 +14,9 @@ const {
 } = Astro.props as Props;
 
 const heights = {
-  sm: "min-h-52 lg:min-h-64",   // 208px -> 256px
-  md: "min-h-64 lg:min-h-80",   // 256px -> 320px
-  lg: "min-h-72 lg:min-h-[400px]", // 288px -> 400px
+  sm: "min-h-52 lg:min-h-64",
+  md: "min-h-64 lg:min-h-80",
+  lg: "min-h-[340px] lg:min-h-[400px]",
 };
 ---
 
@@ -27,24 +27,24 @@ const heights = {
     className,
   ]}
 >
-  {
-    image && (
-      <img
-        src={image}
-        alt={imageAlt}
-        class="absolute inset-0 hidden lg:block h-full w-full object-cover"
-        loading="eager"
-      />
-    )
-  }
+{
+  image && (
+    <img
+      src={image}
+      alt={imageAlt}
+      class="absolute inset-0 hidden lg:block h-full w-full object-cover"
+      loading="eager"
+    />
+  )
+}
 
   {
     image && (
-      <div class="absolute inset-0 hidden lg:block bg-white/10"></div>
+      <div class="absolute inset-0 hidden md:block bg-white/10"></div>
     )
   }
 
-  <div class="container relative z-10 mx-auto px-6 lg:px-8">
+  <div class="container relative z-10 mx-auto px-4 md:px-6 lg:px-8">
     <slot />
   </div>
 </section>
