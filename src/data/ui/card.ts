@@ -57,14 +57,14 @@ export const cards = [
     ],
 
     description:
-      "A complete, end-to-end system for calculating and managing criticality of assets, parts and capitol to close risk.",
+      "A complete, end-to-end system for calculating and managing criticality of assets, parts and capital to close risk.",
 
     href: "/solutions/criticality-management",
     linkLabel: "Learn more",
   },
 
   {
-    eyebrow: "PMOPTIMIZATION MADE EASY",
+    eyebrow: "PM OPTIMIZATION MADE EASY",
 
     title: [
       {
@@ -99,7 +99,7 @@ export const cards = [
     ],
 
     description:
-      "Our Precision Assessment System is completed on-line with guidance and real-time analytics. Discover the power of this next generation approach to baselining, benchmarking and strategy development.",
+      "Our Precision Assessment System is completed online with guidance and real-time analytics. Discover the power of this next generation approach to baselining, benchmarking and strategy development.",
 
     href: "/solutions/precision-eam-assessments",
     linkLabel: "Learn more",
@@ -187,7 +187,7 @@ export const consultingServices = {
   ],
   description:
     "Our teams vast experience will help you design, fine-tune and deploy your most critical activities, achieving your objectives in a fraction of the time, leaving you the valuable time to run your organization",
-    href: "/consulting/consulting-services",
+  href: "/consulting/consulting-services",
   linkLabel: "Learn more",
 } as const;
 

@@ -26,234 +26,217 @@ const errorMessages = {
 const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 ---
 
-
-
-
-
-
-
-
 <Layout>
-
-    <LayoutSection
-  variant="image"
-  bgImage="../../assets/images/bgn-industries.png"
-containerSize="7xl">
-
-      <h1
-        class="mb-2 flex flex-wrap justify-center gap-2 text-center font-medium
+  <LayoutSection
+    variant="image"
+    bgImage="../../assets/images/bgn-industries.png"
+    containerSize="7xl"
+  >
+    <h1
+      class="mb-2 flex flex-wrap justify-center gap-2 text-center font-medium
          text-4xl sm:text-5xl lg:text-6xl"
-      >
-        <span class="text-brand">Asset Analytix</span>
-        <span class="text-accent">Solutions</span>
-      </h1>
-      <Eyebrow class="mt-9">A Proven Success Formula</Eyebrow>
-      <h1
-        class="flex flex-col gap-1 text-3xl font-medium
+    >
+      <span class="text-brand">Asset Analytix</span>
+      <span class="text-accent">Solutions</span>
+    </h1>
+    <Eyebrow class="mt-9">A Proven Success Formula</Eyebrow>
+    <h1
+      class="flex flex-col gap-1 text-3xl font-medium
          sm:text-4xl lg:flex-row lg:gap-3"
+    >
+      <span class="text-accent">Our 3-Part Equation for</span>
+      <span class="text-brand">Improved Reliability</span>
+    </h1>
+
+    <div class="flex flex-col mt-4 gap-4">
+      <p>
+        <strong>For over 20 years,</strong> the Asset Analytix team has found that
+        a balanced approach of just the right skills and standardized processes, when
+        accelerated with the right automation, can simplify the process of improving.
+      </p>
+      <p>
+        We have developed our key <strong
+          >asset management, maintenance and reliability solutions</strong
+        > to include all three of these essential components. This balanced approach
+        can be leveraged for scale across your entire organization.
+      </p>
+    </div>
+    <div
+      class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto mt-8"
+    >
+      <article
+        class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
       >
-        <span class="text-accent">Our 3-Part Equation for</span>
-        <span class="text-brand">Improved Reliability</span>
-      </h1>
+        <img
+          src="../../assets/images/blockSubject-Matter-02.jpg"
+          alt="Practitioner Based Knowledge"
+          class="h-72 w-full object-cover"
+        />
 
-              <div class="flex flex-col mt-4 gap-4">
-          <p>
-            <strong>For over 20 years,</strong> the Asset Analytix team has found
-            that a balanced approach of just the right skills and standardized processes,
-            when accelerated with the right automation, can simplify the process of
-            improving.
-          </p>
-          <p>
-            We have developed our key <strong
-              >asset management, maintenance and reliability solutions</strong
-            > to include all three of these essential components. This balanced approach
-            can be leveraged for scale across your entire organization.
-          </p>
-        </div>
-      <div
-          class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 max-w-7xl mx-auto mt-8">
-        
-          <article
-            class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
-          >
-            <img
-              src="../../assets/images/blockSubject-Matter-02.jpg"
-              alt="Practitioner Based Knowledge"
-              class="h-72 w-full object-cover"
-            />
-
-            <Eyebrow class="flex justify-center!">
-              PRACTITIONER-BASED KNOWLEDGE</Eyebrow
-            >
-            <div class="px-6 flex flex-col">
-              <h3 class="text-2xl leading-tight">
-                <span class="block text-brand">Subject Matter</span>
-                <span class="block text-accent">Experience / Expertise</span>
-              </h3>
-
-              <p>
-                Our team's subject matter expertise is based on vast experience
-                as practitioners, trainers and leaders in the field of asset
-                management, maintenance, reliability and corporate program
-                design.
-              </p>
-
-             
-              <p>
-                This experience is ready for use and shaves years off your
-                efforts with acceleration gained only by those who have walked
-                the walk.
-              </p>
-            </div>
-          </article>
-          <article
-            class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
-          >
-            <img
-              src="../../assets/images/blockStandardized-04.jpg"
-              alt="Practitioner Based Knowledge"
-              class="h-72 w-full object-cover"
-            />
-
-            <Eyebrow class="flex justify-center!">
-              TOOLS, TRAINING AND SKILLS TRANSFER</Eyebrow
-            >
-            <div class="px-6 flex flex-col">
-              <h3 class="text-2xl leading-tight">
-                <span class="block text-brand">Standardized</span>
-                <span class="block text-accent">Improvement Processes</span>
-              </h3>
-
-              <p>
-                Asset Analytix has developed and standardized solutions in data
-                management, performance analytics and improvement methodology
-                for consistent and immediate deployment.
-              </p>
-
-           
-              <p>
-                By creating standardization, corporate asset management teams
-                can leverage the experience and approaches for the quickest
-                gains available.
-              </p>
-            </div>
-          </article>
-          <article
-            class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
-          >
-            <img
-              src="../../assets/images/block360Navigator.jpg"
-              alt="Practitioner Based Knowledge"
-              class="h-72 w-full object-cover"
-            />
-
-            <Eyebrow class="flex justify-center!">
-              AUTOMATING IMPROVEMENT MANAGEMENT</Eyebrow
-            >
-            <div class="px-6 flex flex-col">
-              <h3 class="text-2xl leading-tight">
-                <span class="block text-brand">Technology</span>
-                <span class="block text-accent">360Navigator SaaS</span>
-              </h3>
-
-              <p>
-                Experience and processes alone can only go so far. Asset
-                Analytix has added an advanced toolkit; our 360Navigator SaaS
-                suite of solutions for corporate wide management, deployment and
-                implementation features for maximum effectiveness and
-                efficiency.
-              </p>
-
-              <p>
-                Our advanced toolkit works with any level of data quality and
-                supercharges the former “spreadsheet” approach of improvement
-                management.
-              </p>
-            </div>
-          </article>
-        </div>
-</LayoutSection>
-
-
- <LayoutSection
-  variant="image"
-  bgImage="../../assets/images/bgn-industries.png"
-containerSize="7xl">
-<div class="flex flex-col gap-12">
-    
-
-        <div>
-          <Eyebrow>Our Solutions</Eyebrow>
-          <h1
-            class="text-3xl font-medium sm:text-4xl lg:flex lg:gap-3 lg:text-5xl"
-          >
-            <span class="text-accent"> Corporate, Strategic and Tactical </span>
-            <span class="text-brand"> Solutions </span>
-          </h1>
-          <p class="mt-4">
-            Each of our solutions address the most common issues facing our
-            clients as they navigate the arduous task of asset life cycle
-            management. Click the links below to learn more of our advanced
-            portfolio in the business of Asset Management.
-          </p>
-        </div>
-
-        <div
-          class="grid grid-cols-1 gap-6 lg:grid-cols-3 max-w-7xl mx-auto"
+        <Eyebrow class="flex justify-center!">
+          PRACTITIONER-BASED KNOWLEDGE</Eyebrow
         >
-          {cards.map((card) => <Card {...card} />)}
-          <article
-            class="rounded border border-slate-200 bg-white p-4 sm:p-6 shadow-lg grid grid-cols-1 lg:grid-cols-3 lg:col-span-3  gap-4"
-          >
-            <div class="lg:col-span-2">
-              <p
-                class="mb-3 text-xs font-semibold uppercase  text-slate-700 mt-0!"
-              >
-                <span
-                  class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"
-                ></span>ACCELERATE YOUR TEAM'S RESULTS IN THE SHORTEST TIME
-              </p>
-              <h4 class="text-xl sm:text-2xl md:text-3xl font-semibold">
-                <span class="text-brand"> Focused </span><span
-                  class="text-accent"
-                >
-                  Consulting Services
-                </span>
-              </h4>
-              <p class="mt-4 text-slate-700">
-                Our teams vast experience will help you design, fine-tune and
-                deploy your most critical activities, achieving your objectives
-                in a fraction of the time, leaving you the valuable time to run
-                your organization.
-              </p>
-              <a
-                href="/solutions/work-management-optimization"
-                class="mt-6 inline-flex items-center gap-2 text-lg font-semibold transition-colors duration-200 text-accent hover:text-brand"
-              >
-                Learn more <span aria-hidden="true">»</span></a
-              >
-            </div>
-            <ul
-              class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
-            >
-              <li>Corporate, CoE Program Design</li>
-              <li>Recapitalization Analytics</li>
-              <li>TPM Operational Reliability</li>
-              <li>Reliability Engineering</li>
-              <li>Asset Health Assessments</li>
-            </ul>
-          </article>
+        <div class="px-6 flex flex-col">
+          <h3 class="text-2xl leading-tight">
+            <span class="block text-brand">Subject Matter</span>
+            <span class="block text-accent">Experience / Expertise</span>
+          </h3>
+
+          <p>
+            Our team's subject matter expertise is based on vast experience as
+            practitioners, trainers and leaders in the field of asset
+            management, maintenance, reliability and corporate program design.
+          </p>
+
+          <p>
+            This experience is ready for use and shaves years off your efforts
+            with acceleration gained only by those who have walked the walk.
+          </p>
         </div>
+      </article>
+      <article
+        class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
+      >
+        <img
+          src="../../assets/images/blockStandardized-04.jpg"
+          alt="Practitioner Based Knowledge"
+          class="h-72 w-full object-cover"
+        />
 
+        <Eyebrow class="flex justify-center!">
+          TOOLS, TRAINING AND SKILLS TRANSFER</Eyebrow
+        >
+        <div class="px-6 flex flex-col">
+          <h3 class="text-2xl leading-tight">
+            <span class="block text-brand">Standardized</span>
+            <span class="block text-accent">Improvement Processes</span>
+          </h3>
 
+          <p>
+            Asset Analytix has developed and standardized solutions in data
+            management, performance analytics and improvement methodology for
+            consistent and immediate deployment.
+          </p>
+
+          <p>
+            By creating standardization, corporate asset management teams can
+            leverage the experience and approaches for the quickest gains
+            available.
+          </p>
+        </div>
+      </article>
+      <article
+        class="overflow-hidden rounded bg-white shadow-lg border border-slate-200"
+      >
+        <img
+          src="../../assets/images/block360Navigator.jpg"
+          alt="Practitioner Based Knowledge"
+          class="h-72 w-full object-cover"
+        />
+
+        <Eyebrow class="flex justify-center!">
+          AUTOMATING IMPROVEMENT MANAGEMENT</Eyebrow
+        >
+        <div class="px-6 flex flex-col">
+          <h3 class="text-2xl leading-tight">
+            <span class="block text-brand">Technology</span>
+            <span class="block text-accent">360Navigator SaaS</span>
+          </h3>
+
+          <p>
+            Experience and processes alone can only go so far. Asset Analytix
+            has added an advanced toolkit; our 360Navigator SaaS suite of
+            solutions for corporate wide management, deployment and
+            implementation features for maximum effectiveness and efficiency.
+          </p>
+
+          <p>
+            Our advanced toolkit works with any level of data quality and
+            supercharges the former “spreadsheet” approach of improvement
+            management.
+          </p>
+        </div>
+      </article>
+    </div>
+  </LayoutSection>
+
+  <LayoutSection
+    variant="image"
+    bgImage="../../assets/images/bgn-industries.png"
+    containerSize="7xl"
+  >
+    <div class="flex flex-col gap-12">
+      <div>
+        <Eyebrow>Our Solutions</Eyebrow>
+        <h1
+          class="text-3xl font-medium sm:text-4xl lg:flex lg:gap-3 lg:text-5xl"
+        >
+          <span class="text-accent"> Corporate, Strategic and Tactical </span>
+          <span class="text-brand"> Solutions </span>
+        </h1>
+        <p class="mt-4">
+          Each of our solutions addresses the most common issues facing our
+          clients as they navigate the arduous task of asset life cycle
+          management. Click the links below to learn more about advanced
+          portfolio in the business of Asset Management.
+        </p>
       </div>
-</LayoutSection>
 
-  <LayoutSection shape="clip-top-right" variant="surface" padding="pt-30 pb-10" containerSize="7xl">
-           <div class="grid gap-10  xl:grid-cols-2">
-        
-          <div class="flex flex-col gap-4">
- <Heading level={5}>
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 max-w-7xl mx-auto">
+        {cards.map((card) => <Card {...card} />)}
+        <article
+          class="rounded border border-slate-200 bg-white p-4 sm:p-6 shadow-lg grid grid-cols-1 lg:grid-cols-3 lg:col-span-3 gap-4"
+        >
+          <div class="lg:col-span-2">
+            <p
+              class="mb-3 text-xs font-semibold uppercase text-slate-700 mt-0!"
+            >
+              <span class="mr-3 inline-block h-0.5 w-10 bg-accent align-middle"
+              ></span>ACCELERATE YOUR TEAM'S RESULTS IN THE SHORTEST TIME
+            </p>
+            <h4 class="text-xl sm:text-2xl md:text-3xl font-semibold">
+              <span class="text-brand"> Focused </span><span
+                class="text-accent"
+              >
+                Consulting Services
+              </span>
+            </h4>
+            <p class="mt-4 text-slate-700">
+              Our teams vast experience will help you design, fine-tune and
+              deploy your most critical activities, achieving your objectives in
+              a fraction of the time, leaving you the valuable time to run your
+              organization.
+            </p>
+            <a
+              href="/solutions/work-management-optimization"
+              class="mt-6 inline-flex items-center gap-2 text-lg font-semibold transition-colors duration-200 text-accent hover:text-brand"
+            >
+              Learn more <span aria-hidden="true">»</span></a
+            >
+          </div>
+          <ul
+            class="list-disc space-y-1 pl-6 text-base leading-7 marker:text-sky-700 mt-4"
+          >
+            <li>Corporate, CoE Program Design</li>
+            <li>Recapitalization Analytics</li>
+            <li>TPM Operational Reliability</li>
+            <li>Reliability Engineering</li>
+            <li>Asset Health Assessments</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </LayoutSection>
+
+  <LayoutSection
+    shape="clip-top-right"
+    variant="surface"
+    padding="pt-30 pb-10"
+    containerSize="7xl"
+  >
+    <div class="grid gap-10 xl:grid-cols-2">
+      <div class="flex flex-col gap-4">
+        <Heading level={5}>
           <span class="text-accent">Contact us today</span>
           <!-- CMMS Program
   <span class="text-accent">
@@ -261,27 +244,22 @@ containerSize="7xl">
   </span>-->
         </Heading>
 
-            
-            <p>
-              Reach out to us to find out how Asset Analytix Solutions will help
-              your organization maximize the savings opportunities through
-              effective improvement initiatives.
-            </p>
-            <figure>
-              <img
-                src="/assets/images/imgContact-Us-block.jpg"
-                alt="Contact Us"
-              />
-            </figure>
-          </div>
+        <p>
+          Reach out to us to find out how Asset Analytix Solutions will help
+          your organization maximize the savings opportunities through effective
+          improvement initiatives.
+        </p>
+        <figure>
+          <img src="/assets/images/imgContact-Us-block.jpg" alt="Contact Us" />
+        </figure>
+      </div>
 
-          <div>
-          
-             <HubSpotForm
+      <div>
+        <HubSpotForm
           portalId="25291755"
           formId="88983a4a-2ebf-4e4c-8088-c344bddb2cae"
         />
-          </div>
-        </div>
+      </div>
+    </div>
   </LayoutSection>
 </Layout>

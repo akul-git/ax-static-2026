@@ -12,22 +12,26 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
 ---
 
 <Layout>
-      <LayoutSection containerSize="full" padding="p-0">
+  <LayoutSection containerSize="full" padding="p-0">
     <div class="text-center text-shadow-md text-shadow-neutral-950">
-      <HeroBanner height="sm" image="../../assets/images/asset-criticality-banner-01.jpg">
-       <h1 class="text-3xl sm:text-5xl  lg:text-6xl font-medium leading-tight text-white">
-           Precision EAM Assessments
+      <HeroBanner
+        height="sm"
+        image="../../assets/images/asset-criticality-banner-01.jpg"
+      >
+        <h1
+          class="text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white"
+        >
+          Precision EAM Assessments
         </h1>
-           <p class="mt-4 max-w-3xl mx-auto text-base sm:text-2xl lg:text-3xl leading-snug sm:leading-relaxed text-white">
-        Identify and close the gaps in your Reliability & Asset Management
-        Program!
-      </p>
+        <p
+          class="mt-4 max-w-3xl mx-auto text-base sm:text-2xl lg:text-3xl leading-snug sm:leading-relaxed text-white"
+        >
+          Identify and close the gaps in your Reliability & Asset Management
+          Program!
+        </p>
       </HeroBanner>
     </div>
   </LayoutSection>
-
-
-
 
   <LayoutSection containerSize="7xl" padding="py-8">
     <div class="grid grid-cols-1 gap-8 pt-8 md:grid-cols-2 md:gap-10 lg:gap-14">
@@ -59,9 +63,9 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
           <p>
             <span class="text-accent font-bold"
               >Book your Getting Started session</span
-            >today to conduct your complementary RAM GPS assessment. Discover
-            the power of this next generation approach to baselining,
-            benchmarking and strategy development.
+            > today to conduct your complementary RAM GPS assessment. Discover the
+            power of this next generation approach to baselining, benchmarking and
+            strategy development.
           </p>
         </div>
 
@@ -81,9 +85,11 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </div>
 
       <div>
-<Heading level={5} class="mb-4 ">
-            <span class="block text-accent"> Take your complementary assessment today!</span>
-          </Heading>
+        <Heading level={5} class="mb-4">
+          <span class="block text-accent">
+            Take your complementary assessment today!</span
+          >
+        </Heading>
         <!-- ../images/asset-criticality-02-640x319.jpg -->
         <BookDemo
           backgroundImage="../../assets/images/Assessment-block-03-640x327.jpg"
@@ -94,7 +100,13 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </div>
     </div>
   </LayoutSection>
-  <LayoutSection containerSize="7xl" padding="py-8" shape="diagonal" variant="surface" padding="py-40">
+  <LayoutSection
+    containerSize="7xl"
+    padding="py-8"
+    shape="diagonal"
+    variant="surface"
+    padding="py-40"
+  >
     <div>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14">
         <div class="flex flex-col">
@@ -103,7 +115,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
               <span>Problems We Solve…</span>
             </Heading>
             <ul
-              class="list-disc space-y-1.5 pl-6 text-base  marker:text-sky-700 mt-4"
+              class="list-disc space-y-1.5 pl-6 text-base marker:text-sky-700 mt-4"
             >
               <li>Assessments are incredibly costly and time consuming</li>
               <li>We evaluate things that aren’t even important to us</li>
@@ -130,7 +142,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
             </p>
 
             <ul
-              class="list-disc space-y-1.5   pl-6 text-base  marker:text-sky-700 mt-4"
+              class="list-disc space-y-1.5 pl-6 text-base marker:text-sky-700 mt-4"
             >
               <li>
                 Ready-for-use Reliability & Asset Management precision
@@ -196,7 +208,7 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
                 minHeight="14rem"
                 frontTitle="Train-the-Facilitator Program"
                 frontBottomText="FLIP TO LEARN MORE"
-                backText="Skills and process transfer for internalizatoin of a multi-site deployment approach"
+                backText="Skills and process transfer for internalization of a multi-site deployment approach"
               />
               <FlippingCard
                 class="offer-flip"
@@ -237,9 +249,11 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10 lg:gap-14">
       <div>
         <Heading level={5} class="mb-4">
-          <span class="text-accent">Ready to solve these problems?</span></Heading>
+          <span class="text-accent">Ready to solve these problems?</span
+          ></Heading
+        >
 
-        <ul class="list-disc space-y-1.5  pl-6 text-base  marker:text-sky-700">
+        <ul class="list-disc space-y-1.5 pl-6 text-base marker:text-sky-700">
           <li>
             Efforts are disconnected from the main goals of the organization
           </li>
@@ -271,5 +285,4 @@ import FlippingCard from "../../components/ui/FlippingCard.astro";
       </div>
     </div>
   </LayoutSection>
-
 </Layout>
