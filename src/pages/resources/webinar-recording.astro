@@ -1,97 +1,361 @@
 ---
 import Layout from "../../layouts/BaseLayout.astro";
-import Section from "../../components/ui/Section.astro";
+import LayoutSection from "../../components/ui/LayoutSection.astro";
+import HeroBanner from "../../components/ui/HeroBanner.astro";
+import WebinarForm from "../../components/ui/WebinarForm.astro";
+
 import "../../styles/global.css";
-import HubSpotForm from "../../components/ui/HubSpotForm.astro";
-import Heading from "../../components/ui/Heading.astro";
+
+const webinarVideos = [
+  {
+    slug: "optimizing-cloud-spend",
+    title: "Improving Asset Reliability with CMMS",
+    description:
+      "Discover how a modern CMMS helps improve asset reliability through PM.",
+    thumbnail: "/assets/images/portfolio-public-02.jpg",
+    duration: "42 min",
+    portalId: "25291755",
+    formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
+    videoUrl: "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+  },
+  {
+    slug: "data-driven-growth-strategies",
+    title: "The Importance of High-Quality Asset Data",
+    description:
+      "Learn why accurate and complete asset data is essential for effective maintenance.",
+    thumbnail: "/assets/images/portfolio-boots-02.jpg",
+    duration: "38 min",
+    portalId: "25291755",
+    formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
+    videoUrl: "https://www.youtube.com/embed/VIDEO_ID_2",
+  },
+  {
+    slug: "ux-best-practices-for-saas",
+    title: "Reliability-Centered Maintenance Best Practices",
+    description:
+      "Explore proven maintenance strategies that increase equipment uptime.",
+    thumbnail: "/assets/images/portfolio-remote-02.jpg",
+    duration: "45 min",
+    portalId: "25291755",
+    formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
+    videoUrl: "https://www.youtube.com/embed/VIDEO_ID_3",
+  },
+];
 ---
 
 <Layout>
-  <Section>
-    <div
-      class="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-2 grid-rows-1 gap-4 sm:gap-2 md:gap-4 lg:gap-6 xl:gap-8"
->
-      <article>
-                      <Heading level={4}>
-          <span class="text-brand">Take Control of Your CMMS Data Quality</span>
-  <!-- CMMS Program
-  <span class="text-accent">
-    Optimization 
-  </span>-->
-</Heading>
-        <p>
-          In this session, we explored one of the most common challenges facing
-          maintenance and reliability organizations today — poor CMMS data
-          quality.
+  <LayoutSection containerSize="full" padding="p-0">
+    <div class="text-center text-shadow-md text-shadow-neutral-950">
+      <HeroBanner
+        height="sm"
+        image="../../assets/images/consulting-banner-04.jpg"
+      >
+        <h1
+          class="text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white"
+        >
+          Webinar Library
+        </h1>
+        <p
+          class="mt-4 max-w-3xl mx-auto text-base sm:text-2xl lg:text-3xl leading-snug sm:leading-relaxed text-white"
+        >
+          Explore expert-led webinars covering industry insights, best
+          practices, and practical solutions.
         </p>
-        <p>
-          Our CMMS Data Quality Module helps organizations identify, clean,
-          standardize, and continuously monitor CMMS data, creating a reliable
-          foundation for maintenance planning, reliability improvement, analytics,
-          and AI initiatives.
+      </HeroBanner>
+    </div>
+  </LayoutSection>
+
+  <LayoutSection padding="py-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-sm uppercase tracking-[0.3em] text-slate-500">
+          Webinar library
         </p>
-        <h2>Business Impact</h2>
-        <p>
-          Organizations that implement a structured CMMS Data Quality program can
-          achieve:
-        </p>
-        <ul class="list-disc space-y-1.5 pl-6 marker:text-sky-700 mt-4">
-          <li>Reduced wasted labor and rework</li>
-          <li>
-            Elimination of duplicate and misclassified parts and asset records
-          </li>
-          <li>Improved planning and scheduling efficiency</li>
-          <li>Increased confidence in maintenance and reliability reporting</li>
-          <li>Better reliability analytics and decision-making</li>
-          <li>Stronger foundation for Analytics and AI initiatives</li>
-          <li>Improved trust in the CMMS as a system of record</li>
-        </ul>
-        <p>
-          Thank you again for your interest in the webinar. We appreciate the
-          opportunity to share our approach to CMMS Data Quality and look forward
-          to continuing the conversation around reliability, analytics, and
-          operational excellence.
-        </p>
-      </article>
-      <article>
-      
-        <Heading level={5}>
-          <span class="text-accent">To access the webinar recording, please complete the form below</span>
-  <!-- CMMS Program
-  <span class="text-accent">
-    Optimization 
-  </span>-->
-</Heading>
-        <HubSpotForm
-  portalId="25291755"
-  formId="8d856a10-eb06-45dd-a968-0b8556aeffb7"
-/>
-      <!-- <div class="aspect-video">
-        <iframe
-          src="https://www.youtube.com/embed/0g6k1r7j3xM"
-          title="CMMS Data Quality Webinar Recording"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          class="w-full h-full rounded-lg shadow-lg"
-        ></iframe>
-    </div> -->
-              </article>
+        <h2 class="mt-4 text-4xl font-semibold">Recent webinar videos</h2>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+        {
+          webinarVideos.map((video) => (
+            <article
+              class="webinar-card group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md"
+              data-slug={video.slug}
+              data-video-url={video.videoUrl}
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src={video.thumbnail}
+                  alt={video.title}
+                  class="h-56 w-full object-cover transition duration-300 group-hover:scale-105"
+                />
+
+                <div class="locked-overlay absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-950/55">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-2xl text-white backdrop-blur-sm">
+                    🔒
+                  </span>
+                  <button
+                    type="button"
+                    class="unlock-btn rounded-full bg-white px-5 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-100"
+                    data-open-dialog={`dialog-${video.slug}`}
+                  >
+                    Watch Webinar
+                  </button>
+                </div>
+
+                <div class="unlocked-overlay absolute inset-0 hidden items-center justify-center bg-slate-950/20 opacity-0 transition group-hover:opacity-100">
+                  <span class="play-btn inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-xl font-semibold text-slate-900">
+                    ▶
+                  </span>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs uppercase tracking-[0.3em] text-slate-500">
+                    {video.duration}
+                  </span>
+                  <span class="status-badge text-xs font-medium text-slate-400">
+                    🔒 Locked
+                  </span>
+                </div>
+                <h3 class="mt-3 text-xl font-semibold">{video.title}</h3>
+                <p class="mt-3 text-sm leading-6 text-slate-600">
+                  {video.description}
+                </p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    {
+      webinarVideos.map((video) => (
+        <dialog
+          id={`dialog-${video.slug}`}
+          class="webinar-form-dialog w-full max-w-2xl rounded-2xl p-0 backdrop:bg-slate-950/60"
+          data-slug={video.slug}
+        >
+          <div class="relative p-6">
+            <button
+              type="button"
+              data-close-dialog
+              aria-label="Close"
+              class="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100"
+            >
+              ✕
+            </button>
+            <h3 class="text-xl font-semibold pr-8">{video.title}</h3>
+            <p class="mt-1 text-sm text-slate-500">
+              Fill out the form to watch this webinar.
+            </p>
+            <div class="mt-6">
+              <WebinarForm
+                portalId={video.portalId}
+                formId={video.formId}
+                uniqueKey={video.slug}
+                pageName={`Resources | Asset Analytix — ${video.title}`}
+              />
             </div>
-  </Section>
+          </div>
+        </dialog>
+      ))
+    }
+
+    {/* single shared video dialog for playback */}
+    <dialog
+      id="webinar-video-dialog"
+      class="w-full max-w-4xl rounded-2xl p-0 backdrop:bg-slate-950/60"
+    >
+      <div class="relative p-4">
+        <button
+          type="button"
+          data-close-dialog
+          aria-label="Close"
+          class="absolute right-6 top-6 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-slate-500 hover:bg-slate-100"
+        >
+          ✕
+        </button>
+        <div class="aspect-video w-full overflow-hidden rounded-xl bg-black">
+          <iframe
+            id="video-dialog-iframe"
+            class="h-full w-full"
+            src=""
+            title="Webinar video"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </dialog>
+  </LayoutSection>
 </Layout>
 
 <style>
-  div.hbspt-form form  label {
-    font-size: inherit !important;
-    display: block !important;
-    margin-top: 0.25rem !important;
-}
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 50;
+  }
 
-div.hbspt-form label span:first-child {
-    font-size: 1rem !important;
-}
+  dialog[open] {
+    animation: dialog-in 0.18s ease-out;
+  }
 
-div.hbspt-form input {
-    border-radius: 0.5rem !important;
-}
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  /* manual backdrop, replaces ::backdrop since we no longer use showModal() */
+  #modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.6);
+    z-index: 40;
+    display: none;
+  }
+
+  #modal-backdrop.is-visible {
+    display: block;
+  }
+
+  /* unlocked card state */
+  .webinar-card.is-unlocked .locked-overlay {
+    display: none;
+  }
+  .webinar-card.is-unlocked .unlocked-overlay {
+    display: flex;
+  }
+  .webinar-card.is-unlocked .status-badge {
+    display: none;
+  }
 </style>
+
+<div id="modal-backdrop"></div>
+
+<script>
+  const STORAGE_PREFIX = "webinar-unlocked-";
+
+  const backdrop = document.getElementById("modal-backdrop");
+
+  const videoDialog = document.getElementById(
+    "webinar-video-dialog",
+  ) as HTMLDialogElement | null;
+  const videoIframe = document.getElementById(
+    "video-dialog-iframe",
+  ) as HTMLIFrameElement | null;
+
+  const cards = document.querySelectorAll<HTMLElement>(".webinar-card");
+
+  function isUnlocked(slug: string) {
+    return localStorage.getItem(STORAGE_PREFIX + slug) === "true";
+  }
+
+  function unlock(slug: string) {
+    localStorage.setItem(STORAGE_PREFIX + slug, "true");
+  }
+
+  function applyLockState(card: HTMLElement) {
+    const slug = card.dataset.slug;
+    card.classList.toggle("is-unlocked", !!slug && isUnlocked(slug));
+  }
+
+  function openDialogEl(dialog: HTMLDialogElement | null) {
+    if (!dialog) return;
+    dialog.show(); // non-modal: keeps normal stacking context, so reCAPTCHA renders above it
+    backdrop?.classList.add("is-visible");
+  }
+
+  function closeDialogEl(dialog: HTMLDialogElement | null) {
+    if (!dialog) return;
+    dialog.close();
+    backdrop?.classList.remove("is-visible");
+  }
+
+  function openVideo(card: HTMLElement) {
+    if (videoIframe) videoIframe.src = card.dataset.videoUrl ?? "";
+    openDialogEl(videoDialog);
+  }
+
+  // initial state on load
+  cards.forEach(applyLockState);
+
+  cards.forEach((card) => {
+    const unlockBtn = card.querySelector<HTMLElement>(".unlock-btn");
+    const playBtn = card.querySelector<HTMLElement>(".play-btn");
+
+    unlockBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const dialogId = unlockBtn.getAttribute("data-open-dialog");
+      const dialog = dialogId
+        ? (document.getElementById(dialogId) as HTMLDialogElement | null)
+        : null;
+      openDialogEl(dialog);
+    });
+
+    playBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openVideo(card);
+    });
+  });
+
+  document.querySelectorAll("[data-close-dialog]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      closeDialogEl(btn.closest("dialog") as HTMLDialogElement | null);
+    });
+  });
+
+  // clicking the backdrop closes whichever dialog is open
+  backdrop?.addEventListener("click", () => {
+    const openDialog =
+      document.querySelector<HTMLDialogElement>("dialog[open]");
+    closeDialogEl(openDialog);
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const openDialog =
+        document.querySelector<HTMLDialogElement>("dialog[open]");
+      closeDialogEl(openDialog);
+    }
+  });
+
+  videoDialog?.addEventListener("close", () => {
+    if (videoIframe) videoIframe.src = "";
+  });
+
+  window.addEventListener("message", (event) => {
+    if (
+      event.data?.type === "hsFormCallback" &&
+      event.data?.eventName === "onFormSubmitted"
+    ) {
+      const openDialog = document.querySelector<HTMLDialogElement>(
+        "dialog.webinar-form-dialog[open]",
+      );
+      const slug = openDialog?.dataset.slug;
+      if (!slug) return;
+
+      unlock(slug);
+
+      const card = document.querySelector<HTMLElement>(
+        `.webinar-card[data-slug="${slug}"]`,
+      );
+      if (card) applyLockState(card);
+
+      setTimeout(() => {
+        closeDialogEl(openDialog);
+        if (card) openVideo(card);
+      }, 1200);
+    }
+  });
+</script>

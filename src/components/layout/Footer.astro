@@ -29,9 +29,9 @@ const backToTopLabel = safeFooterData.backToTopLabel || "Back to Top";
 const currentYear = new Date().getFullYear();
 
 const footerHrefOverrides: Record<string, string> = {
-  "solutions": "/solutions/our-unique-improvement-system",
+  solutions: "/solutions/our-unique-improvement-system",
   "about us": "/about-us/about-asset-analytix",
-  "consulting": "/consulting/consulting-services",
+  consulting: "/consulting/consulting-services",
 };
 
 const footerLinks = [...primaryLinks, ...footerExtras]
@@ -95,11 +95,14 @@ const footerLinks = [...primaryLinks, ...footerExtras]
             <span class="text-orange-400"> Asset Analytix Social links </span>
           </Heading>
 
-          <p >
+          <p>
             <a
-              href="https://www.linkedin.com/company/assetanalytix-the-official-page/" target="_blank" class="border-b border-b-white/50! hover:border-b-white! transition">
-              Connect with us through LinkedIn.</a><i
-                class="fa-brands fa-square-linkedin fa-xl"></i>
+              href="https://www.linkedin.com/company/assetanalytix-the-official-page/"
+              target="_blank"
+              class="border-b border-b-white/50! hover:border-b-white! transition"
+            >
+              Connect with us through LinkedIn.</a
+            ><i class="fa-brands fa-square-linkedin fa-xl"></i>
           </p>
           <ul class="leading-6 text-white mt-4 *:flex *:gap-2 *:items-center">
             <li>
@@ -123,7 +126,7 @@ const footerLinks = [...primaryLinks, ...footerExtras]
           <Heading class="mb-4" level={6}>
             <span class="text-orange-400"> We are SOC 2 Certified </span>
           </Heading>
-           <img
+          <img
             src="../../assets/images/aicpa-soc-160x160.png"
             alt="Asset Analytix Office Locations"
             class="w-auto! max-w-32!"
@@ -149,39 +152,56 @@ const footerLinks = [...primaryLinks, ...footerExtras]
 
   <div class="border-t border-slate-800 bg-slate-900">
     <div
-      class="mx-auto flex max-w-7xl  flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-      
-        <p class="text-sm text-slate-200">
-      © Copyright {currentYear} by <strong>Asset Analytix</strong>. All rights reserved.</p>
-       
-          <nav aria-label="Footer navigation"  class="ml-auto ">
-            <ul class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-semibold text-slate-200">
-              {
-                footerLinks.map((link) => (
-                  <li class="list-none">
-                    <a
-                      href={link.href}
-                      target={link.label.trim().toLowerCase() === "book demo" ? "_blank" : undefined}
-                      rel={link.label.trim().toLowerCase() === "book demo" ? "noopener noreferrer" : undefined}
-                      class="transition hover:text-sky-300"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))
-              }
-              <li> <button
-            type="button"
-            data-back-to-top
-            class="hidden rounded-md  border border-slate-700 px-3 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
-          >
-            <span class="flex items-center gap-2"><i class="fa-light fa-arrow-up"></i> {backToTopLabel}</span>
-          </button></li>
-            </ul>
-          </nav>
-         
-       
-      
+      class="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-8"
+    >
+      <p class="text-sm text-slate-200">
+        © Copyright {currentYear} by <strong>Asset Analytix</strong>. All rights
+        are reserved.
+      </p>
+
+      <nav aria-label="Footer navigation">
+        <ul
+          class="grid grid-cols-3 gap-y-3 gap-x-4
+         text-sm font-semibold text-slate-200
+         md:flex md:flex-wrap md:items-center md:justify-end md:gap-x-6"
+        >
+          {
+            footerLinks.map((link) => (
+              <li class="list-none">
+                <a
+                  href={link.href}
+                  target={
+                    link.label.trim().toLowerCase() === "book demo"
+                      ? "_blank"
+                      : undefined
+                  }
+                  rel={
+                    link.label.trim().toLowerCase() === "book demo"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  class="block transition hover:text-sky-300"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+
+          <li class="col-span-3 flex mt-2">
+            <button
+              type="button"
+              data-back-to-top
+              class="hidden rounded-md border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-sky-300"
+            >
+              <span class="flex items-center gap-2">
+                <i class="fa-light fa-arrow-up"></i>
+                {backToTopLabel}
+              </span>
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </footer>
