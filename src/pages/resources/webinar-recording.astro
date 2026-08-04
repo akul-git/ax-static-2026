@@ -8,38 +8,42 @@ import "../../styles/global.css";
 
 const webinarVideos = [
   {
-    slug: "optimizing-cloud-spend",
+    slug: "Beyond-Metrics-Continuous-Improvement",
     title: "Beyond Metrics: Continuous Improvement and Performance",
     description:
       "Visualizing sustainable organizational growth through an integrated performance model.",
     thumbnail: "/assets/images/thumbnail_Beyond-Metrics.jpg",
-    duration: "42 min",
+    duration: "59 min",
     portalId: "25291755",
     formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
-    videoUrl:"/media/Beyond-Metrics Continuous-Improvement-And-Performance",
+    videoUrl:"/media/Beyond-Metrics Continuous-Improvement-And-Performance.mp4",
+
   },
-  // {
-  //   slug: "data-driven-growth-strategies",
-  //   title: "The Importance of High-Quality Asset Data",
-  //   description:
-  //     "Learn why accurate and complete asset data is essential for effective maintenance.",
-  //   thumbnail: "/assets/images/portfolio-boots-02.jpg",
-  //   duration: "38 min",
-  //   portalId: "25291755",
-  //   formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
-  //   videoUrl: "https://www.youtube.com/embed/VIDEO_ID_2",
-  // },
-  // {
-  //   slug: "ux-best-practices-for-saas",
-  //   title: "Reliability-Centered Maintenance Best Practices",
-  //   description:
-  //     "Explore proven maintenance strategies that increase equipment uptime.",
-  //   thumbnail: "/assets/images/portfolio-remote-02.jpg",
-  //   duration: "45 min",
-  //   portalId: "25291755",
-  //   formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
-  //   videoUrl: "https://www.youtube.com/embed/VIDEO_ID_3",
-  // },
+  {
+    slug: "Webinar-Asset-Onboarding",
+    title: "Webinar-Asset-Onboarding",
+    description:
+      "Bridge Project and Reliability teams to reduce labor 20–40%, avoid delays, and achieve operational excellence from day one.",
+    thumbnail: "/assets/images/thumbnail_asset-onboarding.jpg",
+    duration: "57 min",
+    portalId: "25291755",
+    formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
+    videoUrl:"/media/Webinar-Asset-Onboarding.mp4",
+
+  },
+  {
+    slug: "The-Hidden-Cost-of-Bad-EAMCMMS-Data",
+    title: "The Hidden Cost of Bad EAMCMMS Data",
+    description:
+      "Focus your limited resources on the most impactful actions immediately.",
+    thumbnail: "/assets/images/impact-of-bad-thumbnail_cmms-data.jpg",
+    duration: "01:58 min",
+    portalId: "25291755",
+    formId: "88983a4a-2ebf-4e4c-8088-c344bddb2cae",
+    videoUrl:"/media/Webinar-The Hidden Cost Of Bad Eamcmms Data — And How To Make Yours Analytics-Ready.mp4",
+
+  },
+
 ];
 ---
 
@@ -58,8 +62,7 @@ const webinarVideos = [
         <p
           class="mt-4 max-w-3xl mx-auto text-base sm:text-2xl lg:text-3xl leading-snug sm:leading-relaxed text-white"
         >
-          Explore expert-led webinars covering industry insights, best
-          practices, and practical solutions.
+         Browse our on-demand webinar collection
         </p>
       </HeroBanner>
     </div>
@@ -67,12 +70,12 @@ const webinarVideos = [
 
   <LayoutSection padding="py-16">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
+      <!-- <div class="text-center mb-12">
         <p class="text-sm uppercase tracking-[0.3em] text-slate-500">
           Webinar library
         </p>
         <h2 class="mt-4 text-4xl font-semibold">Recent webinar videos</h2>
-      </div>
+      </div> -->
 
       <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
         {
@@ -82,7 +85,7 @@ const webinarVideos = [
               data-slug={video.slug}
               data-video-url={video.videoUrl}
             >
-              <div class="relative overflow-hidden">
+              <div class="relative overflow-hidden cursor-pointer">
                 <img
                   src={video.thumbnail}
                   alt={video.title}
@@ -91,7 +94,7 @@ const webinarVideos = [
 
                 <div class="locked-overlay absolute inset-0 flex flex-col items-center justify-center gap-3 bg-slate-950/55">
                   <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/15 text-2xl text-white backdrop-blur-sm">
-                    🔒
+                    <i class="fa-solid fa-lock-keyhole"></i>
                   </span>
                   <button
                     type="button"
@@ -114,7 +117,7 @@ const webinarVideos = [
                     {video.duration}
                   </span>
                   <span class="status-badge text-xs font-medium text-slate-400">
-                    🔒 Locked
+                    <i class="fa-solid fa-lock-keyhole"></i> Locked
                   </span>
                 </div>
                 <h3 class="mt-3 text-xl font-semibold">{video.title}</h3>
