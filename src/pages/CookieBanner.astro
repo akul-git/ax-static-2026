@@ -1,32 +1,54 @@
 ---
 import Button from "../components/ui/Button.astro";
-import Card  from "../components/ui/Card.astro"
+import Card from "../components/ui/Card.astro";
 import Heading from "../components/ui/Heading.astro";
-const consent = Astro.cookies.get("cookieConsent")?.value
+const consent = Astro.cookies.get("cookieConsent")?.value;
 ---
 
 <Card
   id=""
-  class="cookie-banner fixed bottom-6 right-11 z-50 w-1/4 hidden"
+  class="cookie-banner
+    fixed
+    bottom-4
+    left-4
+    right-4
+    z-50
+    hidden
+    w-auto
+    p-4
+    md:bottom-6
+    md:left-auto
+    md:right-6
+    md:w-95
+    lg:right-11
+    lg:w-1/4"
 >
-  <div
-    class=""
-  >
+  <div>
     <div>
-      <Heading level={5}>We value you privacy</Heading>
+      <Heading level={5}>We value your privacy</Heading>
 
       <p class="mt-2 text-sm">
-      This website stores cookies on your computer. These cookies are used to collect information about how you interact with our website and allow us to remember you. We use this information in order to improve and customize your browsing experience and for analytics and metrics about our visitors both on this website and other media.
-       To find out more about the cookies we use, see our
-        <a href="/private-policy" class="font-medium text-blue-400 hover:underline">
+        This website stores cookies on your computer. These cookies are used to
+        collect information about how you interact with our website and allow us
+        to remember you. We use this information in order to improve and
+        customize your browsing experience and for analytics and metrics about
+        our visitors both on this website and other media. To find out more
+        about the cookies we use, see our
+        <a
+          href="/private-policy"
+          class="font-medium text-blue-400 hover:underline"
+        >
           Cookies/Privacy Policy
         </a>
       </p>
     </div>
 
-    <div class="flex gap-2 w-full">
-      <Button variant="outline" class="w-full reject-btn cursor-pointer" >Reject All</Button>
-      <Button class="w-full accept-btn cursor-pointer" >Accept All</Button>
+    <div class="mt-4 flex flex-col gap-2 sm:flex-row w-full">
+      <Button variant="outline" class="w-full reject-btn cursor-pointer">
+        Reject All
+      </Button>
+
+      <Button class="w-full accept-btn cursor-pointer"> Accept All </Button>
     </div>
   </div>
 </Card>
@@ -40,8 +62,7 @@ const consent = Astro.cookies.get("cookieConsent")?.value
   }
 
   function setCookie(name, value) {
-    document.cookie =
-      `${name}=${value}; Max-Age=31536000; Path=/; SameSite=Lax Secure`;
+    document.cookie = `${name}=${value}; Max-Age=31536000; Path=/; SameSite=Lax Secure`;
   }
 
   const banner = document.querySelector(".cookie-banner");
