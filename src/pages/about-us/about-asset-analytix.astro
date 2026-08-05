@@ -27,72 +27,70 @@ const errorMessages = {
 const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
 ---
 
-
 <Layout>
   <!--Hello changes -->
   <!-- Hero -->
-      <LayoutSection containerSize="full" padding="p-0">
+  <LayoutSection containerSize="full" padding="p-0">
     <div class="text-center text-shadow-md text-shadow-neutral-950">
-      <HeroBanner height="sm" image="../../assets/images/asset-criticality-banner-01.jpg">
-       <h1 class="text-3xl sm:text-5xl  lg:text-6xl font-medium leading-tight text-white">
-           About Asset Analytix
+      <HeroBanner
+        height="sm"
+        image="../../assets/images/asset-criticality-banner-01.jpg"
+      >
+        <h1
+          class="text-3xl sm:text-5xl lg:text-6xl font-medium leading-tight text-white"
+        >
+          About Asset Analytix
         </h1>
-       
       </HeroBanner>
     </div>
   </LayoutSection>
   <!-- Content -->
 
   <LayoutSection containerSize="7xl" padding="py-8">
-      <div>
-        <p class=" leading-relaxed">
-          Since 1995,
-          <strong>Asset Analytix</strong>
-          has focused on one primary objective: Help our clients at all levels of
-          their organization get control of managing the entire life cycle of their
-          assets. Our
-          <strong>team of experts</strong>
-          are not just trainers, coaches and guides; we are former practitioners with
-          the experience to help you quickly identify, manage and close performance-limiting
-          gaps in your
-          <strong>Reliability &amp; Asset Management</strong>
-          programs.
-        </p>
-      </div>
+    <div>
+      <p class="leading-relaxed">
+        Since 1995,
+        <strong>Asset Analytix </strong> has focused on one primary objective: Help
+        our clients at all levels of their organization get control of managing the
+        entire life cycle of their assets. Our <strong> team of experts</strong> are
+        not just trainers, coaches and guides; we are former practitioners with the
+        experience to help you quickly identify, manage and close performance-limiting
+        gaps in your <strong> Reliability &amp; Asset Management </strong> programs.
+      </p>
+    </div>
 
-      <!-- Mission -->
-      <div>
-        <Heading level={5} class="mt-4 mb-0!">
-            <span class="block text-accent">Mission</span>
-          </Heading>
-       
-        <p class=" leading-relaxed">
-          To be the catalyst that empowers organizations worldwide with
-          intelligent, data-driven asset management solutions—maximizing
-          performance, elevating reliability program maturity, and delivering
-          sustainable value across the asset lifecycle.
-        </p>
-      </div>
+    <!-- Missi
+     n -->
+    <div>
+      <Heading level={5} class="mt-4 mb-0!">
+        <span class="block text-accent">Mission</span>
+      </Heading>
 
-      <!-- Vision -->
-      <div>
-        <Heading level={5} class="mt-4 mb-0!">
-            <span class="block text-accent">Vision</span>
-          </Heading>
+      <p class="leading-relaxed">
+        To be the catalyst that empowers organizations worldwide with
+        intelligent, data-driven asset management solutions—maximizing
+        performance, elevating reliability program maturity, and delivering
+        sustainable value across the asset lifecycle.
+      </p>
+    </div>
 
+    <!-- Vision -->
+    <div>
+      <Heading level={5} class="mt-4 mb-0!">
+        <span class="block text-accent">Vision</span>
+      </Heading>
 
-        <p class=" leading-relaxed">
-          To redefine the future of asset management by enabling organizations
-          to harness the power of data, optimize reliability strategies, and
-          build resilient, future-ready operations that deliver measurable,
-          sustainable value.
-        </p>
-      </div>
+      <p class="leading-relaxed">
+        To redefine the future of asset management by enabling organizations to
+        harness the power of data, optimize reliability strategies, and build
+        resilient, future-ready operations that deliver measurable, sustainable
+        value.
+      </p>
+    </div>
   </LayoutSection>
-<LayoutSection containerSize="7xl" padding="py-8">
- <div class="mx-auto flex flex-col gap-7">
+  <LayoutSection containerSize="7xl" padding="py-8">
+    <div class="mx-auto flex flex-col gap-7">
       <!-- Intro -->
-    
 
       <!-- Quote -->
       <Blockquote
@@ -103,25 +101,25 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
       />
 
       <!-- Image -->
-      <div class="grid grid-cols-7 ml-8 gap-8 items-start">
-        <!-- Left Image -->
-        <div class="col-span-3">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-7 ml-0 lg:ml-8 gap-6 lg:gap-8 items-start"
+      >
+        <div class="col-span-1 lg:col-span-3">
           <img
             src="../../assets/images/About-us-triangle.png"
             alt="Asset Analytix Office Locations"
-            class="w-full max-w-sm"
+            class="w-full max-w-xs mx-auto lg:max-w-sm lg:mx-0"
           />
         </div>
 
-        <!-- Right Content -->
-        <div class="col-span-4">
-
-          <Heading level={5} class="mb-4 ">
-            <span class="block text-accent"> We are proud and excited to...</span>
+        <div class="col-span-1 lg:col-span-4">
+          <Heading level={5} class="mb-4">
+            <span class="block text-accent">
+              We are proud and excited to...</span
+            >
           </Heading>
-     
 
-          <p class="mb-6 ">
+          <p class="mb-6">
             ...provide a total end-to-end solution; The perfect combination of
             expertise, processes and tools to accomplish your asset management
             objectives including:
@@ -145,7 +143,7 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
             </ul>
           </div>
 
-          <p class=" leading-relaxed mb-8">
+          <p class="leading-relaxed mb-8">
             <strong
               >Asset Analytix focuses our solutions at all levels of an
               organization;</strong
@@ -156,156 +154,177 @@ const errorMessage = errorMessages[status as keyof typeof errorMessages] || "";
             for true cultural transformation.
           </p>
 
-          <!-- Services -->
-          <div class="grid grid-cols-3 gap-x-5 gap-y-5 mt-2">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-5 mt-2"
+          >
             <div class="flex gap-4">
-              <span class="icon-ax-08 text-sky-700 text-5xl"></span>
-              <div class="font-bold text-brand">Maintenance & Engineering</div>
+              <span
+                class="icon-ax-08 text-sky-700 text-4xl lg:text-5xl shrink-0"
+              ></span>
+              <div class="font-bold text-brand self-center">
+                Maintenance & Engineering
+              </div>
             </div>
             <div class="flex gap-4">
-              <span class="icon-ax-04 text-sky-700 text-5xl"></span>
-              <div class="font-bold text-brand">Reliability Engineering</div>
+              <span
+                class="icon-ax-04 text-sky-700 text-4xl lg:text-5xl shrink-0"
+              ></span>
+              <div class="font-bold text-brand self-center">
+                Reliability Engineering
+              </div>
             </div>
             <div class="flex gap-4">
-              <span class="icon-ax-05 text-sky-700 text-5xl"></span>
-              <div class="font-bold text-brand">IT, Systems and Data</div>
+              <span
+                class="icon-ax-05 text-sky-700 text-4xl lg:text-5xl shrink-0"
+              ></span>
+              <div class="font-bold text-brand self-center">
+                IT, Systems and Data
+              </div>
             </div>
             <div class="flex gap-4">
-              <span class="icon-ax-07 text-sky-700 text-5xl"></span>
-              <div class="font-bold text-brand">Storeroom</div>
+              <span
+                class="icon-ax-07 text-sky-700 text-4xl lg:text-5xl shrink-0"
+              ></span>
+              <div class="font-bold text-brand self-center">Storeroom</div>
             </div>
             <div class="flex gap-4">
-              <span class="icon-ax-06 text-sky-700 text-5xl"></span>
-              <div class="font-bold text-brand">Operational Excellence</div>
+              <span
+                class="icon-ax-06 text-sky-700 text-4xl lg:text-5xl shrink-0"
+              ></span>
+              <div class="font-bold text-brand self-center">
+                Operational Excellence
+              </div>
             </div>
             <div class="flex gap-4">
-              <span class="icon-ax-10 text-sky-700 text-5xl"></span>
-              <div class="font-bold text-brand">Facilities & Utilities</div>
+              <span
+                class="icon-ax-10 text-sky-700 text-4xl lg:text-5xl shrink-0"
+              ></span>
+              <div class="font-bold text-brand self-center">
+                Facilities & Utilities
+              </div>
             </div>
           </div>
         </div>
       </div>
-
- 
     </div>
-</LayoutSection>
+  </LayoutSection>
 
-<LayoutSection containerSize="7xl" padding="py-8" variant="surface" shape="diagonal" padding="py-30">
-      <div>
-        <div class="flex flex-col">
-          <Eyebrow class="text-black"> BOTTOM LINE RESULTS </Eyebrow>
+  <LayoutSection
+    containerSize="7xl"
+    padding="py-8"
+    variant="surface"
+    shape="diagonal"
+    padding="py-30"
+  >
+    <div>
+      <div class="flex flex-col">
+        <Eyebrow class="text-black"> BOTTOM LINE RESULTS </Eyebrow>
 
-          <Heading level={5} class="mb-4 ">
-            <span class="block text-brand">Quantifiable Improvements in the Shortest Time</span>
-          </Heading>
+        <Heading level={5} class="mb-4">
+          <span class="block text-brand"
+            >Quantifiable Improvements in the Shortest Time</span
+          >
+        </Heading>
 
-          <p class=" mt-2">
-            Our solutions open capacity, improve system performance, reduce cost
-            and elevate reliability by addressing key aspects of your
-            Reliability & asset management program including: asset
-            commissioning / onboarding, asset strategies (PMOptimization), TPM
-            Operator Driven Reliability, Failure management, Work execution
-            management, planning & scheduling, MRO storeroom optimization, CMMS
-            optimization, Measures/Reporting and Analytics, and program
-            performance management; all wrapped with analytics.
+        <p class="mt-2">
+          Our solutions open capacity, improve system performance, reduce cost
+          and elevate reliability by addressing key aspects of your Reliability
+          & asset management program including: asset commissioning /
+          onboarding, asset strategies (PM Optimization), TPM Operator Driven
+          Reliability, Failure management, Work execution management, planning &
+          scheduling, MRO storeroom optimization, CMMS optimization,
+          Measures/Reporting and Analytics, and program performance management;
+          all wrapped with analytics.
+        </p>
+
+        <Heading level={5}>
+          <span class="block text-neutral-500 text-center italic my-6"
+            >We truly are the shortest distance from Data to Action.</span
+          >
+        </Heading>
+        <div class="text-black font-semibold text-center">
+          <div class="w-32 border-t-2 border-gray-400 mx-auto"></div>
+          <p class="py-4">
+            We look forward to sharing with you our unique approach and toolkit
+            to take your Reliability & Asset Management program to a whole new
+            level.
           </p>
-
-          <Heading level={5}>
-            <span class="block text-neutral-500 text-center italic my-6">We truly are the shortest distance from Data to Action.</span>
-          </Heading>
-          <div class="text-black font-semibold text-center">
-            <div class="w-32 border-t-2 border-gray-400 mx-auto"></div>
-            <p class="py-4">
-              We look forward to sharing with you our unique approach and toolkit
-              to take your Reliability & Asset Management program to a whole new
-              level.
-            </p>
-            <div class="w-32 border-t-2 border-gray-400 mx-auto"></div>
-          </div>
+          <div class="w-32 border-t-2 border-gray-400 mx-auto"></div>
         </div>
-      </div> 
-</LayoutSection>
+      </div>
+    </div>
+  </LayoutSection>
 
   <LayoutSection containerSize="7xl" padding="py-8">
-  <div class="grid gap-10 xl:grid-cols-2">
-        <div>
-          <!-- <p class="text-sm uppercase tracking-[0.3em] text-sky-600">About Us</p> -->
-          <div class="text-center">
-            <div class="flex justify-center gap-2">
-              <Eyebrow
-                ><span class="text-base"> CONTACT US WITH EASE</span>
-              </Eyebrow>
-              <Eyebrow />
-            </div>
-            <Heading level={2}>
-              <span class="text-accent">Get in </span>
-              <span class="text-brand"> touch </span>
-            </Heading>
-            <p class="mt-3 font-medium ">
-              Call us or simply send us an email anytime you want. If you have
-              any questions, please feel free to contact us using the form
-              below.
-            </p>
-            <div class="w-130 border-t-2 border-gray-300 mx-auto mt-8"></div>
-
-            <div class="grid grid-cols-3 mt-8 mb-4">
-              <ul>
-                <li><span class="icon-ax-01 text-accent text-5xl"></span></li>
-                <li>
-                  <Heading level={5} class="mb-2! mt-2">
-                    <span class="text-brand">US Office </span>
-                  </Heading>
-                </li>
-                <li>12820 Hwy 64 West,</li>
-                <li>Apex, NC 27523, USA</li>
-              </ul>
-              <ul>
-                <li><span class="icon-ax-02 text-accent text-5xl"></span></li>
-                <li>
-                  <Heading level={5} class="mb-2! mt-2">
-                    <span class="text-brand">Call Us </span>
-                  </Heading>
-                </li>
-                <li>T: 919-342-5350</li>
-                <li>Fax: 877-787-7558</li>
-              </ul>
-              <ul>
-                <li><span class="icon-ax-03 text-accent text-5xl"></span></li>
-                <li>
-                  <Heading level={5} class="mb-2! mt-2">
-                    <span class="text-brand">Email Us </span>
-                  </Heading>
-                </li>
-                <li>sales@assetanalytix.com</li>
-                <li>info@assetanalytix.com</li>
-              </ul>
-            </div>
-            <figure class="mt-6">
-              <img
-                src="/assets/images/imgContact-Us-block.jpg"
-                alt="Contact Us"
-              />
-            </figure>
+    <div class="grid gap-10 xl:grid-cols-2">
+      <div>
+        <div class="text-center">
+          <div class="flex justify-center gap-2">
+            <Eyebrow
+              ><span class="text-base"> CONTACT US WITH EASE</span>
+            </Eyebrow>
+            <Eyebrow />
           </div>
+          <Heading level={2}>
+            <span class="text-accent">Get in </span>
+            <span class="text-brand"> touch </span>
+          </Heading>
+          <p class="mt-3 font-medium">
+            Call us or simply send us an email anytime you want. If you have any
+            questions, please feel free to contact us using the form below.
+          </p>
+          <div class="w-full max-w-130 border-t-2 border-gray-300 mx-auto mt-8">
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3 gap-y-8 sm:gap-y-0 mt-8 mb-4"
+          >
+            <ul>
+              <li><span class="icon-ax-01 text-accent text-5xl"></span></li>
+              <li>
+                <Heading level={5} class="mb-2! mt-2">
+                  <span class="text-brand">US Office </span>
+                </Heading>
+              </li>
+              <li>12820 Hwy 64 West,</li>
+              <li>Apex, NC 27523, USA</li>
+            </ul>
+            <ul>
+              <li><span class="icon-ax-02 text-accent text-5xl"></span></li>
+              <li>
+                <Heading level={5} class="mb-2! mt-2">
+                  <span class="text-brand">Call Us </span>
+                </Heading>
+              </li>
+              <li>T: 919-342-5350</li>
+              <li>Fax: 877-787-7558</li>
+            </ul>
+            <ul>
+              <li><span class="icon-ax-03 text-accent text-5xl"></span></li>
+              <li>
+                <Heading level={5} class="mb-2! mt-2">
+                  <span class="text-brand">Email Us </span>
+                </Heading>
+              </li>
+              <li>sales@assetanalytix.com</li>
+              <li>info@assetanalytix.com</li>
+            </ul>
+          </div>
+          <figure class="mt-6">
+            <img
+              src="/assets/images/imgContact-Us-block.jpg"
+              alt="Contact Us"
+              class="w-full h-auto"
+            />
+          </figure>
         </div>
-        <div>
-          <!-- {
-            isSuccess ? (
-              <p class="mb-5 rounded-md border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-medium text-emerald-700">
-                Thank you. Your message has been received.
-              </p>
-            ) : errorMessage ? (
-              <p class="mb-5 rounded-md border border-rose-300 bg-rose-50 px-4 py-3 text-sm font-medium text-rose-700">
-                {errorMessage}
-              </p>
-            ) : null
-          }
-          <ContactForm action="/api/contact" /> -->
-          <HubSpotForm
+      </div>
+      <div>
+        <HubSpotForm
           portalId="25291755"
           formId="88983a4a-2ebf-4e4c-8088-c344bddb2cae"
         />
-        </div>
       </div>
+    </div>
   </LayoutSection>
 </Layout>
